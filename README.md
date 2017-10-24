@@ -128,12 +128,13 @@ You generally do not need to touch the scripts folder.
 Every time the script runs, it will generate a log file at `/home/metalab/daily-backup.log`.
 
 ### Package management.
+
 All packages that you need to have installed for the Rmarkdown or shiny apps need to be listed in `metadata/packageInfo.csv`. 
 
 File specification:
 
   - `Package` - package name
-  - `Version` - version of needed package or `NA` when newest version should be installed
+  - `Version` - version of needed package when installed from CRAN (`NA` when installed from github)
   - `Repo` - `cran` or `github`
   - `RepoName` - `NA` when `Repo` is cran, `<github_user>/<github_repo_name>` when `Repo` is github
 
@@ -154,6 +155,10 @@ The `metadata` folder contains many list-type data that is used throughout the s
 ### Adding new or editing documentation/tutorial/report tabs
 
 Each tab in these 3 pages is an Rmd file under the `documentation`, `tutorials`, and `reports` folders, respectively. Simply add or edit an Rmd there. If you're adding a new tab or want to change the name of the tab, you need to edit the corresponding metadata file in the `metadata` folder.
+
+### Creating reports - no need to source dashboard/global.R
+
+In the previous version of metalab, all Rmd reports had a line: `source("../dashboard/global.R", chdir = TRUE)`. This is not needed, because the build script that renders the Rmd reports already has the code from that setup script, and its environment is accessible to the reports.
 
 ### Shiny apps
 
