@@ -61,7 +61,7 @@ sudo dpkg -i pandoc-1.19.2.1-1-amd64.deb
 ```
 sudo apt-get -y install git
 cd /home/metalab
-git clone https://metalabgithub:<token>@github.com/daattali/metalab2.git`
+git clone https://metalabgithub:<token>@github.com/daattali/metalab2.git
 ```  
 
 Make sure to use the correct git repository name in the `git clone` command. **IMPORTANT**: Also make sure the `scripts/deploy.sh` script has the correct git repository name if you change it.   
