@@ -1,0 +1,26 @@
+
+```{r child='assets/setup.Rmd'}
+```
+
+```{r echo=FALSE}
+menuNavbar()
+```
+
+```{r echo=FALSE, warning=FALSE}
+documentation <- yaml::yaml.load_file("../metadata/documentation.yaml")
+
+fluidRow(
+  column(width = 12,
+    h1("Documentation", class = "header-with-tab"),
+    do.call(tabBox,
+      c(width = 12,
+        purrr::map(documentation,
+          ~ tabPanel(.$title,
+              includeRmd(paste0("../documentation/", .$id, ".Rmd")),
+              value = .$id)
+          )
+        )
+      )
+    )
+  )
+```

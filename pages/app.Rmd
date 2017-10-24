@@ -1,0 +1,30 @@
+
+```{r child='assets/setup.Rmd'}
+```
+
+```{r header, echo=FALSE, warning=FALSE}
+menuNavbar()
+```
+
+```{r echo=FALSE}
+# Creating JSON shinyapps structure:
+apps_locations_map <- unlist(shinyapps, recursive = F) %>%
+  unname() %>%
+  map(~ paste0("'", .$id, "':'", serverAddress, .$id, "/'")) %>%
+  {do.call("paste", c(., sep = ","))} %>%
+  paste("{", ., "}")
+
+fluidRow(class = "parent-cont",
+      htmltools::tags$iframe(id = "currentAppID", src = "", width = "100%", height = "100%", frameBorder = 0)
+)
+
+
+tags$script(paste0("
+            var app_id = window.location.search.substring(4)
+            var apps_locations = ", apps_locations_map, "
+
+            $('#currentAppID').attr('src', apps_locations[app_id])
+            "))
+
+responsiveIFrame()
+```

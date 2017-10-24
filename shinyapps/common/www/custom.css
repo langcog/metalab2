@@ -1,0 +1,50 @@
+@import url(https://fonts.googleapis.com/css?family=Ubuntu);
+
+.main-header .logo {
+  font-family: "Ubuntu", sans-serif;
+}
+
+body {
+  font-family: "Ubuntu", sans-serif;
+}
+
+.jumbo {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 500%;
+}
+
+.sidebar-toggle {
+  visibility: hidden;
+}
+
+.main-sidebar {
+  margin-bottom: 60px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+}
+
+.nav-tabs-custom .nav-tabs li.active {
+  border-top-color: red;
+}
+
+#moderator_input .shiny-options-group span {
+  font-size: 11px;
+}
+
+.dataset-txt {
+  padding-left: 0;
+}
+
+.dataset-img {
+  margin-top: 12px;
+}
+
+pre {
+  font-size: 11px;
+  font-family: Monaco, monospace;
+}

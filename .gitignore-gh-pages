@@ -1,0 +1,9 @@
+/*
+!/dataset
+!/documentation
+!/domain
+!/images
+!/tutorials
+!/reports
+!*.html
+!LICENSE

@@ -1,0 +1,11 @@
+- id:    early_language
+  title: Early Language
+  image: images/domains/domain1.png
+  desc:  How do children learn their native language?
+
+- id:    cognitive_development
+  title: Cognitive Development
+  image: images/domains/domain2.png
+  desc:  What is the nature of children's understanding?
+
+

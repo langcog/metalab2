@@ -1,0 +1,2 @@
+html_document:
+  css: [assets/shinydashboard.css, assets/custom.css, assets/AdminLTE.css]

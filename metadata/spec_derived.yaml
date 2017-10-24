@@ -1,0 +1,22 @@
+#----------------
+
+- field:        corr_imputed
+  description:  imputed correlation
+
+- field:        d_calc
+  description:  calculated Cohen's d
+
+- field:        d_var_calc
+  description:  calculated Cohen's d variance
+
+- field:        g_calc
+  description:  calculated Hedges' g
+
+- field:        r_calc
+  description:  calculated Pearson's r
+
+- field:        mean_age
+  description:  mean of mean_age_1 and mean_age_2 weighted by n_1 and n_2
+
+- field:        "n"
+  description:  mean of n_1 and n_2

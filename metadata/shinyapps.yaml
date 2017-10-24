@@ -1,0 +1,14 @@
+Common analyses:
+
+  - id:    power_analysis
+    title: Power Analysis
+    image: images/apps/power_analysis.png
+  - id:    power_simulation
+    title: Power Simulation
+    image: images/apps/power_simulation.png
+
+Domain-specific analyses:
+
+  - id:    visualization
+    title: Visualizations
+    image: images/apps/visualization.png

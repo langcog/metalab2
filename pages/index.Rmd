@@ -1,0 +1,111 @@
+
+```{r child='assets/setup.Rmd'}
+```
+
+```{r tools, echo=FALSE}
+domainBox <- function(i, data_domains, offsets, link) {
+  data <- data_domains[[i]]
+  fluidRow(
+    if (!offsets[1] == 0) {column(width = offsets[1])},
+    box(
+      width = 12 - sum(offsets), #status = "danger",
+      solidHeader = TRUE,
+      a(href = link, class = "no-format",
+        fluidRow(class = "domain-box",
+          column(width = 4,
+            img(src = data$image, width = "100%", class = "dataset-img")),
+          column(width = 8, class = "dataset-txt",
+            h4(strong(data$title)), p(data$desc))
+          )
+        )
+      ),
+    if (!offsets[2] == 0) {column(width = offsets[2])}
+    )
+}
+```
+
+
+```{r header, echo=FALSE, warning=FALSE}
+div(class = "text-center",
+  fluidRow(
+    column(width = 12,
+      h1("MetaLab", class = "jumbo"),
+      p(class = "lead",
+            "Interactive tools for community-augmented meta-analysis,", br(),
+            "power analysis, and experimental planning in language acquisition
+            research")
+      )
+    )
+  )
+
+menuNavbar(isIndex = TRUE)
+
+div(
+  fluidRow(
+    column(width = 1),
+    column(width = 3,
+      tags$a(href = paste0("app.html?id=", "power_analysis"),
+        div(class = "thumbnail",
+          tags$img(src = "images/apps/power_analysis-wide.png"),
+          div(class = "caption",
+            h4("Power Analysis")
+          )
+        )
+      )
+    ),
+    column(width = 3,
+      tags$a(href = paste0("app.html?id=", "visualization"),
+        div(class = "thumbnail",
+          tags$img(src = "images/apps/visualization-wide.png"),
+          div(class = "caption",
+            h4("Child Language Visualization")
+          )
+        )
+      )
+    ),
+    column(width = 4, class = "content-info",
+      "You can explore the data with", 
+      tags$a(href = "analyses.html", "interactive visualization tools."), 
+      br(),
+      br(),
+      "If you are interested in contributing, please visit our", 
+      tags$a(href = "tutorials.html", "tutorials.")),
+    column(width = 1)
+  )
+)
+
+fluidRow(class = "domain-info",
+  column(width = 6,
+    map(seq(1, ceiling(length(domains) / 2), 1),
+      ~ tagList(
+        fluidRow(
+          domainBox(., domains, c(2, 0), link = paste0("domain/", domains[[.]][["id"]], ".html"))),
+        fluidRow(class = "left-part",
+          column(width = 2),
+          column(width = 10,
+            valueBoxes(
+              filter(ungroup(datasets), domain == domainIDs[[.]]) %>% metricsCounter)
+            )
+          )
+        )
+      )
+    ),
+  column(
+    width = 6,
+    map(seq(ceiling(length(domains) / 2 + 1), length(domains), 1),
+        ~ tagList(
+          fluidRow(
+            domainBox(., domains, c(0, 2), link = paste0("domain/", domains[[.]][["id"]], ".html"))),
+          fluidRow(class = "right-part",
+            column(width = 10, valueBoxes(
+              filter(ungroup(datasets), domain == domainIDs[[.]]) %>% metricsCounter)
+              ),
+            column(width = 2)
+            )
+          )
+        )
+    )
+  )
+```
+
+

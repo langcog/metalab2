@@ -1,0 +1,32 @@
+
+```{r child='assets/setup.Rmd'}
+```
+
+```{r echo=FALSE}
+menuNavbar()
+```
+
+```{r echo=FALSE, warning=FALSE}
+tutorials <-  yaml::yaml.load_file("../metadata/tutorials.yaml")
+
+ fluidRow(
+   column(width = 12,
+      h1("Tutorials", class = "header-with-tab"),
+      p(class = "indent",
+        a(href = "https://www.youtube.com/channel/UCAwezdGwoPKA-NGAk5BoHlQ", "Video tutorials")),
+      p(class = "indent",
+        tags$ul(class = "no-dote",
+          tags$li(tags$strong("Upcoming events:")),
+          tags$li("Date: Event")
+        )
+      ),
+      do.call(tabBox, c(
+        width = 12,
+        purrr::map(
+          tutorials, ~ tabPanel(.$title, includeRmd(paste0("../tutorials/", .$id, ".Rmd")), value = .$id)
+          ))
+        )
+        )
+ )
+```
+

@@ -1,0 +1,55 @@
+
+```{r child='assets/setup.Rmd'}
+```
+
+```{r echo=FALSE}
+menuNavbar()
+```
+
+```{r echo=FALSE}
+renderApplication <- function(appInfo) {
+  box(width = 3, align = "center", style = "font-size: 125%; display: block; float: left;",
+    tagList(
+      a(href = paste0("app.html?id=", unlist(appInfo)["id"]),
+        unlist(appInfo)["title"],
+        br(),
+        img(class = "app-image",
+          src = unlist(appInfo)["image"], width = 270, height = 200)
+        )
+      )
+    )
+}
+
+renderDomainApplications <- function(domainName, applications) {
+  fullWidthPanelBox(domainName, purrr::map(applications, renderApplication))
+}
+
+fluidRow(
+  column(width = 12,
+    names(shinyapps) %>%
+    purrr::map(~ renderDomainApplications(., shinyapps[[.]]))
+    )
+  )
+```
+
+```{r echo=FALSE}
+renderReport <- function(reportName, reportLink) {
+  column(width = 3, align = "center",
+    div(class = "well well-sm",
+      p(class = "report-well",
+        tags$a(href = reportLink, reportName)
+      )
+    )
+  )
+}
+
+fluidRow(
+  column(width = 12,
+         fullWidthPanelBox("Reports", reportList %>% purrr::map(~ renderReport(.$title ,paste0("reports/", .$id,".html"))))
+    )
+  )
+```
+
+
+
+
