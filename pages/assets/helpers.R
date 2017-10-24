@@ -1,4 +1,4 @@
-serverAddress <- "http://159.203.62.173:3838/"
+serverAddress <- "http://104.131.45.235:3838/"
 
 menuNavbar <- function(relativePath="", isIndex=FALSE) {
   fluidRow(
