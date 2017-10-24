@@ -4,5 +4,8 @@
 - id:     reproducibility
   title:  Reproducibility
 
-- id: doi_publication_metrics
-  title: DOI publication metrics
+- id: "p-curves"
+  title: P-curves
+
+- id: design_choice
+  title: Design choices
