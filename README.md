@@ -65,10 +65,12 @@ sudo dpkg -i pandoc-1.19.2.1-1-amd64.deb
 ```
 sudo apt-get -y install git
 cd /home/metalab
-git clone https://metalabgithub:<token>@github.com/daattali/metalab2.git
+git clone https://daattali:<token>@github.com/daattali/metalab2.git
 ```  
 
-Make sure to use the correct git repository name in the `git clone` command.
+**TODO** daattali should be changed
+
+Make sure to use the correct git repository name in the `git clone` command. 
 
 The <token> is the PAT (personal access token) for the `metalabgithub` GitHub user.
 You can create a GitHub Personal Access Token at https://github.com/settings/tokens and make sure to select the "repo" scope.
