@@ -75,7 +75,7 @@ You can create a GitHub Personal Access Token at https://github.com/settings/tok
 
 #### 6. Install all required R packages
 
-This is a script that runs every time the site gets built. Let's run it initially manually, it can take 10-20 minutes. Any subsequent run will be fast because only modified package versions will need to be installed.
+This is a script that runs every time the site gets built. Let's run it initially manually, it can take about half an hour. Any subsequent run will be fast because only modified package versions will need to be installed.
 
 ```
 cd metalab2/scripts
