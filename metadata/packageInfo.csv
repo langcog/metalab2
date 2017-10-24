@@ -1,10 +1,8 @@
 "Package","Version","Repo","RepoName"
-"dplyr","0.7.2","cran",NA
 "tidyr","0.7.0","cran",NA
 "shiny","1.0.5","cran",NA
 "shinydashboard","0.6.1","cran",NA
 "ggplot2","2.2.1","cran",NA
-"purrr",NA,"cran",NA
 "metafor","2.0-0","cran",NA
 "feather","0.3.1","cran",NA
 "DT","0.2","cran",NA
