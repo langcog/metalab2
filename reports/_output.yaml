@@ -1,9 +1,0 @@
-html_document:
-  self_contained: false
-  toc: true
-  toc_float: true
-  theme: united
-  highlight: tango
-  code_folding: hide
-  fig.width: 8
-  fig.height: 5

@@ -1,3 +1,0 @@
-# test documentation page
-
-Just **testing** `1+4` = `r 1+4`
