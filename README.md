@@ -85,7 +85,7 @@ sudo Rscript packageInstaller.R
 #### 7. Set git info
 
 ```
-git config --global user.email "metalab.github@gmail.com"
+git config --global user.email "metalab-contact@stanford.edu"
 git config --global user.name "Metalab Cron"
 ```
 
