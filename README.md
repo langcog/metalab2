@@ -1,6 +1,10 @@
 # Set up instructions
 
-#### 0. These instructions assume an Ubuntu 16.04 OS
+#### 0. Prereqs
+
+- These instructions assume an Ubuntu 16.04 OS
+- Update `serverAddress` variable in `pages/assets/helpers.R` file with YOUR server address
+- Make sure in file `scripts/deploy.sh` that the line `cd $BASENAME/metalab2` has the correct git repository name
 
 #### 1. Create a passwordless `metalab` user with sudo privilege
 
@@ -64,7 +68,7 @@ cd /home/metalab
 git clone https://metalabgithub:<token>@github.com/daattali/metalab2.git
 ```  
 
-Make sure to use the correct git repository name in the `git clone` command. **IMPORTANT**: Also make sure the `scripts/deploy.sh` script has the correct git repository name if you change it.   
+Make sure to use the correct git repository name in the `git clone` command.
 
 The <token> is the PAT (personal access token) for the `metalabgithub` GitHub user.
 You can create a GitHub Personal Access Token at https://github.com/settings/tokens and make sure to select the "repo" scope.
@@ -84,9 +88,7 @@ cp scripts/deploy.sh ../deploy.sh
 sudo chmod u+x ../deploy.sh
 ```
 
-#### 8. Update `serverAddress` variable at `metalab2/pages/assets/helpers.R`with YOUR server address
-
-#### 9. Set up crontab to automatically deploy the site:
+#### 8. Set up crontab to automatically deploy the site:
  
 ```
 crontab -e
