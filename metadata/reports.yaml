@@ -4,5 +4,5 @@
 - id:     reproducibility
   title:  Reproducibility
 
-- id: doi_publication_metrics.Rmd
+- id: doi_publication_metrics
   title: DOI publication metrics
