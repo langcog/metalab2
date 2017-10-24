@@ -3,3 +3,6 @@
 
 - id:     reproducibility
   title:  Reproducibility
+
+- id: doi_publication_metrics.Rmd
+  title: DOI publication metrics
