@@ -75,14 +75,23 @@ Make sure to use the correct git repository name in the `git clone` command.
 The <token> is the PAT (personal access token) for the `metalabgithub` GitHub user.
 You can create a GitHub Personal Access Token at https://github.com/settings/tokens and make sure to select the "repo" scope.
 
-#### 6. Set git info
+#### 6. Install all required R packages
+
+This is a script that runs every time the site gets built. Let's run it initially manually, it can take 10-20 minutes. Any subsequent run will be fast because only modified package versions will need to be installed.
+
+```
+cd metalab2/scripts
+sudo Rscript packageInstaller.R
+```
+
+#### 7. Set git info
 
 ```
 git config --global user.email "metalab.github@gmail.com"
 git config --global user.name "Metalab Cron"
 ```
 
-#### 7. Copy `/scripts/deploy.sh` script into `/home/metalab/` and add permissions to it
+#### 8. Copy `/scripts/deploy.sh` script into `/home/metalab/` and add permissions to it
 
 ```
 cd /home/metalab/metalab2/
@@ -90,7 +99,7 @@ cp scripts/deploy.sh ../deploy.sh
 sudo chmod u+x ../deploy.sh
 ```
 
-#### 8. Set up crontab to automatically deploy the site:
+#### 9. Set up crontab to automatically deploy the site:
  
 ```
 crontab -e
@@ -131,6 +140,14 @@ File specification:
   - `RepoName` - `NA` when `Repo` is cran, `<github_user>/<github_repo_name>` when `Repo` is github
 
 Whenever this file gets modified, the next build of the site (within 24 hours) will use the new packages.
+
+If you need to update the version of `devtools`, `dplyr`, or `purrr`, you will need to manually install the new version on the machine by logging in and running, for example
+
+```
+sudo su - -c "R -e \"install.packages('dplyr', repos='http://cran.rstudio.com/')\""
+```
+
+This is because these 3 packages are used in the package management script, and installing them while they're in use may result in unpredictable behaviour.
 
 ### Metadata folder
 
