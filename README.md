@@ -28,7 +28,7 @@ su - metalab
 
 #### 2. Install R
 
-See [here for instructions](http://deanattali.com/2015/05/09/setup-rstudio-shiny-server-digital-ocean/) (step 6) and also install the `purrr`, `dplyr`, and `shiny` packages:
+See [here for instructions](http://deanattali.com/2015/05/09/setup-rstudio-shiny-server-digital-ocean/) (step 6) and also install the `purrr`, `dplyr`, and `shiny` packages (installing these packages can take several minutes):
 ```
 sudo su - -c "R -e \"install.packages(c('purrr', 'dplyr', 'shiny'), repos='http://cran.rstudio.com/')\""
 ```
