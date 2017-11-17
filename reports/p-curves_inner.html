@@ -11,7 +11,7 @@
 
 <meta name="author" content="Christina Bergmann" />
 
-<meta name="date" content="2017-11-16" />
+<meta name="date" content="2017-11-17" />
 
 <title>P-Curves</title>
 
@@ -265,7 +265,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">P-Curves</h1>
 <h4 class="author"><em>Christina Bergmann</em></h4>
-<h4 class="date"><em>2017-11-16</em></h4>
+<h4 class="date"><em>2017-11-17</em></h4>
 
 </div>
 
@@ -285,21 +285,21 @@ div.tocify {
 <p>We need to source code from the p-curve app. This p-curve report is based on the p-curve app 4.0 (accessed 25.02.2015) via code from the <a href="http://p-curve.com/app4/App%204.0%20p-curve%202016%2001%2011.r">app</a>. We have heavily adapted this code, however.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;pcurve.R&quot;</span>)</code></pre></div>
 <p>Compute p-curves for each dataset.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pc &lt;-<span class="st"> </span>all_data %&gt;%
-<span class="st">  </span><span class="kw">group_by</span>(dataset) %&gt;%
-<span class="st">  </span><span class="kw">select</span>(study_ID, t, F, n_1, n_2, participant_design, d) %&gt;%
-<span class="st">  </span><span class="kw">filter</span>(!<span class="kw">is.na</span>(t)|!<span class="kw">is.na</span>(F)) %&gt;%
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">df2 =</span> <span class="kw">ifelse</span>(participant_design ==<span class="st"> &quot;between&quot;</span>, (n_1 +<span class="st"> </span>n_2)-<span class="dv">2</span>, n_1<span class="dv">-1</span>),
-         <span class="dt">value =</span> <span class="kw">ifelse</span>(<span class="kw">is.na</span>(t), F, t**<span class="dv">2</span>), <span class="co"># turn ts into Fs by squaring them</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pc &lt;-<span class="st"> </span>all_data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(dataset) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">select</span>(study_ID, t, F, n_<span class="dv">1</span>, n_<span class="dv">2</span>, participant_design, d) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(t)<span class="op">|!</span><span class="kw">is.na</span>(F)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">df2 =</span> <span class="kw">ifelse</span>(participant_design <span class="op">==</span><span class="st"> &quot;between&quot;</span>, (n_<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>n_<span class="dv">2</span>)<span class="op">-</span><span class="dv">2</span>, n_<span class="dv">1</span><span class="op">-</span><span class="dv">1</span>),
+         <span class="dt">value =</span> <span class="kw">ifelse</span>(<span class="kw">is.na</span>(t), F, t<span class="op">**</span><span class="dv">2</span>), <span class="co"># turn ts into Fs by squaring them</span>
          <span class="dt">test =</span> <span class="kw">ifelse</span>(<span class="kw">is.na</span>(t), <span class="st">&quot;F&quot;</span>, <span class="st">&quot;t&quot;</span>), 
-         <span class="dt">df1 =</span> <span class="dv">1</span>) %&gt;%<span class="st">  </span><span class="co"># In the source script, the authors always have 2 dfs, but </span>
+         <span class="dt">df1 =</span> <span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st">  </span><span class="co"># In the source script, the authors always have 2 dfs, but </span>
 <span class="st">  </span><span class="co"># df1 is always 1 (both for t and for F), </span>
 <span class="st">  </span><span class="co"># we always look at the main result of ANOVAs</span>
 <span class="st">  </span><span class="kw">do</span>(<span class="kw">p_curve</span>(.))</code></pre></div>
 <p>Plot p-curves.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(pc, <span class="kw">aes</span>(<span class="dt">x =</span> p, <span class="dt">y =</span> value, <span class="dt">col =</span> measure, <span class="dt">lty =</span> measure)) +<span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_line</span>() +
-<span class="st">  </span><span class="kw">facet_wrap</span>(~dataset)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(pc, <span class="kw">aes</span>(<span class="dt">x =</span> p, <span class="dt">y =</span> value, <span class="dt">col =</span> measure, <span class="dt">lty =</span> measure)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>dataset)</code></pre></div>
 <p><img src="p-curves_inner_files/figure-html/unnamed-chunk-2-1.png" width="768" /></p>
 <p>It’s clear that things look pretty reasonable across datasets.</p>
 </div>
