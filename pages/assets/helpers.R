@@ -1,4 +1,4 @@
-serverAddress <- "https://52.24.141.166:3838/"
+serverAddress <- "https://childes.wordbank.stanford.edu:3838/"
 
 menuNavbar <- function(relativePath="", isIndex=FALSE) {
   fluidRow(
