@@ -109,6 +109,15 @@ shinyServer(function(input, output, session) {
     paste0(toupper(substring(sp, 1, 1)), substring(sp, 2))
   }
 
+  output$link_to_dataset <- renderUI({
+    req(input$dataset_name)
+    base_url <- "https://langcog.github.io/metalab2/dataset/"
+    short_name <- datasets %>%
+      filter(name == input$dataset_name) %>%
+      select(short_name)
+    HTML(paste0("<a href='", base_url, short_name, ".html', target='_blank'>View raw dataset</a>"))
+  })
+
   output$moderator_input <- renderUI({
     req(input$dataset_name)
     custom_mods <- datasets %>%

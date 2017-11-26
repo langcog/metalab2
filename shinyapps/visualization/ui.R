@@ -32,6 +32,8 @@ shinyUI(
               br(),
               selectInput("dataset_name", label = "Dataset",
                           choices = datasets$name),
+              uiOutput("link_to_dataset"),
+              br(),
               selectInput("ma_method", label = "Meta-analytic model",
                           choices = ma_choices, selected = "REML"),
               fluidRow(
