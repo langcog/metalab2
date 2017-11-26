@@ -44,21 +44,21 @@ div(
   fluidRow(
     column(width = 1),
     column(width = 3,
-      tags$a(href = paste0("app.html?id=", "power_analysis"),
+      tags$a(href = paste0("app.html?id=", "visualization"),
         div(class = "thumbnail",
-          tags$img(src = "images/apps/power_analysis-wide.png"),
+          tags$img(src = "images/apps/visualization-wide.png"),
           div(class = "caption",
-            h4("Power Analysis")
+            h4("Meta-analysis Visualization")
           )
         )
       )
     ),
     column(width = 3,
-      tags$a(href = paste0("app.html?id=", "visualization"),
+      tags$a(href = paste0("app.html?id=", "power_analysis"),
         div(class = "thumbnail",
-          tags$img(src = "images/apps/visualization-wide.png"),
+          tags$img(src = "images/apps/power_analysis-wide.png"),
           div(class = "caption",
-            h4("Child Language Visualization")
+            h4("Power Analysis")
           )
         )
       )
