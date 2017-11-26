@@ -38,6 +38,7 @@ shinyServer(function(input, output, session) {
   }
 
   dataset_names <- reactive({
+    req(input$domain)
     datasets %>%
       filter(domain == input$domain) %>%
       pull(name)
@@ -220,7 +221,7 @@ shinyServer(function(input, output, session) {
 
     guide <- if (mod_group() == "all_mod") FALSE else "legend"
     p <- ggplot(mod_data(), aes_string(x = "mean_age_months", y = es(),
-                                       colour = mod_group())) +
+                                       colour = mod_group(), label = "short_cite")) +
       geom_jitter(aes(size = n), alpha = 0.5) +
       geom_hline(yintercept = 0, linetype = "dashed", color = "grey") +
       scale_colour_solarized(name = "", labels = labels, guide = guide) +
@@ -230,16 +231,18 @@ shinyServer(function(input, output, session) {
 
     #curve <- if (is.null(categorical_mods())) input$scatter_curve else "lm"
     if (input$scatter_curve == "lm") {
-      p + geom_smooth(aes_string(weight = sprintf("1 / %s", es_var())),
+      p <- p + geom_smooth(aes_string(weight = sprintf("1 / %s", es_var())),
                       method = "lm", se = FALSE)
     } else if (input$scatter_curve == "loess") {
-      p + geom_smooth(aes_string(weight = sprintf("1 / %s", es_var())),
+      p <- p + geom_smooth(aes_string(weight = sprintf("1 / %s", es_var())),
                       method = "loess", se = FALSE, span = 1)
     }
 
+    ggplotly(p, tooltip = c("label"))
+
   }
 
-  output$scatter <- renderPlot(scatter())
+  output$scatter <- renderPlotly(scatter())
 
   output$longitudinal <- reactive({
     req(input$dataset_name)
@@ -256,7 +259,7 @@ shinyServer(function(input, output, session) {
     plt_data[[mod_group()]] <- factor(plt_data[[mod_group()]],
                                       levels = rev(levels(mod_factor)))
     plt <- ggplot(plt_data, aes_string(x = mod_group(), y = es(),
-                                       colour = mod_group())) +
+                                       colour = mod_group(), label = "short_cite")) +
       coord_flip() +
       geom_violin() +
       geom_jitter(height = 0) +
@@ -265,15 +268,17 @@ shinyServer(function(input, output, session) {
       xlab("") +
       ylab("Effect Size\n")
     if (mod_group() == "all_mod") {
-      plt + theme(axis.ticks.y = element_blank())
+      plt <- plt + theme(axis.ticks.y = element_blank())
     } else {
-      plt
+      plt <- plt
     }
+
+    ggplotly(plt, height = length(unique(mod_data()[[mod_group()]])) * 160 + 70,
+             tooltip = c("label"))
   }
 
-  output$violin <- renderPlot(
-    violin(),
-    height = function() length(unique(mod_data()[[mod_group()]])) * 90 + 70
+  output$violin <- renderPlotly(
+    violin()
   )
 
   ########### FOREST PLOT ###########

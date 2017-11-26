@@ -66,7 +66,7 @@ shinyUI(
                   # uiOutput("select_scatter_curve")),
                   selectInput("scatter_curve", label = "Curve type",
                               choices = scatter_choices, selected = "loess")),
-                plotOutput("scatter"), height = 530)
+                plotlyOutput("scatter"), height = 530)
           ),
           box(width = NULL, #status = "danger",
               fluidRow(
@@ -84,7 +84,7 @@ shinyUI(
                 column(width = 2,
                        downloadButton("download_violin", "Save",
                                       class = "btn-xs pull-right"))),
-              plotOutput("violin", height = "auto")
+              plotlyOutput("violin", height = "auto")
           )),
         column(
           width = 6,
