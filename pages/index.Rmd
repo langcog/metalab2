@@ -42,6 +42,7 @@ menuNavbar(isIndex = TRUE)
 
 div(
   fluidRow(
+    column(width = 1),
     column(width = 3,
       tags$a(href = paste0("app.html?id=", "visualization"),
         div(class = "thumbnail",
@@ -52,7 +53,6 @@ div(
         )
       )
     ),
-    column(width = 1),
     column(width = 3,
       tags$a(href = paste0("app.html?id=", "power_analysis"),
         div(class = "thumbnail",
