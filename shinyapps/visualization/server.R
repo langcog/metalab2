@@ -38,6 +38,7 @@ shinyServer(function(input, output, session) {
   }
 
   dataset_names <- reactive({
+    req(input$domain)
     datasets %>%
       filter(domain == input$domain) %>%
       pull(name)
@@ -220,7 +221,7 @@ shinyServer(function(input, output, session) {
 
     guide <- if (mod_group() == "all_mod") FALSE else "legend"
     p <- ggplot(mod_data(), aes_string(x = "mean_age_months", y = es(),
-                                       colour = mod_group())) +
+                                       colour = mod_group(), label = "short_cite")) +
       geom_jitter(aes(size = n), alpha = 0.5) +
       geom_hline(yintercept = 0, linetype = "dashed", color = "grey") +
       scale_colour_solarized(name = "", labels = labels, guide = guide) +
@@ -237,7 +238,7 @@ shinyServer(function(input, output, session) {
                       method = "loess", se = FALSE, span = 1)
     }
 
-    ggplotly(p)
+    ggplotly(p, tooltip = c("label"))
 
   }
 
@@ -258,7 +259,7 @@ shinyServer(function(input, output, session) {
     plt_data[[mod_group()]] <- factor(plt_data[[mod_group()]],
                                       levels = rev(levels(mod_factor)))
     plt <- ggplot(plt_data, aes_string(x = mod_group(), y = es(),
-                                       colour = mod_group())) +
+                                       colour = mod_group(), label = "short_cite")) +
       coord_flip() +
       geom_violin() +
       geom_jitter(height = 0) +
@@ -272,12 +273,12 @@ shinyServer(function(input, output, session) {
       plt <- plt
     }
 
-    ggplotly(plt), length(unique(mod_data()[[mod_group()]])) * 90 + 70)
+    ggplotly(plt, height = length(unique(mod_data()[[mod_group()]])) * 160 + 70,
+             tooltip = c("label"))
   }
 
   output$violin <- renderPlotly(
-    violin()#,
-    #height = function() length(unique(mod_data()[[mod_group()]])) * 90 + 70
+    violin()
   )
 
   ########### FOREST PLOT ###########
