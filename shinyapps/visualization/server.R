@@ -199,16 +199,18 @@ shinyServer(function(input, output, session) {
 
     #curve <- if (is.null(categorical_mods())) input$scatter_curve else "lm"
     if (input$scatter_curve == "lm") {
-      p + geom_smooth(aes_string(weight = sprintf("1 / %s", es_var())),
+      p <- p + geom_smooth(aes_string(weight = sprintf("1 / %s", es_var())),
                       method = "lm", se = FALSE)
     } else if (input$scatter_curve == "loess") {
-      p + geom_smooth(aes_string(weight = sprintf("1 / %s", es_var())),
+      p <- p + geom_smooth(aes_string(weight = sprintf("1 / %s", es_var())),
                       method = "loess", se = FALSE, span = 1)
     }
 
+    ggplotly(p)
+
   }
 
-  output$scatter <- renderPlot(scatter())
+  output$scatter <- renderPlotly(scatter())
 
   output$longitudinal <- reactive({
     req(input$dataset_name)
@@ -234,15 +236,17 @@ shinyServer(function(input, output, session) {
       xlab("") +
       ylab("Effect Size\n")
     if (mod_group() == "all_mod") {
-      plt + theme(axis.ticks.y = element_blank())
+      plt <- plt + theme(axis.ticks.y = element_blank())
     } else {
-      plt
+      plt <- plt
     }
+
+    ggplotly(plt), length(unique(mod_data()[[mod_group()]])) * 90 + 70)
   }
 
-  output$violin <- renderPlot(
-    violin(),
-    height = function() length(unique(mod_data()[[mod_group()]])) * 90 + 70
+  output$violin <- renderPlotly(
+    violin()#,
+    #height = function() length(unique(mod_data()[[mod_group()]])) * 90 + 70
   )
 
   ########### FOREST PLOT ###########
