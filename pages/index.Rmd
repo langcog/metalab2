@@ -42,6 +42,16 @@ menuNavbar(isIndex = TRUE)
 
 div(
   fluidRow(
+    column(width = 3,
+      tags$a(href = paste0("app.html?id=", "visualization"),
+        div(class = "thumbnail",
+          tags$img(src = "images/apps/visualization-wide.png"),
+          div(class = "caption",
+            h4("Meta-analysis Visualization")
+          )
+        )
+      )
+    ),
     column(width = 1),
     column(width = 3,
       tags$a(href = paste0("app.html?id=", "power_analysis"),
@@ -49,16 +59,6 @@ div(
           tags$img(src = "images/apps/power_analysis-wide.png"),
           div(class = "caption",
             h4("Power Analysis")
-          )
-        )
-      )
-    ),
-    column(width = 3,
-      tags$a(href = paste0("app.html?id=", "visualization"),
-        div(class = "thumbnail",
-          tags$img(src = "images/apps/visualization-wide.png"),
-          div(class = "caption",
-            h4("Child Language Visualization")
           )
         )
       )

@@ -37,6 +37,12 @@ shinyServer(function(input, output, session) {
     df
   }
 
+  dataset_names <- reactive({
+    datasets %>%
+      filter(domain == input$domain) %>%
+      pull(name)
+  })
+
   data <- reactive({
     req(input$dataset_name)
     all_data %>% filter(dataset == input$dataset_name, mean_age < 3000)
@@ -108,6 +114,22 @@ shinyServer(function(input, output, session) {
     sp <- gsub("_", " ", fields)
     paste0(toupper(substring(sp, 1, 1)), substring(sp, 2))
   }
+
+  output$dataset_name <- renderUI({
+    selectInput(inputId = "dataset_name",
+                   label = "Dataset",
+                   choices = dataset_names()
+    )
+  })
+
+  output$domain_selector <- renderUI({
+    selectInput(inputId = "domain",
+                label = "Domain",
+                choices = datasets$domain %>%
+                  unique %>%
+                  set_names(display_name(.))
+    )
+  })
 
   output$link_to_dataset <- renderUI({
     req(input$dataset_name)
