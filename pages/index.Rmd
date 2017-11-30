@@ -32,8 +32,7 @@ div(class = "text-center",
       h1("MetaLab", class = "jumbo"),
       p(class = "lead",
             "Interactive tools for community-augmented meta-analysis,", br(),
-            "power analysis, and experimental planning in language acquisition
-            research")
+            "power analysis, and experimental planning in cognitive development research")
       )
     )
   )

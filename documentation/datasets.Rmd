@@ -1,0 +1,11 @@
+# Datasets
+
+For more information on phonemic discrimination and word segmentation MAs, please see the relevant tabs. 
+
+```{r results='asis', echo=FALSE}
+for (i in 1:nrow(datasets)) {
+  dataset <- datasets[i,]
+  cat(sprintf("### %s \n * [%s](https://langcog.github.io/metalab2/dataset/%s.html) \n * N papers = %s, N effect sizes = %s \n * %s \n * Curator is %s \n\n",
+              dataset$name, dataset$citation, dataset$short_name, dataset$num_papers, dataset$num_experiments, dataset$description, dataset$curator))
+}
+```

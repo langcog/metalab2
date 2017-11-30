@@ -1,0 +1,10 @@
+# Field Specifications
+
+## "Required fields"
+`r DT::dataTableOutput("req_table")`
+
+## "Optional fields")
+`r DT::dataTableOutput("opt_table")`
+
+## "Derived fields" 
+`r DT::dataTableOutput("drv_table")`
