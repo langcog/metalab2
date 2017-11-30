@@ -1,8 +1,11 @@
-- id:     faq
-  title:  FAQ
+- id:     overview
+  title:  Overview
+
+- id:     datasets
+  title:  Datasets
 
 - id:     statistical_approach
-  title:  Statistical approach
+  title:  Statistical Approach
 
-- id:     testdoc
-  title:  Test doc
+- id:     field_specs
+  title:  Field Specifications

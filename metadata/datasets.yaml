@@ -160,24 +160,70 @@
     longitudinal: 'FALSE'
     moderators: []
 -
+    name: 'Statiscal word segmentation'
+    domain: early_language
+    short_name: statSeg
+    key: 1s9sMw6aUOaSqipPOVJMbR8UZkBv_f_fL9yD-kn8lLJQ
+    filename: statSeg
+    citation: 'Black & Bergmann (2017)'
+    internal_citation: '(Black & Bergmann, 2017)'
+    link: 'https://github.com/christinabergmann/StatLearnDB'
+    full_citation: 'Black, A. & Bergmann, C. (2017). Quantifying infants' statistical word segmentation: A meta-analysis. In: Proceedings of the 39th Annual Conference of the Cognitive Science Society, pp. 124-129, Austin, TX: Cognitive Science Society'
+    doi: ""
+    systematic: yes
+    search_strategy: '"Expert list and strategic scholar search papers citing Saffran, Aslin, & Newport (1996) with infant/infancy, but not visual in the title. Second search with month/s and not infant/infancy or visual"'
+    reliability: no
+    source: 'coded by authors'
+    last_update: '2017-11-31'
+    link_fields: ""
+    short_desc: 'Can infants segment words from artificial mini-languages based on syllable-level statistics?'
+    description: 'Can infants segment words from artificial mini-languages based on syllable-level statistics?'
+    curator: 'Christina Bergmann'
+    src: images/datasets/statistical.png
+    longitudinal: 'FALSE'
+    moderators: [native_lang]
+-
     name: 'Word segmentation'
     domain: early_language
     short_name: inworddb
     key: 1djn_-iE4uOs6yRmvBgzYAhB5guzfo3-3wnC7LJVLCe8
     filename: word_segmentation
-    citation: 'Bergmann & Cristia (2015)'
-    internal_citation: '(Bergmann & Cristia, 2015)'
+    citation: 'Bergmann & Cristia (2016)'
+    internal_citation: '(Bergmann & Cristia, 2016)'
     link: 'https://sites.google.com/site/inworddb/'
-    full_citation: 'Bergmann, C., & Cristia, A. (in press). Development of infants’ segmentation of words from native speech: A meta-analytic approach. Developmental Science.'
+    full_citation: 'Bergmann, C., & Cristia, A. (2016). Development of infants’ segmentation of words from native speech: A meta-analytic approach. Developmental Science, 19, 901–917'
     doi: 10.1111/desc.12341
     systematic: yes
     search_strategy: '"We first generated a list of potentially relevant items to be included in our meta-analysis using the Google Scholar search engine, with the broad search term ‘infant word segmentation’ (following Gehanno, Rollin & Darmoni, 2013). This search was carried out on 27 November 2012 and we inspected the first 1000 results. Fifteen additional items were included based on recommendations and by scanning references of included papers. After removing duplicates, we screened the title and abstract of each remaining item and identified 231 items for full-text inspection using the following inclusion criteria: (1) original data were reported; (2) the stimulus material was continuous natural speech spoken in the participants’ native language; (3) the dependent measure was looking time (LT) at a neutral visual target (i.e. not a possible referent of one set of stimuli); (4) infants were normally developing."'
     reliability: no
     source: 'coded by authors'
-    last_update: '2016-04-04'
+    last_update: '2017-11-31'
     link_fields: 'https://sites.google.com/site/inworddb/db/files/InWordDB%20FieldNames.pdf?attredirects=0&d=1'
-    short_desc: 'Recognition of familiarized words from running, natural speech using behavioral methods.'
-    description: 'Recognition of familiarized words from running, natural speech using behavioral methods applied to infants 0 - 20 months of age.'
+    short_desc: 'Recognition of familiarized content or non-words from running, natural speech using behavioral methods.'
+    description: 'Recognition of familiarized content or non-words from running, natural speech using behavioral methods applied to infants 0 - 20 months of age.'
+    curator: 'Christina Bergmann'
+    src: images/datasets/segmentation.png
+    longitudinal: 'FALSE'
+    moderators: [native_lang]
+-
+    name: 'Function word segmentation'
+    domain: early_language
+    short_name: inworddb_function
+    key: 1v9xAvhniLVsFkqJebJfMXRkQGLljoUvy3duQxawpBf0
+    filename: function_word_segmentation
+    citation: 'Bergmann & Cristia (2016)'
+    internal_citation: '(Bergmann & Cristia, 2016)'
+    link: 'https://sites.google.com/site/inworddb/'
+    full_citation: 'Bergmann, C., & Cristia, A. (2016). Development of infants’ segmentation of words from native speech: A meta-analytic approach. Developmental Science, 19, 901–917'
+    doi: 10.1111/desc.12341
+    systematic: yes
+    search_strategy: '"We first generated a list of potentially relevant items to be included in our meta-analysis using the Google Scholar search engine, with the broad search term ‘infant word segmentation’ (following Gehanno, Rollin & Darmoni, 2013). This search was carried out on 27 November 2012 and we inspected the first 1000 results. Fifteen additional items were included based on recommendations and by scanning references of included papers. After removing duplicates, we screened the title and abstract of each remaining item and identified 231 items for full-text inspection using the following inclusion criteria: (1) original data were reported; (2) the stimulus material was continuous natural speech spoken in the participants’ native language; (3) the dependent measure was looking time (LT) at a neutral visual target (i.e. not a possible referent of one set of stimuli); (4) infants were normally developing."'
+    reliability: no
+    source: 'coded by authors'
+    last_update: '2017-11-31'
+    link_fields: 'https://sites.google.com/site/inworddb/db/files/InWordDB%20FieldNames.pdf?attredirects=0&d=1'
+    short_desc: 'Recognition of familiarized function words from natural speech using behavioral methods.'
+    description: 'Recognition of familiarized function words from natural speech using behavioral methods applied to infants 0 - 20 months of age.'
     curator: 'Christina Bergmann'
     src: images/datasets/segmentation.png
     longitudinal: 'FALSE'
@@ -298,7 +344,7 @@
     longitudinal: 'FALSE'
     moderators: []
 -
-    name: 'Categorization Bias'
+    name: 'Categorization bias'
     domain: cognitive_development
     short_name: catBias
     key: 1PcqwSo6OWNa8XdtcZnCDtPdxUf6sa5BimHsufWlAQu4
@@ -320,3 +366,4 @@
     src: images/datasets/catBias.png
     longitudinal: 'FALSE'
     moderators: [label_present, instruction_code, object_stimulus, taxonomic_type]
+

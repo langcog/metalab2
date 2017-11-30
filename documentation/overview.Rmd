@@ -1,0 +1,23 @@
+# Overview
+
+MetaLab is a research tool for aggregating across studies in the cognitive development literature. Currently, MetaLab contains`r as.integer(sum(as.numeric(datasets$num_experiments), na.rm = TRUE))` effect sizes across
+meta-analyses in `r nrow(datasets)` domains of cognitive development, based on
+data from `r as.integer(sum(as.numeric(datasets$num_papers), na.rm = TRUE))` papers collecting
+`r as.integer(sum(as.numeric(datasets$num_subjects), na.rm = TRUE))` subjects. These studies
+can be used to obtain better estimates of effect sizes across different domains,
+methods, and ages. Using our power calculator, researchers can use these
+estimates to plan appropriate sample sizes for prospective studies. More
+generally, MetaLab can be used as a theoretical tool for exploring patterns in
+development across language acquisition domains.
+
+## Documentation 
+
++ For more information about individual datasets, see the `Datasets` tab.
++ For information about our statistical approach throughout the site, see the `Statistical Approach` tab.
++ For information about the field structure of the site, see the `Field Specification` tab. 
++ For information about doing meta-analyses and contributing to MetaLab, see the `Contribute` page.
+
+## Caveat
+
+Please note that data and visualizations are under development at the moment (Winter 2017) and should not be taken as definitive.
+
