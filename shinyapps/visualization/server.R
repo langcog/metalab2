@@ -155,6 +155,25 @@ shinyServer(function(input, output, session) {
                        inline = TRUE)
   })
 
+  output$ma_help_text <- renderUI({
+    req(input$ma_method)
+    ma_help_texts <- c("REML" = "Weighted average of the effect sizes of a group of studies",
+                       "REML_mv" = "Parameters that vary at more than one level",
+                       "FE" = "Weighted average of a series of study estimates",
+                       "EB" = "Prior distribution is estimated from data")
+    HTML(paste0("<i class=\"text-muted\">", ma_help_texts[input$ma_method], "</i>"))
+  })
+
+  output$es_help_text <- renderUI({
+    req(input$es_type)
+    es_help_texts <- c("d" = "Cohen",
+                       "g" = "Hedges",
+                       "r" = "Pearson",
+                       "z" = "Fisher",
+                       "log_odds" = "Log odds")
+    HTML(paste0("<i class=\"text-muted\">", es_help_texts[input$es_type], "</i>"))
+  })
+
   output$studies_box <- renderValueBox({
     valueBox(
       nrow(data()), "Conditions", icon = icon("list", lib = "glyphicon"),
