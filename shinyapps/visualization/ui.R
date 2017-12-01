@@ -14,6 +14,8 @@ es_choices <- c("Cohen's d" = "d",
                 "Fisher's z" = "z",
                 "Log odds ratio" = "log_odds")
 
+# ma_explanations <- c("")
+
 shinyUI(
   dashboardPage(
     dashboardHeader(disable = TRUE),
@@ -31,22 +33,39 @@ shinyUI(
                              class = "btn-xs pull-right"),
               br(),
               uiOutput("domain_selector"),
-              # selectInput("dataset_name", label = "Dataset",
-              #             choices = datasets$name),
+              bsPopover("domain_selector", title = NULL,
+                        content = HTML("<small>Domains in developmental psychology</small>"),
+                        placement = "right"),
               uiOutput("dataset_name"),
+              bsPopover("dataset_name", title = NULL,
+                        content = HTML("<small>Datasets to choose from</small>"),
+                        placement = "right"),
               uiOutput("link_to_dataset"),
               br(),
               selectInput("ma_method", label = "Meta-analytic model",
                           choices = ma_choices, selected = "REML"),
+              uiOutput("ma_help_text"),
+              br(),
+              bsPopover("ma_method", title = NULL,
+                        content = HTML("<small>Statistical model to use on aggregate data</small>"),
+                        placement = "right"),
               fluidRow(
                 column(
                   width = 4,
                   selectInput("es_type", label = "Effect size type",
-                              choices = es_choices, selected = "d")
+                              choices = es_choices, selected = "d"),
+                  uiOutput("es_help_text"),
+                  br(),
+                  bsPopover("es_type", title = NULL,
+                            content = HTML("<small>Measure for strength of phenomenon</small>"),
+                            placement = "right")
                 ),
                 column(
                   width = 8,
-                  uiOutput("moderator_input")
+                  uiOutput("moderator_input"),
+                  bsPopover("moderator_input", title = NULL,
+                            content = HTML("<small>Moderator</small>"),
+                            placement = "right")
                 )
               )
           ),
@@ -65,7 +84,10 @@ shinyUI(
                   width = 7,
                   # uiOutput("select_scatter_curve")),
                   selectInput("scatter_curve", label = "Curve type",
-                              choices = scatter_choices, selected = "loess")),
+                              choices = scatter_choices, selected = "loess"),
+                  bsPopover("scatter_curve", title = NULL,
+                            content = HTML("<small>Select a type of curve</small>"),
+                            placement = "right")),
                 plotlyOutput("scatter"), height = 530)
           ),
           box(width = NULL, #status = "danger",
@@ -108,7 +130,11 @@ shinyUI(
                                           "effect size" = "effects",
                                           "model estimate" = "estimate",
                                           "alphabetical" = "study_ID",
-                                          "chronological" = "year"))),
+                                          "chronological" = "year")),
+                  bsPopover("forest_sort", title = NULL,
+                            content = HTML("<small>Method to sort results</small>"),
+                            placement = "right")
+                ),
                 plotOutput("forest", height = "auto")),
             box(width = NULL, #status = "danger",
                 fluidRow(
