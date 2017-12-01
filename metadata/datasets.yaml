@@ -168,7 +168,7 @@
     citation: 'Black & Bergmann (2017)'
     internal_citation: '(Black & Bergmann, 2017)'
     link: 'https://github.com/christinabergmann/StatLearnDB'
-    full_citation: 'Black, A. & Bergmann, C. (2017). Quantifying infants' statistical word segmentation: A meta-analysis. In: Proceedings of the 39th Annual Conference of the Cognitive Science Society, pp. 124-129, Austin, TX: Cognitive Science Society'
+    full_citation: "Black, A. & Bergmann, C. (2017). Quantifying infants' statistical word segmentation: A meta-analysis. In: Proceedings of the 39th Annual Conference of the Cognitive Science Society, pp. 124-129, Austin, TX: Cognitive Science Society"
     doi: ""
     systematic: yes
     search_strategy: '"Expert list and strategic scholar search papers citing Saffran, Aslin, & Newport (1996) with infant/infancy, but not visual in the title. Second search with month/s and not infant/infancy or visual"'
