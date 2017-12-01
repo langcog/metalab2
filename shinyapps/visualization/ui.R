@@ -75,7 +75,7 @@ shinyUI(
                 column(width = 2,
                        downloadButton("download_funnel", "Save",
                                       class = "btn-xs pull-right"))),
-              plotOutput("funnel"),
+              plotlyOutput("funnel"),
               div(class = "text-center", textOutput("funnel_test"))),
           box(width = NULL, #status = "danger",
               fluidRow(

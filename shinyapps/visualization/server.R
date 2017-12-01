@@ -406,7 +406,7 @@ shinyServer(function(input, output, session) {
                mod_data()[[mod_group()]])
     guide <- if (mod_group() == "all_mod") FALSE else "legend"
 
-    ggplot(d, aes(x = es, y = -se)) +
+    p <- ggplot(d, aes(x = es, y = -se)) +
       scale_colour_solarized(name = "", labels = labels, guide = guide) +
       scale_x_continuous(limits = c(left_lim99, right_lim99)) +
       scale_y_continuous(labels = function(x){abs(x)}) +
@@ -428,9 +428,11 @@ shinyServer(function(input, output, session) {
       theme(panel.background = element_rect(fill = "grey"),
             panel.grid.major =  element_line(colour = "darkgrey", size = 0.2),
             panel.grid.minor =  element_line(colour = "darkgrey", size = 0.5))
+
+    ggplotly(p, tooltip = c("es", "-se"))
   }
 
-  output$funnel <- renderPlot(funnel())
+  output$funnel <- renderPlotly(funnel())
   output$funnel_test <- renderText({
     funnel_test <- metafor::regtest(model())
     sprintf("Regression test for funnel plot asymmetry: z = %.3g, p = %.3g.
