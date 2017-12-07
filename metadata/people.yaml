@@ -7,13 +7,6 @@ Current members:
     databases:    word segmentation, reproducibility, p-curves
     image:        images/people/christina.jpg
 
-  - name:         Mika Braginsky
-    email:        mika.br@gmail.com
-    website:      http://mikabr.github.io/
-    affiliation:  Stanford University
-    databases:    infrastructure
-    image:        images/people/mika.jpg
-
   - name:         Alejandrina Cristia
     email:        alecristia@gmail.com
     website:      https://sites.google.com/site/acrsta/
@@ -35,13 +28,6 @@ Current members:
     databases:    word learning, replicability, meta-science
     image:        images/people/molly.jpg
 
-  - name:         Page Piccinini
-    email:        page.piccinini@gmail.com
-    website:      http://idiom.ucsd.edu/~ppiccinini/
-    affiliation:  École normale supérieure
-    databases:    developmental curves
-    image:        images/people/page.jpg
-
   - name:         Sho Tsuji
     email:        tsujish@gmail.com
     website:      https://sites.google.com/site/tsujish/
@@ -49,10 +35,25 @@ Current members:
     databases:    phonemic discrimination
     image:        images/people/sho.jpg
 
+  - name:         Alessandro Sanchez
+    email:        sanchez7@stanford.edu
+    website:      https://github.com/amsan7
+    affiliation:  Stanford University
+    databases:    infrastructure
+    image:        images/people/alessandro.jpg
+
 Former members:
 
-  - name:         Fake Name
-    affiliation:  Good School
+  - name:         Mika Braginsky
+    email:        mika.br@gmail.com
+    website:      http://mikabr.github.io/
+    affiliation:  Stanford University
+    databases:    infrastructure
+    image:        images/people/mika.jpg
 
-  - name:         John Smith
-    affiliation:  Better School
+  - name:         Page Piccinini
+    email:        page.piccinini@gmail.com
+    website:      http://idiom.ucsd.edu/~ppiccinini/
+    affiliation:  École normale supérieure
+    databases:    developmental curves
+    image:        images/people/page.jpg

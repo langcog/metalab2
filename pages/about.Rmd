@@ -36,11 +36,11 @@ tagList(map(names(people), ~renderGroupMembers(., people[[.]])))
 
 fullWidthPanelBox(
   "Funding",
-  p("Funding for this research was provided by the Berkeley Initiative for Transparency in Social Sciences and the Laura and John Arnold Foundation.")
+  p("Funding for this research was provided by the Berkeley Initiative for Transparency in Social Sciences and the Laura and John Arnold Foundation. We also thank RStudio for their education license of Shiny Server Pro.")
 )
 
 fullWidthPanelBox(
   "Source code",
-  HTML("The source for this website is hosted <a href='https://github.com/langcog/metalab/'>on GitHub</a>.")
+  HTML("The source for this website can be found <a href='https://github.com/langcog/metalab2/'>on GitHub</a>. The website itself is hosted through GitHub Pages, with the accompanying visualizations hosted on a Shiny server.<br/><br/>Many thanks to <a href='https://deanattali.com/'>AttaliTech Ltd</a> for website redesign.")
 )
 ```
