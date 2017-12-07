@@ -160,7 +160,7 @@
     longitudinal: 'FALSE'
     moderators: []
 -
-    name: 'Statiscal word segmentation'
+    name: 'Statistical word segmentation'
     domain: early_language
     short_name: statSeg
     key: 1s9sMw6aUOaSqipPOVJMbR8UZkBv_f_fL9yD-kn8lLJQ
