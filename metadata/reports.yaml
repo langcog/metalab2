@@ -1,5 +1,8 @@
-- id:     developmental_curves
+- id:     "developmental_curves""
   title:  Developmental curves
 
 - id: "p-curves"
   title: P-curves
+  
+ - id: "hierarchicalrandomeffect"
+  title: Hierarchical Random Effects
