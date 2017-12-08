@@ -19,7 +19,15 @@ shinyServer(function(input, output, session) {
 
   # ########### DATA ###########
   pwrdata <- reactive({
+    req(input$dataset_name_pwr)
     all_data %>% filter(dataset == input$dataset_name_pwr)
+  })
+
+  dataset_names <- reactive({
+    req(input$domain)
+    datasets %>%
+      filter(domain == input$domain) %>%
+      pull(name)
   })
 
   # ########### PWR MODEL ###########
@@ -40,6 +48,7 @@ shinyServer(function(input, output, session) {
   })
 
   output$pwr_moderator_input <- renderUI({
+    req(input$dataset_name_pwr)
     mod_choices <- list("Age" = "mean_age_months",
                         "Response mode" = "response_mode",
                         "Exposure phase" = "exposure_phase")
@@ -169,6 +178,29 @@ shinyServer(function(input, output, session) {
       xlim(c(0,max_n)) +
       ylab("Power to reject the null at p < .05") +
       xlab("Number of participants (N)")
+  })
+
+  ### UI ELEMENTS
+
+  display_name <- function(fields) {
+    sp <- gsub("_", " ", fields)
+    paste0(toupper(substring(sp, 1, 1)), substring(sp, 2))
+  }
+
+  output$domain_selector <- renderUI({
+    selectInput(inputId = "domain",
+                label = "Domain",
+                choices = datasets$domain %>%
+                  unique %>%
+                  set_names(display_name(.))
+    )
+  })
+
+  output$dataset_name <- renderUI({
+    selectInput(inputId = "dataset_name_pwr",
+                label = "Meta-analysis",
+                choices = dataset_names()
+    )
   })
 
   ### POWER BOXES

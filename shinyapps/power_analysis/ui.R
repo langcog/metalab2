@@ -15,8 +15,10 @@ shinyUI(dashboardPage(
           p("Select a meta-analysis and a set of moderators to see statistical
              power estimates using the estimated effect size (random effects) for that
              phenomenon."),
-          selectInput("dataset_name_pwr", "Meta-analysis",
-                      choices = datasets$name),
+          uiOutput("domain_selector"),
+          uiOutput("dataset_name"),
+          # selectInput("dataset_name_pwr", "Meta-analysis",
+          #             choices = datasets$name),
           uiOutput("pwr_moderator_input"),
           uiOutput("pwr_moderator_choices")),
       fluidRow(
