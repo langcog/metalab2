@@ -264,7 +264,8 @@ shinyServer(function(input, output, session) {
                       method = "loess", se = FALSE, span = 1)
     }
 
-    ggplotly(p, tooltip = c("label"))
+    ggplotly(p, tooltip = c("label")) %>%
+      layout(showlegend = FALSE)
 
   }
 
@@ -300,7 +301,8 @@ shinyServer(function(input, output, session) {
     }
 
     ggplotly(plt, height = length(unique(mod_data()[[mod_group()]])) * 160 + 70,
-             tooltip = c("label"))
+             tooltip = c("label")) %>%
+      layout(showlegend = FALSE)
   }
 
   output$violin <- renderPlotly(
@@ -455,7 +457,8 @@ shinyServer(function(input, output, session) {
             panel.grid.major =  element_line(colour = "darkgrey", size = 0.2),
             panel.grid.minor =  element_line(colour = "darkgrey", size = 0.5))
 
-    ggplotly(p, tooltip = c("es", "-se"))
+    ggplotly(p, tooltip = c("es", "-se")) %>%
+      layout(showlegend = FALSE)
   }
 
   output$funnel <- renderPlotly(funnel())
