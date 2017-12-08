@@ -159,7 +159,7 @@ shinyServer(function(input, output, session) {
   })
 
   output$moderator_help_text <- renderUI({
-    HTML(paste0("<i class=\"text-muted\">Restrict the data by the following criteria</i>"))
+    HTML(paste0("<i class=\"text-muted\">Explore the impact of continuous and categorical moderator variables</i>"))
   })
 
   output$ma_help_text <- renderUI({

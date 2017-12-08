@@ -64,7 +64,7 @@ shinyUI(
                   width = 8,
                   uiOutput("moderator_input"),
                   bsPopover("moderator_input", title = NULL,
-                            content = HTML("<small>Explore the impact of continuous and categorical moderator variables</small>"),
+                            content = HTML("<small>Restrict the data by the following criteria</small>"),
                             placement = "right"),
                   uiOutput("moderator_help_text")
                 )
