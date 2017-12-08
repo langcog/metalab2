@@ -75,11 +75,8 @@ shinyUI(
                 fluidRow(
                   column(
                     width = 10,
-                    p(strong("Scatter plot"), "of effect sizes over age")),
-                  column(
-                    width = 2,
-                    downloadButton("download_scatter", "Save",
-                                   class = "btn-xs pull-right"))),
+                    p(strong("Scatter plot"), "of effect sizes over age"))
+                  ),
                 column(
                   width = 7,
                   # uiOutput("select_scatter_curve")),
@@ -93,19 +90,15 @@ shinyUI(
           box(width = NULL, #status = "danger",
               fluidRow(
                 column(width = 10,
-                       p(strong("Funnel plot"), "of bias in effect sizes")),
-                column(width = 2,
-                       downloadButton("download_funnel", "Save",
-                                      class = "btn-xs pull-right"))),
+                       p(strong("Funnel plot"), "of bias in effect sizes"))
+                ),
               plotlyOutput("funnel"),
               div(class = "text-center", textOutput("funnel_test"))),
           box(width = NULL, #status = "danger",
               fluidRow(
                 column(width = 10,
-                       p(strong("Violin plot"), "of effect size density")),
-                column(width = 2,
-                       downloadButton("download_violin", "Save",
-                                      class = "btn-xs pull-right"))),
+                       p(strong("Violin plot"), "of effect size density"))
+                ),
               plotlyOutput("violin", height = "auto")
           )),
         column(
@@ -118,11 +111,8 @@ shinyUI(
                   column(
                     width = 10,
                     p(strong("Forest plot"),
-                      "of effect sizes and meta-analysis model estimates")),
-                  column(
-                    width = 2,
-                    downloadButton("download_forest", "Save",
-                                   class = "btn-xs pull-right"))),
+                      "of effect sizes and meta-analysis model estimates"))
+                  ),
                 column(
                   width = 4,
                   selectInput("forest_sort", label = "Sort order",
