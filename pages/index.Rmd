@@ -47,7 +47,7 @@ div(
         div(class = "thumbnail",
           tags$img(src = "images/apps/visualization-wide.png"),
           div(class = "caption",
-            h4("Meta-analysis Visualization")
+            h4("Meta-analytic Visualizations")
           )
         )
       )
