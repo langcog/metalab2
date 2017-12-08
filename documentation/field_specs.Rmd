@@ -1,10 +1,68 @@
 # Field Specifications
 
-## "Required fields"
-`r DT::dataTableOutput("req_table")`
+```{r child='../pages/assets/setup.Rmd'}
+```
 
-## "Optional fields")
-`r DT::dataTableOutput("opt_table")`
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+library(tidyr)
 
-## "Derived fields" 
-`r DT::dataTableOutput("drv_table")`
+fields <- yaml::yaml.load_file("../metadata/spec.yaml")
+fields_derived <- yaml::yaml.load_file("../metadata/spec_derived.yaml") %>%
+  transpose() %>%
+  simplify_all() %>%
+  dplyr::as_data_frame()
+
+get_property <- function(property, property_fun = function(x) x) {
+    map_chr(fields, function(entry) {
+      if (property %in% names(entry) && !is.null(entry[[property]]))
+        property_fun(entry[[property]])
+      else ""
+    })
+  }
+  
+process_options <- function(options) {
+  if (class(options) == "list") {
+    opts <- names(unlist(options, recursive = FALSE))
+  } else {
+    opts <- options
+  }
+  paste(map_chr(opts, ~sprintf("<code>%s</code>", .x)), collapse = ", ")
+}
+
+fields_data <- dplyr::data_frame(field = get_property("field"),
+                          description = get_property("description"),
+                          type = get_property("type"),
+                          format = get_property("format"),
+                          options = get_property("options", process_options),
+                          required = get_property("required")) %>%
+  tidyr::unite(`format/options`, format, options, sep = "") %>%
+  split(.$required) %>%
+  map(~.x %>% dplyr::select(-required))
+
+make_datatable <- function(df) {
+    DT::datatable(
+      df,
+      escape = FALSE,
+      width = "100%",
+      style = "bootstrap",
+      rownames = FALSE,
+      extensions = 'Buttons',
+      options = list(scrollX = TRUE, autoWidth = TRUE, pageLength = 20)
+    )
+  }
+
+req_table <- make_datatable(fields_data[["TRUE"]])
+opt_table <- make_datatable(fields_data[["FALSE"]])
+drv_table <- make_datatable(fields_derived)
+
+```
+
+
+## Required fields
+`r req_table`
+
+## Optional fields
+`r opt_table`
+
+## Derived fields 
+`r drv_table`
