@@ -34,11 +34,11 @@ shinyUI(
               br(),
               uiOutput("domain_selector"),
               bsPopover("domain_selector", title = NULL,
-                        content = HTML("<small>Domains in developmental psychology</small>"),
+                        content = HTML("<small>Select a domain of child development</small>"),
                         placement = "right"),
               uiOutput("dataset_name"),
               bsPopover("dataset_name", title = NULL,
-                        content = HTML("<small>Datasets to choose from</small>"),
+                        content = HTML("<small>Select a dataset / meta-analysis</small>"),
                         placement = "right"),
               uiOutput("link_to_dataset"),
               br(),
@@ -47,7 +47,7 @@ shinyUI(
               uiOutput("ma_help_text"),
               br(),
               bsPopover("ma_method", title = NULL,
-                        content = HTML("<small>Statistical model to use on aggregate data</small>"),
+                        content = HTML("<small>Statistical model underlying the aggregated, weighted effect size estimates</small>"),
                         placement = "right"),
               fluidRow(
                 column(
@@ -64,8 +64,9 @@ shinyUI(
                   width = 8,
                   uiOutput("moderator_input"),
                   bsPopover("moderator_input", title = NULL,
-                            content = HTML("<small>Moderator</small>"),
-                            placement = "right")
+                            content = HTML("<small>Explore the impact of continuous and categorical moderator variables</small>"),
+                            placement = "right"),
+                  uiOutput("moderator_help_text")
                 )
               )
           ),
@@ -85,7 +86,11 @@ shinyUI(
                   bsPopover("scatter_curve", title = NULL,
                             content = HTML("<small>Select a type of curve</small>"),
                             placement = "right")),
-                plotlyOutput("scatter"), height = 530)
+                plotlyOutput("scatter"),
+                br(),
+                helpText("Select a type of regression line. Dot sizes are inversely related
+                         to the standard error of effect size."),
+                height = 530)
           ),
           box(width = NULL, #status = "danger",
               fluidRow(
@@ -93,13 +98,21 @@ shinyUI(
                        p(strong("Funnel plot"), "of bias in effect sizes"))
                 ),
               plotlyOutput("funnel"),
-              div(class = "text-center", textOutput("funnel_test"))),
+              div(class = "text-center", textOutput("funnel_test")),
+              br(),
+              helpText("Studies with high precision should be close to the average,
+                       while studies with low precision can be spread evenly on both sides of
+                       the average when there is no publication bias. An asymmetric shape can be
+                       an indicator of publication bias. Shaded regions show p <.05 and p <.01
+                       regions, respectively.")),
           box(width = NULL, #status = "danger",
               fluidRow(
                 column(width = 10,
                        p(strong("Violin plot"), "of effect size density"))
                 ),
-              plotlyOutput("violin", height = "auto")
+              plotlyOutput("violin", height = "auto"),
+              br(),
+              helpText("The probability density of the data at different values.")
           )),
         column(
           width = 6,
@@ -125,7 +138,10 @@ shinyUI(
                             content = HTML("<small>Method to sort results</small>"),
                             placement = "right")
                 ),
-                plotOutput("forest", height = "auto")),
+                plotOutput("forest", height = "auto"),
+                br(),
+                helpText("Estimated results and their confidence intervals in a particular order.
+                         Colored points represent meta-analytic model summary.")),
             box(width = NULL, #status = "danger",
                 fluidRow(
                   column(width = 12,
@@ -135,7 +151,10 @@ shinyUI(
                                     plotOutput("forest_summary", height = "auto")),
                            tabPanel("Model",
                                     p(verbatimTextOutput("forest_summary_text")))
-                         )
+                         ),
+                         br(),
+                         helpText("Plot and model output for chosen meta-analytic model
+                                  (selected at the top of this page).")
                   )
                 )
             )

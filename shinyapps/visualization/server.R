@@ -138,7 +138,10 @@ shinyServer(function(input, output, session) {
     short_name <- datasets %>%
       filter(name == input$dataset_name) %>%
       select(short_name)
-    HTML(paste0("<a href='", base_url, short_name, ".html', target='_blank'>View raw dataset</a>"))
+    HTML(paste0("<i class=\"text-muted\">For more information see
+                <a href='https://langcog.github.io/metalab2/documentation.html#datasets'>
+                Documentation</a> or <a href='", base_url, short_name, ".html', target='_blank'>
+                View raw dataset</a></i>"))
   })
 
   output$moderator_input <- renderUI({
@@ -155,22 +158,26 @@ shinyServer(function(input, output, session) {
                        inline = TRUE)
   })
 
+  output$moderator_help_text <- renderUI({
+    HTML(paste0("<i class=\"text-muted\">Restrict the data by the following criteria</i>"))
+  })
+
   output$ma_help_text <- renderUI({
     req(input$ma_method)
-    ma_help_texts <- c("REML" = "Weighted average of the effect sizes of a group of studies",
-                       "REML_mv" = "Parameters that vary at more than one level",
-                       "FE" = "Weighted average of a series of study estimates",
-                       "EB" = "Prior distribution is estimated from data")
+    ma_help_texts <- c("REML" = "Assumes that true effect can vary between studies",
+                       "REML_mv" = "Random effects model assuming studies within a paper share variance",
+                       "FE" = "Assumes that all studies measure one true effect",
+                       "EB" = "Estimates prior distribution of effect sizes")
     HTML(paste0("<i class=\"text-muted\">", ma_help_texts[input$ma_method], "</i>"))
   })
 
   output$es_help_text <- renderUI({
     req(input$es_type)
-    es_help_texts <- c("d" = "Cohen",
-                       "g" = "Hedges",
-                       "r" = "Pearson",
-                       "z" = "Fisher",
-                       "log_odds" = "Log odds")
+    es_help_texts <- c("d" = "Standardized difference between two means (or one mean and chance)",
+                       "g" = "Cohen's d corrected for small sample sizes",
+                       "r" = "Correlation coefficient of paired data",
+                       "z" = "Correlation coefficient normalized to vary between -1 and 1",
+                       "log_odds" = "Association between two categorical variables, log transformed")
     HTML(paste0("<i class=\"text-muted\">", es_help_texts[input$es_type], "</i>"))
   })
 
