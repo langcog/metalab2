@@ -158,10 +158,6 @@ shinyServer(function(input, output, session) {
                        inline = TRUE)
   })
 
-  output$moderator_help_text <- renderUI({
-    HTML(paste0("<i class=\"text-muted\">Explore the impact of continuous and categorical moderator variables</i>"))
-  })
-
   output$ma_help_text <- renderUI({
     req(input$ma_method)
     ma_help_texts <- c("REML" = "Assumes that true effect can vary between studies",
