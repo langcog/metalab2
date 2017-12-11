@@ -8,6 +8,6 @@ All datasets have more detailed descriptions available through their home pages.
 for (i in 1:nrow(datasets)) {
   dataset <- datasets[i,]
   cat(sprintf("### [%s](https://langcog.github.io/metalab2/dataset/%s.html) \n * Citation: %s \n * N papers = %s, N effect sizes = %s \n * %s \n * Curator is %s \n\n",
-              dataset$name, dataset$full_citation, dataset$short_name, dataset$num_papers, dataset$num_experiments, dataset$description, dataset$curator))
+              dataset$name, dataset$short_name, dataset$full_citation, dataset$num_papers, dataset$num_experiments, dataset$description, dataset$curator))
 }
 ```
