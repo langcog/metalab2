@@ -6,7 +6,7 @@
 menuNavbar()
 ```
 
-1. Researchers publishing or presenting work using data in MetaLab must cite the publications linked to that dataset, as listed in the [[Documentation]](https://langcog.github.io/metalab2/documentation.html#datasets). (If there is no citation, then no citation for the individual dataset is necessary).
+1. Researchers publishing or presenting work using data in MetaLab must cite the publications linked to that dataset, as listed in the [Documentation](https://langcog.github.io/metalab2/documentation.html#datasets). (If there is no citation, then no citation for the individual dataset is necessary).
 
 2. For tracking use of MetaLab, please also cite: Bergmann, C., Tsuji, S., Piccinini, P.E., Lewis, M.L., Braginsky, M., Frank, M.C., & Cristia, A. (2017/in press). Promoting replicability in developmental research through meta-analyses: Insights from language acquisition research. *Child Development*.
 
