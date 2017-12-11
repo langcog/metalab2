@@ -139,7 +139,7 @@ shinyServer(function(input, output, session) {
       filter(name == input$dataset_name) %>%
       select(short_name)
     HTML(paste0("<i class=\"text-muted\">For more information see
-                <a href='https://langcog.github.io/metalab2/documentation.html#datasets'>
+                <a href='https://langcog.github.io/metalab2/documentation.html#datasets' target='_blank'>
                 Documentation</a> or <a href='", base_url, short_name, ".html', target='_blank'>
                 View raw dataset</a></i>"))
   })
