@@ -66,6 +66,7 @@ logOnError({
   datasets <- datasets_file %>%
     map(function(row){
         row$moderators <- NULL
+        row$subset <- NULL
         as.data.frame(row, stringsAsFactors = FALSE)
         })
   })
@@ -73,7 +74,9 @@ logOnError({
 logOnError({
   datasets <- do.call(rbind, datasets)
   moderators <- map(datasets_file, "moderators")
+  subset <- map(datasets_file, "subset")
   datasets$moderators <- moderators
+  datasets$subset <- subset
   })
 
 source("scripts/cache_datasets.R")
