@@ -27,6 +27,8 @@ logOnError({
 
 logOnError({
   dataset <- yaml::yaml.load_file("metadata/datasets.yaml")
+  func <- function(x) paste0(substr(x$domain, 1, 1), substr(x$name, 1, 1))
+  dataset <- dataset[order(sapply(dataset, func))] # sort
   })
 
 logOnError({
@@ -56,13 +58,14 @@ logOnError({
 # creating datasets object structure:
 logOnError({
   datasets_file <- yaml::yaml.load_file("metadata/datasets.yaml")
+  func <- function(x) paste0(substr(x$domain, 1, 1), substr(x$name, 1, 1))
+  datasets_file <- datasets_file[order(sapply(datasets_file, func))] # sort
   })
 
 logOnError({
   datasets <- datasets_file %>%
     map(function(row){
         row$moderators <- NULL
-        row$subset <- NULL
         as.data.frame(row, stringsAsFactors = FALSE)
         })
   })
@@ -70,9 +73,7 @@ logOnError({
 logOnError({
   datasets <- do.call(rbind, datasets)
   moderators <- map(datasets_file, "moderators")
-  subset <- map(datasets_file, "subset")
   datasets$moderators <- moderators
-  datasets$subset <- subset
   })
 
 source("scripts/cache_datasets.R")

@@ -37,14 +37,6 @@ shinyServer(function(input, output, session) {
     df
   }
 
-  subsets <- reactive({
-    req(input$dataset_name)
-    datasets %>%
-      filter(name == input$dataset_name) %>%
-      .$subset %>%
-      unlist()
-  })
-
   dataset_names <- reactive({
     req(input$domain)
     datasets %>%
@@ -54,7 +46,6 @@ shinyServer(function(input, output, session) {
 
   data <- reactive({
     req(input$dataset_name)
-    # TODO also filter by subset, when available
     all_data %>% filter(dataset == input$dataset_name, mean_age < 3000)
   })
 
@@ -148,7 +139,7 @@ shinyServer(function(input, output, session) {
       filter(name == input$dataset_name) %>%
       select(short_name)
     HTML(paste0("<i class=\"text-muted\">For more information see
-                <a href='https://langcog.github.io/metalab2/documentation.html#datasets'>
+                <a href='https://langcog.github.io/metalab2/documentation.html#datasets' target='_blank'>
                 Documentation</a> or <a href='", base_url, short_name, ".html', target='_blank'>
                 View raw dataset</a></i>"))
   })
@@ -165,10 +156,6 @@ shinyServer(function(input, output, session) {
       keep(~length(unique(data()[[.x]])) > 1)
     checkboxGroupInput("moderators", label = "Moderators", valid_mod_choices,
                        inline = TRUE)
-  })
-
-  output$moderator_help_text <- renderUI({
-    HTML(paste0("<i class=\"text-muted\">Explore the impact of continuous and categorical moderator variables</i>"))
   })
 
   output$ma_help_text <- renderUI({
@@ -241,16 +228,6 @@ shinyServer(function(input, output, session) {
       updateSelectInput(session, "scatter_curve", selected = "lm")
     }
   })
-
-  output$subset_selector <- renderUI({
-    radioButtons("subset_input", "Subset", append(subsets(), "All data", 0))
-  })
-
-  # TODO use observe
-  output$subset_options <- reactive({
-    subsets()
-  })
-  outputOptions(output, "subset_options", suspendWhenHidden = FALSE)
 
 
   #############################################################################

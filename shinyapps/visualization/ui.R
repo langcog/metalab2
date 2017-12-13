@@ -61,21 +61,11 @@ shinyUI(
                             placement = "right")
                 ),
                 column(
-                  width = 4,
+                  width = 8,
                   uiOutput("moderator_input"),
                   bsPopover("moderator_input", title = NULL,
                             content = HTML("<small>Explore the impact of continuous and categorical moderator variables</small>"),
                             placement = "right")
-                ),
-                column(
-                  width = 4,
-                  conditionalPanel(
-                    condition = "output.subset_options",
-                    uiOutput("subset_selector"),
-                    bsPopover("subset_selector", title = NULL,
-                              content = HTML("<small>Restrict the data by the following criteria</small>"),
-                              placement = "right")
-                  )
                 )
               )
           ),
