@@ -37,6 +37,14 @@ shinyServer(function(input, output, session) {
     df
   }
 
+  subsets <- reactive({
+    req(input$dataset_name)
+    datasets %>%
+      filter(name == input$dataset_name) %>%
+      .$subset %>%
+      unlist()
+  })
+
   dataset_names <- reactive({
     req(input$domain)
     datasets %>%
@@ -46,6 +54,7 @@ shinyServer(function(input, output, session) {
 
   data <- reactive({
     req(input$dataset_name)
+    # TODO also filter by subset, when available
     all_data %>% filter(dataset == input$dataset_name, mean_age < 3000)
   })
 
@@ -228,6 +237,16 @@ shinyServer(function(input, output, session) {
       updateSelectInput(session, "scatter_curve", selected = "lm")
     }
   })
+
+  output$subset_selector <- renderUI({
+    radioButtons("subset_input", "Subset", append(subsets(), "All data", 0))
+  })
+
+  # TODO use observe
+  output$subset_options <- reactive({
+    subsets()
+  })
+  outputOptions(output, "subset_options", suspendWhenHidden = FALSE)
 
 
   #############################################################################
