@@ -21,7 +21,6 @@
     src: images/datasets/ids.png
     longitudinal: 'FALSE'
     moderators: [speaker, speech_type]
-    subset: []
 -
     name: 'Label advantage in concept learning'
     domain: early_language
@@ -45,7 +44,6 @@
     src: images/datasets/dinosaur.png
     longitudinal: 'FALSE'
     moderators: [audio_condition, object_stimulus, num_trials]
-    subset: []
 -
     name: 'Gaze following'
     domain: early_language
@@ -69,7 +67,6 @@
     src: images/datasets/gaze.png
     longitudinal: 'FALSE'
     moderators: [num_trials, cue_type, N_AFC]
-    subset: []
 -
     name: 'Vowel discrimination (native)'
     domain: early_language
@@ -93,7 +90,6 @@
     src: images/datasets/discrim.png
     longitudinal: 'FALSE'
     moderators: []
-    subset: []
 -
     name: 'Vowel discrimination (non-native)'
     domain: early_language
@@ -117,7 +113,6 @@
     src: images/datasets/discrim.png
     longitudinal: 'FALSE'
     moderators: []
-    subset: []
 -
     name: 'Phonotactic learning'
     domain: early_language
@@ -141,7 +136,6 @@
     src: images/datasets/phonotactics.png
     longitudinal: 'FALSE'
     moderators: []
-    subset: []
 -
     name: 'Statistical sound category learning'
     domain: early_language
@@ -165,7 +159,6 @@
     src: images/datasets/distrib.png
     longitudinal: 'FALSE'
     moderators: []
-    subset: []
 -
     name: 'Statistical word segmentation'
     domain: early_language
@@ -188,8 +181,7 @@
     curator: 'Christina Bergmann'
     src: images/datasets/statistical.png
     longitudinal: 'FALSE'
-    moderators: [native_lang, test_lang_program]
-    subset: [replication]
+    moderators: [native_lang]
 -
     name: 'Word segmentation'
     domain: early_language
@@ -213,7 +205,6 @@
     src: images/datasets/segmentation.png
     longitudinal: 'FALSE'
     moderators: [native_lang]
-    subset: [native]
 -
     name: 'Function word segmentation'
     domain: early_language
@@ -237,7 +228,6 @@
     src: images/datasets/segmentation.png
     longitudinal: 'FALSE'
     moderators: [native_lang]
-    subset: [native]
 -
     name: 'Online word recognition'
     domain: early_language
@@ -261,7 +251,6 @@
     src: images/datasets/word_rec.png
     longitudinal: 'FALSE'
     moderators: []
-    subset: []
 -
     name: 'Mutual exclusivity'
     domain: early_language
@@ -285,7 +274,6 @@
     src: images/datasets/zot.png
     longitudinal: 'FALSE'
     moderators: [mean_comprehension_vocab, mean_production_vocab, N_AFC, num_trials, object_stimulus]
-    subset: []
 -
     name: 'Pointing and vocabulary (longitudinal)'
     domain: early_language
@@ -309,7 +297,6 @@
     src: images/datasets/pointing.png
     longitudinal: 'TRUE'
     moderators: [motive, 'pointing modality']
-    subset: []
 -
     name: 'Pointing and vocabulary (concurrent)'
     domain: early_language
@@ -333,7 +320,6 @@
     src: images/datasets/pointing.png
     longitudinal: 'FALSE'
     moderators: [motive, 'pointing modality']
-    subset: []
 -
     name: 'Sound symbolism'
     domain: early_language
@@ -357,7 +343,6 @@
     src: images/datasets/bouba-kiki.png
     longitudinal: 'FALSE'
     moderators: []
-    subset: []
 -
     name: 'Categorization bias'
     domain: cognitive_development
@@ -381,5 +366,4 @@
     src: images/datasets/catBias.png
     longitudinal: 'FALSE'
     moderators: [label_present, instruction_code, object_stimulus, taxonomic_type]
-    subset: []
 

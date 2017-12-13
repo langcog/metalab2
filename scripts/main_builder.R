@@ -27,8 +27,6 @@ logOnError({
 
 logOnError({
   dataset <- yaml::yaml.load_file("metadata/datasets.yaml")
-  func <- function(x) paste0(substr(x$domain, 1, 1), substr(x$name, 1, 1))
-  dataset <- dataset[order(sapply(dataset, func))] # sort
   })
 
 logOnError({
@@ -58,8 +56,6 @@ logOnError({
 # creating datasets object structure:
 logOnError({
   datasets_file <- yaml::yaml.load_file("metadata/datasets.yaml")
-  func <- function(x) paste0(substr(x$domain, 1, 1), substr(x$name, 1, 1))
-  datasets_file <- datasets_file[order(sapply(datasets_file, func))] # sort
   })
 
 logOnError({
