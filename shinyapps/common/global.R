@@ -9,9 +9,9 @@ library(langcog)
 library(feather)
 library(plotly)
 
-project_directory <- "/srv/shiny-server/common/" # path using new deploy script that copies data to the shiny server global directory
+#project_directory <- "/srv/shiny-server/common/" # path using new deploy script that copies data to the shiny server global directory
 #project_directory <- "/home/metalab/metalab2/" # path using old deploy script
-#project_directory <- "../../" # path for development purposes
+project_directory <- "../../" # path for development purposes
 
 logOnError <- function(expression) {
   tryCatch(expression, error = function(e) { message(e) })
@@ -41,11 +41,14 @@ logOnError({
   datasets <- datasets_file %>%
     map(function(row){
       row$moderators <- NULL
+      row$subset <- NULL
       as.data.frame(row, stringsAsFactors = FALSE)
     })
   datasets <- do.call(rbind, datasets)
   moderators <- map(datasets_file, "moderators")
+  subset <- map(datasets_file, "subset")
   datasets$moderators <- moderators
+  datasets$subset <- subset
 })
 
 
