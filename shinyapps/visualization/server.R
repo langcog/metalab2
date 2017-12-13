@@ -139,7 +139,7 @@ shinyServer(function(input, output, session) {
       filter(name == input$dataset_name) %>%
       select(short_name)
     HTML(paste0("<i class=\"text-muted\">For more information see
-                <a href='https://langcog.github.io/metalab2/documentation.html#datasets' target='_blank'>
+                <a href='https://langcog.github.io/metalab2/documentation.html#datasets'>
                 Documentation</a> or <a href='", base_url, short_name, ".html', target='_blank'>
                 View raw dataset</a></i>"))
   })
@@ -156,6 +156,10 @@ shinyServer(function(input, output, session) {
       keep(~length(unique(data()[[.x]])) > 1)
     checkboxGroupInput("moderators", label = "Moderators", valid_mod_choices,
                        inline = TRUE)
+  })
+
+  output$moderator_help_text <- renderUI({
+    HTML(paste0("<i class=\"text-muted\">Explore the impact of continuous and categorical moderator variables</i>"))
   })
 
   output$ma_help_text <- renderUI({
