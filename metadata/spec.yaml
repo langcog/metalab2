@@ -725,3 +725,19 @@
   format:	
   example:      
   required:     no
+  
+ 
+- field:	replication
+  description:  statSeg
+  type:		numeric
+  format:	
+  example:      
+  required:     no
+  
+
+- field:	native
+  description:  inworddb
+  type:		numeric
+  format:	
+  example:      
+  required:     no
