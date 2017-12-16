@@ -54,8 +54,19 @@ shinyServer(function(input, output, session) {
 
   data <- reactive({
     req(input$dataset_name)
-    # TODO also filter by subset, when available
-    all_data %>% filter(dataset == input$dataset_name, mean_age < 3000)
+    result <- all_data %>%
+      filter(dataset == input$dataset_name, mean_age < 3000)
+
+    subset <- input$subset_input
+    if (!is.null(subset)) {
+      if (subset != "All data") {
+        result %>% filter_(paste(subset, "== TRUE"))
+      } else {
+        result
+      }
+    } else {
+      result
+    }
   })
 
   mod_data <- reactive({
