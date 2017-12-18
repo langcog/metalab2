@@ -237,7 +237,7 @@
     src: images/datasets/segmentation.png
     longitudinal: 'FALSE'
     moderators: [native_lang]
-    subset: [native]
+    subset: []
 -
     name: 'Online word recognition'
     domain: early_language
