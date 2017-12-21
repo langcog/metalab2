@@ -8,7 +8,7 @@ date: "This report was rendered on `r Sys.Date()`."
 ```{r, setup, include=FALSE}
 knitr::opts_chunk$set(warning = FALSE, message = FALSE, cache = TRUE)
 ggplot2::theme_set(langcog::theme_mikabr(base_family = "Ubuntu"))
-source("../dashboard/global.R", chdir = TRUE)
+source("../scripts/main_builder.R", chdir = TRUE)
 library(metafor)
 library(dplyr)
 library(tidyr)
