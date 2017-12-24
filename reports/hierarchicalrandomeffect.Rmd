@@ -5,10 +5,10 @@ date: "This report was rendered on `r Sys.Date()`."
 ---
   
 # Introduction
-```{r, setup, include=FALSE}
+```{r, include=FALSE}
 knitr::opts_chunk$set(warning = FALSE, message = FALSE, cache = TRUE)
-ggplot2::theme_set(langcog::theme_mikabr(base_family = "Ubuntu"))
-source("../scripts/main_builder.R", chdir = TRUE)
+#ggplot2::theme_set(langcog::theme_mikabr(base_family = "Ubuntu"))
+#source("../scripts/main_builder.R", chdir = TRUE)
 library(metafor)
 library(dplyr)
 library(tidyr)
