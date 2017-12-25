@@ -20,7 +20,27 @@ shinyServer(function(input, output, session) {
   # ########### DATA ###########
   pwrdata <- reactive({
     req(input$dataset_name_pwr)
-    all_data %>% filter(dataset == input$dataset_name_pwr)
+    result <- all_data %>%
+      filter(dataset == input$dataset_name_pwr)
+
+    subset <- input$subset_input
+    if (!is.null(subset)) {
+      if (subset != "All data") {
+        result %>% filter_(paste(subset, "== TRUE"))
+      } else {
+        result
+      }
+    } else {
+      result
+    }
+  })
+
+  subsets <- reactive({
+    req(input$dataset_name_pwr)
+    datasets %>%
+      filter(name == input$dataset_name_pwr) %>%
+      .$subset %>%
+      unlist()
   })
 
   dataset_names <- reactive({
@@ -202,6 +222,15 @@ shinyServer(function(input, output, session) {
                 choices = dataset_names()
     )
   })
+
+  output$subset_selector <- renderUI({
+    radioButtons("subset_input", "Subset", append(subsets(), "All data", 0))
+  })
+
+  output$subset_options <- reactive({
+    subsets()
+  })
+  outputOptions(output, "subset_options", suspendWhenHidden = FALSE)
 
   ### POWER BOXES
   output$power_d <- renderValueBox({

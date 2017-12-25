@@ -19,8 +19,24 @@ shinyUI(dashboardPage(
           uiOutput("dataset_name"),
           # selectInput("dataset_name_pwr", "Meta-analysis",
           #             choices = datasets$name),
-          uiOutput("pwr_moderator_input"),
-          uiOutput("pwr_moderator_choices")),
+          fluidRow(
+            column(
+              width = 4,
+              uiOutput("pwr_moderator_input"),
+              uiOutput("pwr_moderator_choices")
+            ),
+            column(
+              width = 4,
+              conditionalPanel(
+                condition = "output.subset_options",
+                uiOutput("subset_selector"),
+                bsPopover("subset_selector", title = NULL,
+                          content = HTML("<small>Restrict the data by the following criteria</small>"),
+                          placement = "right")
+              )
+            )
+          )
+        ),
       fluidRow(
         valueBoxOutput("power_d", width = 6),
         valueBoxOutput("power_n", width = 6)),
