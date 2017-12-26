@@ -273,8 +273,8 @@ shinyServer(function(input, output, session) {
 
     guide <- if (mod_group() == "all_mod") FALSE else "legend"
     p <- ggplot(mod_data(), aes_string(x = "mean_age_months", y = es(),
-                                       colour = mod_group(), label = "short_cite")) +
-      geom_jitter(aes(size = n), alpha = 0.5) +
+                                       colour = mod_group())) +
+      geom_jitter(aes(size = n, text = paste(short_cite, expt_num)), alpha = 0.5) +
       geom_hline(yintercept = 0, linetype = "dashed", color = "grey") +
       scale_colour_solarized(name = "", labels = labels, guide = guide) +
       scale_size_continuous(guide = FALSE) +
@@ -290,7 +290,7 @@ shinyServer(function(input, output, session) {
                       method = "loess", se = FALSE, span = 1)
     }
 
-    ggplotly(p, tooltip = c("label")) %>%
+    ggplotly(p, tooltip = c("text")) %>%
       layout(showlegend = FALSE)
 
   }
@@ -312,10 +312,10 @@ shinyServer(function(input, output, session) {
     plt_data[[mod_group()]] <- factor(plt_data[[mod_group()]],
                                       levels = rev(levels(mod_factor)))
     plt <- ggplot(plt_data, aes_string(x = mod_group(), y = es(),
-                                       colour = mod_group(), label = "short_cite")) +
+                                       colour = mod_group())) +
       coord_flip() +
       geom_violin() +
-      geom_jitter(height = 0) +
+      geom_jitter(aes(text = paste(short_cite, expt_num)), height = 0) +
       geom_hline(yintercept = 0, linetype = "dashed", color = "grey") +
       scale_colour_solarized(name = "", guide = FALSE) +
       xlab("") +
@@ -327,7 +327,7 @@ shinyServer(function(input, output, session) {
     }
 
     ggplotly(plt, height = length(unique(mod_data()[[mod_group()]])) * 160 + 70,
-             tooltip = c("label")) %>%
+             tooltip = c("text")) %>%
       layout(showlegend = FALSE)
   }
 
@@ -363,7 +363,7 @@ shinyServer(function(input, output, session) {
                mod_data()[[mod_group()]])
     guide <- if (mod_group() == "all_mod") FALSE else "legend"
 
-    plt <- ggplot(data = forest_data) +
+    plt <- ggplot(data = forest_data, aes(text = paste0("Experiment #", expt_num))) +
       geom_point(aes(x = short_cite, y = effects, size = inverse_vars)) +
       geom_linerange(aes(x = short_cite, y = effects, ymin = effects.cil, ymax = effects.cih)) +
       geom_point(aes_string(x = "short_cite", y = "estimate", colour = mod_group()),
@@ -377,7 +377,7 @@ shinyServer(function(input, output, session) {
       xlab("") +
       ylab("Effect Size")
 
-    ggplotly(plt, tooltip = c("short_cite")) %>%
+    ggplotly(plt, tooltip = c("text")) %>%
       layout(showlegend = FALSE)
   }
 
