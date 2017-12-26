@@ -358,6 +358,9 @@ shinyServer(function(input, output, session) {
                             "desc(effects)")) %>%
       mutate(short_cite = factor(short_cite, levels = short_cite))
 
+    # some values in all_mod are <NA> because of the join
+    forest_data$all_mod <- ""
+
     labels <- if (mod_group() == "all_mod") NULL else
       setNames(paste(mod_data()[[mod_group()]], "  "),
                mod_data()[[mod_group()]])
