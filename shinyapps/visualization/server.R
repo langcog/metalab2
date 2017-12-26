@@ -490,7 +490,7 @@ shinyServer(function(input, output, session) {
       p <- p + geom_vline(aes(), xintercept = 0, linetype = "dashed", color = "grey")
     }
 
-    ggplotly(p, tooltip = c("es", "-se")) %>%
+    ggplotly(p, tooltip = NULL) %>%
       layout(showlegend = FALSE)
   }
 
