@@ -363,20 +363,22 @@ shinyServer(function(input, output, session) {
                mod_data()[[mod_group()]])
     guide <- if (mod_group() == "all_mod") FALSE else "legend"
 
-    qplot(short_cite, effects, ymin = effects.cil, ymax = effects.cih,
-          geom = "linerange",
-          data = forest_data) +
-      geom_point(aes(y = effects, size = inverse_vars)) +
-      geom_pointrange(aes_string(x = "short_cite", y = "estimate",
-                                 ymin = "estimate.cil", ymax = "estimate.cih",
-                                 colour = mod_group()),
-                      pch = 17) +
+    plt <- ggplot(data = forest_data) +
+      geom_point(aes(x = short_cite, y = effects, size = inverse_vars)) +
+      geom_linerange(aes(x = short_cite, y = effects, ymin = effects.cil, ymax = effects.cih)) +
+      geom_point(aes_string(x = "short_cite", y = "estimate", colour = mod_group()),
+                 shape = 17) +
+      geom_linerange(aes_string(x = "short_cite", y = "estimate", ymin = "estimate.cil",
+                                ymax = "estimate.cih", colour = mod_group())) +
       geom_hline(yintercept = 0, linetype = "dashed", color = "grey") +
       coord_flip() +
-      scale_size_continuous(guide = FALSE) +
+      scale_size_continuous(range = c(1, 3), guide = FALSE) +
       scale_colour_solarized(name = "", labels = labels, guide = guide) +
       xlab("") +
       ylab("Effect Size")
+
+    ggplotly(plt, tooltip = c("short_cite")) %>%
+      layout(showlegend = FALSE)
   }
 
   forest_summary <- function() {
@@ -411,11 +413,12 @@ shinyServer(function(input, output, session) {
       geom_hline(yintercept = 0, linetype = "dashed", color = "grey")
   }
 
-  output$forest <- renderPlot(forest(),
-                              height = function() nrow(mod_data()) * 10 + 100)
+  output$forest <- renderPlotly({
+    session$sendCustomMessage(type = "heightCallback", paste0(nrow(mod_data()) * 12 + 100, "px"))
+    forest()
+  })
 
-  output$forest_summary <- renderPlot(forest_summary(),
-                                      height = 200)
+  output$forest_summary <- renderPlot(forest_summary(), height = 200)
 
   output$forest_summary_text <- renderPrint({
     summary(model())

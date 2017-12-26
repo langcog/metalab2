@@ -147,7 +147,14 @@ shinyUI(
                             content = HTML("<small>Method to sort results</small>"),
                             placement = "right")
                 ),
-                plotOutput("forest", height = "auto"),
+                plotlyOutput("forest"),
+                tags$script('
+                  Shiny.addCustomMessageHandler("heightCallback",
+                    function(height) {
+                      document.getElementById("forest").style.height = height;
+                    });
+                '),
+                #tags$style(type="text/css", "#forest { float:right;}"),
                 br(),
                 helpText("Estimated results and their confidence intervals in a particular order.
                          Colored points represent meta-analytic model summary.")),
