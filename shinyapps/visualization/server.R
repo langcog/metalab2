@@ -463,17 +463,13 @@ shinyServer(function(input, output, session) {
                mod_data()[[mod_group()]])
     guide <- if (mod_group() == "all_mod") FALSE else "legend"
 
-    p <- ggplot(d, aes(x = es, y = -se)) +
-      scale_colour_solarized(name = "", labels = labels, guide = guide) +
-      scale_x_continuous(limits = c(left_lim99, right_lim99)) +
-      scale_y_continuous(labels = function(x){abs(x)}) +
+    p <- ggplot(d) +
       geom_polygon(aes(x = x, y = y), data = funnel95, alpha = .5,
                    fill = "white") +
       geom_polygon(aes(x = x, y = y), data = funnel99, alpha = .5,
                    fill = "white") +
-      geom_vline(xintercept = center, linetype = "dotted", color = "black") +
-      geom_vline(xintercept = 0, linetype = "dashed", color = "grey") +
-      geom_point(aes_string(colour = mod_group())) +
+      geom_point(aes_string(x = "es", y = "-se", colour = mod_group())) +
+      geom_vline(aes(), xintercept = center, linetype = "dotted", color = "black") +
       xlab(xlabel) +
       ylab(ylabel) +
       geom_text(x = center + lower_lim * CRIT_95 / 2,
@@ -482,9 +478,17 @@ shinyServer(function(input, output, session) {
       geom_text(x = (center + lower_lim * CRIT_95) + (lower_lim * CRIT_99 - lower_lim * CRIT_95) / 2,
                 y = -lower_lim + lower_lim / 30, #family = font,
                 label = "p < .01", vjust = "bottom", hjust = "center") +
+      scale_colour_solarized(name = "", labels = labels, guide = guide) +
+      scale_x_continuous(limits = c(left_lim99, right_lim99)) +
+      scale_y_continuous(labels = function(x){abs(x)}) +
       theme(panel.background = element_rect(fill = "grey"),
             panel.grid.major =  element_line(colour = "darkgrey", size = 0.2),
             panel.grid.minor =  element_line(colour = "darkgrey", size = 0.5))
+
+    # ggplotly hack - avoid weird lines by preventing overlapping geom_vlines
+    if (center != 0) {
+      p <- p + geom_vline(aes(), xintercept = 0, linetype = "dashed", color = "grey")
+    }
 
     ggplotly(p, tooltip = c("es", "-se")) %>%
       layout(showlegend = FALSE)

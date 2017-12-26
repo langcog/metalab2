@@ -148,6 +148,7 @@ shinyUI(
                             placement = "right")
                 ),
                 plotlyOutput("forest"),
+                # ggplotly hack - renderPlotly does not take height param; must alter in UI
                 tags$script('
                   Shiny.addCustomMessageHandler("heightCallback",
                     function(height) {
