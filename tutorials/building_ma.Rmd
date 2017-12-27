@@ -215,7 +215,8 @@ The following information
 allows one to calculate an effect size (we are sticking to experimental
 designs, since most of our MAs are experimental):
 
--   ****between-participant studies**: **Means and SDs (not SEs!) of the
+-   ****between-participant studies**: 
+    > **Means and SDs (not SEs!) of the
     > dependent variable for each infant group** are all that is
     > required for the calculation of Cohen's d. Sometimes, means and
     > SDs are not available as numbers. If there are clear figures, you
@@ -226,7 +227,8 @@ designs, since most of our MAs are experimental):
     > sample sizes** can be used to calculate Cohen's d. Note them
     > when available. *
 
--   ****within-participant studies**: Effect sizes for this type of
+-   ****within-participant studies**: 
+    > Effect sizes for this type of
     > study are calculated the **same way as in between-participant
     > studies**, but in order to calculate the weight of these studies
     > the **correlation** between the first and second measurements is
@@ -257,6 +259,7 @@ paper you read and made a decision on.
 
 
 ***The article I enter has 3 experiments, and the first is with adult participants. Do I need to enter this experiment?***
+
 No, please only enter the infant/child experiments
 
 ### What level of detail should I report?
@@ -309,9 +312,11 @@ alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 
 *** Two groups of infants are tested and I treat them as two different entries, but the number of included and excluded infants are only reported as a whole over both groups. What do I do?***
+
 As the best approximation we can get, please divide the reported number through the number of groups (in your case 2). 
 
 ***The age of infants is reported in weeks, therefore I multiplied it with 7 to convert it into days. I read in your instructions that you have to multiply months with 30.42 to get a proxy for days. So my question is whether I have to multiply with a different number than 7 to get a proxy for days?***
+
 No, that's fine the way you did it!
 
 In some cases you will still need to contact the authors of the study. People probably don’t know you, so think about what in the object would make you open an email from a stranger. Something like “including your paper in a MA” should be motivational. People are busy: they don’t have time to read lengthy email, especially from someone they don’t know, so be as concise as possible. You could still give them more details later if they ask for it. Don’t be shy, authors are likely to be happy to hear that someone is interested in their work and is going to cite them!
