@@ -284,6 +284,9 @@ It is often the case that articles report more than one type of result. Please j
 
 ### How do I calculate Effect Sizes?
 
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=WDxA8TfU1sk" target="_blank"><img src="http://img.youtube.com/vi/WDxA8TfU1sk/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+
 We use R to calculate effect sizes. Visit <https://github.com/langcog/metalab2> for our code.
 
 
