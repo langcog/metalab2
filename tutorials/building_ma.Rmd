@@ -2,8 +2,22 @@ Steps to build a MA
 ===================
 
 ### How do I define my MA question?
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=0TVSjaRsfGU" target="_blank"><img src="http://img.youtube.com/vi/0TVSjaRsfGU/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+
+```{r exclude, include = FALSE}
+#this is your old code
+#<a href="http://www.youtube.com/watch?feature=player_embedded&v=0TVSjaRsfGU" #target="_blank"><img src="http://img.youtube.com/vi/0TVSjaRsfGU/0.jpg" 
+#alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+```
+
+```{r libraries, include=FALSE}
+library("htmltools")
+library("vembedr")
+```
+
+```{r video 1, echo = FALSE}
+#this is the new code
+embed_url("https://www.youtube.com/watch?feature=player_embedded&v=0TVSjaRsfGU")
+```
 
 Choose the appropriate level of detail for your MA topic. The topic of your meta-analysis should be broader than the one of a single experiment (e.g. "How do babies segment words of different stress patterns? "), but narrower than a whole research field (e.g. "How do babies learn language? "). The goal is to be able to gather comparable papers, measuring consistant dependant variables, to allow you to compute a common statistical metric (i.e. effect size) from them.
 
