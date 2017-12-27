@@ -1,188 +1,21 @@
-Motivation and background
-=========================
-
-### Why do a meta-analysis?
-
-Meta-analyses (MAs) can be useful for two main purposes: (1) theory
-building and evaluation and (2) practical decisions during study design.
-This section starts with some basics on why single studies might not be
-as reliable as an MA and then explains how exactly MAs overcome this
-problem. You can either browse through the whole background section or
-directly skip to the practical instructions which start on page 4.
-
-#### 1.1. Building and evaluating theories
-
-When thinking about development, we often wonder which abilities infants
-display at what age. To this end, we regularly look at published studies
-that set up smart experiments to test whether infants have specific
-abilities, for example whether infants treat native vowels differently
-from nonnative ones, and when that ability develops (for more details on
-this specific topic see
-[*inphondb.acristia.org*](http://inphondb.acristia.org/)).
-
-When trying to solve the puzzle of language acquisition, it is crucial
-to have a clear picture of infants' abilities, and when evaluating an
-existing theory, we want to know whether new studies confirm or contrast
-with predictions made. That is why we run experiments. However, the
-results of one single experiment does not allow us to directly conclude
-something about their underlying abilities: Each experiment measures
-behavior of a set of infants in a very specific situation, which might
-not be generalizable to other situations. Moreover, there might be a
-measurement error in this one-time snapshot of reality. The biggest
-problem when consulting single published studies is the false positive,
-which the next section discusses, along with the two most common causes:
-practices that increase the chance of a significant p-value and biases.
-
-##### 1.1.1. False positives: The Type I Error
-
-Every study we run has (at least) a 5% chance of telling us that infants
-can do something when this is not true, according to the significance
-threshold alpha (commonly set to .05). p-values that fall under this
-threshold are supposed to tell us that the results we observed are not
-very likely due to chance.
-
-This likelihood becomes bigger when researchers are victims of their own
-**biases** or engage in seemingly innocent and possibly common
-**practices that increase the chance of a false positive**. None of
-these necessarily come with bad intentions and a sense of wrongdoing, so
-it is worth discussing them briefly.
-
-Let's start with a very strong **motivation** for obtaining positive
-results, independent of them being true or false: journal publications.
-Articles are the key to being considered a smart and valuable scientist.
-Journals, especially the big names, want to publish new, exciting, and
-sometimes surprising findings! So all the incentives right now push
-researchers to obtaining that wonderfully significant p-value.[^1]
-
-**Increasing the chance of a false positive** can be due to a number of
-practices, such as analyzing the same dataset in multiple ways (t-Test,
-ANOVA, collapsing or splitting groups, etc etc) and only reporting (the
-single) one significant outcome without correcting; or rejecting
-participants based on the dependent variable (e.g., excluding all
-infants that did not look at the named picture in a task that tests
-infants' ability to recognize object labels).
-
-**Biases** are nearly omnipresent in human cognition. When we expect
-something to be true, we are unconsciously prone to either make it
-happen (think self-fulfilling prophecies) or to perceive the world so
-that it aligns with our expectations. Biases also might affect
-researchers: Random patterns can become important results (it turns out
-girls are able to solve this task, but boys are not!) or after months
-and months of running the experiment and digging through the data the
-original hypothesis and analysis plan are lost and the significant
-finding (obtained through the practices mentioned in the previous
-paragraph) was the thing we were looking for all along. Biases can even
-go so far as to make us unconsciously influence participants or results
-when we know the condition (for example being much more lenient with
-babies' looking on target when the "correct" trials are presented and
-being much more strict for the "incorrect" trials; looking times will
-systematically differ in this case). This last bias is often avoided by
-blinding the researcher to what is going on, but the other two are
-harder to avoid and require conscious efforts such as pre-registering
-analysis plans.[^2]
-
-Collecting many study results from different researchers is a way to try
-and make up for the possibility that biases influenced the outcome. We
-can even **use MAs to check for biases**, such as asking whether a
-suspicious number of p-values is just below the significance threshold
-or whether results are systematically skewed in one direction. Why
-biases matter is wonderfully illustrated here:
-[*http://www.alltrials.net/news/the-economist-publication-bias/*](http://www.alltrials.net/news/the-economist-publication-bias/).
-Checking for biased results is a whole literature on its own, but as a
-start tools such as p-curving apps are easily available for every
-researcher. [*http://www.p-curve.com/*](http://www.p-curve.com/) or
-[*http://shinyapps.org/apps/p-checker/*](http://shinyapps.org/apps/p-checker/)
-are two well-documented examples.
-
-#### 1.2. Practical decisions during study design
-
-##### 1.2.2. False negatives: The Type II Error
-
-In addition to the probability to obtain false positives, there is also
-the possibility to be unable to measure an effect despite it being
-there. This issue has two implications. First, not being able to
-replicate a study might not mean that some previous finding is a false
-positive, but it could point to noisy measures, small effects (what
-effects are and how we measure them will be explained below in section
-2), and consequently low power. This means that a typical infant study
-which tests, often at great cost (both in personal investment and with
-respect to money), between 12 and 24 infants per condition, might not be
-able to reliably pick up an effect even though it is truly present when
-the phenomenon in question leads only to a small change in the dependent
-variable.
-
-We often do not know about these non-significant findings because it is
-quite difficult to publish them. But they might happen to all of us. MAs
-help us in experiment design so we can **avoid false negatives due to
-low power.** When the size of an effect is known and with a fixed
-significance threshold, calculating power is straightforward. Here is a
-simulation of how all ingredients fit together:
-[*rpsychologist.com/d3/NHST/*](http://rpsychologist.com/d3/NHST/)
-
-##### 1.2.3 How MAs help
-
-To increase power and make up for small effects, we need to test more
-babies. But we do not want to needlessly spend time and money in the
-lab, so finding a balance is important. To this end, it is very useful
-to have a good idea of the effect size in question, based on a MA. Once
-we have the effect size, we can **calculate the minimal number of babies
-needed to be able to observe an existing effect with sufficiently high
-probability** (usually 80%).
-
-MAs can also help with **study design**, especially when they come in
-the format of a CAMA (community-augmented MA), which codes many, many
-design variables. Examples include the words or sounds used, how long
-trials were, etc. Instead of doing a tiresome literature review, the
-most common procedure or the one associated with the biggest effect can
-be obtained by looking at the data in a CAMA, which come with detailed
-instructions on how to download and inspect their contents as simple
-spreadsheets.
-
-###  2. What are effect sizes?
-
-In MAs we express the outcome of a single experiment in a way that
-captures how big an effect is and how much it varies. There are 3 groups
-of effect sizes: (1) effect sizes based on means, which includes Cohen's
-*d* on which we focus from here on; (2) effect sizes based on binary
-data; and (3) effect sizes based on correlations.
-
-Since most developmental studies in the lab use mean responses of two
-groups or of the same infant in two (or more) conditions, Cohen's *d* is
-the appropriate effect size measure. In this
-[*chapter*](http://www.meta-analysis.com/downloads/Meta-analysis%20Choosing%20an%20effect%20size.pdf)
-and the following ones, a gentle introduction to effect sizes is
-provided. Cohen's *d* is based on standardized mean differences. To get
-a feel for Cohen's *d* I highly recommend to play with the
-[*visualization*](http://rpsychologist.com/d3/cohend/) of RPsychlogist.
-
-In a typical infant study, babies might hear two types of trials and the
-responses to each are compared. In most papers, it is sufficient that
-the difference between the trial types reaches statistical significance,
-but in a meta-analyses we care about the size of this single observed
-effect and its variance. This allows us to pool over several studies,
-weigh each datapoint, and arrive at an estimate of the underlying, true
-effect. This then allows us to calculate power and check how effect
-sizes might be systematically affected by variables such as infant age
-in "moderator analyses" (see
-[*metalab.stanford.edu*](http://metalab.stanford.edu/)).
-
-### 3. How to arrive at a well-defined MA research question?
-
-It is important to strike a balance between choosing a topic that is too
-broad (how do children learn words?) and too narrow (how do Dutch
-children segment monosyllabic words from speech?).
-
 Steps to build a MA
 ===================
 
-### Make a decision spreadsheet and a PRISMA flowchart
+### How do I define my MA question?
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=0TVSjaRsfGU" target="_blank"><img src="http://img.youtube.com/vi/0TVSjaRsfGU/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+
+
+### Why should I bother keeping track of the MA creation process?
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=FPlKC2feqNo" target="_blank"><img src="http://img.youtube.com/vi/FPlKC2feqNo/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 
 It is important that you build traceability of your work from the start,
-particularly since in larger MAs other people than you may finish up the
+particularly since in larger MAs other people may finish up the
 work or you want to check later on why you decided to exclude a given
 paper. So to make sure that all of your decisions are recorded and
 clear, make a copy of this [*decision
-spreadsheet*](https://docs.google.com/spreadsheets/d/1R4zgvsTZ35nWw8Fh7NbfKaOFlkeECiz4X7ZILVAe9FY/edit?usp=sharing).
+spreadsheet*](https://docs.google.com/spreadsheets/d/1mtN4g6FddpBljQzrR-mS0y414M9wQNjK4Vz09nLOe2s/edit#gid=0).
 Don’t forget to rename it, to give us a “viewing” link, and clean it up
 as follows.
 
@@ -227,7 +60,9 @@ boxes with the right numbers as you go along so that people who continue
 this MA and/or those interested in assessing this work can make sure
 that you followed the procedure.
 
-### Build your initial study list
+### How do I select the studies to include ?
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=W3LMs-XY21g" target="_blank"><img src="http://img.youtube.com/vi/W3LMs-XY21g/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 
 The goal of this step is to put together a list of publications that you
 will look at (abstract only in step 3, and for a subset of those in full
@@ -235,6 +70,22 @@ in step 4) and consider for inclusion. In a typical MA, you make the
 most comprehensive list possible in order to answer a specific research
 question and/or to cover a given phenomenon. This typically means going
 through 1,000 abstracts, and reading in full 100 papers.
+You can start with the seminal paper for your effect of interest, and then look for the studies citing your seminal one. Use [pubmed’s search](http://www.ncbi.nlm.nih.gov/pubmed/advanced) to find your pivot study’s entry, for instance by copy-pasting the full paper title in the builder:
+
+![](https://github.com/langcog/metalab2/tree/master/images/tutorials/Pubmed_advanced_search.png)
+
+When you press “search”, usually you’ll find the entry for your seminal paper (or if the title was not unique, you might need to click on one of the entries found until you do come across the entry for your seminal paper). Notice on the right a section entitled “Cited by …” Scroll down to click on the link at the bottom of this section stating “See all..”
+
+You will now see all studies citing your seminal one. Constrain it further by clicking on “Show additional filters” on the left, and checking the box for “Infant: birth to 23 months”:
+
+
+
+You now want to save all these papers in your reference management software. 
+	If you use Zotero: Click on the drawing of a folder in your status/search bar. When you do so, a window will pop up with all the results for that pubmed page:
+
+Click on “select all” and “OK”. Repeat for the other search pages. This will store the citation information, including abstract, in zotero.
+
+You can also interrogate Pubmed with a script, such as [the one we have prepared](https://gist.github.com/mcfrank/c1ec74df1427278cbe53).
 
 ### Screen papers
 
