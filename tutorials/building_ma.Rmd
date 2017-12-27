@@ -311,7 +311,7 @@ alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=UPLhl32YBU4" target="_blank"><img src="http://img.youtube.com/vi/UPLhl32YBU4/0.jpg" 
 alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 
-*** Two groups of infants are tested and I treat them as two different entries, but the number of included and excluded infants are only reported as a whole over both groups. What do I do?***
+***Two groups of infants are tested and I treat them as two different entries, but the number of included and excluded infants are only reported as a whole over both groups. What do I do?***
 
 As the best approximation we can get, please divide the reported number through the number of groups (in your case 2). 
 
