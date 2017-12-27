@@ -1,0 +1,42 @@
+Why do a meta-analysis?
+=======================
+
+For a quick overview on what are meta-analysis (MA), please watch this 3 minutes video:
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=Omnq13QZ-3c
+" target="_blank"><img src="http://img.youtube.com/vi/Omnq13QZ-3c/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+
+ 
+
+Meta-analyses (MAs) can be useful for two main purposes: (1) theory building and evaluation and (2) practical decisions during study design. This section starts with some basics on why single studies might not be as reliable as an MA and then explains how exactly MAs overcome this problem. 
+
+#### Q: Why single studies might not be as reliable as an MA ?
+A: When thinking about development, we often wonder which abilities infants display at what age. To this end, we regularly look at published studies that set up smart experiments to test whether infants have specific abilities, for example whether infants treat native vowels differently from non-native ones, and when that ability develops (for more details on this specific topic see <http://inphondb.acristia.org>). 
+
+When trying to solve the puzzle of language acquisition, it is crucial to have a clear picture of infants' abilities, and when evaluating an existing theory, we want to know whether new studies confirm or contrast with predictions made. However, the results of one single experiment does not allow us to directly conclude something about their underlying abilities: Each experiment measures behavior of a set of infants in a very specific situation, which might not be generalizable to other situations. Moreover, there might be a measurement error in this one-time snapshot of reality. 
+
+The biggest problem when consulting single published studies is the false positive, along with the two most common causes: practices that increase the chance of a significant p-value and biases. 
+
+Every study we run has (at least) a 5% chance of telling us that infants can do something when this is not true, according to the significance threshold alpha (commonly set to .05). p-values that fall under this threshold are supposed to tell us that the results we observed are not very likely due to chance. 
+
+This likelihood becomes bigger when researchers are victims of their own _biases_ or engage in seemingly innocent and possibly common _practices that increase the chance of a false positive_. None of these necessarily come with bad intentions and a sense of wrongdoing, so it is worth discussing them briefly.
+
+Let's start with a very strong _motivation_ for obtaining positive results, independent of them being true or false: journal publications. Articles are the key to being considered a smart and valuable scientist. Journals, especially the big names, want to publish new, exciting, and sometimes surprising findings! So all the incentives right now push researchers to obtaining that wonderfully significant p-value. 
+
+_Increasing the chance of a false positive_ can be due to a number of practices, such as analyzing the same dataset in multiple ways (t-Test, ANOVA, collapsing or splitting groups, etc etc) and only reporting (the single) one significant outcome without correcting; or rejecting participants based on the dependent variable (e.g., excluding all infants that did not look at the named picture in a task that tests infants' ability to recognize object labels).
+
+_Biases_ are nearly omnipresent in human cognition. When we expect something to be true, we are unconsciously prone to either make it happen (think self-fulfilling prophecies) or to perceive the world so that it aligns with our expectations. Biases also might affect researchers: Random patterns can become important results (it turns out girls are able to solve this task, but boys are not!) or after months and months of running the experiment and digging through the data the original hypothesis and analysis plan are lost and the significant finding (obtained through the practices mentioned in the previous paragraph) was the thing we were looking for all along. Biases can even go so far as to make us unconsciously influence participants or results when we know the condition (for example being much more lenient with babies' looking on target when the "correct" trials are presented and being much more strict for the "incorrect" trials; looking times will systematically differ in this case). This last bias is often avoided by blinding the researcher to what is going on, but the other two are harder to avoid and require conscious efforts such as pre-registering analysis plans.
+
+#### Q: How exactly can MAs overcome this problem ?
+A: Collecting many study results from different researchers is a way to try and make up for the possibility that biases influenced the outcome. We can even _use MAs to check for biases_, such as asking whether a suspicious number of p-values is just below the significance threshold or whether results are systematically skewed in one direction. Why biases matter is wonderfully illustrated here: <http://www.alltrials.net/news/the-economist-publication-bias/>. Checking for biased results is a whole literature on its own, but as a start tools such as p-curving apps are easily available for every researcher. <http://www.p-curve.com/> or <http://shinyapps.org/apps/p-checker/> are two well-documented examples.
+
+#### Q: What about power and false negatives (i.e. The Type II Error)? 
+A: In addition to the probability to obtain false positives, there is also the possibility to be unable to measure an effect despite it being there. This issue has two implications. First, not being able to replicate  a study might not mean that some previous finding is a false positive, but it could point to noisy measures, small effects (what effects are and how we measure them will be explained below in section 2), and consequently low power. This means that a typical infant study which tests, often at great cost (both in personal investment and with respect to money), between 12 and 24 infants per condition, might not be able to reliably pick up an effect even though it is truly present when the phenomenon in question leads only to a small change in the dependent variable. 
+
+We often do not know about these non-significant findings because it is quite difficult to publish them. But they might happen to all of us. MAs help us in experiment design so we can _avoid false negatives due to low power_. When the size of an effect is known and with a fixed significance threshold, calculating power is straightforward. Here is a simulation of how all ingredients fit together: <rpsychologist.com/d3/NHST/>.
+
+To increase power and make up for small effects, we need to test more babies. But we do not want to needlessly spend time and money in the lab, so finding a balance is important. To this end, it is very useful to have a good idea of the effect size in question, based on a MA. Once we have the effect size, we can _calculate the minimal number of babies needed to be able to observe an existing effect with sufficiently high probability_ (usually 80%).
+
+#### Q: How do MAs help ?
+A: MAs can also help with _study design_, especially when they come in the format of a [CAMA (community-augmented MA)](https://www.ncbi.nlm.nih.gov/pubmed/26186116), which codes many, many design variables. Examples include the words or sounds used, how long trials were, etc. Instead of doing a tiresome literature review, the most common procedure or the one associated with the biggest effect can be obtained by looking at the data in a CAMA, which come with detailed instructions on how to download and inspect their contents as simple spreadsheets.
