@@ -101,7 +101,8 @@ the abstract. In addition to creating your sample for data entry (step
 4) you will start honing your *inclusion criteria*. Typically, these
 will include:
 
--   **a homogeneous scientific question**: make sure you have clearly
+-   **a homogeneous scientific question**: 
+    > Make sure you have clearly
     > defined the purview of e.g. cross-situational learning (e.g., this
     > name itself is vague to those outside the domain, so define it in
     > a more specific way: “exposure to sets of images paired with
@@ -109,7 +110,8 @@ will include:
     > but crucially multiple images are shown at once (unlike e.g. the
     > switch procedure)”)
 
--   **a homogeneous infant population**: typically-developing children,
+-   **a homogeneous infant population**: 
+    > Typically-developing children,
     > between the ages of XX and YY (the precise ages may stem from your
     > seminal paper; perhaps to start with, you could set the maximum to
     > 36 months, the minimum to 0 months); consider whether you also
