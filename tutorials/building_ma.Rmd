@@ -5,6 +5,11 @@ Steps to build a MA
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=0TVSjaRsfGU" target="_blank"><img src="http://img.youtube.com/vi/0TVSjaRsfGU/0.jpg" 
 alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 
+Choose the appropriate level of detail for your MA topic. The topic of your meta-analysis should be broader than the one of a single experiment (e.g. "How do babies segment words of different stress patterns? "), but narrower than a whole research field (e.g. "How do babies learn language? "). The goal is to be able to gather comparable papers, measuring consistant dependant variables, to allow you to compute a common statistical metric (i.e. effect size) from them.
+
+Define your population of interest precisely. Homogeneous can mean many things; age, language, typical versus atypical. You may run a meta-analysis where you accept many different levels for some of the variables and see how it affects results, defining them as MA moderators, for example seeing if effects are consistent across ages. There should still be some unifying element in your studies though so you have one broad result of your meta-analysis. 
+
+Your MA topic also depends on how many studies have been done on it. If you want to run a simple comparative MA, as few as two studies could be okay. But if you want to run an analysis with a lot of moderators, 5 studies probably isn’t enough to warrant a meta-analysis.
 
 ### Why should I bother keeping track of the MA creation process?
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=FPlKC2feqNo" target="_blank"><img src="http://img.youtube.com/vi/FPlKC2feqNo/0.jpg" 
