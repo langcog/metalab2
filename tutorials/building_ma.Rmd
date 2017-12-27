@@ -109,11 +109,11 @@ Every time you make a decision regarding these and other key criteria,
 remember to note it in your decision spreadsheet, in the last sheet
 called “Notes\_inclusion”. For example, mine looks like this:
 
-  **Question**                            **Decision**                                                                                                                                    **Date**
-  --------------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------- ------------
-  **a homogeneous scientific question**   learning of speech sound categories, where the categories are represented by a multimodal versus unimodal distribution of acoustic correlates   10/19/2015
-  **a homogeneous infant population**     typically-developing children, between the ages of 0 and 36 months                                                                              10/19/2015
-  **a homogeneous procedure**             passive exposure in the lab, testing via any behavioral or non-behavioral method                                                                10/19/2015
+| **Question**                           | **Decision**                                                                                                                                    | **Date**
+| -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------
+| **a homogeneous scientific question**  | learning of speech sound categories, where the categories are represented by a multimodal versus unimodal distribution of acoustic correlates   | 10/19/2015
+| **a homogeneous infant population**    | typically-developing children, between the ages of 0 and 36 months                                                                              | 10/19/2015
+| **a homogeneous procedure**            | passive exposure in the lab, testing via any behavioral or non-behavioral method                                                                | 10/19/2015
 
 ### How do I select the studies to include ?
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=W3LMs-XY21g" target="_blank"><img src="http://img.youtube.com/vi/W3LMs-XY21g/0.jpg" 
