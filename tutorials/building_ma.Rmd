@@ -255,17 +255,28 @@ incomplete (although if you followed our advice above, you won’t have
 wasted time entering it!). Remember to update your spreadsheet with each
 paper you read and made a decision on.
 
-If you have questions at this stage, please check our
-[*FAQ*](https://docs.google.com/document/d/1_7mgeaARlYK6TecyUqzk9SSr0pLAkV3pQZE4qYT7CMA/edit?usp=sharing).
-If you find your answer, great -- if not, tell us about it, and we’ll
-answer you (and add it to the FAQ).
 
-How do I calculate Effect Sizes?
+***The article I enter has 3 experiments, and the first is with adult participants. Do I need to enter this experiment?***
+No, please only enter the infant/child experiments
 
-We use R to calculate effect sizes. For now, each MA does so
-independently, see
-[*https://github.com/christinabergmann/InWordDB/wiki*](https://github.com/christinabergmann/InWordDB/wiki)
-for an example (not using the metalab template, though!).
+### What level of detail should I report?
+***The sound stimuli differ approx. 6 ms in length, but the experiment is not about length differences. Do I have to report this difference although it is very small?***
+
+In case there’s a column for stimulus length, please report it. You are right that this experiment is not about length differences, but having the information cannot hurt, and eventual analyses will reflect that the difference is very small.
+
+***The article reports a table with the lengths of each individual stimulus. Should I calculate and report the average value?***
+
+Yes, please report the averaged value in the appropriate column. 
+
+***I am entering an article with the HAS method. The authors report results for both the 2 and 4 minutes after the test phase has started. Your example only reports the results after 2 minutes, but would you still want me to report both?***
+
+It is often the case that articles report more than one type of result. Please just report the ones that we also provide in the example file!
+
+
+### How do I calculate Effect Sizes?
+
+We use R to calculate effect sizes. Visit <https://github.com/langcog/metalab2> for our code.
+
 
 We recommend the following for an introduction to effect sizes:
 
@@ -288,6 +299,22 @@ Estimates in Meta-Analysis With Repeated Measures and Independent-Groups
 Designs. Psychological Methods, 7(1), 1805-125. doi:
 [*10.1037//1082-989X.7.1.105
 *](http://dx.doi.org/10.1037//1082-989X.7.1.105)
+
+### How to run a meta-analytic regression ?
+https://youtu.be/VvP2DMLCRjU 
+
+### What if I don’t have all the required information?
+https://youtu.be/UPLhl32YBU4 
+*** Two groups of infants are tested and I treat them as two different entries, but the number of included and excluded infants are only reported as a whole over both groups. What do I do?***
+As the best approximation we can get, please divide the reported number through the number of groups (in your case 2). 
+
+***The age of infants is reported in weeks, therefore I multiplied it with 7 to convert it into days. I read in your instructions that you have to multiply months with 30.42 to get a proxy for days. So my question is whether I have to multiply with a different number than 7 to get a proxy for days?***
+No, that's fine the way you did it!
+
+In some cases you will still need to contact the authors of the study. People probably don’t know you, so think about what in the object would make you open an email from a stranger. Something like “including your paper in a MA” should be motivational. People are busy: they don’t have time to read lengthy email, especially from someone they don’t know, so be as concise as possible. You could still give them more details later if they ask for it. Don’t be shy, authors are likely to be happy to hear that someone is interested in their work and is going to cite them!
+
+### Are there some MA specific plots that I should make?
+https://youtu.be/dZcqEKFLH6I 
 
 Resources
 =========
