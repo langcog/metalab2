@@ -172,7 +172,11 @@ of time, you can get started with the core characteristics only.
 Remember once more to give us viewing rights (see step 1 for
 instructions).
 
-### How many input rows/columns should I make?
+### What are the relevant variables for a MA, and how many input rows/columns should I make?
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=spge3nZqCng" target="_blank"><img src="http://img.youtube.com/vi/spge3nZqCng/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+
 ***One of my papers has a single experiment but involves both Spanish and English speakers who are tested on a native and a nonnative speech sound contrast. Should that count as 4 experiments (2 languages x 2 contrasts)?***
 
 How many rows you make depends on how the results are reported. In this case, the authors report the outcome separately for all four groups. Therefore, please enter the four groups separately; each into their own row. You can copy over descriptions of the experiment. 
@@ -199,9 +203,15 @@ experiment reported. You will enter all experiments and conditions one
 at a time, and fill in their information in the MA spreadsheet you
 created in step 4.
 
+### How do I enter and code relevant studies?
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=OQ5m5YZE57M" target="_blank"><img src="http://img.youtube.com/vi/OQ5m5YZE57M/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+
 IMPORTANT: You should work backwards from the **results** section: look
 at what dependent measures are reported fully enough that you will be
-able to extract an effect size from them. The following information
+able to extract an effect size from them. 
+
+The following information
 allows one to calculate an effect size (we are sticking to experimental
 designs, since most of our MAs are experimental):
 
@@ -230,9 +240,6 @@ designs, since most of our MAs are experimental):
 
     -   *Infant vowel discrimination (native and nonnative): 0.496
         > (range: -0.413 to 0.855)*
-
-At the beginning, we can help you decide what kind of experiment you are
-looking at, and what kind of procedure you should follow.
 
 When entering papers, please remember a key thing: all analyses are done
 by machines, and machines cannot read text! So if a column is “numeric”,
