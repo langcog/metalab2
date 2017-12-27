@@ -239,11 +239,9 @@ designs, since most of our MAs are experimental):
     > reported, we provide below median and range for correlations found
     > in existing MAs.
 
-    -   Infant word segmentation from native speech: 0.641 (range:
-        > 0.140 to 0.921)
+    -   Infant word segmentation from native speech: 0.641 (range: 0.140 to 0.921)
 
-    -   Infant vowel discrimination (native and nonnative): 0.496
-        > (range: -0.413 to 0.855)
+    -   Infant vowel discrimination (native and nonnative): 0.496 (range: -0.413 to 0.855)
 
 When entering papers, please remember a key thing: all analyses are done
 by machines, and machines cannot read text! So if a column is “numeric”,
