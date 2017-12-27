@@ -218,7 +218,7 @@ allows one to calculate an effect size (we are sticking to experimental
 designs, since most of our MAs are experimental):
 
 -   ****between-participant studies**: 
-    > **Means and SDs (not SEs!) of the
+    > Means and SDs (not SEs!) of the
     > dependent variable for each infant group** are all that is
     > required for the calculation of Cohen's d. Sometimes, means and
     > SDs are not available as numbers. If there are clear figures, you
@@ -227,7 +227,7 @@ designs, since most of our MAs are experimental):
     > estimate values from figures, add a column to keep track of this.
     > Finally, **t or F values for the *main* effect in combination with
     > sample sizes** can be used to calculate Cohen's d. Note them
-    > when available. *
+    > when available.
 
 -   ****within-participant studies**: 
     > Effect sizes for this type of
@@ -237,7 +237,7 @@ designs, since most of our MAs are experimental):
     > required (to account for the amount of
     > within-participant variation). Since this measure is usually not
     > reported, we provide below median and range for correlations found
-    > in existing MAs. **
+    > in existing MAs.
 
     -   *Infant word segmentation from native speech: 0.641 (range:
         > 0.140 to 0.921)*
