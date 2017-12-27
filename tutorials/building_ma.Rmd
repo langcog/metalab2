@@ -91,9 +91,11 @@ Click on “select all” and “OK”. Repeat for the other search pages. This 
 
 You can also interrogate Pubmed with a script, such as [the one we have prepared](https://gist.github.com/mcfrank/c1ec74df1427278cbe53).
 
-### Screen papers
+### Now that I have my list of related studies, should I enter all of them in my MA?
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=gk3GHT_eEI8" target="_blank"><img src="http://img.youtube.com/vi/gk3GHT_eEI8/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 
-In this step, you will go through the initial list you put together in
+Probably not.In this step, you will go through the initial list you put together in
 step 2, and make decisions to include/exclude papers, mostly based on
 the abstract. In addition to creating your sample for data entry (step
 4) you will start honing your *inclusion criteria*. Typically, these
@@ -137,10 +139,9 @@ called “Notes\_inclusion”. For example, mine looks like this:
   **a homogeneous infant population**     typically-developing children, between the ages of 0 and 36 months                                                                              10/19/2015
   **a homogeneous procedure**             passive exposure in the lab, testing via any behavioral or non-behavioral method                                                                10/19/2015
 
-Having explained the goal of this step, let us move on to how exactly
-you could go about looking through your initial list and making
-decisions. As before, we propose two potential routes, one without and
-one with little programming.
+### How exactly can I go about looking through my initial list and making decisions?
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=zBn83RQlo-c" target="_blank"><img src="http://img.youtube.com/vi/zBn83RQlo-c/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 
 ***What if the title and abstract doesn’t allow me to decide?***
 
@@ -153,13 +154,17 @@ Then you probably have already seen the full text of the paper, so say
 “yes” for the screening decision, and then “no” for the full-text
 decision.
 
-### Decide on data structure for MA and create the spreadsheet
+### How many papers should I enter?
+Ideally, you would enter everything: published or unpublished, proceedings or journal, etc. However, sometimes you may want to start a “seed” meta-analysis that just gives a rough idea of an area. 
+
+In this case, how large should your sample be? Mika and Molly have done some [simulations](https://rawgit.com/langcog/metalab/master/resampling/resampling.html) to help you decide. By and large, it looks like the more, the better - clearly estimates get more precise (confidence intervals narrow) as more papers are entered. Based on this information, we are proposing _a minimum of 10 included experiments_ as a pragmatic first step, knowing that your estimate is not very precise.
+
+### How should I structure the data for my MA ?
 
 We are hoping that eventually all of these MAs may be included in
 [*MetaLab*](http://metalab.stanford.edu), so we ask you to use the [*MA
 template*](https://docs.google.com/spreadsheets/d/12Y_2BcFSu48t0F8a_xrY1Ro2fJoCIV1h8O627WNcrjY/edit?usp=sharing)
-(create a copy, as you did in step 1), and follow the [*coding
-book*](https://docs.google.com/document/d/1szXxrv75qTVx-4adlLrwmjWSDIBJfMH09dzh9733mog/edit?usp=sharing).
+(create a copy, as you did in step 1), and follow the [*field specifications*](https://langcog.github.io/metalab2/documentation.html#field_specs).
 Ideally, you would code all potentially relevant moderator variables
 (e.g., experimental manipulations) in addition to the core
 characteristics (columns in red; e.g. means). However, in the interest
@@ -167,7 +172,16 @@ of time, you can get started with the core characteristics only.
 Remember once more to give us viewing rights (see step 1 for
 instructions).
 
-### Retrieve and enter studies
+### How many input rows/columns should I make?
+***One of my papers has a single experiment but involves both Spanish and English speakers who are tested on a native and a nonnative speech sound contrast. Should that count as 4 experiments (2 languages x 2 contrasts)?***
+
+How many rows you make depends on how the results are reported. In this case, the authors report the outcome separately for all four groups. Therefore, please enter the four groups separately; each into their own row. You can copy over descriptions of the experiment. 
+
+***In Experiment 1, there are two age groups. Do I have to report the age for both groups or do I average both groups into one? If I have to report both groups, how do I report this in the input form?***
+
+How many rows you make depends on how the results are reported. In this case, the authors report an average outcome over both age groups, since they did not find a significant difference between the two groups. Therefore, please enter only one row and calculate the average age. If the results were reported separately per age group, make a 
+
+### How do I retrieve studies?
 
 In a typical full MA, you go through the whole list and only then start
 entering. The procedure is as follows. Go back to your spreadsheet, and
