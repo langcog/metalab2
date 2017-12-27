@@ -7,3 +7,4 @@ data/
 documentation/*.html
 tutorials/*.html
 scripts/log/
+tutorials/building_ma.Rmd
