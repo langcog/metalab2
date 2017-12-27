@@ -331,9 +331,6 @@ script*](https://gist.github.com/mcfrank/c1ec74df1427278cbe53)
 [*Selecting for
 inclusion*](https://www.getdatajoy.com/project/561388dfb485274e40055563)
 
-MA
-[*FAQ*](https://docs.google.com/document/d/1_7mgeaARlYK6TecyUqzk9SSr0pLAkV3pQZE4qYT7CMA/edit?usp=sharing)
-
 Example MAs:
 [*InWordDB*](https://docs.google.com/spreadsheets/d/1XN6VaYRs7CStrINct_rr2d6rh6WN28xFiIGB5T1vkzY/edit?usp=sharing)
 
