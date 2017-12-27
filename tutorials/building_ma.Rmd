@@ -356,10 +356,4 @@ Example MAs:
 CAMA*](https://sites.google.com/site/infantdbs/create-your-own-cama)
 (including further resources)
 
-[^1]: People are trying to change this but nonetheless common practice
-    is still this way.
 
-[^2]: Some further reading on biases:
-    [*https://explorable.com/research-bias*](https://explorable.com/research-bias)
-    and
-    [*http://www.nature.com/news/how-scientists-fool-themselves-and-how-they-can-stop-1.18517*](http://www.nature.com/news/how-scientists-fool-themselves-and-how-they-can-stop-1.18517)
