@@ -1,5 +1,5 @@
-Steps to build a MA
-===================
+Choosing the right MA question
+==============================
 
 ### How do I define my MA question?
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=0TVSjaRsfGU" target="_blank"><img src="http://img.youtube.com/vi/0TVSjaRsfGU/0.jpg" 
