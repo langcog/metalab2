@@ -1,7 +1,7 @@
 
-# How to code your existing Meta-Analysis in the MetaLab format ?
+# How to code your existing meta-analysis in the MetaLab format ?
 
-If you have already done a meta-analysis,you can easily add it to MetaLab. This tutorial explains you how.
+If you have already done a meta-analysis, you can easily add it to MetaLab. This tutorial explains you how.
 
 #### Q: Why should I contribute my meta-analysis to MetaLab?
 
