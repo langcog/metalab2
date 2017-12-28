@@ -475,12 +475,6 @@ shinyServer(function(input, output, session) {
       geom_vline(aes(), xintercept = center, linetype = "dotted", color = "black") +
       xlab(xlabel) +
       ylab(ylabel) +
-      geom_text(x = center + lower_lim * CRIT_95 / 2,
-                y = -lower_lim + lower_lim / 30, #family = font,
-                label = "p < .05", vjust = "bottom", hjust = "center") +
-      geom_text(x = (center + lower_lim * CRIT_95) + (lower_lim * CRIT_99 - lower_lim * CRIT_95) / 2,
-                y = -lower_lim + lower_lim / 30, #family = font,
-                label = "p < .01", vjust = "bottom", hjust = "center") +
       scale_colour_solarized(name = "", labels = labels, guide = guide) +
       scale_x_continuous(limits = c(left_lim99, right_lim99)) +
       scale_y_continuous(labels = function(x){abs(x)}) +
