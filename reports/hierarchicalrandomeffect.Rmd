@@ -1,7 +1,7 @@
 ---
 title: "Hierarchical Random Effects in Meta-Analyses: Do they change stuff?"
 author: "Sho Tsuji and Christina Bergmann"
-date: "This report was rendered on `r Sys.Date()`."
+date: "Last updated on `r Sys.Date()`."
 ---
   
 # Introduction

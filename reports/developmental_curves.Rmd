@@ -1,6 +1,7 @@
 ---
 title: "Developmental curve comparison"
 author: "Page Piccinini and Michael Frank"
+date: "Last updated on `r Sys.Date()`."
 ---
 
 ```{r, include=FALSE}
