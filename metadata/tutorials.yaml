@@ -1,3 +1,9 @@
+- id: why_do_a_MA
+  title: Why do a meta-analysis?
+  
+- id: Effect_sizes
+  title: What are effect sizes?
+
 - id:     building_ma
   title:  How to build an MA
 
@@ -7,8 +13,6 @@
 - id: Code_Existing_MA
   title: How to code your existing meta-analysis in the MetaLab format
 
-- id: why_do_a_MA
-  title: Why do a meta-analysis?
+
   
-- id: Effect_sizes
-  title: What are effect sizes?
+
