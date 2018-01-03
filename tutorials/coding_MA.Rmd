@@ -13,8 +13,9 @@ instructions).
 
 ### What are the relevant variables for a MA, and how many input rows/columns should I make?
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=spge3nZqCng" target="_blank"><img src="http://img.youtube.com/vi/spge3nZqCng/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+```{r video 1, echo = FALSE}
+embed_url("https://www.youtube.com/watch?feature=player_embedded&v=spge3nZqCng")
+```
 
 ***One of my papers has a single experiment but involves both Spanish and English speakers who are tested on a native and a nonnative speech sound contrast. Should that count as 4 experiments (2 languages x 2 contrasts)?***
 
@@ -43,8 +44,9 @@ at a time, and fill in their information in the MA spreadsheet you
 created in step 4.
 
 ### How do I enter and code relevant studies?
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=OQ5m5YZE57M" target="_blank"><img src="http://img.youtube.com/vi/OQ5m5YZE57M/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+```{r video 2, echo = FALSE}
+embed_url("https://www.youtube.com/watch?feature=player_embedded&v=OQ5m5YZE57M")
+```
 
 IMPORTANT: You should work backwards from the **results** section: look
 at what dependent measures are reported fully enough that you will be
@@ -115,8 +117,9 @@ It is often the case that articles report more than one type of result. Please j
 
 ### How do I calculate Effect Sizes?
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=WDxA8TfU1sk" target="_blank"><img src="http://img.youtube.com/vi/WDxA8TfU1sk/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+```{r video 3, echo = FALSE}
+embed_url("https://www.youtube.com/watch?feature=player_embedded&v=WDxA8TfU1sk")
+```
 
 We use R to calculate effect sizes. Visit <https://github.com/langcog/metalab2> for our code.
 
@@ -144,12 +147,14 @@ Designs. Psychological Methods, 7(1), 1805-125. doi:
 *](http://dx.doi.org/10.1037//1082-989X.7.1.105)
 
 ### How to run a meta-analytic regression ?
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=VvP2DMLCRjU" target="_blank"><img src="http://img.youtube.com/vi/VvP2DMLCRjU/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+```{r video 4, echo = FALSE}
+embed_url("https://www.youtube.com/watch?feature=player_embedded&v=VvP2DMLCRjU")
+```
 
 ### What if I don’t have all the required information?
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=UPLhl32YBU4" target="_blank"><img src="http://img.youtube.com/vi/UPLhl32YBU4/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+```{r video 5, echo = FALSE}
+embed_url("https://www.youtube.com/watch?feature=player_embedded&v=UPLhl32YBU4")
+```
 
 ***Two groups of infants are tested and I treat them as two different entries, but the number of included and excluded infants are only reported as a whole over both groups. What do I do?***
 
