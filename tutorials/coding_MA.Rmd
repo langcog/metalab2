@@ -12,6 +12,10 @@ Remember once more to give us viewing rights (see step 1 for
 instructions).
 
 ### What are the relevant variables for a MA, and how many input rows/columns should I make?
+```{r libraries, include=FALSE}
+library("htmltools")
+library("vembedr")
+```
 
 ```{r video 1, echo = FALSE}
 embed_url("https://www.youtube.com/watch?feature=player_embedded&v=spge3nZqCng")
