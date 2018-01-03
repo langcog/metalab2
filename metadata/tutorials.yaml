@@ -4,6 +4,15 @@
 - id: Effect_sizes
   title: What are effect sizes?
 
+- id: Choose_question
+  title: Choosing the right MA question
+
+- id: choosing_records
+  title: How do I select the studies to include?
+
+- id: coding_MA
+  title: How should I structure the data for my MA?
+
 - id:     building_ma
   title:  How to build an MA
 
@@ -12,7 +21,3 @@
   
 - id: Code_Existing_MA
   title: How to code your existing meta-analysis in the MetaLab format
-
-
-  
-
