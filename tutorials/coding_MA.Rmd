@@ -1,4 +1,4 @@
-### How should I structure the data for my MA ?
+### How should I structure the data for my MA?
 
 We are hoping that eventually all of these MAs may be included in
 [*MetaLab*](http://metalab.stanford.edu), so we ask you to use the [*MA
