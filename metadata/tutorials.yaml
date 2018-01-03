@@ -13,8 +13,9 @@
 - id: coding_MA
   title: How should I structure the data for my MA?
 
-- id:     building_ma
-  title:  How to build an MA
+#old version of the tutorial, now segmented into choose_question, choosing_records, and coding_MA
+#- id:     building_ma
+# title:  How to build an MA
 
 - id:     contribute
   title:  How to contribute
