@@ -1,8 +1,9 @@
 How do I select the studies to include?
 ----------------------------------------
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=W3LMs-XY21g" target="_blank"><img src="http://img.youtube.com/vi/W3LMs-XY21g/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+```{r video 4, echo = FALSE}
+embed_url("https://www.youtube.com/watch?feature=player_embedded&v=W3LMs-XY21g")
+```
 
 The goal of this step is to put together a list of publications that you
 will look at (abstract only in step 3, and for a subset of those in full
@@ -33,8 +34,9 @@ You can also interrogate Pubmed with a script, such as [the one we have prepared
 
 
 ### How exactly can I go about looking through my initial list and making decisions?
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=zBn83RQlo-c" target="_blank"><img src="http://img.youtube.com/vi/zBn83RQlo-c/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+```{r video 5, echo = FALSE}
+embed_url("https://www.youtube.com/watch?feature=player_embedded&v=zBn83RQlo-c")
+```
 
 ***What if the title and abstract doesn’t allow me to decide?***
 
