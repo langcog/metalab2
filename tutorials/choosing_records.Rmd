@@ -1,7 +1,7 @@
 How do I select the studies to include?
 ----------------------------------------
 
-```{r video 4, echo = FALSE}
+```{r video 1, echo = FALSE}
 embed_url("https://www.youtube.com/watch?feature=player_embedded&v=W3LMs-XY21g")
 ```
 
@@ -34,7 +34,7 @@ You can also interrogate Pubmed with a script, such as [the one we have prepared
 
 
 ### How exactly can I go about looking through my initial list and making decisions?
-```{r video 5, echo = FALSE}
+```{r video 2, echo = FALSE}
 embed_url("https://www.youtube.com/watch?feature=player_embedded&v=zBn83RQlo-c")
 ```
 
