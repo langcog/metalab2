@@ -17,8 +17,9 @@
 #- id:     building_ma
 # title:  How to build an MA
 
-- id:     contribute
-  title:  How to contribute
+#there is already a contribution page in the documentation section of the website
+#- id:     contribute
+#  title:  How to contribute
   
 - id: Code_Existing_MA
   title: How to code your existing meta-analysis in the MetaLab format
