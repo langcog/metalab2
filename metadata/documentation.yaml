@@ -3,6 +3,9 @@
 
 - id:     datasets
   title:  Datasets
+  
+- id:     contribute
+  title:  How to contribute to MetaLab
 
 - id:     statistical_approach
   title:  Statistical Approach
