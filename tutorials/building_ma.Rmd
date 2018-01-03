@@ -26,8 +26,9 @@ Define your population of interest precisely. Homogeneous can mean many things; 
 Consider the number of available studies on your topic. Your MA topic also depends on how many studies have been done on it. If you want to run a simple comparative MA, as few as two studies could be okay. But if you want to run an analysis with a lot of moderators, 5 studies probably isn’t enough to warrant a meta-analysis.
 
 ### Why should I bother keeping track of the MA creation process?
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=FPlKC2feqNo" target="_blank"><img src="http://img.youtube.com/vi/FPlKC2feqNo/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+```{r video 2, echo = FALSE}
+embed_url("https://www.youtube.com/watch?feature=player_embedded&v=FPlKC2feqNo")
+```
 
 It is important that you build traceability of your work from the start,
 particularly since in larger MAs other people may finish up the
@@ -80,8 +81,9 @@ this MA and/or those interested in assessing this work can make sure
 that you followed the procedure.
 
 ### Now that I have my list of related studies, should I enter all of them in my MA?
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=gk3GHT_eEI8" target="_blank"><img src="http://img.youtube.com/vi/gk3GHT_eEI8/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+```{r video 3, echo = FALSE}
+embed_url("https://www.youtube.com/watch?feature=player_embedded&v=gk3GHT_eEI8")
+```
 
 Probably not.In this step, you will go through the initial list you put together in
 step 2, and make decisions to include/exclude papers, mostly based on
@@ -130,8 +132,9 @@ called “Notes\_inclusion”. For example, mine looks like this:
 | **a homogeneous procedure**            | passive exposure in the lab, testing via any behavioral or non-behavioral method                                                                | 10/19/2015
 
 ### How do I select the studies to include ?
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=W3LMs-XY21g" target="_blank"><img src="http://img.youtube.com/vi/W3LMs-XY21g/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+```{r video 4, echo = FALSE}
+embed_url("https://www.youtube.com/watch?feature=player_embedded&v=W3LMs-XY21g")
+```
 
 The goal of this step is to put together a list of publications that you
 will look at (abstract only in step 3, and for a subset of those in full
@@ -162,8 +165,9 @@ You can also interrogate Pubmed with a script, such as [the one we have prepared
 
 
 ### How exactly can I go about looking through my initial list and making decisions?
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=zBn83RQlo-c" target="_blank"><img src="http://img.youtube.com/vi/zBn83RQlo-c/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+```{r video 5, echo = FALSE}
+embed_url("https://www.youtube.com/watch?feature=player_embedded&v=zBn83RQlo-c")
+```
 
 ***What if the title and abstract doesn’t allow me to decide?***
 
@@ -195,9 +199,9 @@ Remember once more to give us viewing rights (see step 1 for
 instructions).
 
 ### What are the relevant variables for a MA, and how many input rows/columns should I make?
-
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=spge3nZqCng" target="_blank"><img src="http://img.youtube.com/vi/spge3nZqCng/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+```{r video 6, echo = FALSE}
+embed_url("https://www.youtube.com/watch?feature=player_embedded&v=spge3nZqCng")
+```
 
 ***One of my papers has a single experiment but involves both Spanish and English speakers who are tested on a native and a nonnative speech sound contrast. Should that count as 4 experiments (2 languages x 2 contrasts)?***
 
@@ -226,8 +230,9 @@ at a time, and fill in their information in the MA spreadsheet you
 created in step 4.
 
 ### How do I enter and code relevant studies?
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=OQ5m5YZE57M" target="_blank"><img src="http://img.youtube.com/vi/OQ5m5YZE57M/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+```{r video 7, echo = FALSE}
+embed_url("https://www.youtube.com/watch?feature=player_embedded&v=OQ5m5YZE57M")
+```
 
 IMPORTANT: You should work backwards from the **results** section: look
 at what dependent measures are reported fully enough that you will be
@@ -297,9 +302,9 @@ It is often the case that articles report more than one type of result. Please j
 
 
 ### How do I calculate Effect Sizes?
-
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=WDxA8TfU1sk" target="_blank"><img src="http://img.youtube.com/vi/WDxA8TfU1sk/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+```{r video 8, echo = FALSE}
+embed_url("https://www.youtube.com/watch?feature=player_embedded&v=WDxA8TfU1sk")
+```
 
 We use R to calculate effect sizes. Visit <https://github.com/langcog/metalab2> for our code.
 
@@ -327,12 +332,14 @@ Designs. Psychological Methods, 7(1), 1805-125. doi:
 *](http://dx.doi.org/10.1037//1082-989X.7.1.105)
 
 ### How to run a meta-analytic regression ?
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=VvP2DMLCRjU" target="_blank"><img src="http://img.youtube.com/vi/VvP2DMLCRjU/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+```{r video 9, echo = FALSE}
+embed_url("https://www.youtube.com/watch?feature=player_embedded&v=VvP2DMLCRjU")
+```
 
 ### What if I don’t have all the required information?
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=UPLhl32YBU4" target="_blank"><img src="http://img.youtube.com/vi/UPLhl32YBU4/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+```{r video 10, echo = FALSE}
+embed_url("https://www.youtube.com/watch?feature=player_embedded&v=UPLhl32YBU4")
+```
 
 ***Two groups of infants are tested and I treat them as two different entries, but the number of included and excluded infants are only reported as a whole over both groups. What do I do?***
 
@@ -345,8 +352,9 @@ No, that's fine the way you did it!
 In some cases you will still need to contact the authors of the study. People probably don’t know you, so think about what in the object would make you open an email from a stranger. Something like “including your paper in a MA” should be motivational. People are busy: they don’t have time to read lengthy email, especially from someone they don’t know, so be as concise as possible. You could still give them more details later if they ask for it. Don’t be shy, authors are likely to be happy to hear that someone is interested in their work and is going to cite them!
 
 ### Are there some MA specific plots that I should make?
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=dZcqEKFLH6I" target="_blank"><img src="http://img.youtube.com/vi/dZcqEKFLH6I/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+```{r video 10, echo = FALSE}
+embed_url("https://www.youtube.com/watch?feature=player_embedded&v=dZcqEKFLH6")
+```
 
 Resources
 =========
