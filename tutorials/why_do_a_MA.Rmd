@@ -3,9 +3,9 @@ Why do a meta-analysis?
 
 For a quick overview on what are meta-analysis (MA), please watch this 3 minutes video:
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=Omnq13QZ-3c
-" target="_blank"><img src="http://img.youtube.com/vi/Omnq13QZ-3c/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+```{r video 1, echo = FALSE}
+embed_url("https://www.youtube.com/watch?feature=player_embedded&v=Omnq13QZ-3c")
+```
 
  
 
