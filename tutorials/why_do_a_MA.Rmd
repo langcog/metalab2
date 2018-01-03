@@ -2,6 +2,10 @@ Why do a meta-analysis?
 =======================
 
 For a quick overview on what are meta-analysis (MA), please watch this 3 minutes video:
+```{r libraries, include=FALSE}
+library("htmltools")
+library("vembedr")
+```
 
 ```{r video 1, echo = FALSE}
 embed_url("https://www.youtube.com/watch?feature=player_embedded&v=Omnq13QZ-3c")
