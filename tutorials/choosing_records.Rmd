@@ -1,5 +1,9 @@
 How do I select the studies to include?
 ----------------------------------------
+```{r libraries, include=FALSE}
+library("htmltools")
+library("vembedr")
+```
 
 ```{r video 1, echo = FALSE}
 embed_url("https://www.youtube.com/watch?feature=player_embedded&v=W3LMs-XY21g")
