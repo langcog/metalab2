@@ -12,8 +12,6 @@ tutorials <-  yaml::yaml.load_file("../metadata/tutorials.yaml")
  fluidRow(
    column(width = 12,
       h1("Tutorials", class = "header-with-tab"),
-      p(class = "indent",
-        a(href = "https://www.youtube.com/channel/UCAwezdGwoPKA-NGAk5BoHlQ", "Video tutorials")),
       do.call(tabBox, c(
         width = 12,
         purrr::map(
