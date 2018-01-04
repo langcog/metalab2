@@ -8,10 +8,9 @@ ma_choices <- c("Random effects" = "REML",
 scatter_choices <- c("Locally-linear regression (loess)" = "loess",
                      "Weighted linear model (lm)" = "lm")
 
-es_choices <- c("Cohen's d" = "d",
-                "Hedges' g" = "g",
+es_choices <- c("Hedges' g" = "g",
+                "Cohen's d" = "d",
                 "Pearson r" = "r",
-                "Fisher's z" = "z",
                 "Log odds ratio" = "log_odds")
 
 # ma_explanations <- c("")
@@ -53,7 +52,7 @@ shinyUI(
                 column(
                   width = 4,
                   selectInput("es_type", label = "Effect size type",
-                              choices = es_choices, selected = "d"),
+                              choices = es_choices, selected = "g"),
                   uiOutput("es_help_text"),
                   br(),
                   bsPopover("es_type", title = NULL,

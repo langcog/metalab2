@@ -189,10 +189,9 @@ shinyServer(function(input, output, session) {
 
   output$es_help_text <- renderUI({
     req(input$es_type)
-    es_help_texts <- c("d" = "Standardized difference between two means (or one mean and chance)",
-                       "g" = "Cohen's d corrected for small sample sizes",
+    es_help_texts <- c("g" = "Cohen's d corrected for small sample sizes",
+                       "d" = "Standardized difference between two means (or one mean and chance)",
                        "r" = "Correlation coefficient of paired data",
-                       "z" = "Correlation coefficient normalized to vary between -1 and 1",
                        "log_odds" = "Association between two categorical variables, log transformed")
     HTML(paste0("<i class=\"text-muted\">", es_help_texts[input$es_type], "</i>"))
   })
