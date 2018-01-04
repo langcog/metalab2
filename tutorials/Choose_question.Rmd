@@ -31,26 +31,29 @@ spreadsheet*](https://docs.google.com/spreadsheets/d/1mtN4g6FddpBljQzrR-mS0y414M
 Don’t forget to rename it, to give us a “viewing” link, and clean it up
 as follows.
 
-Step 1: Click on “File” and select the “Make a copy…” option
+**Step 1**: Click on “File” and select the “Make a copy…” option
 
-![](media/image04.jpg){width="4.2755686789151355in"
-height="3.2031255468066493in"}
 
-Step 2: In the window that appears, change the name to something like
+![](media/image04.jpg){width="5in"}
+
+
+**Step 2**: In the window that appears, change the name to something like
 “MA\_TOPIC"
 
-![](media/image03.jpg){width="4.588542213473316in"
-height="3.392189413823272in"}
 
-Step 3: Click on the blue button “Share” on the top right.
+![](media/image03.jpg){width="5in"}
 
-Step 4: In the ensuing menu, click on “Get shareable link” on the top
+
+**Step 3**: Click on the blue button “Share” on the top right.
+
+**Step 4**: In the menu, click on “Get shareable link” on the top
 right
 
-Step 5: Copy the link and send it to us.
+**Step 5**: Copy the link and send it to us.
 
-![](media/image05.jpg){width="5.220304024496938in"
-height="3.7343755468066493in"}
+
+![](media/image05.jpg){width="5in"}
+
 
 Step 6: Clean up
 
@@ -77,7 +80,7 @@ that you followed the procedure.
 embed_url("https://www.youtube.com/watch?feature=player_embedded&v=gk3GHT_eEI8")
 ```
 
-Probably not.In this step, you will go through the initial list you put together in
+Probably not. In this step, you will go through the initial list you put together in
 step 2, and make decisions to include/exclude papers, mostly based on
 the abstract. In addition to creating your sample for data entry (step
 4) you will start honing your *inclusion criteria*. Typically, these
@@ -109,8 +112,8 @@ instance, you could decide that you will only input data using a
 specific kind of artificial language because you know that papers not
 using this language have smaller effects. This will end up being a
 self-confirmation exercise -- unless there are a priori strong
-theoretical reasons to exclude other kinds of language /// to assume
-that the learning algorithms attributed to the infant cannot be
+theoretical reasons to exclude other kinds of language or to assume
+that the learning mechanisms attributed to the infant cannot be
 generalized to these other languages.
 
 Every time you make a decision regarding these and other key criteria,
