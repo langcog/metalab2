@@ -264,7 +264,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Hierarchical Random Effects in Meta-Analyses: Do they change stuff?</h1>
 <h4 class="author"><em>Sho Tsuji and Christina Bergmann</em></h4>
-<h4 class="date"><em>Last updated on 2018-01-03.</em></h4>
+<h4 class="date"><em>Last updated on 2018-01-04.</em></h4>
 
 </div>
 
@@ -281,23 +281,23 @@ div.tocify {
 StandardMod &lt;-<span class="st"> </span><span class="kw">rma</span>(g_calc, g_var_calc, <span class="dt">data =</span> inworddb)
 <span class="kw">summary</span>(StandardMod)</code></pre></div>
 <pre><code>## 
-## Random-Effects Model (k = 274; tau^2 estimator: REML)
+## Random-Effects Model (k = 284; tau^2 estimator: REML)
 ## 
 ##    logLik   deviance        AIC        BIC       AICc  
-## -129.0428   258.0856   262.0856   269.3045   262.1300  
+## -131.6529   263.3059   267.3059   274.5968   267.3488  
 ## 
-## tau^2 (estimated amount of total heterogeneity): 0.1013 (SE = 0.0119)
-## tau (square root of estimated tau^2 value):      0.3182
-## I^2 (total heterogeneity / total variability):   76.40%
-## H^2 (total variability / sampling variability):  4.24
+## tau^2 (estimated amount of total heterogeneity): 0.0994 (SE = 0.0114)
+## tau (square root of estimated tau^2 value):      0.3153
+## I^2 (total heterogeneity / total variability):   77.67%
+## H^2 (total variability / sampling variability):  4.48
 ## 
 ## Test for Heterogeneity: 
-## Q(df = 273) = 1050.2167, p-val &lt; .0001
+## Q(df = 283) = 1115.5134, p-val &lt; .0001
 ## 
 ## Model Results:
 ## 
 ## estimate      se    zval    pval   ci.lb   ci.ub     
-##   0.1984  0.0226  8.7628  &lt;.0001  0.1540  0.2427  ***
+##   0.1953  0.0220  8.8972  &lt;.0001  0.1523  0.2383  ***
 ## 
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
@@ -307,23 +307,23 @@ StandardMod &lt;-<span class="st"> </span><span class="kw">rma</span>(g_calc, g_
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">PerPaperMod &lt;-<span class="st"> </span><span class="kw">rma.mv</span>(g_calc, g_var_calc, <span class="dt">random =</span> <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">|</span><span class="st"> </span>short_cite, <span class="dt">data =</span> inworddb)
 <span class="kw">summary</span>(PerPaperMod)</code></pre></div>
 <pre><code>## 
-## Multivariate Meta-Analysis Model (k = 274; method: REML)
+## Multivariate Meta-Analysis Model (k = 284; method: REML)
 ## 
 ##    logLik   Deviance        AIC        BIC       AICc  
-## -238.5459   477.0919   481.0919   488.3108   481.1363  
+## -264.3840   528.7680   532.7680   540.0589   532.8109  
 ## 
 ## Variance Components: 
 ## 
 ##             estim    sqrt  nlvls  fixed      factor
-## sigma^2    0.0358  0.1892     61     no  short_cite
+## sigma^2    0.0319  0.1786     64     no  short_cite
 ## 
 ## Test for Heterogeneity: 
-## Q(df = 273) = 1050.2167, p-val &lt; .0001
+## Q(df = 283) = 1115.5134, p-val &lt; .0001
 ## 
 ## Model Results:
 ## 
 ## estimate      se    zval    pval   ci.lb   ci.ub     
-##   0.1637  0.0276  5.9399  &lt;.0001  0.1097  0.2177  ***
+##   0.1632  0.0256  6.3755  &lt;.0001  0.1130  0.2134  ***
 ## 
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
@@ -334,27 +334,27 @@ StandardMod &lt;-<span class="st"> </span><span class="kw">rma</span>(g_calc, g_
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">PerExpPaperMod &lt;-<span class="st"> </span><span class="kw">rma.mv</span>(g_calc, g_var_calc, <span class="dt">random =</span> <span class="op">~</span><span class="st"> </span><span class="kw">factor</span>(expt_num) <span class="op">|</span><span class="st">  </span>short_cite, <span class="dt">data =</span> inworddb)
 <span class="kw">summary</span>(PerExpPaperMod)</code></pre></div>
 <pre><code>## 
-## Multivariate Meta-Analysis Model (k = 274; method: REML)
+## Multivariate Meta-Analysis Model (k = 284; method: REML)
 ## 
 ##    logLik   Deviance        AIC        BIC       AICc  
-## -175.4788   350.9575   356.9575   367.7860   357.0468  
+## -200.7964   401.5927   407.5927   418.5291   407.6787  
 ## 
 ## Variance Components: 
 ## 
-## outer factor: short_cite       (nlvls = 61)
+## outer factor: short_cite       (nlvls = 64)
 ## inner factor: factor(expt_num) (nlvls = 15)
 ## 
 ##             estim    sqrt  fixed
-## tau^2      0.0650  0.2549     no
-## rho        0.1739             no
+## tau^2      0.0619  0.2489     no
+## rho        0.1663             no
 ## 
 ## Test for Heterogeneity: 
-## Q(df = 273) = 1050.2167, p-val &lt; .0001
+## Q(df = 283) = 1115.5134, p-val &lt; .0001
 ## 
 ## Model Results:
 ## 
 ## estimate      se    zval    pval   ci.lb   ci.ub     
-##   0.1694  0.0269  6.2892  &lt;.0001  0.1166  0.2222  ***
+##   0.1657  0.0257  6.4559  &lt;.0001  0.1154  0.2160  ***
 ## 
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
@@ -369,28 +369,28 @@ inworddb<span class="op">$</span>ageC &lt;-<span class="st"> </span>inworddb<spa
 StandardMod &lt;-<span class="st"> </span><span class="kw">rma</span>(g_calc, g_var_calc, <span class="dt">mod =</span> ageC, <span class="dt">data =</span> inworddb)
 <span class="kw">summary</span>(StandardMod)</code></pre></div>
 <pre><code>## 
-## Mixed-Effects Model (k = 274; tau^2 estimator: REML)
+## Mixed-Effects Model (k = 284; tau^2 estimator: REML)
 ## 
 ##    logLik   deviance        AIC        BIC       AICc  
-## -128.8720   257.7439   263.7439   274.5613   263.8335  
+## -131.4700   262.9400   268.9400   279.8657   269.0263  
 ## 
-## tau^2 (estimated amount of residual heterogeneity):     0.1017 (SE = 0.0119)
-## tau (square root of estimated tau^2 value):             0.3189
-## I^2 (residual heterogeneity / unaccounted variability): 76.45%
-## H^2 (unaccounted variability / sampling variability):   4.25
+## tau^2 (estimated amount of residual heterogeneity):     0.0998 (SE = 0.0114)
+## tau (square root of estimated tau^2 value):             0.3158
+## I^2 (residual heterogeneity / unaccounted variability): 77.70%
+## H^2 (unaccounted variability / sampling variability):   4.48
 ## R^2 (amount of heterogeneity accounted for):            0.00%
 ## 
 ## Test for Residual Heterogeneity: 
-## QE(df = 272) = 1049.3566, p-val &lt; .0001
+## QE(df = 282) = 1112.8688, p-val &lt; .0001
 ## 
 ## Test of Moderators (coefficient(s) 2): 
-## QM(df = 1) = 0.4861, p-val = 0.4857
+## QM(df = 1) = 0.5538, p-val = 0.4568
 ## 
 ## Model Results:
 ## 
 ##          estimate      se    zval    pval    ci.lb   ci.ub     
-## intrcpt    0.1985  0.0227  8.7551  &lt;.0001   0.1541  0.2430  ***
-## mods       0.0002  0.0003  0.6972  0.4857  -0.0003  0.0007     
+## intrcpt    0.1954  0.0220  8.8882  &lt;.0001   0.1523  0.2384  ***
+## mods       0.0002  0.0003  0.7442  0.4568  -0.0003  0.0007     
 ## 
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
@@ -399,27 +399,27 @@ StandardMod &lt;-<span class="st"> </span><span class="kw">rma</span>(g_calc, g_
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">PerPaperMod &lt;-<span class="st"> </span><span class="kw">rma.mv</span>(g_calc, g_var_calc, <span class="dt">mod =</span> ageC, <span class="dt">random =</span> <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">|</span><span class="st"> </span>short_cite, <span class="dt">data =</span> inworddb)
 <span class="kw">summary</span>(PerPaperMod)</code></pre></div>
 <pre><code>## 
-## Multivariate Meta-Analysis Model (k = 274; method: REML)
+## Multivariate Meta-Analysis Model (k = 284; method: REML)
 ## 
 ##    logLik   Deviance        AIC        BIC       AICc  
-## -236.5103   473.0206   479.0206   489.8380   479.1101  
+## -259.7695   519.5390   525.5390   536.4647   525.6253  
 ## 
 ## Variance Components: 
 ## 
 ##             estim    sqrt  nlvls  fixed      factor
-## sigma^2    0.0383  0.1957     61     no  short_cite
+## sigma^2    0.0368  0.1918     64     no  short_cite
 ## 
 ## Test for Residual Heterogeneity: 
-## QE(df = 272) = 1049.3566, p-val &lt; .0001
+## QE(df = 282) = 1112.8688, p-val &lt; .0001
 ## 
 ## Test of Moderators (coefficient(s) 2): 
-## QM(df = 1) = 4.7115, p-val = 0.0300
+## QM(df = 1) = 10.2251, p-val = 0.0014
 ## 
 ## Model Results:
 ## 
 ##          estimate      se    zval    pval   ci.lb   ci.ub     
-## intrcpt    0.1615  0.0283  5.7023  &lt;.0001  0.1060  0.2170  ***
-## mods       0.0005  0.0002  2.1706  0.0300  0.0000  0.0009    *
+## intrcpt    0.1601  0.0271  5.9064  &lt;.0001  0.1070  0.2132  ***
+## mods       0.0007  0.0002  3.1977  0.0014  0.0003  0.0011   **
 ## 
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
@@ -429,31 +429,31 @@ StandardMod &lt;-<span class="st"> </span><span class="kw">rma</span>(g_calc, g_
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">PerExpPaperMod &lt;-<span class="st"> </span><span class="kw">rma.mv</span>(g_calc, g_var_calc, <span class="dt">mod =</span> ageC, <span class="dt">random =</span> <span class="op">~</span><span class="st"> </span><span class="kw">factor</span>(expt_num) <span class="op">|</span><span class="st">  </span>short_cite, <span class="dt">data =</span> inworddb)
 <span class="kw">summary</span>(PerExpPaperMod)</code></pre></div>
 <pre><code>## 
-## Multivariate Meta-Analysis Model (k = 274; method: REML)
+## Multivariate Meta-Analysis Model (k = 284; method: REML)
 ## 
 ##    logLik   Deviance        AIC        BIC       AICc  
-## -174.2295   348.4591   356.4591   370.8823   356.6089  
+## -198.4568   396.9136   404.9136   419.4812   405.0580  
 ## 
 ## Variance Components: 
 ## 
-## outer factor: short_cite       (nlvls = 61)
+## outer factor: short_cite       (nlvls = 64)
 ## inner factor: factor(expt_num) (nlvls = 15)
 ## 
 ##             estim    sqrt  fixed
-## tau^2      0.0669  0.2587     no
-## rho        0.2059             no
+## tau^2      0.0647  0.2544     no
+## rho        0.2123             no
 ## 
 ## Test for Residual Heterogeneity: 
-## QE(df = 272) = 1049.3566, p-val &lt; .0001
+## QE(df = 282) = 1112.8688, p-val &lt; .0001
 ## 
 ## Test of Moderators (coefficient(s) 2): 
-## QM(df = 1) = 2.8292, p-val = 0.0926
+## QM(df = 1) = 5.1964, p-val = 0.0226
 ## 
 ## Model Results:
 ## 
-##          estimate      se    zval    pval    ci.lb   ci.ub     
-## intrcpt    0.1680  0.0278  6.0452  &lt;.0001   0.1135  0.2225  ***
-## mods       0.0004  0.0003  1.6820  0.0926  -0.0001  0.0009    .
+##          estimate      se    zval    pval   ci.lb   ci.ub     
+## intrcpt    0.1640  0.0268  6.1081  &lt;.0001  0.1114  0.2166  ***
+## mods       0.0006  0.0002  2.2796  0.0226  0.0001  0.0010    *
 ## 
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
