@@ -13,7 +13,7 @@ embed_url("https://www.youtube.com/watch?feature=player_embedded&v=Omnq13QZ-3c")
 
  
 
-Meta-analyses (MAs) can be useful for two main purposes: (1) theory building and evaluation and (2) practical decisions during study design. This section starts with some basics on why single studies might not be as reliable as an MA and then explains how exactly MAs overcome this problem. 
+Meta-analyses (MAs) can be useful for two main purposes: (1) *theory building and evaluation* and (2) *practical decisions during study design*. This section starts with some basics on why single studies might not be as reliable as an MA and then explains how exactly MAs overcome this problem. 
 
 #### Why single studies might not be as reliable as an MA ?
 When thinking about development, we often wonder which abilities infants display at what age. To this end, we regularly look at published studies that set up smart experiments to test whether infants have specific abilities, for example whether infants treat native vowels differently from non-native ones, and when that ability develops (for more details on this specific topic see <http://inphondb.acristia.org>). 
@@ -32,8 +32,8 @@ _Increasing the chance of a false positive_ can be due to a number of practices,
 
 _Biases_ are nearly omnipresent in human cognition. When we expect something to be true, we are unconsciously prone to either make it happen (think self-fulfilling prophecies) or to perceive the world so that it aligns with our expectations. Biases also might affect researchers: Random patterns can become important results (it turns out girls are able to solve this task, but boys are not!) or after months and months of running the experiment and digging through the data the original hypothesis and analysis plan are lost and the significant finding (obtained through the practices mentioned in the previous paragraph) was the thing we were looking for all along. Biases can even go so far as to make us unconsciously influence participants or results when we know the condition (for example being much more lenient with babies' looking on target when the "correct" trials are presented and being much more strict for the "incorrect" trials; looking times will systematically differ in this case). This last bias is often avoided by blinding the researcher to what is going on, but the other two are harder to avoid and require conscious efforts such as pre-registering analysis plans. 
 
-Some further reading on biases:
-* <https://explorable.com/research-bias>
+Some further reading on biases:  
+* <https://explorable.com/research-bias>  
 * <http://www.nature.com/news/how-scientists-fool-themselves-and-how-they-can-stop-1.18517>
 
 #### How exactly can MAs overcome this problem ?
