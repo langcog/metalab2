@@ -1,15 +1,16 @@
-### How should I structure the data for my MA?
+How should I structure the data for my MA?
+==============================
 
-We are hoping that eventually all of these MAs may be included in
+We are hoping that eventually all of your MAs (meta-analyses) will be included in
 [*MetaLab*](http://metalab.stanford.edu), so we ask you to use the [*MA
 template*](https://docs.google.com/spreadsheets/d/12Y_2BcFSu48t0F8a_xrY1Ro2fJoCIV1h8O627WNcrjY/edit?usp=sharing)
-(create a copy, as you did in step 1), and follow the [*field specifications*](https://langcog.github.io/metalab2/documentation.html#field_specs).
+(create a copy), and follow the [*field specifications*](https://langcog.github.io/metalab2/documentation.html#field_specs) to ensure compatibility. (Note that right now, winter 2018, these specifications are biased towards language acquisition research. If you work on another topic, we would be thrilled if you helped us expand and adapt MetaLab).
+
 Ideally, you would code all potentially relevant moderator variables
 (e.g., experimental manipulations) in addition to the core
-characteristics (columns in red; e.g. means). However, in the interest
+characteristics (columns in red; e.g., number of participants). However, in the interest
 of time, you can get started with the core characteristics only.
-Remember once more to give us viewing rights (see step 1 for
-instructions).
+Remember once more to give us viewing rights.
 
 ### What are the relevant variables for a MA, and how many input rows/columns should I make?
 ```{r libraries, include=FALSE}
@@ -130,17 +131,16 @@ We use R to calculate effect sizes. Visit <https://github.com/langcog/metalab2> 
 
 We recommend the following for an introduction to effect sizes:
 
-1\. Textbooks are great to get a basic overview of how to calculate
+1. Textbooks are great to get a basic overview of how to calculate
 effect sizes. We consulted: Lipsey, M. W. & Wilson, D. B. (2001).
 Practical meta-analysis. Thousand Oaks, CA: Sage.
 
-2\. A great primer and a spreadsheet document to calculate effect sizes
+2. A great primer and a spreadsheet document to calculate effect sizes
 by hand can be found via: D. Lakens. (2013). Calculating and Reporting
 Effect Sizes to Facilitate Cumulative Science: A Practical Primer for
-t-tests and ANOVAs . Frontiers in Psychology 4:863. Material:
-[*osf.io/ixgcd/files/*](https://osf.io/ixgcd/files/)
+t-tests and ANOVAs . Frontiers in Psychology 4:863. [Materials on OSF](https://osf.io/ixgcd/files/)
 
-3\. Since textbooks do not cover every possible question that different
+3. Since textbooks do not cover every possible question that different
 meta-analysts may encounter, we turned to articles for more specific
 questions. We found this article useful for considering the
 comparability of effect sizes from within- and between-participant
