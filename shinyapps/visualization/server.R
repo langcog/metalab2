@@ -105,11 +105,11 @@ shinyServer(function(input, output, session) {
       if (input$ma_method == "REML_mv") {
         metafor::rma.mv(rma_formula, V = mod_data()[[es_var()]],
                         random = ~ 1 | short_cite,
-                        slab = short_cite, data = mod_data(),
+                        slab = make.unique(short_cite), data = mod_data(),
                         method = "REML")
       } else {
         metafor::rma(rma_formula, vi = mod_data()[[es_var()]],
-                     slab = short_cite, data = mod_data(),
+                     slab = make.unique(short_cite), data = mod_data(),
                      method = input$ma_method)
       }
     }
@@ -119,11 +119,11 @@ shinyServer(function(input, output, session) {
     if (input$ma_method == "REML_mv") {
       metafor::rma.mv(yi = data()[[es()]], V = data()[[es_var()]],
                       random = ~ 1 | data()[["short_cite"]],
-                      slab = data()[["short_cite"]],
+                      slab = make.unique(data()[["short_cite"]]),
                       method = "REML")
     } else {
       metafor::rma(yi = data()[[es()]], vi = data()[[es_var()]],
-                   slab = data()[["short_cite"]],
+                   slab = make.unique(data()[["short_cite"]]),
                    method = input$ma_method)
 
     }
@@ -356,9 +356,6 @@ shinyServer(function(input, output, session) {
       arrange_(.dots = list(sprintf("desc(%s)", input$forest_sort),
                             "desc(effects)")) %>%
       mutate(short_cite = factor(short_cite, levels = short_cite))
-
-    # some values in all_mod are <NA> because of the join
-    forest_data$all_mod <- ""
 
     labels <- if (mod_group() == "all_mod") NULL else
       setNames(paste(mod_data()[[mod_group()]], "  "),
