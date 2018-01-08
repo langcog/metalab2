@@ -137,7 +137,9 @@ tidy_dataset <- function(dataset_meta, dataset_contents) {
     rowwise() %>%
     mutate(mean_age = weighted.mean(c(mean_age_1, mean_age_2), c(n_1, n_2),
                                     na.rm = TRUE),
-           n = mean(c(n_1, n_2), na.rm = TRUE)) %>%
+           n = mean(c(n_1, n_2), na.rm = TRUE),
+           same_infant_calc = paste(study_ID,same_infant)) %>%
+    add_rownames("unique_row") %>%
     ungroup()
 
 }

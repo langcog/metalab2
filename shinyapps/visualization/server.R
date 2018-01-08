@@ -104,7 +104,8 @@ shinyServer(function(input, output, session) {
       rma_formula <- as.formula(sprintf("%s ~ %s", es(), mods))
       if (input$ma_method == "REML_mv") {
         metafor::rma.mv(rma_formula, V = mod_data()[[es_var()]],
-                        random = ~ 1 | short_cite,
+                        #random = ~ 1 | short_cite,
+                        random = ~  same_infant_calc | short_cite/unique_row,
                         slab = make.unique(short_cite), data = mod_data(),
                         method = "REML")
       } else {
@@ -118,7 +119,8 @@ shinyServer(function(input, output, session) {
   no_mod_model <- reactive({
     if (input$ma_method == "REML_mv") {
       metafor::rma.mv(yi = data()[[es()]], V = data()[[es_var()]],
-                      random = ~ 1 | data()[["short_cite"]],
+                      #random = ~ 1 | data()[["short_cite"]],
+                      random = ~  data()[["same_infant_calc"]]|  data()[["short_cite"]]/data()[["unique_row"]],
                       slab = make.unique(data()[["short_cite"]]),
                       method = "REML")
     } else {
