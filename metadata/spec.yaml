@@ -741,3 +741,25 @@
   format:	
   example:      
   required:     no
+  
+- field:	label_present
+  description:  categorization bias MA - Is there a label in the categorization question? (e.g. "find another dax" vs. "find another one")
+  type:		numeric
+  format:	
+  example:      
+  required:     no
+  
+- field:	instruction_code
+  description:  categorization bias - What language was used in the categorization question?
+  type:		string
+  format:	
+  example:  e.g., goes with, another, best with, etc.    
+  required:     no
+ 
+ - field:	taxonomic_type
+  description:  categorization bias - What is the semantic level of the categorization judgement?
+  type:		string
+  format:	
+  example: e.g., superordinate, basic, etc. 
+  required:     no
+  
