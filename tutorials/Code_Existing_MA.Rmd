@@ -37,6 +37,7 @@ Follow these steps to convert your data:
 7. Copy the first column of the “InterimData” in the “Data” tab. Then edit each cell to match the data format specified in the “CodeBook” tab.  
 
 If you work from your paper, you may have an appendix or a table for each of your moderators. In this case, take them one by one and follow these steps:  
+
 1. Create a tab and copy-paste your appendix or table there. Check that the content of your appendix hasn’t been messed up when pasting. Rename the tab with the name of your moderator.
 2. Edit the data to have one row per effect size. 
 3. If you have several tables/appendix, repeat step 1-2 for each of them.
