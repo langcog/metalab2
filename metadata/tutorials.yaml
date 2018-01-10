@@ -1,17 +1,17 @@
 - id: why_do_a_MA
-  title: Why do a meta-analysis?
+  title: Rational
   
 - id: Effect_sizes
-  title: What are effect sizes?
+  title: Effect sizes
 
 - id: Choose_question
-  title: Choosing the right MA question
+  title: MA question
 
 - id: choosing_records
-  title: How do I select the studies to include?
+  title: Selecting studies
 
 - id: coding_MA
-  title: How should I structure the data for my MA?
+  title: Structuring the data
 
 #old version of the tutorial, now segmented into choose_question, choosing_records, and coding_MA
 #- id:     building_ma
@@ -22,4 +22,4 @@
 #  title:  How to contribute
   
 - id: Code_Existing_MA
-  title: How to code your existing meta-analysis in the MetaLab format
+  title: Coding existing MA
