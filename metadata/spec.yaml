@@ -756,7 +756,7 @@
   example:  e.g., goes with, another, best with, etc.    
   required:     no
  
- - field:	taxonomic_type
+- field:	taxonomic_type
   description:  categorization bias - What is the semantic level of the categorization judgement?
   type:		string
   format:	
