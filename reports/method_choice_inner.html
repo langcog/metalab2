@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Molly Lewis" />
+
+
+<title>Design Choice Analyses</title>
+
+<script src="method_choice_inner_files/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="method_choice_inner_files/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="method_choice_inner_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="method_choice_inner_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="method_choice_inner_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="method_choice_inner_files/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="method_choice_inner_files/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="method_choice_inner_files/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="method_choice_inner_files/navigation-1.1/tabsets.js"></script>
+<script src="method_choice_inner_files/navigation-1.1/codefolding.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+div.sourceCode {
+  overflow-x: visible;
+}
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Design Choice Analyses</h1>
+<h4 class="author"><em>Molly Lewis</em></h4>
+<h4 class="date"><em>Last updated on 2018-01-12.</em></h4>
+
+</div>
+
+
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>The research question determines many design choices in developmental research – e.g., is the hypothesis related to the timecourse of various pressures, or merely the presence of a bias? Some methods are better suited than others for answering these different questions. But, design choices can also influence the <em>size</em> of the effect: Some methods are less noisy than others, and therefore result in larger effects sizes. The size of the effect may further depend on the particular age of the child in a study, with some methods better suited to different age groups. Here we look across datasets in Metalab at four design choices – method, response mode, depenedent measure, and experimental design – and their relationship to effect sizes, and other variables of interest.</p>
+<p>This report includes effect sizes for participants 60 months or younger.</p>
+</div>
+<div id="data-available-for-each-design-choice-variable" class="section level2">
+<h2>Data available for each design choice variable</h2>
+<p>Method</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">all_data &lt;-<span class="st"> </span>all_data <span class="op">%&gt;%</span>
+<span class="st">            </span><span class="kw">filter</span>(mean_age_months <span class="op">&lt;=</span><span class="st"> </span><span class="dv">60</span>)
+
+all_data<span class="op">$</span>method =<span class="st"> </span><span class="kw">as.factor</span>(all_data<span class="op">$</span>method)
+method.pd =<span class="st"> </span>all_data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(method, dataset) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(<span class="kw">n</span>() <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>())
+
+<span class="kw">ggplot</span>(method.pd, <span class="kw">aes</span>(<span class="dt">y =</span> n, <span class="dt">fill =</span> dataset, <span class="dt">x =</span> method)) <span class="op">+</span><span class="st"> </span>
+<span class="st">         </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span>
+<span class="st">         </span><span class="kw">xlab</span>(<span class="st">&quot;method&quot;</span>) <span class="op">+</span>
+<span class="st">         </span><span class="kw">ylab</span>(<span class="st">&quot;N effect sizes&quot;</span>) <span class="op">+</span>
+<span class="st">         </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> .<span class="dv">5</span>)) <span class="op">+</span>
+<span class="st">        </span><span class="kw">guides</span>(<span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">ncol=</span><span class="dv">2</span>))</code></pre></div>
+<p><img src="method_choice_inner_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>Response Mode</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">all_data<span class="op">$</span>response_mode =<span class="st"> </span><span class="kw">as.factor</span>(all_data<span class="op">$</span>response_mode)
+
+response.pd =<span class="st"> </span>all_data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(response_mode, dataset) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>())
+
+<span class="kw">ggplot</span>(response.pd, <span class="kw">aes</span>(<span class="dt">y =</span> n, <span class="dt">fill =</span> dataset, <span class="dt">x =</span> response_mode)) <span class="op">+</span><span class="st"> </span>
+<span class="st">         </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span>
+<span class="st">         </span><span class="kw">xlab</span>(<span class="st">&quot;response mode&quot;</span>) <span class="op">+</span>
+<span class="st">         </span><span class="kw">ylab</span>(<span class="st">&quot;N effect sizes&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span> (<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> .<span class="dv">5</span>)) <span class="op">+</span>
+<span class="st">        </span><span class="kw">guides</span>(<span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">ncol=</span><span class="dv">2</span>))</code></pre></div>
+<p><img src="method_choice_inner_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>Dependent Measure</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">all_data<span class="op">$</span>dependent_measure=<span class="st"> </span><span class="kw">as.factor</span>(all_data<span class="op">$</span>dependent_measure)
+dm.pd =<span class="st"> </span>all_data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(dependent_measure, dataset) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>())
+
+<span class="kw">ggplot</span>(dm.pd, <span class="kw">aes</span>(<span class="dt">y =</span> n, <span class="dt">fill =</span> dataset, <span class="dt">x =</span> dependent_measure)) <span class="op">+</span><span class="st"> </span>
+<span class="st">         </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span>
+<span class="st">         </span><span class="kw">xlab</span>(<span class="st">&quot;method&quot;</span>) <span class="op">+</span>
+<span class="st">         </span><span class="kw">ylab</span>(<span class="st">&quot;N effect sizes&quot;</span>) <span class="op">+</span>
+<span class="st">         </span><span class="kw">theme</span> (<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> .<span class="dv">5</span>)) <span class="op">+</span>
+<span class="st">        </span><span class="kw">guides</span>(<span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">ncol=</span><span class="dv">2</span>))</code></pre></div>
+<p><img src="method_choice_inner_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Participant design</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">all_data<span class="op">$</span>participant_design =<span class="st"> </span><span class="kw">as.factor</span>(all_data<span class="op">$</span>participant_design)
+participant_design.pd =<span class="st"> </span>all_data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(participant_design, dataset) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>())
+
+<span class="kw">ggplot</span>(participant_design.pd, <span class="kw">aes</span>(<span class="dt">y =</span> n, <span class="dt">fill =</span> dataset, <span class="dt">x =</span> participant_design)) <span class="op">+</span><span class="st"> </span>
+<span class="st">         </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span>
+<span class="st">         </span><span class="kw">xlab</span>(<span class="st">&quot;participant design&quot;</span>) <span class="op">+</span>
+<span class="st">         </span><span class="kw">ylab</span>(<span class="st">&quot;N effect sizes&quot;</span>) <span class="op">+</span>
+<span class="st">      </span><span class="kw">theme</span> (<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> .<span class="dv">5</span>)) <span class="op">+</span><span class="st"> </span>
+<span class="st">        </span><span class="kw">guides</span>(<span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">ncol=</span><span class="dv">2</span>))</code></pre></div>
+<p><img src="method_choice_inner_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<div id="design-choice-variables-by-age" class="section level2">
+<h2>Design choice variables by age</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">age.response_mode.pd =<span class="st"> </span>all_data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">mean_age_months_rounded =</span> <span class="kw">cut_width</span>(mean_age_months,  <span class="dt">width =</span> <span class="dv">3</span>, <span class="dt">boundary =</span> <span class="dv">0</span>))  <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(mean_age_months_rounded, response_mode) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prop =</span> n <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(n))
+
+<span class="kw">ggplot</span>(age.response_mode.pd, <span class="kw">aes</span>(<span class="dt">x =</span> mean_age_months_rounded, <span class="dt">y =</span> prop, <span class="dt">color =</span> response_mode)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group =</span> response_mode)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">xlab</span>(<span class="st">&quot;Age (months)&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span> (<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> .<span class="dv">5</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Response Mode&quot;</span>)</code></pre></div>
+<p><img src="method_choice_inner_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(age.response_mode.pd, <span class="kw">aes</span>(<span class="dt">x =</span> mean_age_months_rounded, <span class="dt">y =</span> n, <span class="dt">color =</span> response_mode)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group =</span> response_mode)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">xlab</span>(<span class="st">&quot;Age (months)&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span> (<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> .<span class="dv">5</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Response Mode&quot;</span>)</code></pre></div>
+<p><img src="method_choice_inner_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">age.method.pd =<span class="st"> </span>all_data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">mean_age_months_rounded =</span> <span class="kw">cut_width</span>(mean_age_months,  <span class="dt">width =</span> <span class="dv">3</span>, <span class="dt">boundary =</span> <span class="dv">0</span>))  <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(mean_age_months_rounded, method) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prop =</span> n <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(n))
+
+<span class="kw">ggplot</span>(age.method.pd, <span class="kw">aes</span>(<span class="dt">x =</span> mean_age_months_rounded, <span class="dt">y =</span> prop, <span class="dt">color =</span> method)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group =</span> method)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">xlab</span>(<span class="st">&quot;Age (months)&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span> (<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> .<span class="dv">5</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Method&quot;</span>)</code></pre></div>
+<p><img src="method_choice_inner_files/figure-html/unnamed-chunk-5-3.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(age.method.pd, <span class="kw">aes</span>(<span class="dt">x =</span> mean_age_months_rounded, <span class="dt">y =</span> n, <span class="dt">color =</span> method)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group =</span> method)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">xlab</span>(<span class="st">&quot;Age (months)&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span> (<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> .<span class="dv">5</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Method&quot;</span>)</code></pre></div>
+<p><img src="method_choice_inner_files/figure-html/unnamed-chunk-5-4.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">age.dm.pd =<span class="st"> </span>all_data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">mean_age_months_rounded =</span> <span class="kw">cut_width</span>(mean_age_months,  <span class="dt">width =</span> <span class="dv">3</span>, <span class="dt">boundary =</span> <span class="dv">0</span>))  <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(mean_age_months_rounded, dependent_measure) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prop =</span> n <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(n))
+
+<span class="kw">ggplot</span>(age.dm.pd, <span class="kw">aes</span>(<span class="dt">x =</span> mean_age_months_rounded, <span class="dt">y =</span> prop, <span class="dt">color =</span> dependent_measure)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group =</span> dependent_measure)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">xlab</span>(<span class="st">&quot;Age (months)&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span> (<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> .<span class="dv">5</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Dependent Measure&quot;</span>)</code></pre></div>
+<p><img src="method_choice_inner_files/figure-html/unnamed-chunk-5-5.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(age.dm.pd, <span class="kw">aes</span>(<span class="dt">x =</span> mean_age_months_rounded, <span class="dt">y =</span> n, <span class="dt">color =</span> dependent_measure)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group =</span> dependent_measure)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">xlab</span>(<span class="st">&quot;Age (months)&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span> (<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> .<span class="dv">5</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Dependent Measure&quot;</span>)</code></pre></div>
+<p><img src="method_choice_inner_files/figure-html/unnamed-chunk-5-6.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">age.pd.pd =<span class="st"> </span>all_data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">mean_age_months_rounded =</span> <span class="kw">cut_width</span>(mean_age_months,  <span class="dt">width =</span> <span class="dv">3</span>, <span class="dt">boundary =</span> <span class="dv">0</span>))  <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(mean_age_months_rounded, participant_design) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prop =</span> n <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(n))
+
+<span class="kw">ggplot</span>(age.pd.pd, <span class="kw">aes</span>(<span class="dt">x =</span> mean_age_months_rounded, <span class="dt">y =</span> prop, <span class="dt">color =</span> participant_design)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group =</span> participant_design)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Age (months)&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span> (<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> .<span class="dv">5</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Participant Design&quot;</span>)</code></pre></div>
+<p><img src="method_choice_inner_files/figure-html/unnamed-chunk-5-7.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(age.pd.pd, <span class="kw">aes</span>(<span class="dt">x =</span> mean_age_months_rounded, <span class="dt">y =</span> n, <span class="dt">color =</span> participant_design)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group =</span> participant_design)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">xlab</span>(<span class="st">&quot;Age (months)&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span> (<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> .<span class="dv">5</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Participant Design&quot;</span>)</code></pre></div>
+<p><img src="method_choice_inner_files/figure-html/unnamed-chunk-5-8.png" width="672" /></p>
+</div>
+<div id="effect-size-by-design-choice-variables" class="section level2">
+<h2>Effect size by design choice variables</h2>
+<div id="by-dataset" class="section level3">
+<h3>By dataset</h3>
+<p>Get residual effect size, controling for age and phenonmenon</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">full.model =<span class="st"> </span><span class="kw">rma</span>(d_calc <span class="op">~</span><span class="st"> </span>dataset <span class="op">+</span><span class="st"> </span>mean_age_<span class="dv">1</span>, 
+        <span class="dt">vi =</span> d_var_calc, <span class="dt">data =</span> all_data, <span class="dt">method =</span> <span class="st">&quot;REML&quot;</span>)
+
+residuals =<span class="st"> </span><span class="kw">rstandard</span>(full.model)
+
+all_data =<span class="st"> </span>all_data <span class="op">%&gt;%</span>
+<span class="st">            </span><span class="kw">bind_cols</span>(<span class="kw">as.data.frame</span>(residuals<span class="op">$</span>resid),
+                      <span class="kw">as.data.frame</span>(residuals<span class="op">$</span>z)) <span class="op">%&gt;%</span>
+<span class="st">            </span><span class="kw">rename</span>(<span class="dt">residual.d =</span> <span class="st">`</span><span class="dt">residuals$resid</span><span class="st">`</span>, 
+                   <span class="dt">residual.d.s =</span> <span class="st">`</span><span class="dt">residuals$z</span><span class="st">`</span>) <span class="co"># standardized</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">method.pd =<span class="st"> </span>all_data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(method, dataset) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">residual.d =</span> <span class="kw">mean</span>(residual.d),
+            <span class="dt">n =</span> <span class="kw">n</span>())
+
+<span class="kw">ggplot</span>(method.pd, <span class="kw">aes</span>(<span class="dt">x =</span> method, <span class="dt">y =</span> residual.d, <span class="dt">color =</span> dataset)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">size =</span> n)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group =</span> dataset)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span> (<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> .<span class="dv">5</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Method&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">guides</span>(<span class="dt">colour=</span><span class="kw">guide_legend</span>(<span class="dt">ncol=</span><span class="dv">2</span>))</code></pre></div>
+<p><img src="method_choice_inner_files/figure-html/unnamed-chunk-7-1.png" width="960" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">response.pd =<span class="st"> </span>all_data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(response_mode, dataset) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">residual.d =</span> <span class="kw">mean</span>(residual.d),
+            <span class="dt">n =</span> <span class="kw">n</span>())
+
+<span class="kw">ggplot</span>(response.pd, <span class="kw">aes</span>(<span class="dt">x =</span> response_mode, <span class="dt">y =</span> residual.d, <span class="dt">color =</span> dataset)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">size =</span> n)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group =</span> dataset)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span> (<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> .<span class="dv">5</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Response Mode&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">guides</span>(<span class="dt">colour=</span><span class="kw">guide_legend</span>(<span class="dt">ncol=</span><span class="dv">2</span>))</code></pre></div>
+<p><img src="method_choice_inner_files/figure-html/unnamed-chunk-7-2.png" width="960" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dm.pd =<span class="st"> </span>all_data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(dependent_measure, dataset) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">residual.d =</span> <span class="kw">mean</span>(residual.d),
+            <span class="dt">n =</span> <span class="kw">n</span>())
+
+<span class="kw">ggplot</span>(dm.pd, <span class="kw">aes</span>(<span class="dt">x =</span> dependent_measure, <span class="dt">y =</span> residual.d, <span class="dt">color =</span> dataset)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">size =</span> n)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group =</span> dataset)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span> (<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> .<span class="dv">5</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Dependent Measure&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">guides</span>(<span class="dt">colour=</span><span class="kw">guide_legend</span>(<span class="dt">ncol=</span><span class="dv">2</span>))</code></pre></div>
+<p><img src="method_choice_inner_files/figure-html/unnamed-chunk-7-3.png" width="960" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">participant_design.pd =<span class="st"> </span>all_data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(participant_design, dataset) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">residual.d =</span> <span class="kw">mean</span>(residual.d),
+            <span class="dt">n =</span> <span class="kw">n</span>())
+
+<span class="kw">ggplot</span>(participant_design.pd, <span class="kw">aes</span>(<span class="dt">x =</span> participant_design, <span class="dt">y =</span> residual.d, <span class="dt">color =</span> dataset)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">size =</span> n)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group =</span> dataset)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span> (<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> .<span class="dv">5</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Participant Design&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">guides</span>(<span class="dt">colour=</span><span class="kw">guide_legend</span>(<span class="dt">ncol=</span><span class="dv">2</span>))</code></pre></div>
+<p><img src="method_choice_inner_files/figure-html/unnamed-chunk-7-4.png" width="960" /></p>
+</div>
+<div id="across-datasets" class="section level3">
+<h3>Across datasets</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">method.pd.all =<span class="st"> </span>all_data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(method) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">multi_boot_standard</span>(<span class="dt">col =</span> <span class="st">&quot;residual.d&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">method =</span> <span class="kw">reorder</span>(method, mean))
+
+<span class="kw">ggplot</span>(method.pd.all, <span class="kw">aes</span>(<span class="dt">x =</span> method, <span class="dt">y =</span> mean, <span class="dt">fill =</span> method)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position=</span><span class="st">&quot;dodge&quot;</span>, <span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="op">+</span><span class="st">  </span>
+<span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> ci_lower, <span class="dt">ymax=</span> ci_upper), 
+                <span class="dt">width=</span><span class="fl">0.2</span>, <span class="dt">position=</span><span class="st">&quot;dodge&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;residual effect size&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;method&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> .<span class="dv">5</span>)) </code></pre></div>
+<p><img src="method_choice_inner_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">response.pd.all =<span class="st"> </span>all_data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(response_mode) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">multi_boot_standard</span>(<span class="dt">col =</span> <span class="st">&quot;residual.d&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">response_mode =</span> <span class="kw">reorder</span>(response_mode, mean)) 
+
+<span class="kw">ggplot</span>(response.pd.all, <span class="kw">aes</span>(<span class="dt">x =</span> response_mode, <span class="dt">y =</span> mean, <span class="dt">fill =</span> response_mode)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position=</span><span class="st">&quot;dodge&quot;</span>, <span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="op">+</span><span class="st">  </span>
+<span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> ci_lower, <span class="dt">ymax=</span> ci_upper), 
+                <span class="dt">width=</span><span class="fl">0.2</span>, <span class="dt">position=</span><span class="st">&quot;dodge&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;residual effect size&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;response mode&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> .<span class="dv">5</span>)) </code></pre></div>
+<p><img src="method_choice_inner_files/figure-html/unnamed-chunk-8-2.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dm.pd.all =<span class="st"> </span>all_data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(dependent_measure) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">multi_boot_standard</span>(<span class="dt">col =</span> <span class="st">&quot;residual.d&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">dependent_measure =</span> <span class="kw">reorder</span>(dependent_measure, mean))
+
+<span class="kw">ggplot</span>(dm.pd.all, <span class="kw">aes</span>(<span class="dt">x =</span>dependent_measure, <span class="dt">y =</span> mean, <span class="dt">fill =</span> dependent_measure)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position=</span><span class="st">&quot;dodge&quot;</span>, <span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="op">+</span><span class="st">  </span>
+<span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> ci_lower, <span class="dt">ymax=</span> ci_upper), 
+                <span class="dt">width=</span><span class="fl">0.2</span>, <span class="dt">position=</span><span class="st">&quot;dodge&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;residual effect size&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;dependent measure&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span> (<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> .<span class="dv">5</span>)) </code></pre></div>
+<p><img src="method_choice_inner_files/figure-html/unnamed-chunk-8-3.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">participant_design.pd.all =<span class="st"> </span>all_data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(participant_design) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">multi_boot_standard</span>(<span class="dt">col =</span> <span class="st">&quot;residual.d&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">participant_design =</span> <span class="kw">reorder</span>(participant_design, mean))
+
+<span class="kw">ggplot</span>(participant_design.pd.all, 
+       <span class="kw">aes</span>(<span class="dt">x =</span> participant_design, <span class="dt">y =</span> mean, <span class="dt">fill =</span> participant_design)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position=</span><span class="st">&quot;dodge&quot;</span>, <span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="op">+</span><span class="st">  </span>
+<span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> ci_lower, <span class="dt">ymax =</span> ci_upper), 
+                <span class="dt">width=</span><span class="fl">0.2</span>, <span class="dt">position=</span><span class="st">&quot;dodge&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;residual effect size&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;participant design&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span> (<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> .<span class="dv">5</span>)) </code></pre></div>
+<p><img src="method_choice_inner_files/figure-html/unnamed-chunk-8-4.png" width="672" /></p>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
