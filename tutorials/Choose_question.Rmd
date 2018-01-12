@@ -9,6 +9,7 @@ library("vembedr")
 
 ```{r video 1, echo = FALSE}
 embed_youtube("0TVSjaRsfGU",width = 560, height = 315, frameborder = 0, allowfullscreen = FALSE, query = NULL)
+```
 
 Choose the appropriate level of detail for your MA topic. The topic of your meta-analysis should be broader than the one of a single experiment (e.g. "How do babies segment words of different stress patterns? "), but narrower than a whole research field (e.g. "How do babies learn language? "). The goal is to be able to gather comparable papers, measuring consistant dependant variables, to allow you to compute a common statistical metric (i.e. effect size) from them.
 
