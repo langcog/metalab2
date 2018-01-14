@@ -8,7 +8,8 @@ library("vembedr")
 ```
 
 ```{r video 1, echo = FALSE}
-embed_url("https://www.youtube.com/watch?feature=player_embedded&v=Omnq13QZ-3c")
+#embed_url("https://www.youtube.com/watch?feature=player_embedded&v=Omnq13QZ-3c")
+embed_youtube("Omnq13QZ-3c", width = 400)
 ```
 
  

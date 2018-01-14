@@ -10,10 +10,10 @@ menuNavbar()
 tutorials <-  yaml::yaml.load_file("../metadata/tutorials.yaml")
 
  fluidRow(
-   column(width = 8,
+   column(width = 10,
       h1("Tutorials", class = "header-with-tab"),
       do.call(tabBox, c(
-        width = 8,
+        width = 10,
         purrr::map(
           tutorials, ~ tabPanel(.$title, includeRmd(paste0("../tutorials/", .$id, ".Rmd")), value = .$id)
           ))
