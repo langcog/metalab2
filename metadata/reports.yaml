@@ -3,5 +3,8 @@
   
 - id:     hierarchicalrandomeffect
   title:  Hierarchical random effects
+
+- id:     method_choice
+  title:  Method selection
   
   

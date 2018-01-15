@@ -14,6 +14,8 @@ Except where noted, formulas are from [Hedges & Olkin's textbook](http://www.ama
 
 ## Statistical Models
 
-The visualizations page uses a standard random effects meta-analysis as the default, but allows several other models (all available in the `rma` function of `metafor`). 
+The visualizations page uses a multi-level random effects meta-analysis ( `rma.mv` function of `metafor`).
+Random-effect models assume that the true effect can vary between different studies, and therefore allow
+random effects for each data point. The model also specifies random effects on the level of each paper, since studies within a paper can be assumed to be more similar to each other than to studies from different papers. In addition, we allow correlated random effects within each paper to account for cases where the same infants contributed data to multiple rows. 
 
-For many analyses, the use of a multi-level approach (with grouping by paper) is useful, and may make a difference to results. We have not made this multi-level model the default, for two reasons. First, the approach will be unfamiliar to many users. Second, many common statistics are not implemented for this model, e.g. $\tau^2$ and the test for funnel-plot asymmetry. 
+The meta-analytic models are accessible in the script [`server.R`](https://github.com/langcog/metalab2/tree/master/shinyapps/visualization/server.R)
