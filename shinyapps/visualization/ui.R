@@ -1,9 +1,9 @@
 library(metafor)
 
-ma_choices <- c("Multi-level random effects with study grouping" = "REML_mv",
-                "Random effects" = "REML",
-                "Fixed effects" = "FE",
-                "Empirical bayes" = "EB")
+ma_choices <- c("Multi-level random effects with study grouping" = "REML_mv")
+                # "Random effects" = "REML",
+                # "Fixed effects" = "FE",
+                # "Empirical bayes" = "EB")
 
 scatter_choices <- c("Locally-linear regression (loess)" = "loess",
                      "Weighted linear model (lm)" = "lm")
