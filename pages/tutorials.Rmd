@@ -8,17 +8,19 @@ menuNavbar()
 
 ```{r echo=FALSE, warning=FALSE}
 tutorials <-  yaml::yaml.load_file("../metadata/tutorials.yaml")
+header <- "Tutorials"
+content <-  do.call(tabBox, c(width = 12,purrr::map(
+                                tutorials, ~ tabPanel(.$title, includeRmd(paste0("../tutorials/", .$id, ".Rmd")), value = .$id))))
 
- fluidRow(
-   column(width = 12,
-      h1("Tutorials", class = "header-with-tab"),
-      do.call(tabBox, c(
-        width = 12,
-        purrr::map(
-          tutorials, ~ tabPanel(.$title, includeRmd(paste0("../tutorials/", .$id, ".Rmd")), value = .$id)
-          ))
-        )
-        )
- )
+fluidRow(
+    column(width = 2),
+    column(width = 8,
+           fluidRow(style = "border-color: #dd4b39;",
+                    div(h3(header)),
+                    div(style = "color: #444;", content)
+           )
+    ),
+    column(width = 2)
+  )
 ```
 
