@@ -182,8 +182,8 @@ shinyServer(function(input, output, session) {
 
   output$ma_help_text <- renderUI({
     req(input$ma_method)
-    ma_help_texts <- c("REML" = "Assumes that true effect can vary between studies",
-                       "REML_mv" = "Random effects model assuming studies within a paper share variance",
+    ma_help_texts <- c("REML_mv" = "Random effects model assuming studies within a paper share variance",
+                       "REML" = "Assumes that true effect can vary between studies",
                        "FE" = "Assumes that all studies measure one true effect",
                        "EB" = "Estimates prior distribution of effect sizes")
     HTML(paste0("<i class=\"text-muted\">", ma_help_texts[input$ma_method], "</i>"))

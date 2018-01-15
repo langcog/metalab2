@@ -1,7 +1,7 @@
 library(metafor)
 
-ma_choices <- c("Random effects" = "REML",
-                "Multi-level random effects with study grouping" = "REML_mv",
+ma_choices <- c("Multi-level random effects with study grouping" = "REML_mv",
+                "Random effects" = "REML",
                 "Fixed effects" = "FE",
                 "Empirical bayes" = "EB")
 
@@ -42,7 +42,7 @@ shinyUI(
               uiOutput("link_to_dataset"),
               br(),
               selectInput("ma_method", label = "Meta-analytic model",
-                          choices = ma_choices, selected = "REML"),
+                          choices = ma_choices, selected = "REML_mv"),
               uiOutput("ma_help_text"),
               br(),
               bsPopover("ma_method", title = NULL,
