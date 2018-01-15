@@ -82,3 +82,9 @@ drv_table <- make_datatable(fields_derived)
 ## Derived fields 
 `r drv_table`
 
+<script>
+  $(window).on('hashchange', function() {
+    if (window.location.hash.indexOf("field_specs") > 0) { window.location.reload(); }
+  });
+</script>
+

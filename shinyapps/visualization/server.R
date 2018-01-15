@@ -10,6 +10,7 @@ shinyServer(function(input, output, session) {
   # MODELS AND REACTIVES
 
   ########### DATA ###########
+  ma_method <- "REML_mv"
 
   categorical_mods <- reactive({
     if (is.null(input$moderators)) {
@@ -102,7 +103,7 @@ shinyServer(function(input, output, session) {
     } else {
       mods <- paste(input$moderators, collapse = "+")
       rma_formula <- as.formula(sprintf("%s ~ %s", es(), mods))
-      if (input$ma_method == "REML_mv") {
+      if (ma_method == "REML_mv") {
         metafor::rma.mv(rma_formula, V = mod_data()[[es_var()]],
                         #random = ~ 1 | short_cite,
                         random = ~  same_infant_calc | short_cite/unique_row,
@@ -111,13 +112,13 @@ shinyServer(function(input, output, session) {
       } else {
         metafor::rma(rma_formula, vi = mod_data()[[es_var()]],
                      slab = make.unique(short_cite), data = mod_data(),
-                     method = input$ma_method)
+                     method = ma_method)
       }
     }
   })
 
   no_mod_model <- reactive({
-    if (input$ma_method == "REML_mv") {
+    if (ma_method == "REML_mv") {
       metafor::rma.mv(yi = data()[[es()]], V = data()[[es_var()]],
                       #random = ~ 1 | data()[["short_cite"]],
                       random = ~  data()[["same_infant_calc"]]|  data()[["short_cite"]]/data()[["unique_row"]],
@@ -126,7 +127,7 @@ shinyServer(function(input, output, session) {
     } else {
       metafor::rma(yi = data()[[es()]], vi = data()[[es_var()]],
                    slab = make.unique(data()[["short_cite"]]),
-                   method = input$ma_method)
+                   method = ma_method)
 
     }
   })
@@ -166,6 +167,12 @@ shinyServer(function(input, output, session) {
                 View raw dataset</a></i>"))
   })
 
+  output$ma_model_blurb <- renderUI({
+    HTML(paste0("Random effects model assuming studies within a paper share variance. For details, see
+                <a href='https://metalab.stanford.edu/documentation.html#statistical_approach' target='_blank'>
+                Statistical Approach</a>."))
+  })
+
   output$moderator_input <- renderUI({
     req(input$dataset_name)
     custom_mods <- datasets %>%
@@ -181,12 +188,12 @@ shinyServer(function(input, output, session) {
   })
 
   output$ma_help_text <- renderUI({
-    req(input$ma_method)
-    ma_help_texts <- c("REML" = "Assumes that true effect can vary between studies",
-                       "REML_mv" = "Random effects model assuming studies within a paper share variance",
+    req(ma_method)
+    ma_help_texts <- c("REML_mv" = "Random effects model assuming studies within a paper share variance",
+                       "REML" = "Assumes that true effect can vary between studies",
                        "FE" = "Assumes that all studies measure one true effect",
                        "EB" = "Estimates prior distribution of effect sizes")
-    HTML(paste0("<i class=\"text-muted\">", ma_help_texts[input$ma_method], "</i>"))
+    HTML(paste0("<i class=\"text-muted\">", ma_help_texts[ma_method], "</i>"))
   })
 
   output$es_help_text <- renderUI({
@@ -230,7 +237,7 @@ shinyServer(function(input, output, session) {
   })
 
   output$viz_boxes <- renderUI({
-    if (!input$ma_method == "REML_mv") {
+    if (!ma_method == "REML_mv") {
       list(
         valueBoxOutput("studies_box", width = 3),
         valueBoxOutput("effect_size_box", width = 3),

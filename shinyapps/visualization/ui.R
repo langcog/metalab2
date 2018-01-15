@@ -1,9 +1,9 @@
 library(metafor)
 
-ma_choices <- c("Random effects" = "REML",
-                "Multi-level random effects with study grouping" = "REML_mv",
-                "Fixed effects" = "FE",
-                "Empirical bayes" = "EB")
+ma_choices <- c("Multi-level random effects with study grouping" = "REML_mv")
+                # "Random effects" = "REML",
+                # "Fixed effects" = "FE",
+                # "Empirical bayes" = "EB")
 
 scatter_choices <- c("Locally-linear regression (loess)" = "loess",
                      "Weighted linear model (lm)" = "lm")
@@ -40,10 +40,10 @@ shinyUI(
                         content = HTML("<small>Select a dataset / meta-analysis</small>"),
                         placement = "right"),
               uiOutput("link_to_dataset"),
-              br(),
-              selectInput("ma_method", label = "Meta-analytic model",
-                          choices = ma_choices, selected = "REML"),
-              uiOutput("ma_help_text"),
+              # br(),
+              # selectInput("ma_method", label = "Meta-analytic model",
+              #             choices = ma_choices, selected = "REML_mv"),
+              # uiOutput("ma_help_text"),
               br(),
               bsPopover("ma_method", title = NULL,
                         content = HTML("<small>Statistical model underlying the aggregated, weighted effect size estimates</small>"),
@@ -76,7 +76,8 @@ shinyUI(
                               placement = "right")
                   )
                 )
-              )
+              ),
+              uiOutput("ma_model_blurb")
           ),
           conditionalPanel(
             condition = "output.longitudinal == 'FALSE'",
