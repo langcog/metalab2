@@ -38,7 +38,7 @@ Collecting many study results from different researchers is a way to try and mak
 #### How can MAs help with false negatives? 
 MAs help in 3 ways. By pooling data together, we may be able to _bring out a small effect_ that was too difficult to detect. 
 
-Additionally, we often do not know about these non-significant findings because it is quite difficult to publish them. [ommunity-augmented MAs](https://www.ncbi.nlm.nih.gov/pubmed/26186116) like those in MetaLab provide a home for _non-sexy results_, and allow researchers to benefit from the experience of others.
+Additionally, we often do not know about these non-significant findings because it is quite difficult to publish them. [Community-augmented MAs](https://www.ncbi.nlm.nih.gov/pubmed/26186116) like those in MetaLab provide a home for _non-sexy results_, and allow researchers to benefit from the experience of others.
 
 Finally, MAs help us in experiment design so we can _avoid false negatives due to low power_. When the size of an effect is known and with a fixed significance threshold, calculating power is straightforward. Here is a simulation of how all ingredients fit together: <rpsychologist.com/d3/NHST/>.
 
