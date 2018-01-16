@@ -6,6 +6,13 @@
 menuNavbar()
 ```
 
+<style>
+  iframe {
+    width:400px;
+    height:400px;
+  }
+</style>
+
 ```{r echo=FALSE, warning=FALSE}
 tutorials <-  yaml::yaml.load_file("../metadata/tutorials.yaml")
 header <- "Tutorials"
@@ -23,4 +30,3 @@ fluidRow(
     column(width = 2)
   )
 ```
-
