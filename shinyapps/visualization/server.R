@@ -298,8 +298,14 @@ shinyServer(function(input, output, session) {
                       method = "loess", se = FALSE, span = 1)
     }
 
-    ggplotly(p, tooltip = c("text")) %>%
-      layout(showlegend = FALSE)
+    p <- ggplotly(p, tooltip = c("text"))
+
+    if (mod_group() != "all_mod") {
+      p
+    } else {
+      p %>%
+        layout(showlegend = FALSE)
+    }
 
   }
 
