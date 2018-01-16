@@ -8,8 +8,8 @@ menuNavbar()
 
 <style>
   iframe {
-    width:400px;
-    height:400px;
+    width:640px;
+    height:360px;
   }
 </style>
 

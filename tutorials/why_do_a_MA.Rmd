@@ -8,12 +8,9 @@ library("vembedr")
 ```
 
 ```{r video 1, echo = FALSE}
-#embed_url("https://www.youtube.com/watch?feature=player_embedded&v=Omnq13QZ-3c")
-#embed_youtube("Omnq13QZ-3c", width = 400)
-
+embed_url("https://www.youtube.com/watch?feature=player_embedded&v=Omnq13QZ-3c")
 ```
-<iframe src="https://www.youtube.com/embed/Omnq13QZ-3c" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
- 
+
 
 Meta-analyses (MAs) can be useful several purposes, including: (1) *theory building and evaluation* and (2) *practical decisions during study design*. This section starts with some basics on why MAs are more useful than single studies for those two purposes. 
 
