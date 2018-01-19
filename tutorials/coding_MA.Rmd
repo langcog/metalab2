@@ -1,4 +1,4 @@
-How should I structure the data for my MA?
+How should I structure the data for my meta-analysis?
 ==============================
 
 We are hoping that eventually all of your MAs (meta-analyses) will be included in
@@ -61,27 +61,11 @@ The following information
 allows one to calculate an effect size (we are sticking to experimental
 designs, since most of our MAs are experimental):
 
--   **between-participant studies**: 
-    > Means and SDs (not SEs!) of the
-    > dependent variable for each infant group** are all that is
-    > required for the calculation of Cohen's d. Sometimes, means and
-    > SDs are not available as numbers. If there are clear figures, you
-    > can try to estimate means and SDs using** [**this online
-    > app**](http://arohatgi.info/WebPlotDigitizer/)*. If you decide to
-    > estimate values from figures, add a column to keep track of this.
-    > Finally, **t or F values for the *main* effect in combination with
-    > sample sizes** can be used to calculate Cohen's d. Note them
-    > when available.
+-   **between-participant studies**:   
+    > Means and SDs (not SEs!) of the dependent variable for each infant group are all that is required for the calculation of Cohen's *d*. Sometimes, means and SDs are not available as numbers. If there are clear figures, you can try to estimate means and SDs using [**this online app**](http://arohatgi.info/WebPlotDigitizer/) or [**the R package metaDigitize**](https://www.biorxiv.org/content/early/2018/01/15/247775). If you decide to estimate values from figures, add a column to keep track of this. Finally, **t or F values for the *main* effect in combination with sample sizes** can be used to calculate Cohen's *d*. Note them when available.
 
--   **within-participant studies**: 
-    > Effect sizes for this type of
-    > study are calculated the **same way as in between-participant
-    > studies**, but in order to calculate the weight of these studies
-    > the **correlation** between the first and second measurements is
-    > required (to account for the amount of
-    > within-participant variation). Since this measure is usually not
-    > reported, we provide below median and range for correlations found
-    > in existing MAs.
+-   **within-participant studies**:    
+    > Effect sizes for this type of study are calculated the **same way as in between-participant studies**, but in order to calculate the weight of these studies the **correlation** between the first and second measurements is required (to account for the amount of within-participant variation). Since this measure is usually not reported, we provide below median and range for correlations found in existing MAs.
 
     -   Infant word segmentation from native speech: 0.641 (range: 0.140 to 0.921)
 
@@ -147,8 +131,8 @@ comparability of effect sizes from within- and between-participant
 designs: Morris, S. B., & DeShon, R. P. (2002). Combining Effect Size
 Estimates in Meta-Analysis With Repeated Measures and Independent-Groups
 Designs. Psychological Methods, 7(1), 1805-125. doi:
-[*10.1037//1082-989X.7.1.105
-*](http://dx.doi.org/10.1037//1082-989X.7.1.105)
+[10.1037//1082-989X.7.1.105
+](http://dx.doi.org/10.1037//1082-989X.7.1.105)
 
 ### How to run a meta-analytic regression ?
 ```{r video 4, echo = FALSE}
