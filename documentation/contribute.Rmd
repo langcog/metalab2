@@ -7,4 +7,10 @@ Contributions can take various forms:
 - *Adding unpublished data.* Ideally we can link to a report on the data, for example on OSF. Then contact the curator with a link and if possible all necessary data.
 - *Suggesting and/or adding published papers* not yet included. Simply email the curator, ideally with a pdf. If you are the author, try to make sure that all necessary data is either included or provided in your email.
 - *Creating new meta-analyses.* If you are interested in creating a new meta-analysis, check out the tutorial page.
-- *Contribute existing meta-analyses.* If you already have a completed meta-analysis, make sure to use the MetaLab template and get in touch about integrating it into MetaLab. Check out the tutorial page on how to edit your meta-analysis in the MetaLab format.
+- *Contribute existing meta-analyses.* If you already have a completed meta-analysis, make sure to use the MetaLab template and get in touch about integrating it into MetaLab. 
+  Regarding the ownership of your data, you remain the owner of your meta-analysis data, and researchers publishing or presenting work using data in MetaLab must cite the publications linked to your meta-analysis. 
+  We currently offer two options for the meta-analysis maintenance and update: 
+  - *Be the curator.* This means you agree to be the person responsible for identifying new relevant papers and signaling them to the MetaLab data manager, who will add them to the database of the relevant meta-analysis. You would be expected to check data entry once in a while. Curators are part of the MetaLab board and get informed of discussions regarding e.g. site revamping. 
+  - *Step down completely,* and it will be MetaLab’s job to assign a new curator for your dataset. In this case, we can still keep your photo on the wall of fame.
+  
+  Check out the tutorial page on how to edit your meta-analysis in the MetaLab format. 
