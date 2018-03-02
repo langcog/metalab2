@@ -61,3 +61,5 @@ git add -A
 commitMessage="Page update on "$(date -u +%Y-%m-%dT%H:%M:%SZ)
 git commit -m "$commitMessage"
 git push origin gh-pages
+
+git checkout master
