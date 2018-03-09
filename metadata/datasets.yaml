@@ -188,7 +188,7 @@
     curator: 'Christina Bergmann'
     src: images/datasets/statistical.png
     longitudinal: 'FALSE'
-    moderators: [native_lang, test_lang_program]
+    moderators: [native_lang, stimuli_type]
     subset: [replication]
 -
     name: 'Word segmentation'
