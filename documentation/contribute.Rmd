@@ -10,7 +10,8 @@ Contributions can take various forms:
 - *Contribute existing meta-analyses.* If you already have a completed meta-analysis, make sure to use the MetaLab template and get in touch about integrating it into MetaLab. 
   Regarding the ownership of your data, you remain the owner of your meta-analysis data, and researchers publishing or presenting work using data in MetaLab must cite the publications linked to your meta-analysis. 
   We currently offer two options for the meta-analysis maintenance and update: 
-  - *Be the curator.* This means you agree to be the person responsible for identifying new relevant papers and signaling them to the MetaLab data manager, who will add them to the database of the relevant meta-analysis. You would be expected to check data entry once in a while. Curators are part of the MetaLab board and get informed of discussions regarding e.g. site revamping. 
+  - *Be the curator.* This means you agree to be the person responsible for identifying new relevant papers and signaling them to the MetaLab data manager, who will add them to the database of the relevant meta-analysis. You would be expected to check data entry and correct it if needed once in a while. We recommend to set alerts for new papers on your meta-analysis topic. Curators determine moderators to be displayed and are responsible of executive decisions regarding spreadsheet content. By default you will be the curator for one year. Each year we will send an email listing all the meta-analysis you are in charge of and asking you if you still want to be the curator of them. Curators are part of the MetaLab board and get informed of discussions regarding e.g. site revamping. 
+
   - *Step down completely,* and it will be MetaLab’s job to assign a new curator for your dataset. In this case, we can still keep your photo on the wall of fame.
   
   Check out the tutorial page on how to edit your meta-analysis in the MetaLab format. 
