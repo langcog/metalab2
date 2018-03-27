@@ -212,7 +212,7 @@
     curator: 'Christina Bergmann'
     src: images/datasets/segmentation.png
     longitudinal: 'FALSE'
-    moderators: [native_lang]
+    moderators: [native_lang, method]
     subset: [native]
 -
     name: 'Function word segmentation'
@@ -236,7 +236,7 @@
     curator: 'Christina Bergmann'
     src: images/datasets/segmentation.png
     longitudinal: 'FALSE'
-    moderators: [native_lang]
+    moderators: [native_lang, method]
     subset: []
 -
     name: 'Online word recognition'
