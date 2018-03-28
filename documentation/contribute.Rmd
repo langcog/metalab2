@@ -13,7 +13,8 @@ Contributions can take various forms:
   - *Be the curator.* This means the following:
       - You are responsible for identifying new relevant papers (although the MetaLab data manager can add them for you). We recommend to set alerts for new papers on your meta-analysis topic. 
       - You should check data entry and correct it if needed once in a while. 
-      - Curators determine moderators to be displayed and are responsible of executive decisions regarding spreadsheet content. By default you will be the curator for one year. Each year we will send an email listing all the meta-analysis you are in charge of and asking you if you still want to be the curator of them. Curators are part of the MetaLab board and get informed of discussions regarding e.g. site revamping. 
+      - You determine moderators to be displayed and are responsible of executive decisions regarding spreadsheet content. 
+      - By default you will be the curator for one year. Each year we will send an email listing all the meta-analysis you are in charge of and asking you if you still want to be the curator of them. Curators are part of the MetaLab board and get informed of discussions regarding e.g. site revamping. 
 
   - *Step down completely,* and it will be MetaLab’s job to assign a new curator for your dataset. In this case, we can still keep your photo on the wall of fame.
   
