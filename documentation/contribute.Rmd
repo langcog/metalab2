@@ -4,8 +4,8 @@ We welcome researchers interested in contributing to Metalab. Please contact us 
 
 Contributions can take various forms:
 
-- *Adding unpublished data.* Ideally we can link to a report on the data, for example on OSF. Then contact the curator with a link and if possible all necessary data.
-- *Suggesting and/or adding published papers* not yet included. Simply email the curator, ideally with a pdf. If you are the author, try to make sure that all necessary data is either included or provided in your email.
+- *Suggesting and/or adding published papers* not yet included in a meta-analysis. If you see a study we missed, just email us, ideally including the pdf. If you are the author, try to make sure that all necessary data is either included or provided in your email.
+- *Adding unpublished data to a meta-analysis.* Please email us and we will tell you how we can go about adding your unpublished data to our meta-analyses.
 - *Creating new meta-analyses.* If you are interested in creating a new meta-analysis, check out the tutorial page.
 - *Contribute existing meta-analyses.* If you already have a completed meta-analysis, make sure to use the MetaLab template and get in touch about integrating it into MetaLab. 
   Regarding the ownership of your data, you remain the owner of your meta-analysis data, and researchers publishing or presenting work using data in MetaLab must cite the publications linked to your meta-analysis. 
