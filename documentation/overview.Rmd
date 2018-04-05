@@ -19,5 +19,5 @@ development across language acquisition domains.
 
 ## Caveat
 
-Please note that data and visualizations are under development at the moment (Winter 2017) and should not be taken as definitive.
+Please note that data and visualizations are under development at the moment (Spring 2018) and should not be taken as definitive.
 
