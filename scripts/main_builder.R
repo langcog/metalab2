@@ -25,11 +25,11 @@ logOnError({
   domains <- yaml::yaml.load_file("metadata/domains.yaml")
   })
 
-logOnError({
-  dataset <- yaml::yaml.load_file("metadata/datasets.yaml")
-  func <- function(x) paste0(substr(x$domain, 1, 1), substr(x$name, 1, 1))
-  dataset <- dataset[order(sapply(dataset, func))] # sort
-  })
+# logOnError({
+#   dataset <- yaml::yaml.load_file("metadata/datasets.yaml")
+#   func <- function(x) paste0(substr(x$domain, 1, 1), substr(x$name, 1, 1))
+#   dataset <- dataset[order(sapply(dataset, func))] # sort
+#   })
 
 logOnError({
   reportList <- yaml::yaml.load_file("metadata/reports.yaml")
@@ -55,13 +55,14 @@ logOnError({
   })
 
 
-# creating datasets object structure:
+# creating datasets object structure (list of lists with metadata)
 logOnError({
   datasets_file <- yaml::yaml.load_file("metadata/datasets.yaml")
   func <- function(x) paste0(substr(x$domain, 1, 1), substr(x$name, 1, 1))
   datasets_file <- datasets_file[order(sapply(datasets_file, func))] # sort
   })
 
+# some kind of conversion here?
 logOnError({
   datasets <- datasets_file %>%
     map(function(row){
@@ -71,6 +72,7 @@ logOnError({
         })
   })
 
+# combine into proper dataframe, put back moderators and subset
 logOnError({
   datasets <- do.call(rbind, datasets)
   moderators <- map(datasets_file, "moderators")
