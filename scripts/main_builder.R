@@ -25,11 +25,11 @@ logOnError({
   domains <- yaml::yaml.load_file("metadata/domains.yaml")
   })
 
-# logOnError({
-#   dataset <- yaml::yaml.load_file("metadata/datasets.yaml")
-#   func <- function(x) paste0(substr(x$domain, 1, 1), substr(x$name, 1, 1))
-#   dataset <- dataset[order(sapply(dataset, func))] # sort
-#   })
+logOnError({
+  dataset <- yaml::yaml.load_file("metadata/datasets.yaml")
+  func <- function(x) paste0(substr(x$domain, 1, 1), substr(x$name, 1, 1))
+  dataset <- dataset[order(sapply(dataset, func))] # sort
+  })
 
 logOnError({
   reportList <- yaml::yaml.load_file("metadata/reports.yaml")

@@ -105,6 +105,20 @@ fluidRow(class = "domain-info",
         )
     )
   )
+
+fluidRow(class = "domain-info",
+         column(width=1),
+         column(width = 10, class = "report-well", br(),
+                "To celebrate the release of the new website, the MetaLab team with support of the Berkeley Initiative for Transparency in the Social Sciences",
+                tags$a(href = "https://www.bitss.org/", "(BITSS)"), 
+"is organizing a challenge for authors of meta-analyses on cognitive development. This challenge will offer a total of $3,000 US in cash prizes to (teams of) authors who contribute their meta-analysis data to the MetaLab database. If you wish to participate, here are the steps that you should follow:",
+                br(),
+                HTML("<ol>
+                        <li>As soon as possible, sign up <a href = 'https://docs.google.com/forms/d/1YtZr2gBulKdT7DkmHkUj1MPyjy_bwS6tDw1MigoOQ1Y/viewform?edit_requested=true'>here</a> to inform us that you wish to contribute and so that we may send you important updates.</li>
+                        <li>Code your meta-analytic data using the <a href = 'https://docs.google.com/spreadsheets/d/12Y_2BcFSu48t0F8a_xrY1Ro2fJoCIV1h8O627WNcrjY/edit#gid=0'>  MetaLab</a> template.</li>
+                        <li>Send us your data spreadsheet and optional documents for bonus points (PRISMA flowchart, decision spreadsheet, etc.) to metalab-project@googlegroups.com at any time. We will check it and get back to you to confirm that your contribution is accepted as well as give you feedback on your submission.</li>
+                        <li>The challenge closes on June 30, 2018. You will be informed of the results of the challenge by email shortly after.</li>
+                     </ol>")))
 ```
 
 
