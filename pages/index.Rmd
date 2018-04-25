@@ -29,7 +29,8 @@ domainBox <- function(i, data_domains, offsets, link) {
 div(class = "text-center",
   fluidRow(
     column(width = 12,
-      h1("MetaLab", class = "jumbo"),
+      #h1("MetaLab", class = "jumbo"),
+      tags$img(src = "images/logo/MetaLab_transparent.png", height = 650, width = 650),
       p(class = "lead",
             "Interactive tools for community-augmented meta-analysis,", br(),
             "power analysis, and experimental planning in cognitive development research")
@@ -120,5 +121,10 @@ fluidRow(class = "domain-info",
     )
   )
 ```
+
+<script>
+  document.getElementsByTagName("head")[0].innerHTML += "<link rel="shortcut icon" type="image/x-icon" href="images/logo/favicon/favicon-32x32.png">";
+  document.getElementsByTagName("title")[0].innerHTML += "Community-augmented meta-analysis"
+</script>
 
 
