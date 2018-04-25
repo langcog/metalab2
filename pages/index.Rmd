@@ -30,7 +30,7 @@ div(class = "text-center",
   fluidRow(
     column(width = 12,
       #h1("MetaLab", class = "jumbo"),
-      tags$img(src = "images/logo/MetaLab_transparent.png", height = 650, width = 650),
+      tags$img(src = "images/logo/MetaLab_transparent.png", height = 625, width = 625),
       p(class = "lead",
             "Interactive tools for community-augmented meta-analysis,", br(),
             "power analysis, and experimental planning in cognitive development research")
