@@ -1,11 +1,12 @@
 # Challenge contribution step by step
 
-To celebrate the release of its new website, the MetaLab team with support of the Berkeley Initiative for Transparency in the Social Sciences (BITSS) is organizing a challenge for authors of meta-analyses on cognitive development. This challenge will offer a total of $3,000 US in cash prizes to (teams of) authors who contribute their meta-analysis data to the MetaLab database. 
+To celebrate the release of its new website, the MetaLab team with support of the Berkeley Initiative for Transparency in the Social Sciences [BITSS](http://bitss.org/) is organizing a challenge for authors of meta-analyses on cognitive development. This challenge will offer a total of $3,000 US in cash prizes to (teams of) authors who contribute their meta-analysis data to the MetaLab database. 
 
 If you wish to participate, here are the steps that you should follow:
-As soon as possible, sign up here to inform us that you wish to contribute and so that we send you important updates. 
-Code your meta-analytic data using the MetaLab template.
-Send us your data spreadsheet and optional documents for bonus points (PRISMA flowchart, decision spreadsheet…) at metalab-project@googlegroups.com at any time. We will check it and get back to you to confirm that you contribution is accepted and give you feedback on your submission.
+1. As soon as possible, sign up [here](https://docs.google.com/forms/d/1YtZr2gBulKdT7DkmHkUj1MPyjy_bwS6tDw1MigoOQ1Y/edit) to inform us that you wish to contribute and so that we send you important updates. 
+2. Code your meta-analytic data using the [MetaLab template](https://docs.google.com/spreadsheets/d/12Y_2BcFSu48t0F8a_xrY1Ro2fJoCIV1h8O627WNcrjY/edit).
+3. Send us your data spreadsheet and optional documents for bonus points (PRISMA flowchart, decision spreadsheet…) at metalab-project@googlegroups.com at any time. We will check it and get back to you to confirm that you contribution is accepted and give you feedback on your submission.
+
 The challenges closes on June, 30. You will be informed of the results of the challenge by email shortly after.
 
 Please reach out to us if you have any question.
