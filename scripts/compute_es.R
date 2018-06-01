@@ -56,10 +56,20 @@ logOnError({
     }
 
   } else if (participant_design == "within_two") {
-    if (is.na(corr)) {
-      #if correlation between two measures is not reported, use an imputed correlation value
-      corr <- corr_imputed
-    }
+      if (is.na(corr) & complete(x_1, x_2, SD_1, SD_2, t)) {
+        # Use raw means, SD, and t-values to calculate correlations
+        corr = (SD_1^2 + SD_2^2 - (n_1 * (x_1 - x_2)^2 / t^2)) / (2 * SD_1 * SD_2)
+      } 
+      if (is.na(corr) | corr > .99 | corr < .01){
+        #if correlation between two measures is not reported, use an imputed correlation value
+        #we also account for the observation that some re-calculated values are impossible and replace those
+        corr <- corr_imputed
+      }
+    # Old version of imputing correlations, replaced by Christina & Sho 2018-06-01
+    #if (is.na(corr)) {
+    #  #if correlation between two measures is not reported, use an imputed correlation value
+    #  corr <- corr_imputed
+    #}
     #effect size calculation
     if (complete(x_1, x_2, SD_1, SD_2)) {
       pooled_SD <- sqrt((SD_1 ^ 2 + SD_2 ^ 2) / 2) # Lipsey & Wilson (2001)
