@@ -161,10 +161,10 @@ shinyServer(function(input, output, session) {
     short_name <- datasets %>%
       filter(name == input$dataset_name) %>%
       select(short_name)
-    HTML(paste0("<i class=\"text-muted\">Please cite the datasets you use as specified in the
+    HTML(paste0("<i class=\"text-muted\">For more information see
                 <a href='https://langcog.github.io/metalab2/documentation.html#datasets' target='_blank'>
-                Documentation</a>  <a href='", base_url, short_name, ".html', target='_blank'>
-                View raw dataset </a></i>"))  
+                Documentation</a> or <a href='", base_url, short_name, ".html', target='_blank'>
+                View raw dataset</a>. Please cote the datasets that you use following <a href='https://langcog.github.io/metalab2/publications.html' target='_blank'> our citation policy.</a> </a></i>"))
   })
 
   output$ma_model_blurb <- renderUI({
