@@ -164,7 +164,7 @@ shinyServer(function(input, output, session) {
     HTML(paste0("<i class=\"text-muted\">For more information see
                 <a href='https://langcog.github.io/metalab2/documentation.html#datasets' target='_blank'>
                 Documentation</a> or <a href='", base_url, short_name, ".html', target='_blank'>
-                View raw dataset</a>. Please cote the datasets that you use following <a href='https://langcog.github.io/metalab2/publications.html' target='_blank'> our citation policy.</a> </a></i>"))
+                View raw dataset</a>. Please cite the datasets that you use following <a href='https://langcog.github.io/metalab2/publications.html' target='_blank'> our citation policy.</a> </a></i>"))
   })
 
   output$ma_model_blurb <- renderUI({

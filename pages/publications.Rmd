@@ -5,6 +5,9 @@
 ```{r echo=FALSE}
 menuNavbar()
 ```
+
+<div style="margin-left:200px; margin-right:200px; margin-top:30px; font-size:16px">
+
 MetaLab allows researchers to use data available on its website. This can be by citing meta-analytic results, or downloading dataset and conducting custom analyses. In both cases our citation policy is the following:
 
 1. Researchers publishing or presenting work using data in MetaLab must cite the publications linked to that dataset, as listed in the [Documentation](https://langcog.github.io/metalab2/documentation.html#datasets). (If there is no citation, then no citation for the individual dataset is necessary).
@@ -18,6 +21,17 @@ MetaLab allows researchers to use data available on its website. This can be by 
 
 4. Since the MetaLab site is dynamic, we recommend that you list the date of download for your data in your manuscript. For example: "We analyze all data currently in MetaLab (Bergmann et al., 2017). Data were downloaded on 06/17/17."
 
+</div>
+
+<!--- "section" is ID of div containing tabs below -->
+<style>
+#section {
+  margin-left:200px;
+  margin-right:200px;
+  font-size:16px;
+}
+</style>
+
 ## {.tabset .nav-tabs-custom}
 
 ### Publications on MetaLab
@@ -26,10 +40,8 @@ Bergmann, C., Tsuji, S., Piccinini, P. E., Lewis, M. L., Braginsky, M., Frank, M
 
 Lewis, M. L., Braginsky, M., Tsuji, S., Bergmann, C., Piccinini, P. E., Cristia, A., & Frank, M. C. (2017/under review). A Quantitative Synthesis of Early Language Acquisition Using Meta-Analysis. DOI: 10.17605/OSF.IO/HTSJM [[Preprint]](http://psyarxiv.com/htsjm) 
 
-
 ### Publications using MetaLab
 
 Tsuji, S. & Cristia, A. (2017). Which Acoustic and Phonological Factors Shape Infants’ Vowel Discrimination? Exploiting Natural Variation in InPhonDB. In: *Proceedings of Interspeech 2017*, pp. 2108-2112. DOI: 10.21437/Interspeech.2017-1468 [[Paper]](http://www.isca-speech.org/archive/Interspeech_2017/abstracts/1468.html)
-
 
 Bergmann, C. Tsuji, S., & Cristia, A. (2017). Top-down versus bottom-up theories of phonological acquisition: A big data approach. In: *Proceedings of Interspeech 2017*, pp. 2013–2016. DOI: 10.21437/Interspeech.2017-1443 [[Paper]](http://www.isca-speech.org/archive/Interspeech_2017/abstracts/1443.html)
