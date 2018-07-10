@@ -1,4 +1,4 @@
-Current members:
+Governing Board:
 
   - name:         Christina Bergman
     email:        chbergma@gmail.com
@@ -35,6 +35,8 @@ Current members:
     databases:    phonemic discrimination, effect size calculation, meta-analytic regression models
     image:        images/people/sho.jpg
 
+Technical Lead:
+
   - name:         Alessandro Sanchez
     email:        sanchez7@stanford.edu
     website:      https://github.com/amsan7
@@ -57,3 +59,9 @@ Former members:
     affiliation:  École Normale Supérieure
     databases:    developmental curves
     image:        images/people/page.jpg
+
+  - name:         Cécile Issard
+    email:        cecile.issard@gmail.com
+    affiliation:  École Normale Supérieure
+    databases:    infrastructure
+    image:        images/logo/logo1.jpg
