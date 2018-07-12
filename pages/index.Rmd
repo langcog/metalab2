@@ -42,29 +42,6 @@ menuNavbar(isIndex = TRUE)
 
 div(
   fluidRow(
-      column(width = 3),
-      box(class = "thumbnail",
-        width = 6,
-        solidHeader = TRUE,
-          fluidRow(class = "domain-box",
-            column(width = 12, class = "dataset-txt", style="margin-left: 7px;",
-                   fluidRow(class = "value-box",
-                    shinydashboard::valueBox(
-                      format("NEWS", big.mark = ","),
-                      "",
-                      width = 12,
-                      color = "red")
-                    ),
-                    h4(strong("Challenge")), p("To celebrate the release of the new website, the MetaLab team with support of the Berkeley Initiative for Transparency in the Social Sciences (BITSS) is organizing a challenge for authors of meta-analyses on cognitive development. Learn more", tags$a(href = "tutorials.html", "here.")))
-                  )
-        )
-      )
-)
-
-
-
-div(
-  fluidRow(
     column(width = 1),
     column(width = 3,
       tags$a(href = paste0("app.html?id=", "visualization"),

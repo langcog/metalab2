@@ -4,35 +4,30 @@ Governing Board:
     email:        chbergma@gmail.com
     website:      https://sites.google.com/site/chbergma/
     affiliation:  Max Planck Institute for Psycholinguistics
-    databases:    word segmentation, statistical segmentation, reproducibility, p-curves
     image:        images/people/christina.jpg
 
   - name:         Alejandrina Cristia
     email:        alecristia@gmail.com
     website:      https://sites.google.com/site/acrsta/
     affiliation:  École Normale Supérieure
-    databases:    IDS preference
     image:        images/people/alex.jpg
 
   - name:         Michael C. Frank
     email:        mcfrank@stanford.edu
     website:      http://web.stanford.edu/~mcfrank/
     affiliation:  Stanford University
-    databases:    developmental curves, p-curves
     image:        images/people/mike.jpg
 
   - name:         Molly Lewis
     email:        mollyllewis@gmail.com
     website:      http://home.uchicago.edu/~mollylewis/
     affiliation:  University of Chicago/University of Wisconsin-Madison
-    databases:    word learning, replicability, meta-science
     image:        images/people/molly.jpg
 
   - name:         Sho Tsuji
     email:        tsujish@gmail.com
     website:      https://sites.google.com/site/tsujish/
     affiliation:  University of Pennsylvania, École Normale Supérieure
-    databases:    phonemic discrimination, effect size calculation, meta-analytic regression models
     image:        images/people/sho.jpg
 
 Technical Lead:
@@ -41,7 +36,6 @@ Technical Lead:
     email:        sanchez7@stanford.edu
     website:      https://github.com/amsan7
     affiliation:  Stanford University
-    databases:    infrastructure
     image:        images/people/alessandro.jpg
 
 Former members:
@@ -50,18 +44,15 @@ Former members:
     email:        mika.br@gmail.com
     website:      http://mikabr.github.io/
     affiliation:  Stanford University
-    databases:    infrastructure
     image:        images/people/mika.jpg
 
   - name:         Page Piccinini
     email:        page.piccinini@gmail.com
     website:      http://idiom.ucsd.edu/~ppiccinini/
     affiliation:  École Normale Supérieure
-    databases:    developmental curves
     image:        images/people/page.jpg
 
   - name:         Cécile Issard
     email:        cecile.issard@gmail.com
     affiliation:  École Normale Supérieure
-    databases:    infrastructure
     image:        images/logo/logo1.png
