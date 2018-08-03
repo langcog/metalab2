@@ -382,4 +382,99 @@
     longitudinal: 'FALSE'
     moderators: [label_present, instruction_code, object_stimulus, taxonomic_type]
     subset: []
-
+-
+    name: 'Familiar word recognition'
+    domain: early_language
+    short_name: famWord
+    key: 1Uri6wAyR3wjsbOfK6PlBv7yqsLcimURIF0P9zgOt9sI
+    filename: famWord
+    citation: "Carbajal (2018)"
+    internal_citation: ""
+    link: ""
+    full_citation: "Carbajal, M.J. (2018). Doctoral dissertation"
+    doi: ""
+    reliability: ""
+    systematic: yes
+    search_strategy: 'Conceptual replications of Hallé & de Boysson-Bardies (1994)'
+    source: 'coded by authors'
+    last_update: '2018-06-30'
+    link_fields: ""
+    short_desc: 'Within-subject comparisons of attention to lists of familiar words vs novel/rare words.'
+    description: 'Within-subject comparisons of attention to lists of familiar words vs novel/rare words.'
+    curator: 'Julia Carbajal'
+    src: 
+    longitudinal: 'FALSE'
+    moderators: [word_types_per_cond, publication_type, main_or_baseline_study]
+    subset: []
+-
+    name: 'Abstract rule learning'
+    domain: early_language
+    short_name: ruleLearning
+    key: 1fCX1ZixRGdWhWCxdNQfBCV3OfgWB-7rCwRC8L5SUf0Y
+    filename: ruleLearning
+    citation: "Rabagliati et al. (In press)"
+    internal_citation: ""
+    link: "https://drive.google.com/drive/folders/1dP91H5QlcT3PD9fKCndroMGcXEzP98xI"
+    full_citation: "Rabagliati, H., Ferguson, B., & Lew-Williams, C. (In press). The profile of rule-learning in infancy: Meta-analytic and experimental evidence. Developmental Science."
+    doi: ""
+    reliability: ""
+    systematic: yes
+    search_strategy: 'Seeded with Marcus et al. (2010) in Google Scholar + manual search'
+    source: 'coded by authors'
+    last_update: '2018-06-30'
+    link_fields: ""
+    short_desc: ""
+    description: ""
+    curator: 'Hugh Rabagliati'
+    src: 
+    longitudinal: 'FALSE'
+    moderators: [Lab, RuleComparison, TrainingRule, Stimulus, Modality, Semantics, PreferenceType, CoarseStimulusCode]
+    subset: []
+-
+    name: 'Switch Task'
+    domain: early_language
+    short_name: switchTask
+    key: 1-cfJQT4YkssOYltqBFhtF_spm01EmF2RVyfwRWn_NNQ
+    filename: switchTask
+    citation: "Tsui et al. (under review)"
+    internal_citation: ""
+    link: "https://drive.google.com/drive/folders/15-R_Nvm5sU2rakIH4s4U7ANue_bzm4Qu"
+    full_citation: "Tsui, A. S. M., Byers-Heinlein, K., & Fennell, C. T. (under review). Associative word learning in infancy: A meta-analysis of the switch task."
+    doi: ""
+    reliability: ""
+    systematic: yes
+    search_strategy: 'Seeded with Stager & Werker et al. (1997) and Werker et al. (1998) in Google Scholar + manual search'
+    source: 'coded by authors'
+    last_update: '2018-06-30'
+    link_fields: ""
+    short_desc: "Infant word learning in the switch task"
+    description: ""
+    curator: 'Angeline Tsui'
+    src: 
+    longitudinal: 'FALSE'
+    moderators: [Audio stimuli, minimal pairs, facilitative manipulations, object in the habituation, word typicality]
+    subset: []
+-
+    name: 'Switch Task'
+    domain: early_language
+    short_name: Mispronunciation
+    key: 1l5pnF9035fwkYql5_p__l31WM58oDRWlqMhZOh-eIIM
+    filename: Mispronunciation
+    citation: 'Von Holzen & Bergmann (2018)'
+    internal_citation: ""
+    link: "https://drive.google.com/drive/folders/1Z5ruOSPydAXYpqCygmixcXKUgqD0BDfD"
+    full_citation: "Von Holzen, K., & Bergmann, C. (2018). A meta-analysis of infants' mispronunciation sensitivity development. To appear in the Proceedings of the 40th Annual Conference of the Cognitive Science Society. Austin, TX: Cognitive Science Society, Inc."
+    doi: ""
+    reliability: ""
+    systematic: yes
+    search_strategy: 'Seeded with Swingley & Aslin (2000) in Google Scholar'
+    source: 'coded by authors'
+    last_update: '2018-06-30'
+    link_fields: ""
+    short_desc: ""
+    description: ""
+    curator: 'Katie Von Holzen'
+    src: 
+    longitudinal: 'FALSE'
+    moderators: [percent_MP, vocab_with_X, mean_comprehension, r_comprehension, mean_production, r_production, words, word_correct_and_MP, n_feature, type_feature, mispron_location, within_sentence, sentence_context, object_pair, distractor_overlap, offset, within_measure, pre_nam_dur, post_nam_dur, trial_length, visual_stim, visual_stim_background]
+    subset: []
