@@ -404,7 +404,7 @@
     curator: 'Julia Carbajal'
     src: 
     longitudinal: 'FALSE'
-    moderators: [word_types_per_cond, publication_type, main_or_baseline_study]
+    moderators: [main_or_baseline_study]
     subset: []
 -
     name: 'Abstract rule learning'
@@ -428,7 +428,7 @@
     curator: 'Hugh Rabagliati'
     src: 
     longitudinal: 'FALSE'
-    moderators: [Lab, RuleComparison, TrainingRule, Stimulus, Modality, Semantics, PreferenceType, CoarseStimulusCode]
+    moderators: []
     subset: []
 -
     name: 'Switch Task'
@@ -452,14 +452,14 @@
     curator: 'Angeline Tsui'
     src: 
     longitudinal: 'FALSE'
-    moderators: [Audio stimuli, minimal pairs, facilitative manipulations, object in the habituation, word typicality]
+    moderators: []
     subset: []
 -
-    name: 'Switch Task'
+    name: 'Mispronunciation'
     domain: early_language
     short_name: Mispronunciation
     key: 1l5pnF9035fwkYql5_p__l31WM58oDRWlqMhZOh-eIIM
-    filename: Mispronunciation
+    filename: Mispron
     citation: 'Von Holzen & Bergmann (2018)'
     internal_citation: ""
     link: "https://drive.google.com/drive/folders/1Z5ruOSPydAXYpqCygmixcXKUgqD0BDfD"
@@ -476,5 +476,5 @@
     curator: 'Katie Von Holzen'
     src: 
     longitudinal: 'FALSE'
-    moderators: [percent_MP, vocab_with_X, mean_comprehension, r_comprehension, mean_production, r_production, words, word_correct_and_MP, n_feature, type_feature, mispron_location, within_sentence, sentence_context, object_pair, distractor_overlap, offset, within_measure, pre_nam_dur, post_nam_dur, trial_length, visual_stim, visual_stim_background]
+    moderators: [n_feature, type_feature, mispron_location]
     subset: []
