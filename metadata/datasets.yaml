@@ -402,7 +402,7 @@
     short_desc: 'Within-subject comparisons of attention to lists of familiar words vs novel/rare words.'
     description: 'Within-subject comparisons of attention to lists of familiar words vs novel/rare words.'
     curator: 'Julia Carbajal'
-    src: 
+    src: images/datasets/statistical.png
     longitudinal: 'FALSE'
     moderators: [main_or_baseline_study]
     subset: []
@@ -426,7 +426,7 @@
     short_desc: ""
     description: ""
     curator: 'Hugh Rabagliati'
-    src: 
+    src: images/datasets/statistical.png
     longitudinal: 'FALSE'
     moderators: []
     subset: []
@@ -450,7 +450,7 @@
     short_desc: "Infant word learning in the switch task"
     description: ""
     curator: 'Angeline Tsui'
-    src: 
+    src: images/datasets/statistical.png
     longitudinal: 'FALSE'
     moderators: []
     subset: []
@@ -474,7 +474,7 @@
     short_desc: ""
     description: ""
     curator: 'Katie Von Holzen'
-    src: 
+    src: images/datasets/statistical.png
     longitudinal: 'FALSE'
     moderators: [n_feature, type_feature, mispron_location]
     subset: []
