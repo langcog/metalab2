@@ -128,9 +128,11 @@
   options:
     - target_selection:       binary if selected target (forced choice)
     - looking_time:           in seconds
+    - looking_time_pc:        in percent 
     - exploration_time:       in seconds
     - looking_time_change:    in seconds
     - looking_time_change_pc: in percent
+    - longest_look:           in seconds
     - search_time:            in seconds
     - sucking_time:           in seconds
     - pc_head_turns:          percent correct head turns in CHT
@@ -143,7 +145,6 @@
     - facial_expression:
     - vocabulary_size:        in number of words
     - lookingRatio:
-    - lookingTime:
   required:     yes
 
 - field:        participant_design
