@@ -386,7 +386,7 @@
     name: 'Familiar word recognition'
     domain: early_language
     short_name: famWord
-    key: 1Uri6wAyR3wjsbOfK6PlBv7yqsLcimURIF0P9zgOt9sI
+    key: 1ZgNI0hQVrgN9AwtDwn1dpXza-l5XMjBjdd7pq7XV0_s
     filename: famWord
     citation: "Carbajal (2018)"
     internal_citation: ""
@@ -410,12 +410,12 @@
     name: 'Abstract rule learning'
     domain: early_language
     short_name: ruleLearning
-    key: 1fCX1ZixRGdWhWCxdNQfBCV3OfgWB-7rCwRC8L5SUf0Y
+    key: 1Rq5bTI_kV2qH4VNB_U6mCUCuD8UFZehYQVNToz8dcNI
     filename: ruleLearning
-    citation: "Rabagliati et al. (In press)"
+    citation: "Rabagliati et al. (2018)"
     internal_citation: ""
     link: "https://drive.google.com/drive/folders/1dP91H5QlcT3PD9fKCndroMGcXEzP98xI"
-    full_citation: "Rabagliati, H., Ferguson, B., & Lew-Williams, C. (In press). The profile of rule-learning in infancy: Meta-analytic and experimental evidence. Developmental Science."
+    full_citation: "Rabagliati, H., Ferguson, B., & Lew-Williams, C. (2018). The profile of rule-learning in infancy: Meta-analytic and experimental evidence. Developmental Science."
     doi: ""
     reliability: ""
     systematic: yes
@@ -426,15 +426,15 @@
     short_desc: ""
     description: ""
     curator: 'Hugh Rabagliati'
-    src: images/datasets/statistical.png
+    src: images/datasets/AbstractRules.png
     longitudinal: 'FALSE'
-    moderators: []
-    subset: []
+    moderators: [Modality, Semantics]
+    subset: [Modality]
 -
     name: 'Switch Task'
     domain: early_language
     short_name: switchTask
-    key: 1-cfJQT4YkssOYltqBFhtF_spm01EmF2RVyfwRWn_NNQ
+    key: 1qkGFqZLwuuO5ELKiFg4E5EGX5O6xTfJC_hxyZXJr2zI
     filename: switchTask
     citation: "Tsui et al. (under review)"
     internal_citation: ""
@@ -450,7 +450,7 @@
     short_desc: "Infant word learning in the switch task"
     description: ""
     curator: 'Angeline Tsui'
-    src: images/datasets/statistical.png
+    src: images/datasets/Switch.png
     longitudinal: 'FALSE'
     moderators: []
     subset: []
@@ -458,7 +458,7 @@
     name: 'Mispronunciation'
     domain: early_language
     short_name: Mispronunciation
-    key: 1l5pnF9035fwkYql5_p__l31WM58oDRWlqMhZOh-eIIM
+    key: 1rg3u-b9unYd8f5U2w8yTjrPWOccq09HXeREp_xHf6yo
     filename: Mispron
     citation: 'Von Holzen & Bergmann (2018)'
     internal_citation: ""
@@ -474,7 +474,7 @@
     short_desc: ""
     description: ""
     curator: 'Katie Von Holzen'
-    src: images/datasets/statistical.png
+    src: images/datasets/MPSens.png
     longitudinal: 'FALSE'
-    moderators: [n_feature, type_feature, mispron_location]
-    subset: []
+    moderators: [is_correct, n_feature, type_feature, mispron_location]
+    subset: [is_correct, is_mp]
