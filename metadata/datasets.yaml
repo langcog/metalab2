@@ -428,8 +428,8 @@
     curator: 'Hugh Rabagliati'
     src: images/datasets/AbstractRules.png
     longitudinal: 'FALSE'
-    moderators: [Modality, Semantics]
-    subset: [Modality]
+    moderators: [Modality, Semantics, TrainingRule]
+    subset: [Speech, Nonspeech]
 -
     name: 'Switch Task'
     domain: early_language
@@ -455,9 +455,9 @@
     moderators: []
     subset: []
 -
-    name: 'Mispronunciation'
+    name: 'Mispronunciation sensitivity'
     domain: early_language
-    short_name: Mispronunciation
+    short_name: MPs
     key: 1rg3u-b9unYd8f5U2w8yTjrPWOccq09HXeREp_xHf6yo
     filename: Mispron
     citation: 'Von Holzen & Bergmann (2018)'
@@ -477,4 +477,4 @@
     src: images/datasets/MPSens.png
     longitudinal: 'FALSE'
     moderators: [is_correct, n_feature, type_feature, mispron_location]
-    subset: [is_correct, is_mp]
+    subset: [CorrectPronunciation, Mispronunciation]
