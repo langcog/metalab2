@@ -402,7 +402,7 @@
     short_desc: 'Within-subject comparisons of attention to lists of familiar words vs novel/rare words.'
     description: 'Within-subject comparisons of attention to lists of familiar words vs novel/rare words.'
     curator: 'Julia Carbajal'
-    src: images/datasets/statistical.png
+    src: images/datasets/familiarwords.png
     longitudinal: 'FALSE'
     moderators: [main_or_baseline_study]
     subset: []
