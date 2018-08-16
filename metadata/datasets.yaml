@@ -399,7 +399,7 @@
     source: 'coded by authors'
     last_update: '2018-06-30'
     link_fields: ""
-    short_desc: 'Within-subject comparisons of attention to lists of familiar words vs novel/rare words.'
+    short_desc: 'dDo infants distingusih familiar words from novel/rare words in listening tasks?'
     description: 'Within-subject comparisons of attention to lists of familiar words vs novel/rare words.'
     curator: 'Julia Carbajal'
     src: images/datasets/familiarwords.png
@@ -415,7 +415,7 @@
     citation: "Rabagliati et al. (2018)"
     internal_citation: ""
     link: "https://drive.google.com/drive/folders/1dP91H5QlcT3PD9fKCndroMGcXEzP98xI"
-    full_citation: "Rabagliati, H., Ferguson, B., & Lew-Williams, C. (2018). The profile of rule-learning in infancy: Meta-analytic and experimental evidence. Developmental Science."
+    full_citation: "Rabagliati, H., Ferguson, B., & Lew-Williams, C. (2018). TThe profile of abstract rule learning in infancy: Meta‐analytic and experimental evidence. Developmental Science."
     doi: ""
     reliability: ""
     systematic: yes
@@ -423,7 +423,7 @@
     source: 'coded by authors'
     last_update: '2018-06-30'
     link_fields: ""
-    short_desc: ""
+    short_desc: "Can infants learn abstract repition rules from different types of stimuli?"
     description: ""
     curator: 'Hugh Rabagliati'
     src: images/datasets/AbstractRules.png
@@ -471,7 +471,7 @@
     source: 'coded by authors'
     last_update: '2018-06-30'
     link_fields: ""
-    short_desc: ""
+    short_desc: "Can infants distinguish correctly and mispronounced words, like dog and tog?"
     description: ""
     curator: 'Katie Von Holzen'
     src: images/datasets/MPSens.png
