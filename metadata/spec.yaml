@@ -764,3 +764,33 @@
   example: e.g., superordinate, basic, etc. 
   required:     no
   
+- field:	tokens_per_trial
+  description:	number of items (e.g. words) in each trial
+  type:		numeric
+  format:	e.g., if a study had 12 words presented twice per trial, then tokens_per_trial = 24
+  example: 24
+  required:     no
+  
+- field:	word_types_per_cond
+  description:	number of different word types in each condition (familiar, novel), regardless of whether all types appear in each trial or not
+  type:		numeric
+  format:	e.g., if a study had a total of 12 familiar words and 12 rare words, word_types_per_cond = 12
+  example: 12
+  required:     no
+ 
+- field:	publication_type
+  description:	type of publication (paper, report, conference presentation, thesis, etc)
+  type:		string
+  format:	
+  example: PhD thesis
+  required:     no
+  
+- field:	main_or_baseline_study
+  description:	whether the experiment was the main goal of the study or used as baseline to test other things (e.g. to test mispronunciations, or recognition with accented speech)
+  type:		options
+  options:
+      - main
+      - baseline
+      - other
+      - NA
+  required:     no
