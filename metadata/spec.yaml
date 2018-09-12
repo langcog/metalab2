@@ -144,7 +144,7 @@
     - body_movement:
     - facial_expression:
     - vocabulary_size:        in number of words
-    - lookingRatio:
+    - looking_ratio:
   required:     yes
 
 - field:        participant_design
