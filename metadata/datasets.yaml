@@ -415,7 +415,7 @@
     citation: "Rabagliati et al. (2018)"
     internal_citation: ""
     link: "https://drive.google.com/drive/folders/1dP91H5QlcT3PD9fKCndroMGcXEzP98xI"
-    full_citation: "Rabagliati, H., Ferguson, B., & Lew-Williams, C. (2018). TThe profile of abstract rule learning in infancy: Meta‐analytic and experimental evidence. Developmental Science."
+    full_citation: "Rabagliati, H., Ferguson, B., & Lew-Williams, C. (2018). The profile of abstract rule learning in infancy: Meta‐analytic and experimental evidence. Developmental Science."
     doi: ""
     reliability: ""
     systematic: yes
@@ -463,7 +463,7 @@
     citation: 'Von Holzen & Bergmann (2018)'
     internal_citation: ""
     link: "https://drive.google.com/drive/folders/1Z5ruOSPydAXYpqCygmixcXKUgqD0BDfD"
-    full_citation: "Von Holzen, K., & Bergmann, C. (2018). A meta-analysis of infants' mispronunciation sensitivity development. To appear in the Proceedings of the 40th Annual Conference of the Cognitive Science Society. Austin, TX: Cognitive Science Society, Inc."
+    full_citation: "Von Holzen, K., & Bergmann, C. (2018). A meta-analysis of infants' mispronunciation sensitivity development. Proceedings of the 40th Annual Conference of the Cognitive Science Society. Austin, TX: Cognitive Science Society, Inc."
     doi: ""
     reliability: ""
     systematic: yes
@@ -478,3 +478,27 @@
     longitudinal: 'FALSE'
     moderators: [is_correct, n_feature, type_feature, mispron_location]
     subset: [CorrectPronunciation, Mispronunciation]
+-
+    name: 'Prosocial agents'
+    domain: cognitive_development
+    short_name: prosocial
+    key: 1bz_XVT9EwMo4ivWeBM7PWhyCoTZlLT60BUfNDHCjKGw
+    filename: prosocial
+    citation: "Margoni & Surian (2018)"
+    internal_citation: ""
+    link: ""
+    full_citation: "Margoni, F., & Surian, L. (2018). Infants’ evaluation of prosocial and antisocial agents: A meta-analysis. Developmental Psychology, 54(8), 1445-1455."
+    doi: ""
+    reliability: ""
+    systematic: yes
+    search_strategy: 'PsychINFO + references of relevant papers + calls on mailing lists'
+    source: 'coded by authors'
+    last_update: '2018-09-26'
+    link_fields: ""
+    short_desc: 'Do infants prefer a prosocial agent over an antisocial agent?'
+    description: 'Do infants prefer a prosocial agent (helper, giver, more fair) over an antisocial (hinderer, taker, less fair) agent?'
+    curator: 'Francesco Margoni'
+    src: images/datasets/catBias.png
+    longitudinal: 'FALSE'
+    moderators: [expt_condition, scenarios]
+    subset: [Hamlin_Lab]
