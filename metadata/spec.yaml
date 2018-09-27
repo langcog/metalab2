@@ -120,6 +120,10 @@
       - pointing:
           fullname:     pointing
           description:  comprehension and/or production of the pointing gesture
+      - reach:
+          fullname:     reaching for a target
+      - help:
+          fullname:     offering help to a target 
   required:     yes
 
 - field:        dependent_measure
