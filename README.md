@@ -187,3 +187,17 @@ The code for the other pages is in the `pages/` folder.
 ### Images
 
 For better organization, try to place all images under the `images/` folder in the correct subfolder, and use that path in metadata files when referring to an image.
+
+### Start server locally
+
+For development purposes you might want to start shiny apps locally.
+To do so:
+1. Open shinyapps/common/global.R and change path of project directory:
+instead of the default 
+project_directory <- "/srv/shiny-server/common/, use 
+project_directory <- "../../"
+Save changes.
+2. Go to, e.g., shinyapps/visualization/server.R and run app. Now it should start locally (same goes for other shinyapps folders)
+
+
+
