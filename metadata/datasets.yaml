@@ -308,7 +308,7 @@
     curator: 'Molly Lewis'
     src: images/datasets/pointing.png
     longitudinal: 'TRUE'
-    moderators: [motive, 'pointing modality']
+    moderators: [motive, pointing_modality]
     subset: []
 -
     name: 'Pointing and vocabulary (concurrent)'
@@ -332,7 +332,7 @@
     curator: 'Molly Lewis'
     src: images/datasets/pointing.png
     longitudinal: 'FALSE'
-    moderators: [motive, 'pointing modality']
+    moderators: [motive, pointing_modality]
     subset: []
 -
     name: 'Sound symbolism'
@@ -404,7 +404,7 @@
     curator: 'Julia Carbajal'
     src: images/datasets/familiarwords.png
     longitudinal: 'FALSE'
-    moderators: [main_or_baseline_study]
+    moderators: [main_or_baseline_study, native_lang]
     subset: []
 -
     name: 'Abstract rule learning'

@@ -735,7 +735,7 @@
 - field:	replication
   description:  statSeg
   type:		numeric
-  format:	
+  format:	TRUE or FALSE
   example:      
   required:     no
   
@@ -743,7 +743,7 @@
 - field:	native
   description:  inworddb
   type:		numeric
-  format:	
+  format:	TRUE or FALSE
   example:      
   required:     no
   
@@ -798,3 +798,96 @@
       - other
       - NA
   required:     no
+
+- field:	Modality
+  description:	Abstract Rule Learning MA: Whether or not spoken syllables are used in the stimuli
+  type:		string
+  format:	options: Speech, Non-speech
+  example: 
+  required:     no
+
+- field:	Semantics
+  description:	Abstract Rule Learning MA: Whether or not the stimuli are likely to be meaningful to the infant.
+  type:		string
+  format:	options: Meaningless, Meaningful
+  example: 
+  required:     no
+  
+- field:	TrainingRule
+  description:	Abstract Rule Learning MA: Repetition Rule patterns that was used in training trials
+  type:		string
+  format:	Where the entry allows, define which rule was used in the training trials. If not possible, leave blank
+  example:  e.g., ABB, AAB, ABA
+  required:     no
+  
+- field:	Speech
+  description:	Abstract Rule Learning MA: Description unavailable.
+  type:		numeric
+  format:	options: TRUE or FALSE
+  example: 
+  required:     no
+  
+- field:	Nonpeech
+  description:	Abstract Rule Learning MA: Description unavailable.
+  type:		numeric
+  format:	options: TRUE or FALSE
+  example: 
+  required:     no
+  
+- field:	CorrectPronunciation
+  description:	Mispronunciation MA: Whether the pronunciation was correct.
+  type:		numeric
+  format:	options: TRUE or FALSE
+  example: 
+  required:     no
+  
+- field:	Mispronunciation
+  description:	Mispronunciation MA: Whether the pronunciation was incorrect.
+  type:		numeric
+  format:	options: TRUE or FALSE
+  example: 
+  required:     no
+  
+- field:	is_correct
+  description:	Mispronunciation MA: Identifier of whether condition is correct.
+  type:		numeric
+  format:	1 if correct, 0 if not
+  example:  1, 0
+  required:     no
+
+- field:	n_feature
+  description:	Mispronunciation MA: The number of phonological features changed between the correct pronunciation and the mispronunciation
+  type:		string
+  format:	a numeric value or a range of values if a different number of feature changes are reported. Corrrect words are coded as 0.
+  example:  1
+  required:     no
+  
+- field:	type_feature
+  description:	Mispronunciation MA: Label that codes for the type of mispronunciations tested in the entire experiment.
+  type:		options
+  options:
+    - consonant
+    - vowel       
+    - consonant_and_vowel
+  required:     no
+
+- field:	mispron_location
+  description:	Mispronunciation MA: Indicates the position within the word where the mispronunciation occured.
+  type:		string
+  format:	A word describing the location of the mispronunciation. If more than one position was tested and all are included together, all locations are given separated by a forward slash.
+  example:  onset
+  required:     no
+
+- field:	scenarios
+  description:	Prosocial agents MA: Description not available.
+  type:		string
+  format:	
+  example:  give_take, help_hinder, fair_unfair, other
+  required:     no
+
+- field:    stimuli_type
+  description: Statistical word segm MA: Description not available.
+  type:     string
+  format:   
+  example:  natural, artificial
+  required: no
