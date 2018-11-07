@@ -115,13 +115,15 @@ tidy_dataset <- function(dataset_meta, dataset_contents) {
 
   # Compute effect sizes and variances
   dataset_data_calc <- dataset_data %>%
+    mutate(dataset = dataset_meta[["name"]],
+           short_name = dataset_meta[["short_name"]]) %>%
     split(.$row) %>%
     map_df(~bind_cols(
       .x, compute_es(
         .x$participant_design, .x$x_1, .x$x_2, .x$x_dif, .x$SD_1, .x$SD_2,
         .x$SD_dif, .x$n_1, .x$n_2, .x$t, .x$F, .x$d, .x$d_var, .x$corr,
         .x$corr_imputed, .x$r, .x$study_ID, .x$expt_num,
-        .x$special_cases_measures, .x$contrast_sampa
+        .x$special_cases_measures, .x$contrast_sampa, .x$short_name
       ))) %>%
     select(-row)
 
@@ -131,9 +133,10 @@ tidy_dataset <- function(dataset_meta, dataset_contents) {
   names(method_names) <- unlist(map(method_options, names))
 
   dataset_data_calc %>%
-    mutate(dataset = dataset_meta[["name"]],
-           short_name = dataset_meta[["short_name"]],
-           method = unlist(method_names[method])) %>%
+    # mutate(dataset = dataset_meta[["name"]],
+    #        short_name = dataset_meta[["short_name"]],
+    #        method = unlist(method_names[method])) %>%
+    mutate(method = unlist(method_names[method])) %>%
     rowwise() %>%
     mutate(mean_age = weighted.mean(c(mean_age_1, mean_age_2), c(n_1, n_2),
                                     na.rm = TRUE),

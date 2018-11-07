@@ -19,7 +19,7 @@ compute_es <- function(participant_design, x_1 = NA, x_2 = NA, x_dif = NA,
                        SD_1 = NA, SD_2 = NA, SD_dif = NA, n_1 = NA, n_2 = NA,
                        t = NA, f = NA, d = NA, d_var = NA, corr = NA,
                        corr_imputed = NA, r = NA, study_ID = NA, expt_num = NA,
-                       special_cases_measures = NA, contrast_sampa = NA) {
+                       special_cases_measures = NA, contrast_sampa = NA, short_name = NA) {
 
 logOnError({
   assert_that(participant_design %in% c("between", "within_two", "within_one"))
@@ -59,7 +59,7 @@ logOnError({
       if (is.na(corr) & complete(x_1, x_2, SD_1, SD_2, t)) {
         # Use raw means, SD, and t-values to calculate correlations
         corr = (SD_1^2 + SD_2^2 - (n_1 * (x_1 - x_2)^2 / t^2)) / (2 * SD_1 * SD_2)
-      } 
+      }
       if (is.na(corr) | corr > .99 | corr < .01){
         #if correlation between two measures is not reported, use an imputed correlation value
         #we also account for the observation that some re-calculated values are impossible and replace those
@@ -202,6 +202,43 @@ logOnError({
       #d_var_calc <- (2/n_1) + (d_calc ^ 2 / (4 * n_1)) #we used this until 4/7/2017
       d_var_calc <- (1/n_1) + (d_calc ^ 2 / (2 * n_1))
     }
+  }
+
+  if (short_name == "prosocial" && complete(n_1, x_1, x_2)) {
+    es_method = "log_odds_ratio"
+
+    # Odds ratio formula: OR = (a*d) / (b*c), where:
+    # a is the number of times both A and B are present,
+    # b is the number of times A is present, but B is absent,
+    # c is the number of times A is absent, but B is present, and
+    # d is the number of times both A and B are negative.
+
+    # Note: A is the treatment, B is the outcome
+
+    # In the Prosocial MA:
+    # a = x_1       (children who participated in the study AND chose pro-social)
+    # b = n_1 - x_1 (children who participated in the study but DID NOT choose pro-social)
+    # c = x_2       (hypothetical group of children who chose pro-social, = chance level)
+    # d = n_1 - x_2 (hypothetical group of children who did not choose pro-social, = chance-level)
+
+
+    # We apply Haldane's correction to rows containing zeros in either a or b:
+    if ((x_1 == n_1) | (x_1 == 0)) {
+      haldane_correction = 0.5
+    } else {
+      haldane_correction = 0
+    }
+
+    n_a = x_1 + haldane_correction
+    n_b = n_1 - x_1 + haldane_correction
+    n_c = x_2 + haldane_correction
+    n_d = n_1 - x_2 + haldane_correction
+
+    # We compute d from log-odds-ratio following these formulae: https://www.meta-analysis.com/downloads/Meta-analysis%20Converting%20among%20effect%20sizes.pdf
+    logOR = log( (n_a*n_d) / (n_b*n_c) )
+    SE.logOR = sqrt( (1/n_a) + (1/n_b) + (1/n_c) + (1/n_d) )
+    d_calc = logOR*sqrt(3)/pi
+    d_var_calc = (SE.logOR^2) * 3/(pi^2)
   }
 
   df <- if (participant_design == "between") {
