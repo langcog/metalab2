@@ -197,7 +197,8 @@ instead of the default
 project_directory <- "/srv/shiny-server/common/, use 
 project_directory <- "../../"
 Save changes.
-2. Go to, e.g., shinyapps/visualization/server.R and run app. Now it should start locally (same goes for other shinyapps folders)
+2. Run main_builder.R (located in the scripts folder) to load the data and the variables needed by the apps.
+3. Go to, e.g., shinyapps/visualization/server.R and run app. Now it should start locally (same goes for other shinyapps folders)
 
 
 
