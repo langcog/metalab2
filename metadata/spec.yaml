@@ -827,7 +827,7 @@
   example: 
   required:     no
   
-- field:	Nonpeech
+- field:	Nonspeech
   description:	Abstract Rule Learning MA - Description unavailable.
   type:		numeric
   format:	options TRUE or FALSE
@@ -883,6 +883,13 @@
   type:		string
   format:	
   example:  give_take, help_hinder, fair_unfair, other
+  required:     no
+  
+- field:	Hamlin_Lab
+  description:	Prosocial agents MA - Description not available.
+  type:		numeric
+  format:	 options TRUE or FALSE
+  example:
   required:     no
 
 - field:    stimuli_type
