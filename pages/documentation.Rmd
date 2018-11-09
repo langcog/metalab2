@@ -30,3 +30,6 @@ fluidRow(
   )
 ```
 
+```{r, echo=FALSE}
+htmltools::includeHTML("footer.html")
+```

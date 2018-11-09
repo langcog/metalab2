@@ -44,3 +44,7 @@ fullWidthPanelBox(
   HTML("The source for this website can be found <a href='https://github.com/langcog/metalab2/'>on GitHub</a>. The website itself is hosted through GitHub Pages, with the accompanying visualizations hosted on a Shiny server.<br/><br/>Many thanks to <a href='https://deanattali.com/' target='_blank'>AttaliTech Ltd</a> for website redesign.")
 )
 ```
+
+```{r, echo=FALSE}
+htmltools::includeHTML("footer.html")
+```

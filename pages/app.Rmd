@@ -28,3 +28,7 @@ tags$script(paste0("
 
 responsiveIFrame()
 ```
+
+```{r, echo=FALSE}
+htmltools::includeHTML("footer.html")
+```

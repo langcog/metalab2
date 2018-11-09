@@ -90,6 +90,10 @@ fluidRow(
 )
 ```
 
+```{r, echo=FALSE}
+htmltools::includeHTML("footer.html")
+```
+
 <script>
 $('.tab-pane > div').css("width", '100%');
 </script>

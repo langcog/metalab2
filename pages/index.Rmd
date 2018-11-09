@@ -108,6 +108,10 @@ fluidRow(class = "domain-info",
   )
 ```
 
+```{r, echo=FALSE}
+htmltools::includeHTML("footer.html")
+```
+
 <script>
   document.getElementsByTagName("head")[0].innerHTML += "<link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"images/logo/favicon/favicon-32x32.png\">";
   document.getElementsByTagName("title")[0].innerHTML += "Community-augmented meta-analysis"
