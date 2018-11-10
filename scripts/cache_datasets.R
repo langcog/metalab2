@@ -105,6 +105,11 @@ tidy_dataset <- function(dataset_meta, dataset_contents) {
 
   # Impute values for missing correlations
   set.seed(111)
+  # First we replace corr values outside the range (.01,.99) with NA
+  dataset_data = dataset_data %>%
+    mutate(corr = abs(corr)) %>%
+    mutate(corr = ifelse(corr > .99 | corr < .01, NA, corr))
+  # Then impute NA values
   if (all(is.na(dataset_data$corr))) {
     dataset_data$corr_imputed <- NA
   } else {
