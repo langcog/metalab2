@@ -264,7 +264,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Hierarchical Random Effects in Meta-Analyses: Do they change stuff?</h1>
 <h4 class="author"><em>Sho Tsuji and Christina Bergmann</em></h4>
-<h4 class="date"><em>Last updated on 2018-11-09.</em></h4>
+<h4 class="date"><em>Last updated on 2018-11-12.</em></h4>
 
 </div>
 
@@ -284,20 +284,20 @@ StandardMod &lt;-<span class="st"> </span><span class="kw">rma</span>(g_calc, g_
 ## Random-Effects Model (k = 295; tau^2 estimator: REML)
 ## 
 ##    logLik   deviance        AIC        BIC       AICc  
-## -139.8024   279.6048   283.6048   290.9720   283.6460  
+## -136.2271   272.4543   276.4543   283.8214   276.4955  
 ## 
-## tau^2 (estimated amount of total heterogeneity): 0.1004 (SE = 0.0113)
-## tau (square root of estimated tau^2 value):      0.3169
-## I^2 (total heterogeneity / total variability):   77.82%
-## H^2 (total variability / sampling variability):  4.51
+## tau^2 (estimated amount of total heterogeneity): 0.0968 (SE = 0.0109)
+## tau (square root of estimated tau^2 value):      0.3111
+## I^2 (total heterogeneity / total variability):   76.85%
+## H^2 (total variability / sampling variability):  4.32
 ## 
 ## Test for Heterogeneity: 
-## Q(df = 294) = 1185.2503, p-val &lt; .0001
+## Q(df = 294) = 1118.9687, p-val &lt; .0001
 ## 
 ## Model Results:
 ## 
 ## estimate      se    zval    pval   ci.lb   ci.ub     
-##   0.2080  0.0216  9.6097  &lt;.0001  0.1655  0.2504  ***
+##   0.2060  0.0213  9.6534  &lt;.0001  0.1642  0.2479  ***
 ## 
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
@@ -310,20 +310,20 @@ StandardMod &lt;-<span class="st"> </span><span class="kw">rma</span>(g_calc, g_
 ## Multivariate Meta-Analysis Model (k = 295; method: REML)
 ## 
 ##    logLik   Deviance        AIC        BIC       AICc  
-## -262.0813   524.1625   528.1625   535.5297   528.2037  
+## -242.5376   485.0751   489.0751   496.4423   489.1164  
 ## 
 ## Variance Components: 
 ## 
 ##             estim    sqrt  nlvls  fixed      factor
-## sigma^2    0.0381  0.1952     66     no  short_cite
+## sigma^2    0.0348  0.1865     66     no  short_cite
 ## 
 ## Test for Heterogeneity: 
-## Q(df = 294) = 1185.2503, p-val &lt; .0001
+## Q(df = 294) = 1118.9687, p-val &lt; .0001
 ## 
 ## Model Results:
 ## 
 ## estimate      se    zval    pval   ci.lb   ci.ub     
-##   0.1754  0.0268  6.5387  &lt;.0001  0.1228  0.2280  ***
+##   0.1844  0.0260  7.0902  &lt;.0001  0.1334  0.2353  ***
 ## 
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
@@ -337,7 +337,7 @@ StandardMod &lt;-<span class="st"> </span><span class="kw">rma</span>(g_calc, g_
 ## Multivariate Meta-Analysis Model (k = 295; method: REML)
 ## 
 ##    logLik   Deviance        AIC        BIC       AICc  
-## -198.4399   396.8798   402.8798   413.9306   402.9626  
+## -188.2076   376.4152   382.4152   393.4659   382.4979  
 ## 
 ## Variance Components: 
 ## 
@@ -345,16 +345,16 @@ StandardMod &lt;-<span class="st"> </span><span class="kw">rma</span>(g_calc, g_
 ## inner factor: factor(expt_num) (nlvls = 15)
 ## 
 ##             estim    sqrt  fixed
-## tau^2      0.0640  0.2530     no
-## rho        0.2116             no
+## tau^2      0.0608  0.2465     no
+## rho        0.2481             no
 ## 
 ## Test for Heterogeneity: 
-## Q(df = 294) = 1185.2503, p-val &lt; .0001
+## Q(df = 294) = 1118.9687, p-val &lt; .0001
 ## 
 ## Model Results:
 ## 
 ## estimate      se    zval    pval   ci.lb   ci.ub     
-##   0.1795  0.0261  6.8851  &lt;.0001  0.1284  0.2306  ***
+##   0.1822  0.0261  6.9681  &lt;.0001  0.1309  0.2334  ***
 ## 
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
@@ -372,25 +372,25 @@ StandardMod &lt;-<span class="st"> </span><span class="kw">rma</span>(g_calc, g_
 ## Mixed-Effects Model (k = 295; tau^2 estimator: REML)
 ## 
 ##    logLik   deviance        AIC        BIC       AICc  
-## -139.7747   279.5494   285.5494   296.5899   285.6324  
+## -136.2017   272.4035   278.4035   289.4440   278.4865  
 ## 
-## tau^2 (estimated amount of residual heterogeneity):     0.1009 (SE = 0.0113)
-## tau (square root of estimated tau^2 value):             0.3176
-## I^2 (residual heterogeneity / unaccounted variability): 77.87%
-## H^2 (unaccounted variability / sampling variability):   4.52
+## tau^2 (estimated amount of residual heterogeneity):     0.0972 (SE = 0.0110)
+## tau (square root of estimated tau^2 value):             0.3118
+## I^2 (residual heterogeneity / unaccounted variability): 76.92%
+## H^2 (unaccounted variability / sampling variability):   4.33
 ## R^2 (amount of heterogeneity accounted for):            0.00%
 ## 
 ## Test for Residual Heterogeneity: 
-## QE(df = 293) = 1183.4718, p-val &lt; .0001
+## QE(df = 293) = 1118.0234, p-val &lt; .0001
 ## 
 ## Test of Moderators (coefficient(s) 2): 
-## QM(df = 1) = 0.2415, p-val = 0.6231
+## QM(df = 1) = 0.2572, p-val = 0.6120
 ## 
 ## Model Results:
 ## 
 ##          estimate      se    zval    pval    ci.lb   ci.ub     
-## intrcpt    0.2079  0.0217  9.5930  &lt;.0001   0.1655  0.2504  ***
-## mods       0.0001  0.0003  0.4915  0.6231  -0.0004  0.0006     
+## intrcpt    0.2061  0.0214  9.6376  &lt;.0001   0.1642  0.2480  ***
+## mods       0.0001  0.0003  0.5072  0.6120  -0.0004  0.0006     
 ## 
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
@@ -402,24 +402,24 @@ StandardMod &lt;-<span class="st"> </span><span class="kw">rma</span>(g_calc, g_
 ## Multivariate Meta-Analysis Model (k = 295; method: REML)
 ## 
 ##    logLik   Deviance        AIC        BIC       AICc  
-## -258.6440   517.2881   523.2881   534.3286   523.3711  
+## -237.9273   475.8545   481.8545   492.8950   481.9376  
 ## 
 ## Variance Components: 
 ## 
 ##             estim    sqrt  nlvls  fixed      factor
-## sigma^2    0.0415  0.2038     66     no  short_cite
+## sigma^2    0.0400  0.1999     66     no  short_cite
 ## 
 ## Test for Residual Heterogeneity: 
-## QE(df = 293) = 1183.4718, p-val &lt; .0001
+## QE(df = 293) = 1118.0234, p-val &lt; .0001
 ## 
 ## Test of Moderators (coefficient(s) 2): 
-## QM(df = 1) = 7.6711, p-val = 0.0056
+## QM(df = 1) = 10.1999, p-val = 0.0014
 ## 
 ## Model Results:
 ## 
 ##          estimate      se    zval    pval   ci.lb   ci.ub     
-## intrcpt    0.1736  0.0278  6.2434  &lt;.0001  0.1191  0.2281  ***
-## mods       0.0006  0.0002  2.7697  0.0056  0.0002  0.0010   **
+## intrcpt    0.1828  0.0275  6.6413  &lt;.0001  0.1288  0.2367  ***
+## mods       0.0007  0.0002  3.1937  0.0014  0.0003  0.0011   **
 ## 
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
@@ -432,7 +432,7 @@ StandardMod &lt;-<span class="st"> </span><span class="kw">rma</span>(g_calc, g_
 ## Multivariate Meta-Analysis Model (k = 295; method: REML)
 ## 
 ##    logLik   Deviance        AIC        BIC       AICc  
-## -195.2926   390.5853   398.5853   413.3059   398.7241  
+## -185.2655   370.5310   378.5310   393.2517   378.6699  
 ## 
 ## Variance Components: 
 ## 
@@ -440,20 +440,20 @@ StandardMod &lt;-<span class="st"> </span><span class="kw">rma</span>(g_calc, g_
 ## inner factor: factor(expt_num) (nlvls = 15)
 ## 
 ##             estim    sqrt  fixed
-## tau^2      0.0680  0.2608     no
-## rho        0.2670             no
+## tau^2      0.0648  0.2545     no
+## rho        0.3083             no
 ## 
 ## Test for Residual Heterogeneity: 
-## QE(df = 293) = 1183.4718, p-val &lt; .0001
+## QE(df = 293) = 1118.0234, p-val &lt; .0001
 ## 
 ## Test of Moderators (coefficient(s) 2): 
-## QM(df = 1) = 6.9008, p-val = 0.0086
+## QM(df = 1) = 6.4921, p-val = 0.0108
 ## 
 ## Model Results:
 ## 
 ##          estimate      se    zval    pval   ci.lb   ci.ub     
-## intrcpt    0.1775  0.0275  6.4485  &lt;.0001  0.1236  0.2315  ***
-## mods       0.0006  0.0002  2.6269  0.0086  0.0002  0.0011   **
+## intrcpt    0.1807  0.0276  6.5405  &lt;.0001  0.1266  0.2349  ***
+## mods       0.0006  0.0002  2.5480  0.0108  0.0001  0.0011    *
 ## 
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
