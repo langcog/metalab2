@@ -498,7 +498,7 @@
     short_desc: 'Do infants prefer a prosocial agent over an antisocial agent?'
     description: 'Do infants prefer a prosocial agent (helper, giver, more fair) over an antisocial (hinderer, taker, less fair) agent?'
     curator: 'Francesco Margoni'
-    src: images/datasets/catBias.png
+    src: images/datasets/prosocial.png
     longitudinal: 'FALSE'
-    moderators: [expt_condition, scenarios]
+    moderators: [scenarios]
     subset: [Hamlin_Lab]
