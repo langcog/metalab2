@@ -93,7 +93,7 @@ shinyServer(function(input, output, session) {
     if (any(input$pwr_moderators == "mean_age_months")) {
       uis <- c(uis, list(
         sliderInput("pwr_age_months",
-                    "Age of experimental participants",
+                    "Age of experimental participants (months)",
                     min = 0, max = ceiling(max(pwrdata()$mean_age_months)),
                     value = round(mean(pwrdata()$mean_age_months)),
                     step = 1)
