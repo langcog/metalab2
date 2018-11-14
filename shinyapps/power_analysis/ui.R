@@ -21,7 +21,7 @@ shinyUI(dashboardPage(
           #             choices = datasets$name),
           fluidRow(
             column(
-              width = 4,
+              width = 5,
               uiOutput("pwr_moderator_input"),
               uiOutput("pwr_moderator_choices")
             ),
