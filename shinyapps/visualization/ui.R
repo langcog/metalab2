@@ -159,7 +159,8 @@ shinyUI(
                 br(),
                 helpText("Estimated results and their confidence intervals in a particular order.
                          Colored points represent meta-analytic model summary.")),
-            box(width = NULL, #status = "danger",
+            actionButton(inputId = "button", label = "show / hide"),
+            box(id = "forest_summary_box", width = NULL, #status = "danger",
                 fluidRow(
                   column(width = 12,
                          p(strong("Meta-analytic model summary")),
