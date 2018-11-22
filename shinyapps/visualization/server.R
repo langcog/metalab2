@@ -395,15 +395,6 @@ shinyServer(function(input, output, session) {
       layout(showlegend = FALSE)
   }
 
-  observeEvent(input$button, {
-
-    if(input$button %% 2 == 1){
-      shinyjs::hide(id = "forest_summary_box")
-    }else{
-      shinyjs::show(id = "forest_summary_box")
-    }
-  })
-
   forest_summary <- function() {
     pred_data <- data.frame(predictor = names(coef(model())),
                             coef = coef(model()),

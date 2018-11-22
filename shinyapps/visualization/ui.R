@@ -20,6 +20,7 @@ shinyUI(
     dashboardHeader(disable = TRUE),
     dashboardSidebar(disable = TRUE),
     dashboardBody(
+      tags$head(includeHTML("./google-analytics.html")),
       includeCSS("../common/www/custom.css"),
       tags$style(type = "text/css",
                  ".shiny-output-error { visibility: hidden; }",
@@ -159,7 +160,9 @@ shinyUI(
                 br(),
                 helpText("Estimated results and their confidence intervals in a particular order.
                          Colored points represent meta-analytic model summary.")),
-            actionButton(inputId = "button", label = "show / hide"),
+            tags$div(
+              HTML("<input type='checkbox' id='myCheck' onclick='myFunction()'> Show / Hide Summary")
+            ),
             box(id = "forest_summary_box", width = NULL, #status = "danger",
                 fluidRow(
                   column(width = 12,
@@ -175,7 +178,17 @@ shinyUI(
                                   (selected at the top of this page).")
                   )
                 )
-            )
+            ),
+            tags$script(HTML(
+              "function myFunction() {
+                 var x = document.getElementById('forest_summary_box');
+                if (x.style.display === 'none') {
+                    x.style.display = 'block';
+                } else {
+                    x.style.display = 'none';
+                }
+              }"
+            ))
           )
         )
       )
