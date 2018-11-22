@@ -45,7 +45,7 @@ logOnError({
     if (complete(n_1, n_2, d_calc)) {
       #now that effect size are calculated, effect size variance is calculated
       d_var_calc <- ((n_1 + n_2) / (n_1 * n_2)) + (d_calc ^ 2 / (2 * (n_1 + n_2)))
-    } else if (complete(r)) {
+    } else if (complete(r, r_var)) {
       #if r instead of d is reported, transform for standardization
       d_calc <- 2 * r / sqrt(1 - r ^ 2)
       d_var_calc <- 4 * r_var / ((1 - r ^ 2) ^ 3)
