@@ -121,7 +121,8 @@ tidy_dataset <- function(dataset_meta, dataset_contents) {
   # Compute effect sizes and variances
   dataset_data_calc <- dataset_data %>%
     mutate(dataset = dataset_meta[["name"]],
-           short_name = dataset_meta[["short_name"]]) %>%
+           short_name = dataset_meta[["short_name"]], 
+           domain = dataset_meta[["domain"]]) %>%
     split(.$row) %>%
     map_df(~bind_cols(
       .x, compute_es(
