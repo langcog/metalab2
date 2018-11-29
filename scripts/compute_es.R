@@ -18,7 +18,7 @@ on_failure(`%in%`) <- function(call, env) {
 compute_es <- function(participant_design, x_1 = NA, x_2 = NA, x_dif = NA,
                        SD_1 = NA, SD_2 = NA, SD_dif = NA, n_1 = NA, n_2 = NA,
                        t = NA, f = NA, d = NA, d_var = NA, corr = NA,
-                       corr_imputed = NA, r = NA, study_ID = NA, expt_num = NA,
+                       corr_imputed = NA, r = NA, r_var = NA, study_ID = NA, expt_num = NA,
                        special_cases_measures = NA, contrast_sampa = NA, short_name = NA) {
 
 logOnError({

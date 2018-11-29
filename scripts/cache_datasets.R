@@ -121,14 +121,14 @@ tidy_dataset <- function(dataset_meta, dataset_contents) {
   # Compute effect sizes and variances
   dataset_data_calc <- dataset_data %>%
     mutate(dataset = dataset_meta[["name"]],
-           short_name = dataset_meta[["short_name"]], 
+           short_name = dataset_meta[["short_name"]],
            domain = dataset_meta[["domain"]]) %>%
     split(.$row) %>%
     map_df(~bind_cols(
       .x, compute_es(
         .x$participant_design, .x$x_1, .x$x_2, .x$x_dif, .x$SD_1, .x$SD_2,
         .x$SD_dif, .x$n_1, .x$n_2, .x$t, .x$F, .x$d, .x$d_var, .x$corr,
-        .x$corr_imputed, .x$r, .x$study_ID, .x$expt_num,
+        .x$corr_imputed, .x$r, .x$r_var, .x$study_ID, .x$expt_num,
         .x$special_cases_measures, .x$contrast_sampa, .x$short_name
       ))) %>%
     select(-row)
