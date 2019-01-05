@@ -55,7 +55,7 @@
     citation: 'Frank, Lewis, & MacDonald (2016)'
     internal_citation: '(Frank, Lewis, & MacDonald, 2016)'
     link: 'http://langcog.stanford.edu/papers_new/frank-2016-underrev.pdf'
-    full_citation: 'Frank, M. C., Lewis, M., & MacDonald, K. (2016). A performance model for early wordlearning. In Proceedings of the 38th Annual Conference of the Cognitive Science Society.'
+    full_citation: 'Frank, M. C., Lewis, M., & MacDonald, K. (2016). A performance model for early word-learning. In Proceedings of the 38th Annual Conference of the Cognitive Science Society.'
     doi: ""
     systematic: no
     search_strategy: '"We identified papers using a Google Scholar search for “gaze following” and included those studies that (a) included data from typically-developing children, (b) used a standard face-to-face gaze-following task, and (c) reported percentage accuracy (rather than a score or other composite measure). Although we coded all papers that fit these criteria, we focused on papers with a simple two-alternative forced choice (9 papers); integrating across different numbers of alternatives added additional complexity to our model. In our first iteration of this analysis, we found that very few studies reported reaction times for gaze following, and those that did had no data from children older than 15 months and no data from gaze plus pointing. To remedy this issue we include new analyses of data from Yurovsky, Wade, & Frank (2013) and Yurovsky & Frank (2015)."'
@@ -124,17 +124,17 @@
     short_name: phonotactics
     key: 1RrTszWki-AiIFz7DZ30OqfyK-JDhO1cSIEk3mXNQea0
     filename: AGL_phonotactics
-    citation: 'Cristia (in prep.)'
-    internal_citation: '(Cristia, in prep.)'
+    citation: 'Cristia (2018)'
+    internal_citation: '(Cristia, 2018)'
     link: ""
     full_citation: 'Cristia, A., (2018). Can infants learn phonology in the lab? A meta-analytic answer. Cognition, 170, 312-327.'
     doi: ""
     systematic: yes
-    search_strategy: '"Studies were considered based on a forward search from the seminal paper (MWG02) on both pubmed and google search, a list of references produced by the author, direct contact of labs having published on the topic, and announcements to several mailing lists."'
+    search_strategy: '"Studies were considered based on a forward search from a seminal paper on both pubmed and google search, a list of references produced by the author, direct contact of labs having published on the topic, and announcements to several mailing lists."'
     reliability: no
     source: 'coded by authors'
     last_update: '2015-12-14'
-    link_fields: 'https://osf.io/vhwzq/'
+    link_fields: 'https://osf.io/5c3gp/'
     short_desc: 'Infants'' ability to learn phonotactic generalizations from a short exposure.'
     description: 'Laboratory experiments in which infants are exposed to a set of pseudo-words that could support a phonotactic generalization, and thereafter tested on their preference between new types that follow or violate the familiarized phonotactics.'
     curator: 'Alex Cristia'
@@ -148,17 +148,17 @@
     short_name: sounds
     key: 1sbeoPlEKxyjzlmWgzeSCVrumoS0wlMpX_Puv074r9lM
     filename: AGL_soundsDL
-    citation: 'Cristia (in prep.)'
-    internal_citation: '(Cristia, in prep.)'
+    citation: 'Cristia (2018)'
+    internal_citation: '(Cristia, 2018)'
     link: ""
     full_citation: 'Cristia, A., (2018). Can infants learn phonology in the lab? A meta-analytic answer. Cognition, 170, 312-327.'
     doi: ""
     systematic: yes
-    search_strategy: '"Studies were considered based on a forward search from the seminal paper (MWG02) on both pubmed and google search, a list of references produced by the author, manual inspection of several editions of two leading conferences (ISIS and IASCL 2004-2012), direct contact of labs having published on the topic, and announcements to several mailing lists."'
+    search_strategy: '"Studies were considered based on a forward search from a seminal paper on both pubmed and google search, a list of references produced by the author, manual inspection of several editions of two leading conferences (ISIS and IASCL 2004-2012), direct contact of labs having published on the topic, and announcements to several mailing lists."'
     reliability: no
     source: 'coded by authors'
     last_update: '2015-12-14'
-    link_fields: 'https://osf.io/vhwzq/'
+    link_fields: 'https://osf.io/5c3gp/'
     short_desc: 'Infants'' ability to learn sound categories from their acoustic distribution.'
     description: 'Laboratory experiments in which infants are exposed to a set of syllables that have been generated using a bimodal distribution of acoustic cues or not, and infants are tested on their discrimination of two sounds differing along the same dimension.'
     curator: 'Alex Cristia'
@@ -246,8 +246,8 @@
     filename: word_recognition
     citation: 'Frank, Lewis, & MacDonald (2016)'
     internal_citation: '(Frank, Lewis, & MacDonald, 2016)'
-    link: 'http://langcog.stanford.edu/papers_new/frank-2016-underrev.pdf'
-    full_citation: 'Frank, M. C., Lewis, M., & MacDonald, K. (2016). A performance model for early wordlearning. In Proceedings of the 38th Annual Conference of the Cognitive Science Society.'
+    link: 'http://mindmodeling.org/cogsci2016/papers/0450/paper0450.pdf'
+    full_citation: 'Frank, M. C., Lewis, M., & MacDonald, K. (2016). A performance model for early word-learning. In Proceedings of the 38th Annual Conference of the Cognitive Science Society.'
     doi: ""
     systematic: no
     search_strategy: '"We conducted a systematic literature review by using Google Scholar to identify peer-reviewed papers citing Fernald et al. (1998). We screened this sample manually to find the subsample of 12 papers that reported both accuracy and reaction time with sufficient detail to permit coding."'
@@ -342,7 +342,7 @@
     filename: symbolism
     citation: 'Lammertink et al. (2016)'
     internal_citation: '(Lammertink et al., 2016)'
-    link: ""
+    link: "https://pure.uva.nl/ws/files/22575657/Fort_et_al_2018_Developmental_Science.pdf"
     full_citation: 'Fort, M., Lammertink, I., Peperkamp, S., Guevara-Rukoz, A., Fikkert, P., & Tsuji, S. (2018). SymBouki: a meta-analysis on the emergence of sound symbolism in early language acquisition. Developmental Science, Early View. doi: 10.1111/desc.12659.'
     doi: ""
     systematic: yes
