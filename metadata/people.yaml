@@ -5,6 +5,14 @@ Governing Board:
     website:      https://sites.google.com/site/chbergma/
     affiliation:  Max Planck Institute for Psycholinguistics
     image:        images/people/christina.jpg
+    
+  - name:         Sho Tsuji
+    email:        tsujish@gmail.com
+    website:      https://sites.google.com/site/tsujish/
+    affiliation:  University of Pennsylvania, École Normale Supérieure
+    image:        images/people/sho.jpg
+
+Scientific advisors:
 
   - name:         Alejandrina Cristia
     email:        alecristia@gmail.com
@@ -24,19 +32,24 @@ Governing Board:
     affiliation:  University of Chicago/University of Wisconsin-Madison
     image:        images/people/molly.jpg
 
-  - name:         Sho Tsuji
-    email:        tsujish@gmail.com
-    website:      https://sites.google.com/site/tsujish/
-    affiliation:  University of Pennsylvania, École Normale Supérieure
-    image:        images/people/sho.jpg
+Data manager:
 
-Technical Lead:
+  - name:         Cécile Issard
+    email:        cecile.issard@gmail.com
+    affiliation:  École Normale Supérieure
+    image:        images/people/cecile.jpg
 
-  - name:         Alessandro Sanchez
-    email:        sanchez7@stanford.edu
-    website:      https://github.com/amsan7
-    affiliation:  Stanford University
-    image:        images/people/alessandro.jpg
+Curators:
+
+- name:         Katie Von Holzen
+  email:        cecile.issard@gmail.com
+  affiliation:  University of Maryland
+  image:        images/people/katie.jpg
+  
+- name:         Angeline Tsui
+  email:        atsui029@uottawa.ca
+  affiliation:  University of Ottawa
+  image:        images/people/angeline.jpg
 
 Former members:
 
@@ -52,7 +65,14 @@ Former members:
     affiliation:  École Normale Supérieure
     image:        images/people/page.jpg
 
-  - name:         Cécile Issard
-    email:        cecile.issard@gmail.com
+  - name:         Alessandro Sanchez
+    email:        sanchez7@stanford.edu
+    website:      https://github.com/amsan7
+    affiliation:  Stanford University
+    image:        images/people/alessandro.jpg
+    
+  - name:         Julia Carbajal
+    email:        carbajalmjulia@gmail.com
+    website:      https://github.com/juliacarbajal
     affiliation:  École Normale Supérieure
-    image:        images/logo/logo1.png
+    image:        images/people/julia.jpg
