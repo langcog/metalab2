@@ -502,3 +502,29 @@
     longitudinal: 'FALSE'
     moderators: [scenarios]
     subset: [Hamlin_Lab]
+
+-
+
+name: 'Simple arithmetic competences'
+    domain: cognitive_development
+    short_name: arithmetic
+    key: 18JSxBB5GK87JqJ89aH055M5MaITY1qRqvZAJXBm3t-M
+    filename: simple_arithmetic_competences
+    citation: "Christodoulou et al. (2017)"
+    internal_citation: ""
+    link: "http://psycnet.apa.org/record/2017-24506-001"
+    full_citation: "Christodoulou, J., Lac, A., & Moore, D. S. (2017). Babies and math: A meta-analysis of infants’ simple arithmetic competence. Developmental Psychology, 53(8), 1405-1417."
+    doi: "10.1037/dev0000330"
+    reliability: ""
+    systematic: yes
+    search_strategy: 'Seeded with Winn (1992)'
+    source: 'coded by data manager'
+    last_update: '2018-08-09'
+    link_fields: ""
+    short_desc: 'Do infants have simple arithmetic competences?'
+    description: 'Do infants look longer at stimuli representing “incorrect” versus “correct” solutions of basic addition and subtraction problems?'
+    curator: ''
+    src: images/datasets/prosocial.png
+    longitudinal: 'FALSE'
+    moderators: [1+1_2-1, 1_1/2-1_other, solutions,	Age_MedianSplit, Stimultype, Display]
+    subset: []
