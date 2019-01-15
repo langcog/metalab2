@@ -505,7 +505,7 @@
 
 -
 
-name: 'Simple arithmetic competences'
+    name: 'Simple arithmetic competences'
     domain: cognitive_development
     short_name: arithmetic
     key: 18JSxBB5GK87JqJ89aH055M5MaITY1qRqvZAJXBm3t-M
