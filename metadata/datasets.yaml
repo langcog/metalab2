@@ -452,7 +452,7 @@
     curator: 'Angeline Tsui'
     src: images/datasets/Switch.png
     longitudinal: 'FALSE'
-    moderators: [minimal_pairs]
+    moderators: [minimal_pairs, word_typicality]
     subset: []
 -
     name: 'Mispronunciation sensitivity'
