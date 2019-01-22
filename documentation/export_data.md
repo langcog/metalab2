@@ -152,8 +152,9 @@ You must cite the publications linked to that dataset, as listed in the Document
 
 For tracking use of MetaLab, please also cite at least one of the following:
 
-Bergmann, C., Tsuji, S., Piccinini, P. E., Lewis, M. L., Braginsky, M., Frank, M. C., & Cristia, A. (2018). Promoting replicability in developmental research through meta-analyses: Insights from language acquisition research. Child Development.
-Lewis, M. L., Braginsky, M., Tsuji, S., Bergmann, C., Piccinini, P. E., Cristia, A., & Frank, M. C. (2017/under review). A Quantitative Synthesis of Early Language Acquisition Using Meta-Analysis. DOI: 10.17605/OSF.IO/HTSJM [Preprint]
+Bergmann, C., Tsuji, S., Piccinini, P. E., Lewis, M. L., Braginsky, M., Frank, M. C., & Cristia, A. (2018). Promoting replicability in developmental research through meta-analyses: Insights from language acquisition research. Child Development. (https://osf.io/uhv3d/)[Repository]
+
+Lewis, M. L., Braginsky, M., Tsuji, S., Bergmann, C., Piccinini, P. E., Cristia, A., & Frank, M. C. (2017/under review). A Quantitative Synthesis of Early Language Acquisition Using Meta-Analysis. DOI: 10.17605/OSF.IO/HTSJM (https://psyarxiv.com/htsjm)[Preprint]
 
 If researchers use more than five datasets, we ask users as a courtesy to cite all data. But in case of severe space limitations, the database as a whole alone may be cited.
 
