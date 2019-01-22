@@ -1,0 +1,55 @@
+We are collecting frequent problems here. If you experience any issues that we do not cover when following the steps, please send an email to [metalab-project@googlegroups.com] and we will try to help you.  
+
+## Import issues:
+
+### I see weird symbols.
+
+Make sure you selected UTF-8 as the encoding when you imported the data (see steps 2.1 to 2.5). 
+
+### Some of the rows have more columns than others
+
+This is due to a faulty import, you need to do it again:
+
+1. Open a blank workbook
+
+2. Go to the data menu
+
+3. Click on “Get external data”
+
+4. Click on “From text”
+
+5. A dialog box opens. In the drop-down menu on the right, select “UTF-8”.
+
+6. Select “Delimited” and click “next”
+
+7. Select “comma” as column delimiter and click “next”
+
+8. Click on the the “advanced” button and check that “.” is the decimal separator. 
+
+9. Click OK to finish. 
+
+### Numbers are formatted weirdly, or appear as text.
+
+Check that . is the decimal separator: 
+
+1. Select the column where numbers are not formatted properly (if there are several, you need to treat them one by one). 
+
+2. Click on “data” > “Text to columns”. A dialog box opens
+
+3. Select “Delimited” and click “next”
+
+4. Select “comma” as column delimiter and click “next”
+
+5. Click on the the “advanced” button and check that “.” is the decimal separator. Click OK to finish. 
+
+### When I open in xl, all the data are in column A.
+
+1. select column A (that contains all the data)
+
+2. Click on “data” > “Text to columns”. A dialog box opens
+
+3. Select “Delimited” and click “next”
+
+4. Select “comma” as column delimiter and click “next”
+
+5. Click on the the “advanced” button and check that “.” is the decimal separator. Click OK to finish. 
