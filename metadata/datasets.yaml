@@ -428,7 +428,7 @@
     curator: 'Hugh Rabagliati'
     src: images/datasets/AbstractRules.png
     longitudinal: 'FALSE'
-    moderators: [mean_age_1, Modality, Semantics, TrainingRule, PreferenceType]
+    moderators: [Modality, Semantics, TrainingRule, PreferenceType]
     subset: [Speech, Nonspeech]
 -
     name: 'Switch Task'
