@@ -5,21 +5,21 @@ You can download the data from both the [home page](http://metalab.stanford.edu)
 
 1. From the [home page](http://metalab.stanford.edu)
 
-   1.1. Click on the box corresponding to the domain you are interested in (e.g. cognitive development, early language).  
+    1.1. Click on the box corresponding to the domain you are interested in (e.g. cognitive development, early language).  
       
-   1.2. Once you are on the page of the domain, click on the box corresponding to the meta-analysis you are interested in (e.g. word segmentation).
+    1.2. Once you are on the page of the domain, click on the box corresponding to the meta-analysis you are interested in (e.g. word segmentation).
       
-   1.3. In the data tab, click on the “Download” button. 
+    1.3. In the data tab, click on the “Download” button. 
       
-   1.4. Choose the data format that you want (EXCEL - recommended for manual calculations using a spreadsheet software - but you should make sure that your local spreadsheet software is set to use "." as decimal separator to avoid errors (see section 2.), or CSV - recommended for reading into a statistical software such as R) by clicking on it in the conditional menu. 
+    1.4. Choose the data format that you want (EXCEL - recommended for manual calculations using a spreadsheet software - but you should make sure that your local spreadsheet software is set to use "." as decimal separator to avoid errors (see section 2.), or CSV - recommended for reading into a statistical software such as R) by clicking on it in the conditional menu. 
    
 2. From the visualization page.
    
-   2.1. Open the “Domain” drop-down menu and click on the one you are interested in.
+    2.1. Open the “Domain” drop-down menu and click on the one you are interested in.
 
-   2.2. Open the “Dataset” drop-down menu and click on the meta-analysis you are interested in.
+    2.2. Open the “Dataset” drop-down menu and click on the meta-analysis you are interested in.
 
-   2.3. Click on the “Download data” button above the “Domain” menu. You can also click on “View raw dataset” and follow steps 1.2. and 1.3.  
+    2.3. Click on the “Download data” button above the “Domain” menu. You can also click on “View raw dataset” and follow steps 1.2. and 1.3.  
 
 # Open the data
 The following instructions assume you are using Excel:
@@ -69,19 +69,19 @@ Two possibilities:
 
 1. Compute the mean or the median of column "n_1", and “n_1” and “n_2” if you are running a between participants study. You can thus see how many infants per group you should test based on the sample sizes used in previous studies. We do not recommend this strategy. 
 
-   1.1. In a new cell (typically below the last row of the “n_1” and “n_2” columns), type “=Mean([coordinate (i.e. letter+number) of the first value]:[coordinate (i.e. letter+number) of the last value])” or “=median([coordinate (i.e. letter+number) of the first value]:[coordinate (i.e. letter+number) of the last value])”. You can also type “=mean(“ and select the the cells to average with the cursor. Make sure you’ve closed the bracket and press enter.
+    1.1. In a new cell (typically below the last row of the “n_1” and “n_2” columns), type “=Mean([coordinate (i.e. letter+number) of the first value]:[coordinate (i.e. letter+number) of the last value])” or “=median([coordinate (i.e. letter+number) of the first value]:[coordinate (i.e. letter+number) of the last value])”. You can also type “=mean(“ and select the the cells to average with the cursor. Make sure you’ve closed the bracket and press enter.
 
-   1.2. Note that if the variable "n_excluded_1" is coded in the meta-analysis you are looking at, you can also get an idea of the attrition rates found in this work. For instance, you can add a column, say called "n_total", that sums n_1 and n_excluded_1. This will give you an idea of how many babies you should recruit, taking into account that some of them will need to be excluded (because they are fussy or other reasons). 
+    1.2. Note that if the variable "n_excluded_1" is coded in the meta-analysis you are looking at, you can also get an idea of the attrition rates found in this work. For instance, you can add a column, say called "n_total", that sums n_1 and n_excluded_1. This will give you an idea of how many babies you should recruit, taking into account that some of them will need to be excluded (because they are fussy or other reasons). 
 
-   1.3. If n_excluded_1 is not present, you can use a 20% rule of thumb - i.e., recruit 20% more than your target sample size.  You can get an idea of the attrition rate by method and age group on our [design choices analyses page](http://metalab.stanford.edu/reports/method_choice.html).
+    1.3. If n_excluded_1 is not present, you can use a 20% rule of thumb - i.e., recruit 20% more than your target sample size.  You can get an idea of the attrition rate by method and age group on our [design choices analyses page](http://metalab.stanford.edu/reports/method_choice.html).
 
 2. Previous studies might have chosen their sample size based on practical, instead of statistical reasons -e.g. number of available participants within a predefined time range. Therefore they might be underpowered. To solve the problem on your study, you can do a prospective power analysis. 
 
-   2.1. Copy the column entitled d_calc into a new sheet.
+    2.1. Copy the column entitled d_calc into a new sheet.
 
-   2.2. Calculate the median values for these columns -- in my example, the median difference score is 0.91, the median pooled SD is 2.72, and the median effect size is 0.33.
+    2.2. Calculate the median values for these columns -- in my example, the median difference score is 0.91, the median pooled SD is 2.72, and the median effect size is 0.33.
 
-   2.3. Use your favorite power calculation system/online tool to estimate sample size. I used the following formula in R (package: pwr): power.t.test(delta=0.91,sd=2.72,power=0.8,sig=.05,type=c("paired"),alternative="two.sided") to find out I needed to test 72 infants for my example case. 
+    2.3. Use your favorite power calculation system/online tool to estimate sample size. I used the following formula in R (package: pwr): power.t.test(delta=0.91,sd=2.72,power=0.8,sig=.05,type=c("paired"),alternative="two.sided") to find out I needed to test 72 infants for my example case. 
 
 If the number you get is too high, you might consider running sequential analyses. This means that you fully design your study, including a predetermined number of participants to run, the statistical analyses that you will run, and predefine moments when you will look at p-values before the end of data collection. At these predefined moments you will decide to continue or stop data collection based on outcome (significance reached, or fell below the threshold). 
 
