@@ -393,6 +393,7 @@ shinyServer(function(input, output, session) {
 
     ggplotly(plt, tooltip = c("text")) %>%
       layout(showlegend = FALSE)
+
   }
 
   forest_summary <- function() {
@@ -432,8 +433,10 @@ shinyServer(function(input, output, session) {
     forest()
   })
 
+  ## This is the rendering function for the meta-analytic model summery of the effect size
   output$forest_summary <- renderPlot(forest_summary(), height = 200)
 
+  ## This is the output function for the model summary
   output$forest_summary_text <- renderPrint({
     summary(model())
   })
