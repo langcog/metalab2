@@ -22,6 +22,7 @@
     longitudinal: 'FALSE'
     moderators: [speaker, speech_type]
     subset: []
+    comment:
 -
     name: 'Label advantage in concept learning'
     domain: early_language
@@ -46,6 +47,7 @@
     longitudinal: 'FALSE'
     moderators: [audio_condition, object_stimulus, num_trials]
     subset: []
+    comment:
 -
     name: 'Gaze following'
     domain: early_language
@@ -70,6 +72,7 @@
     longitudinal: 'FALSE'
     moderators: [num_trials, cue_type, N_AFC]
     subset: []
+    comment:
 -
     name: 'Vowel discrimination (native)'
     domain: early_language
@@ -94,6 +97,7 @@
     longitudinal: 'FALSE'
     moderators: []
     subset: []
+    comment:
 -
     name: 'Vowel discrimination (non-native)'
     domain: early_language
@@ -118,6 +122,7 @@
     longitudinal: 'FALSE'
     moderators: []
     subset: []
+    comment:
 -
     name: 'Phonotactic learning'
     domain: early_language
@@ -142,6 +147,7 @@
     longitudinal: 'FALSE'
     moderators: []
     subset: []
+    comment:
 -
     name: 'Statistical sound category learning'
     domain: early_language
@@ -166,6 +172,7 @@
     longitudinal: 'FALSE'
     moderators: []
     subset: []
+    comment:
 -
     name: 'Statistical word segmentation'
     domain: early_language
@@ -190,6 +197,7 @@
     longitudinal: 'FALSE'
     moderators: [native_lang, stimuli_type]
     subset: [replication]
+    comment:
 -
     name: 'Word segmentation'
     domain: early_language
@@ -214,6 +222,7 @@
     longitudinal: 'FALSE'
     moderators: [native_lang, method]
     subset: [native]
+    comment:
 -
     name: 'Function word segmentation'
     domain: early_language
@@ -238,6 +247,7 @@
     longitudinal: 'FALSE'
     moderators: [native_lang, method]
     subset: []
+    comment:
 -
     name: 'Online word recognition'
     domain: early_language
@@ -262,6 +272,7 @@
     longitudinal: 'FALSE'
     moderators: []
     subset: []
+    comment:
 -
     name: 'Mutual exclusivity'
     domain: early_language
@@ -286,6 +297,7 @@
     longitudinal: 'FALSE'
     moderators: [mean_comprehension_vocab, mean_production_vocab, N_AFC, num_trials, object_stimulus]
     subset: []
+    comment:
 -
     name: 'Pointing and vocabulary (longitudinal)'
     domain: early_language
@@ -310,6 +322,7 @@
     longitudinal: 'TRUE'
     moderators: [motive, pointing_modality]
     subset: []
+    comment:
 -
     name: 'Pointing and vocabulary (concurrent)'
     domain: early_language
@@ -334,6 +347,7 @@
     longitudinal: 'FALSE'
     moderators: [motive, pointing_modality]
     subset: []
+    comment:
 -
     name: 'Sound symbolism'
     domain: early_language
@@ -358,6 +372,7 @@
     longitudinal: 'FALSE'
     moderators: []
     subset: []
+    comment:
 -
     name: 'Categorization bias'
     domain: cognitive_development
@@ -382,6 +397,7 @@
     longitudinal: 'FALSE'
     moderators: [label_present, instruction_code, object_stimulus, taxonomic_type]
     subset: []
+    comment:
 -
     name: 'Familiar word recognition'
     domain: early_language
@@ -406,6 +422,7 @@
     longitudinal: 'FALSE'
     moderators: [main_or_baseline_study, native_lang]
     subset: []
+    comment:
 -
     name: 'Abstract rule learning'
     domain: early_language
@@ -430,6 +447,7 @@
     longitudinal: 'FALSE'
     moderators: [Modality, Semantics, TrainingRule, PreferenceType]
     subset: [Speech, Nonspeech]
+    comment:
 -
     name: 'Switch Task'
     domain: early_language
@@ -454,6 +472,7 @@
     longitudinal: 'FALSE'
     moderators: [minimal_pairs, word_typicality, cues_present]
     subset: []
+    comment:
 -
     name: 'Mispronunciation sensitivity'
     domain: early_language
@@ -478,6 +497,7 @@
     longitudinal: 'FALSE'
     moderators: [is_correct, n_feature, type_feature, mispron_location]
     subset: [CorrectPronunciation, Mispronunciation]
+    comment:
 -
     name: 'Prosocial agents'
     domain: cognitive_development
@@ -502,7 +522,7 @@
     longitudinal: 'FALSE'
     moderators: [scenarios]
     subset: [Hamlin_Lab]
-
+    comment:
 -
 
     name: 'Simple arithmetic competences'
@@ -528,3 +548,58 @@
     longitudinal: 'FALSE'
     moderators: [1+1_2-1, 1_1/2-1_other, solutions,	Age_MedianSplit, Stimultype, Display]
     subset: []
+    comment:
+-
+
+    name: ‘Symbolic play’
+    domain: early_language
+    short_name: play
+    key: 1phdZ5ufy2NE5AbwXwVWOwhK-TGzP5Wd_lokrG0wfVXs/edit#gid=0
+    filename: symbolic_play
+    citation: « Quinn & Kidd (2018) »
+    internal_citation: ""
+    link: "https://www.sciencedirect.com/science/article/pii/S027322971730045X"
+    full_citation: « Quinn, S., Donnelly, S., & Kidd, E. (2018). The relationship between symbolic play and language acquisition: A meta-analytic review. Developmental review, 49, 121-135. »
+    doi: "10.1016/j.dr.2018.05.005"
+    reliability: ""
+    systematic: yes
+    search_strategy: 'Seeded with Winn (1992)'
+    source: 'coded by data manager'
+    last_update: '2019-03-12’
+    link_fields: ""
+    short_desc: ‘Is there a relationship between symbolic play and language development?’
+    description: 'Do infants who show more symbolic play have better language development?’
+    curator: ''
+    src: images/datasets/prosocial.png
+    longitudinal: 'FALSE'
+    moderators: [correlation_type, Language_modality, solutions,	Age_qualitative]
+    subset: []
+    comment: « the mean age is not systematic, but the center of the age range provided in the supplementary material. »
+
+-
+
+    name: ‘Speech preference’
+    domain: early_language
+    short_name: ACoCo
+    key: 1CNz2dV6T3hyfxd2m0GSe1TzERaqT151ELpMPpfcEdcI/edit#gid=0
+    filename: symbolic_play
+    citation: « Issard & Cristia (in prep.) »
+    internal_citation: ""
+    link: "https://drive.google.com/open?id=1CNz2dV6T3hyfxd2m0GSe1TzERaqT151ELpMPpfcEdcI"
+    full_citation: « Issard, C., & Cristia, A. (2019, April 4). Do infants prefer speech? A meta-analysis. Retrieved from osf.io/4stz9 »
+    doi: ""
+    reliability: ""
+    systematic: yes
+    search_strategy: ‘database search’
+    source: ‘new meta-analysis’
+    last_update: '2019-03-12’
+    link_fields: ""
+    short_desc: ‘Do infants prefer speech over other types of sound?’
+    description: ‘Do infants prefer speech over other species vocalizations, natural or artificial sounds? Takes part in a larger comparative project.’
+    curator: ‘Cécile Issard’
+    src: images/datasets/ids.png
+    longitudinal: 'FALSE'
+    moderators: [naturalness, vocal, other_species,	age, human_social]
+    subset: []
+    comment: « This meta-analysis is in progress.»
+
