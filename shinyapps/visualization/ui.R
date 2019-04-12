@@ -136,8 +136,9 @@ shinyUI(
                     p(strong("Forest plot"),
                       "of effect sizes and meta-analysis model estimates"))
                   ),
+                fluidRow(width=10,
                 column(
-                  width = 4,
+                  width = 10,
                   selectInput("forest_sort", label = "Sort order",
                               choices = c("weight (1/variance)" = "variances",
                                           "effect size" = "effects",
@@ -147,7 +148,7 @@ shinyUI(
                   bsPopover("forest_sort", title = NULL,
                             content = HTML("<small>Method to sort results</small>"),
                             placement = "right")
-                ),
+                )),
                 plotlyOutput("forest"),
                 # ggplotly hack - renderPlotly does not take height param; must alter in UI
                 tags$script('
