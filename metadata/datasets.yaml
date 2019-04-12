@@ -599,7 +599,7 @@
     curator: ‘Cécile Issard’
     src: images/datasets/ids.png
     longitudinal: 'FALSE'
-    moderators: [naturalness, vocal, other_species,	age, human_social]
+    moderators: [naturalness, other_species, social]
     subset: []
     comment: "This meta-analysis is in progress."
 
