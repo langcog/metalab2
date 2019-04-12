@@ -22,7 +22,7 @@
     longitudinal: 'FALSE'
     moderators: [speaker, speech_type]
     subset: []
-    comment:
+    comment: ""
 -
     name: 'Label advantage in concept learning'
     domain: early_language
@@ -47,7 +47,7 @@
     longitudinal: 'FALSE'
     moderators: [audio_condition, object_stimulus, num_trials]
     subset: []
-    comment:
+    comment: ""
 -
     name: 'Gaze following'
     domain: early_language
@@ -72,7 +72,7 @@
     longitudinal: 'FALSE'
     moderators: [num_trials, cue_type, N_AFC]
     subset: []
-    comment:
+    comment: ""
 -
     name: 'Vowel discrimination (native)'
     domain: early_language
@@ -97,7 +97,7 @@
     longitudinal: 'FALSE'
     moderators: []
     subset: []
-    comment:
+    comment:""
 -
     name: 'Vowel discrimination (non-native)'
     domain: early_language
@@ -122,7 +122,7 @@
     longitudinal: 'FALSE'
     moderators: []
     subset: []
-    comment:
+    comment:""
 -
     name: 'Phonotactic learning'
     domain: early_language
@@ -147,7 +147,7 @@
     longitudinal: 'FALSE'
     moderators: []
     subset: []
-    comment:
+    comment:""
 -
     name: 'Statistical sound category learning'
     domain: early_language
@@ -172,7 +172,7 @@
     longitudinal: 'FALSE'
     moderators: []
     subset: []
-    comment:
+    comment:""
 -
     name: 'Statistical word segmentation'
     domain: early_language
@@ -197,7 +197,7 @@
     longitudinal: 'FALSE'
     moderators: [native_lang, stimuli_type]
     subset: [replication]
-    comment:
+    comment:""
 -
     name: 'Word segmentation'
     domain: early_language
@@ -222,7 +222,7 @@
     longitudinal: 'FALSE'
     moderators: [native_lang, method]
     subset: [native]
-    comment:
+    comment:""
 -
     name: 'Function word segmentation'
     domain: early_language
@@ -247,7 +247,7 @@
     longitudinal: 'FALSE'
     moderators: [native_lang, method]
     subset: []
-    comment:
+    comment:""
 -
     name: 'Online word recognition'
     domain: early_language
@@ -272,7 +272,7 @@
     longitudinal: 'FALSE'
     moderators: []
     subset: []
-    comment:
+    comment:""
 -
     name: 'Mutual exclusivity'
     domain: early_language
@@ -297,7 +297,7 @@
     longitudinal: 'FALSE'
     moderators: [mean_comprehension_vocab, mean_production_vocab, N_AFC, num_trials, object_stimulus]
     subset: []
-    comment:
+    comment:""
 -
     name: 'Pointing and vocabulary (longitudinal)'
     domain: early_language
@@ -322,7 +322,7 @@
     longitudinal: 'TRUE'
     moderators: [motive, pointing_modality]
     subset: []
-    comment:
+    comment:""
 -
     name: 'Pointing and vocabulary (concurrent)'
     domain: early_language
@@ -347,7 +347,7 @@
     longitudinal: 'FALSE'
     moderators: [motive, pointing_modality]
     subset: []
-    comment:
+    comment:""
 -
     name: 'Sound symbolism'
     domain: early_language
@@ -372,7 +372,7 @@
     longitudinal: 'FALSE'
     moderators: []
     subset: []
-    comment:
+    comment:""
 -
     name: 'Categorization bias'
     domain: cognitive_development
@@ -397,7 +397,7 @@
     longitudinal: 'FALSE'
     moderators: [label_present, instruction_code, object_stimulus, taxonomic_type]
     subset: []
-    comment:
+    comment:""
 -
     name: 'Familiar word recognition'
     domain: early_language
@@ -422,7 +422,7 @@
     longitudinal: 'FALSE'
     moderators: [main_or_baseline_study, native_lang]
     subset: []
-    comment:
+    comment:""
 -
     name: 'Abstract rule learning'
     domain: early_language
@@ -447,7 +447,7 @@
     longitudinal: 'FALSE'
     moderators: [Modality, Semantics, TrainingRule, PreferenceType]
     subset: [Speech, Nonspeech]
-    comment:
+    comment:""
 -
     name: 'Switch Task'
     domain: early_language
@@ -472,7 +472,7 @@
     longitudinal: 'FALSE'
     moderators: [minimal_pairs, word_typicality, cues_present]
     subset: []
-    comment:
+    comment:""
 -
     name: 'Mispronunciation sensitivity'
     domain: early_language
@@ -497,7 +497,7 @@
     longitudinal: 'FALSE'
     moderators: [is_correct, n_feature, type_feature, mispron_location]
     subset: [CorrectPronunciation, Mispronunciation]
-    comment:
+    comment:""
 -
     name: 'Prosocial agents'
     domain: cognitive_development
@@ -522,7 +522,7 @@
     longitudinal: 'FALSE'
     moderators: [scenarios]
     subset: [Hamlin_Lab]
-    comment:
+    comment:""
 -
 
     name: 'Simple arithmetic competences'
@@ -548,7 +548,7 @@
     longitudinal: 'FALSE'
     moderators: [1+1_2-1, 1_1/2-1_other, solutions,	Age_MedianSplit, Stimultype, Display]
     subset: []
-    comment:
+    comment:""
 -
 
     name: ‘Symbolic play’
@@ -574,7 +574,7 @@
     longitudinal: 'FALSE'
     moderators: [correlation_type, Language_modality, solutions,	Age_qualitative]
     subset: []
-    comment: « the mean age is not systematic, but the center of the age range provided in the supplementary material. »
+    comment: "the mean age is not systematic, but the center of the age range provided in the supplementary material."
 
 -
 
@@ -601,5 +601,5 @@
     longitudinal: 'FALSE'
     moderators: [naturalness, vocal, other_species,	age, human_social]
     subset: []
-    comment: « This meta-analysis is in progress.»
+    comment: "This meta-analysis is in progress."
 
