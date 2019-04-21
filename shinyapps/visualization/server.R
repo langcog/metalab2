@@ -174,12 +174,12 @@ shinyServer(function(input, output, session) {
       select(short_desc)
     paste("Dataset decription:", short_desc)})
 
-  # output$data_citation <- renderText({
-  #   req(input$dataset_name)
-  #   full_citation <- datasets %>%
-  #     filter(name == input$dataset_name) %>%
-  #     select(full_citation)
-  #   paste("Dataset citation:", full_citation)})
+   output$data_citation <- renderText({
+     req(input$dataset_name)
+     full_citation <- datasets %>%
+       filter(name == input$dataset_name) %>%
+       select(full_citation)
+     paste("Dataset citation:", full_citation)})
 
   output$ma_model_blurb <- renderUI({
     HTML(paste0("Random effects model assuming studies within a paper share variance. For details, see
