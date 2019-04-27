@@ -898,3 +898,24 @@
   format:   
   example:  natural, artificial
   required: no
+
+- field:    minimal_pairs
+  description: Switch MA - Description not available.
+  type:     string
+  format:   
+  example:  minimal pairs, dissimilar sounding
+  required: no
+
+- field:    cues_present
+  description: Switch MA - Description not available.
+  type:     string
+  format:   
+  example:  NA
+  required: no
+
+- field:    word_typicality
+  description: Switch MA - Description not available.
+  type:     string
+  format:   
+  example:  typical word, Atypical word
+  required: no
