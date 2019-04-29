@@ -415,7 +415,7 @@
     source: 'coded by authors'
     last_update: '2018-06-30'
     link_fields: ""
-    short_desc: 'dDo infants distingusih familiar words from novel/rare words in listening tasks?'
+    short_desc: 'Do infants distingusih familiar words from novel/rare words in listening tasks?'
     description: 'Within-subject comparisons of attention to lists of familiar words vs novel/rare words.'
     curator: 'Julia Carbajal'
     src: images/datasets/familiarwords.png
