@@ -88,11 +88,11 @@ shinyUI(
                     width = 10,
                     p(strong("Scatter plot"), "of effect sizes over age"))
                   ),
-                column(
+                fluidRow(column(
                   width = 7,
                   # uiOutput("select_scatter_curve")),
                   selectInput("scatter_curve", label = "Curve type",
-                              choices = scatter_choices, selected = "loess"),
+                              choices = scatter_choices, selected = "loess")),
                   bsPopover("scatter_curve", title = NULL,
                             content = HTML("<small>Select a type of curve</small>"),
                             placement = "right")),
@@ -100,7 +100,7 @@ shinyUI(
                 br(),
                 helpText("Select a type of regression line. Dot sizes are inversely related
                          to the standard error of effect size."),
-                height = 530)
+                height = 600)
           ),
           box(width = NULL, #status = "danger",
               fluidRow(
