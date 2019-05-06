@@ -167,6 +167,20 @@ shinyServer(function(input, output, session) {
                 View raw dataset</a>. Please cite the datasets that you use following <a href='https://langcog.github.io/metalab2/publications.html' target='_blank'> our citation policy.</a> </a></i>"))
   })
 
+    output$data_decription <- renderText({
+    req(input$dataset_name)
+    short_desc <- datasets %>%
+      filter(name == input$dataset_name) %>%
+      select(short_desc)
+    paste("Dataset decription:", short_desc)})
+
+   output$data_citation <- renderText({
+     req(input$dataset_name)
+     full_citation <- datasets %>%
+       filter(name == input$dataset_name) %>%
+       select(full_citation)
+     paste("Dataset citation:", full_citation)})
+
   output$ma_model_blurb <- renderUI({
     HTML(paste0("Random effects model assuming studies within a paper share variance. For details, see
                 <a href='https://metalab.stanford.edu/documentation.html#statistical_approach' target='_blank'>
