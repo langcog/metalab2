@@ -43,8 +43,8 @@ sudo apt-get install libnlopt-dev
 
 ```
 sudo apt-get install gdebi-core
-wget https://download3.rstudio.org/ubuntu-12.04/x86_64/shiny-server-1.4.2.786-amd64.deb
-sudo gdebi shiny-server-1.4.2.786-amd64.deb
+wget https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-1.5.9.923-amd64.deb
+sudo gdebi shiny-server-1.5.9.923-amd64.deb
 ```
 
 Give metalab user permission to write to the shiny apps folder:
