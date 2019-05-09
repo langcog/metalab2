@@ -592,14 +592,14 @@
     systematic: yes
     search_strategy: ‘database search’
     source: ‘new meta-analysis’
-    last_update: '2019-03-12’
+    last_update: '2019-05-09’
     link_fields: ""
     short_desc: ‘Do infants prefer speech over other types of sound?’
     description: ‘Do infants prefer speech over other species vocalizations, natural or artificial sounds? Takes part in a larger comparative project.’
     curator: ‘Cécile Issard’
     src: images/datasets/ids.png
     longitudinal: 'FALSE'
-    moderators: [naturalness, other_species, social]
+    moderators: [naturalness, species, social]
     subset: []
     comment: "This meta-analysis is in progress."
 
