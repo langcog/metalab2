@@ -580,7 +580,7 @@
 
     name: ‘Speech preference’
     domain: early_language
-    short_name: ACoCo
+    short_name: SpeechPref
     key: 1CNz2dV6T3hyfxd2m0GSe1TzERaqT151ELpMPpfcEdcI/edit#gid=0
     filename: symbolic_play
     citation: « Issard & Cristia (in prep.) »
