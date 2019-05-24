@@ -399,6 +399,7 @@ method_exclude.plot = ggplot(method_exclude_data, aes(x = method, y = percent_dr
   scale_x_discrete(labels = axislabels) +
   theme_classic() +
   theme(text = element_text(size=16), axis.line.x = element_line(), axis.line.y = element_line(), legend.position='none')
+  
 method_exclude.plot
 ```
 
