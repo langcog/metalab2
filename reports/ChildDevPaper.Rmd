@@ -1,17 +1,19 @@
---
-title: "Dynamical version of 'Promoting replicability in developmental research through meta-analyses: Insights from language acquisition research.' "
+---
+title: "Dynamical version of Promoting replicability in developmental research through meta-analyses: Insights from language acquisition research."
 author: "Christina Bergmann"
 date: "Last updated on `r Sys.Date()`."
 ---
   
 # Introduction
 ```{r, include=FALSE}
-knitr::opts_chunk$set(warning = FALSE, message = FALSE, cache = TRUE, include = FALSE)
+#knitr::opts_chunk$set(warning = FALSE, message = FALSE, cache = TRUE, include = FALSE)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 
 library(metafor)
 library(tidyverse)
 library(pwr)
 library(lme4)
+library(kableExtra)
 ```
 
 
@@ -229,6 +231,85 @@ kable(arrange(d_comparison_summary, old_power), col.names = c("Meta-Analysis", "
 
 ### Exclusion rates across methods 
 
+```{r DropoutModel2, include=FALSE, results='asis'}
+
+# this is a quick and dirty fix to get this file to work with the current system
+# Kyle needs to come back later and fix this so it looks nice and pretty
+# wkh May 24, 10`9
+
+axislabels = c("CF", "CondHT", "FC", "HPP", "LwL", "SA")
+
+
+## METHOD VS EXCLUDED ####
+
+# Centering mean age
+method_exclude_data = all_data %>%
+  mutate(ageC = ifelse(participant_design == "between",
+                       (((mean_age_1 - mean(mean_age_1)) + (mean_age_1 - mean(mean_age_1)))/2)/30.42,
+                       (((mean_age_1 - mean(mean_age_1))))/30.42)) %>%
+  mutate(keep = ifelse(is.na(n_2), n_1, n_1 + n_2)) %>%
+  mutate(dropout = ifelse(is.na(n_excluded_1), NA, ifelse(is.na(n_excluded_2), n_excluded_1, n_excluded_1+n_excluded_2))) %>%
+  mutate(total_run = keep + dropout) %>%
+  filter(!is.na(dropout)) %>%
+  mutate(percent_dropout = dropout*100 / total_run) %>%
+  group_by(method) %>%
+  mutate(number = n()) %>%
+  ungroup() %>%
+  filter(number > 10) %>%
+  mutate(method = factor(method)) #%>%
+  #select(percent_dropout, keep, dropout, total_run, dataset, ageC, method, mean_age_months)
+
+method_data = all_data %>%
+  filter(method %in% unique(method_exclude_data$method)) %>%
+  mutate(ageC = ifelse(participant_design == "between",
+                       (((mean_age_1 - mean(mean_age_1)) + (mean_age_1 - mean(mean_age_1)))/2)/30.42,
+                       (((mean_age_1 - mean(mean_age_1))))/30.42)) %>%
+  group_by(method) %>%
+  mutate(number = n()) %>%
+  ungroup() %>%
+  filter(number > 10) %>%
+  mutate(method = factor(method)) #%>%
+
+# Build LMER model
+method_exclude.m <- lmer(percent_dropout ~ method * ageC +
+                           (1|dataset), data = method_exclude_data)
+
+
+coefs.full <- as.data.frame(coef(summary(method_exclude.m)))
+coefs.full$p <- format.pval(2*(1-pnorm(abs(coefs.full[,"t value"]))))
+
+
+
+method_exclude_apa <- coefs.full
+
+
+clean<-function(x){
+  x<-gsub("relevel(, \"central fixation\")","",x,fixed=T)
+  x<-gsub("intrcpt","Intercept",x,fixed=T)
+  x<-gsub("(Intercept)","Intercept",x,fixed=T)
+  x<-gsub("method","",x)
+  x<-gsub("conditioned head-turn","CondHT",x)
+  x<-gsub("forced-choice","FC",x)
+  x<-gsub("head-turn preference procedure","HPP",x)
+  x<-gsub("looking while listening","LwL",x)
+  x<-gsub("stimulus alternation","SA",x)
+  x<-gsub("ageC", "Age",x)
+  x<-gsub(":", "*",x)}
+
+
+rownames(method_exclude_apa)<-clean(rownames(method_exclude_apa))
+
+
+colnames(method_exclude_apa)<-c("Est.", "SE Est", "t", "p")
+
+#method_exclude_apa[,1] <- printnum(method_exclude_apa[,1])
+#method_exclude_apa[,2] <- printnum(method_exclude_apa[,2])
+#method_exclude_apa[,3] <- printnum(method_exclude_apa[,3])
+kable(method_exclude_apa, caption = "Linear mixed effects model predicting exclusion rate by method and participant age while accounting for the specific phenomenon.", digits = 3)
+
+
+```
+
 In most of the analyzed meta-analyses, multiple methods were used to tap into the phenomenon in question. Choosing a robust method can help increase power, because more precise measurements lead to larger effect sizes due to reduced measurement variance and thus require fewer participants to be tested to conduct appropriately-powered studies. However, the number of participants relates to the final sample and not how many participants had to be invited into the lab. We thus first quantify whether methods differ in their typical exclusion rate, as economic considerations might drive method choice. To this end we consider all methods which have more than 10 associated effect sizes and for which information on the number of excluded participants was reported and entered in the meta-analyses. We note that this is exclusion rate, rather than fussout or dropout rates, because it represents the number excluded considering all criteria, including data quality criteria such as a minimum looking time. We chose this variable for practical reasons, as overall exclusion rates are more frequently reported than the number of participants who did not complete the experiment. The following analyses cover `r length(unique(method_exclude_data$method))` methods and `r length(method_exclude_data$method)` effect sizes.
 
 The results of a linear mixed effects model predicting exclusion rate by method and mean participant age (while controlling for the different underlying effect sizes per meta-analysis) are summarized in Table 3 and visualized in Figure 1. The results show significant variation across methods, and a tendency toward higher exclusion rates for older participants, with some interaction with method.
@@ -377,7 +458,7 @@ method.plot
 In the final set of analyses, we assess the relation between absolute observed effect sizes in single studies and the associated sample size. The rationale behind this analysis is simple: The smaller the effect size in a particular study (bear in mind that we assume that experiments sample from a distribution around the population effect), the larger the sample needed for a significant *p* value. If sample size decisions are made before data collection and all results are published, we expect no relation between observed effect size and sample size. If, on the contrary, authors continue to add infants to achieve significance, there should be a negative correlation between sample size and effect size. 
 
 
-```{r Bias, echo = FALSE, ig.pos = "T!", fig.width=8, fig.height=5.5, fig.cap = "For each meta-analysis observed effect size per study plotted against sample size. Each point indicates a single study."}
+```{r Bias, echo = FALSE, ig.pos = "T!", fig.width=14, fig.height=14, fig.cap = "For each meta-analysis observed effect size per study plotted against sample size. Each point indicates a single study."}
 
 bias_grid <-ggplot(all_data, aes(x = n, y = abs(d_calc))) +
   facet_wrap(~dataset, scales = "free",ncol = 3) +
