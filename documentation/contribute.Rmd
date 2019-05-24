@@ -1,6 +1,6 @@
 # How to contribute?
 
-We welcome researchers interested in contributing to Metalab. Please contact us at metalab-project@googlegroups.com
+We welcome researchers interested in contributing to Metalab. Please [contact us](http://metalab.stanford.edu/about.html).
 
 Contributions can take various forms:
 

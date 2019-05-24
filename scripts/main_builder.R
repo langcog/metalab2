@@ -16,7 +16,8 @@ logOnError <- function(expression) {
 
 message(paste0("==> Start main_builder.R execution. ", format(Sys.time(), "%Y-%m-%dT%H:%M:%SZ")))
 
-setwd("..")
+#setwd("..")
+setwd("/Users/Cecile/Documents/Metalab/metalab2")
 
 unlink("data/", recursive = TRUE)
 dir.create("data")
