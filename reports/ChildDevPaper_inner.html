@@ -1,0 +1,2083 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Christina Bergmann" />
+
+
+<title>Dynamical version of Promoting replicability in developmental research through meta-analyses: Insights from language acquisition research.</title>
+
+<script src="ChildDevPaper_inner_files/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="ChildDevPaper_inner_files/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="ChildDevPaper_inner_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="ChildDevPaper_inner_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="ChildDevPaper_inner_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="ChildDevPaper_inner_files/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="ChildDevPaper_inner_files/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="ChildDevPaper_inner_files/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="ChildDevPaper_inner_files/navigation-1.1/tabsets.js"></script>
+<script src="ChildDevPaper_inner_files/navigation-1.1/codefolding.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  { background-color: #f8f8f8; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+.sourceCode .row {
+  width: 100%;
+}
+.sourceCode {
+  overflow-x: auto;
+}
+.code-folding-btn {
+  margin-right: -30px;
+}
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Dynamical version of Promoting replicability in developmental research through meta-analyses: Insights from language acquisition research.</h1>
+<h4 class="author">Christina Bergmann</h4>
+<h4 class="date">Last updated on 2019-05-24.</h4>
+
+</div>
+
+
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>This document presents dynamically updating analyses that are based on the paper <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/cdev.13079">Promoting Replicability in Developmental Research Through Meta-analyses: Insights From Language Acquisition Research</a>. This paper will always use the latest data from the language acquisition domain on <a href="metalab.stanford.edu">MetaLab</a>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co">## CLEAN DATA ####</span></a>
+<a class="sourceLine" id="cb1-2" title="2">all_data =<span class="st"> </span>all_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="st">  </span><span class="kw">filter</span>(domain <span class="op">==</span><span class="st"> &quot;early_language&quot;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">is.na</span>(condition_type) <span class="op">|</span><span class="st"> </span>condition_type <span class="op">==</span><span class="st"> &quot;critical&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="st">  </span><span class="kw">filter</span>(dataset<span class="op">!=</span><span class="st">&quot;Pointing and vocabulary (longitudinal)&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="st">  </span><span class="kw">filter</span>(infant_type <span class="op">==</span><span class="st"> &quot;typical&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">weights_d =</span> <span class="dv">1</span><span class="op">/</span>(d_var_calc)<span class="op">^</span><span class="dv">2</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">d_var_calc =</span> <span class="kw">abs</span>(d_var_calc))</a>
+<a class="sourceLine" id="cb1-9" title="9"></a>
+<a class="sourceLine" id="cb1-10" title="10"></a>
+<a class="sourceLine" id="cb1-11" title="11">all_data =<span class="st"> </span>all_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-12" title="12"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">year =</span> <span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">lapply</span>(<span class="kw">strsplit</span>(<span class="kw">unlist</span>(study_ID),</a>
+<a class="sourceLine" id="cb1-13" title="13">                                                  <span class="st">&quot;[^0-9]+&quot;</span>),  <span class="cf">function</span>(x) <span class="kw">unlist</span>(x)[<span class="dv">2</span>])))) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-14" title="14"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">year =</span> <span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;submitted&quot;</span>,study_ID), <span class="dv">2017</span>, year)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-15" title="15"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">year =</span> <span class="kw">ifelse</span>(dataset <span class="op">==</span><span class="st"> &quot;Phonotactic learning&quot;</span>, </a>
+<a class="sourceLine" id="cb1-16" title="16">                       <span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">lapply</span>(<span class="kw">strsplit</span>(<span class="kw">unlist</span>(short_cite),<span class="st">&quot;[^0-9]+&quot;</span>),  <span class="cf">function</span>(x) <span class="kw">unlist</span>(x)[<span class="dv">2</span>]))), year)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-17" title="17"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">dataset =</span> <span class="kw">as.factor</span>(dataset))</a>
+<a class="sourceLine" id="cb1-18" title="18"></a>
+<a class="sourceLine" id="cb1-19" title="19"><span class="co">#Remove outliers</span></a>
+<a class="sourceLine" id="cb1-20" title="20"></a>
+<a class="sourceLine" id="cb1-21" title="21">clean_data =<span class="st"> </span>all_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-22" title="22"><span class="st">  </span><span class="kw">group_by</span>(dataset) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-23" title="23"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">mean_es =</span> <span class="kw">median</span>(d_calc)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-24" title="24"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sd_es =</span> <span class="kw">sd</span>(d_calc)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-25" title="25"><span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-26" title="26"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">no_outlier =</span> <span class="kw">ifelse</span>(d_calc <span class="op">&lt;</span><span class="st"> </span>mean_es<span class="op">+</span><span class="dv">3</span><span class="op">*</span>sd_es, <span class="kw">ifelse</span>(d_calc <span class="op">&gt;</span><span class="st"> </span>mean_es<span class="dv">-3</span><span class="op">*</span>sd_es, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>), <span class="ot">FALSE</span>))  <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-27" title="27"><span class="st">  </span><span class="kw">filter</span>(no_outlier) </a>
+<a class="sourceLine" id="cb1-28" title="28"></a>
+<a class="sourceLine" id="cb1-29" title="29"><span class="co">#Comment out if you do not want to remove outliers</span></a>
+<a class="sourceLine" id="cb1-30" title="30">all_data =<span class="st"> </span>clean_data</a>
+<a class="sourceLine" id="cb1-31" title="31"><span class="kw">remove</span>(clean_data)</a>
+<a class="sourceLine" id="cb1-32" title="32"></a>
+<a class="sourceLine" id="cb1-33" title="33"><span class="co">#Descriptives prep</span></a>
+<a class="sourceLine" id="cb1-34" title="34">get_power =<span class="st"> </span><span class="cf">function</span>(df){</a>
+<a class="sourceLine" id="cb1-35" title="35">  <span class="kw">pwr.t.test</span>(<span class="dt">n =</span> df<span class="op">$</span>n_dataset, <span class="dt">d =</span> df<span class="op">$</span>d, <span class="dt">sig.level =</span> <span class="fl">0.05</span>)</a>
+<a class="sourceLine" id="cb1-36" title="36">}</a>
+<a class="sourceLine" id="cb1-37" title="37"></a>
+<a class="sourceLine" id="cb1-38" title="38"><span class="co"># Organize data to get descriptors</span></a>
+<a class="sourceLine" id="cb1-39" title="39">data_rma =<span class="st"> </span>all_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-40" title="40"><span class="st">  </span><span class="kw">nest</span>(<span class="op">-</span>dataset, <span class="dt">.key =</span> information) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-41" title="41"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">model =</span> <span class="kw">map</span>(information, <span class="op">~</span><span class="kw">rma.mv</span>(d_calc, d_var_calc, <span class="dt">random =</span> <span class="op">~</span><span class="st"> </span>study_ID, <span class="dt">data=</span>.))) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-42" title="42"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">d =</span> <span class="kw">map</span>(model, <span class="st">&quot;b&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-43" title="43"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">se =</span> <span class="kw">map</span>(model, <span class="st">&quot;se&quot;</span>))  <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-44" title="44"><span class="st">  </span><span class="kw">select</span>(dataset, d, se) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-45" title="45"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">d =</span> <span class="kw">as.numeric</span>(<span class="kw">as.character</span>(d))) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-46" title="46"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">se =</span> <span class="kw">as.numeric</span>(<span class="kw">as.character</span>(se)))</a>
+<a class="sourceLine" id="cb1-47" title="47"></a>
+<a class="sourceLine" id="cb1-48" title="48"><span class="co"># Descriptors</span></a>
+<a class="sourceLine" id="cb1-49" title="49">MA_descriptives =<span class="st"> </span>all_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-50" title="50"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">n_total =</span> n) <span class="op">%&gt;%</span><span class="st"> </span><span class="co">#ifelse(!is.na(n_2), n_1 + n_2, n_1)) %&gt;% I think n does the same thing</span></a>
+<a class="sourceLine" id="cb1-51" title="51"><span class="st">  </span><span class="kw">group_by</span>(dataset) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-52" title="52"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">age_dataset =</span> <span class="kw">median</span>(mean_age_months),</a>
+<a class="sourceLine" id="cb1-53" title="53">            <span class="dt">age_min =</span> <span class="kw">min</span>(mean_age_months),</a>
+<a class="sourceLine" id="cb1-54" title="54">            <span class="dt">age_max =</span> <span class="kw">max</span>(mean_age_months),</a>
+<a class="sourceLine" id="cb1-55" title="55">            <span class="dt">n_dataset =</span> <span class="kw">median</span>(n_total),</a>
+<a class="sourceLine" id="cb1-56" title="56">            <span class="dt">n_min =</span> <span class="kw">min</span>(n_total),</a>
+<a class="sourceLine" id="cb1-57" title="57">            <span class="dt">n_max =</span> <span class="kw">max</span>(n_total),</a>
+<a class="sourceLine" id="cb1-58" title="58">            <span class="dt">n_records =</span> <span class="kw">n</span>(),</a>
+<a class="sourceLine" id="cb1-59" title="59">            <span class="dt">n_papers =</span> <span class="kw">length</span>(<span class="kw">unique</span>(short_cite))) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-60" title="60"><span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-61" title="61"><span class="st">  </span><span class="kw">inner_join</span>(data_rma)</a>
+<a class="sourceLine" id="cb1-62" title="62"></a>
+<a class="sourceLine" id="cb1-63" title="63"><span class="co"># Power</span></a>
+<a class="sourceLine" id="cb1-64" title="64">MA_power =<span class="st"> </span>MA_descriptives <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-65" title="65"><span class="st">  </span><span class="kw">nest</span>(<span class="op">-</span>dataset, <span class="dt">.key =</span> descriptives) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-66" title="66"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">power =</span> <span class="kw">map</span>(descriptives, get_power)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-67" title="67"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">power =</span> <span class="kw">map</span>(power, <span class="st">&quot;power&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-68" title="68"><span class="st">  </span><span class="kw">select</span>(dataset, power) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-69" title="69"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">power =</span> <span class="kw">as.numeric</span>(<span class="kw">as.character</span>(power)))</a>
+<a class="sourceLine" id="cb1-70" title="70"></a>
+<a class="sourceLine" id="cb1-71" title="71"><span class="co"># Summary</span></a>
+<a class="sourceLine" id="cb1-72" title="72">MA_summary =<span class="st"> </span><span class="kw">inner_join</span>(MA_descriptives, MA_power) </a>
+<a class="sourceLine" id="cb1-73" title="73"></a>
+<a class="sourceLine" id="cb1-74" title="74">MA_summary_table =<span class="st"> </span>MA_summary <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-75" title="75"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">age =</span> <span class="kw">paste</span>(<span class="kw">as.character</span>(<span class="kw">round</span>(age_dataset, <span class="dv">0</span>)), <span class="st">&quot; (&quot;</span>, <span class="kw">as.character</span>(<span class="kw">round</span>(age_min, <span class="dv">0</span>)), <span class="st">&quot;-&quot;</span>, <span class="kw">as.character</span>(<span class="kw">round</span>(age_max, <span class="dv">0</span>)), <span class="st">&quot;)&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-76" title="76"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">n =</span> <span class="kw">paste</span>(<span class="kw">as.character</span>(n_dataset), <span class="st">&quot; (&quot;</span>, <span class="kw">as.character</span>(n_min), <span class="st">&quot;-&quot;</span>, <span class="kw">as.character</span>(<span class="kw">round</span>(n_max, <span class="dv">0</span>)), <span class="st">&quot;)&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-77" title="77"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">ES =</span> <span class="kw">paste</span>(<span class="kw">as.character</span>(<span class="kw">round</span>(d, <span class="dv">2</span>)), <span class="st">&quot; (&quot;</span>, <span class="kw">as.character</span>(<span class="kw">round</span>(se, <span class="dv">2</span>)), <span class="st">&quot;)&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-78" title="78"><span class="st">  </span><span class="kw">select</span>(dataset, age, n, n_records, n_papers, ES, power)</a></code></pre></div>
+<div id="data" class="section level2">
+<h2>Data</h2>
+<p>The data presented and analyzed here are part of a standardized collection of meta-analyses (MetaLab), and are freely available via the companion website at <a href="http://metalab.stanford.edu" class="uri">http://metalab.stanford.edu</a>. Currently, MetaLab contains 18 meta-analyses, where core parts of each meta-analysis are standardized to allow for the computation of common effect size estimates and for analyses that span across different phenomena. These standardized variables include study descriptors (such as citation and peer review status), participant characteristics (including mean age and native language), methodological information (e.g., what dependent variable was measured), and information necessary to compute effect sizes (number of participants, if available means and standard deviations of the dependent measure, otherwise test statistics of the key hypothesis test, such as <em>t</em> values or <em>F</em> scores). Detailed descriptions of all phenomena covered by MetaLab, including which papers and other sources have been considered, can be found at <a href="http://metalab.stanford.edu" class="uri">http://metalab.stanford.edu</a>.</p>
+</div>
+</div>
+<div id="results" class="section level1">
+<h1>Results</h1>
+<div id="sample-size-and-statistical-power" class="section level2">
+<h2>Sample size and statistical power</h2>
+<p>Table 1 provides a summary of typical sample sizes and effect sizes per meta-analysis. We remind the reader that recommendations are for power to be above 80%, which means that four out of five studies show a significant outcome for an effect truly present in the population.</p>
+<p>As could be expected, sample sizes are small across all meta-analyses, with the overall median in our data being 20 infants or paired observations (i.e. 40 participants in total in a between-participant design). Effect sizes predominantly fall into ranges of small to medium effects, as defined by Cohen <span class="citation">[@cohen]</span>. The overall median effect size of all data analyzed here is Cohen’s <em>d</em> = 0.4444444. As a result of those two factors, studies are typically severely under-powered. Assuming a paired t-test (within-participant designs are the most frequent in the present data), observed power is at 47% (for independent samples, observed power is at 28%).</p>
+<p>With the observed sample size, it is possible to detect an effect in 80% of all studies when Cohen’s <em>d</em> = 0.66; in other words, this sample size would be appropriate when investigating a medium to large effect. When comparing two independent groups, the effect size that would be detectable with a sample size of 20 participants per group increases to Cohen’s <em>d</em> = 0.91, a large effect that is rarely observed as meta-analytic effect size in the present collection of developmental meta-analyses.</p>
+<p>Inversely, to detect the typical effect of Cohen’s <em>d</em> = 0.4444444 with 80% power, studies would have to test 42 participants in a paired design; 22 more than are included on average. For a between-participant design, a study with 80% power would require testing 80 infants per group, over four times the typical sample size we encounter here. This disparity between observed and necessary sample size varies greatly across meta-analyses, leading to drastic differences in observed power to detect the main effect. While studies on phonotactic learning and word segmentation apparently typically are dramatically underpowered (with observed power being under 10%), experiments on pointing and vocabulary, gaze following, and online word recognition are very well powered (92%, 95%, and 99%, respectively).</p>
+<table>
+<caption>
+Descriptions of meta-analyses. Age is reported in months, sample size is based on the median in a given meta-analysis, effect size is reported as meta-anlytic weighted median Cohen’s d, and average power is computed based on meta-anlytic effect size estimate Cohen’s d and median sample size.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Meta-Analysis
+</th>
+<th style="text-align:right;">
+Age
+</th>
+<th style="text-align:right;">
+Sample Size
+</th>
+<th style="text-align:right;">
+N Effect Sizes
+</th>
+<th style="text-align:right;">
+N Papers
+</th>
+<th style="text-align:right;">
+Effect Size (SE)
+</th>
+<th style="text-align:right;">
+Power
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Abstract rule learning
+</td>
+<td style="text-align:right;">
+7 (4-13)
+</td>
+<td style="text-align:right;">
+16 (4-40)
+</td>
+<td style="text-align:right;">
+95
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+0.23 (0.07)
+</td>
+<td style="text-align:right;">
+0.096
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Familiar word recognition
+</td>
+<td style="text-align:right;">
+11 (5-15)
+</td>
+<td style="text-align:right;">
+20 (12-53)
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+0.52 (0.08)
+</td>
+<td style="text-align:right;">
+0.359
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Function word segmentation
+</td>
+<td style="text-align:right;">
+8 (6-15)
+</td>
+<td style="text-align:right;">
+16 (8-28)
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+0.04 (0.1)
+</td>
+<td style="text-align:right;">
+0.051
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gaze following
+</td>
+<td style="text-align:right;">
+14 (3-24)
+</td>
+<td style="text-align:right;">
+23 (12-63)
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+1 (0.16)
+</td>
+<td style="text-align:right;">
+0.910
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Infant directed speech preference
+</td>
+<td style="text-align:right;">
+6 (0-19)
+</td>
+<td style="text-align:right;">
+20 (9-60)
+</td>
+<td style="text-align:right;">
+70
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+0.63 (0.1)
+</td>
+<td style="text-align:right;">
+0.493
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Label advantage in concept learning
+</td>
+<td style="text-align:right;">
+12 (4-18)
+</td>
+<td style="text-align:right;">
+13 (9-32)
+</td>
+<td style="text-align:right;">
+48
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+0.41 (0.07)
+</td>
+<td style="text-align:right;">
+0.172
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mispronunciation sensitivity
+</td>
+<td style="text-align:right;">
+NA (NA-NA)
+</td>
+<td style="text-align:right;">
+27.5 (7-60)
+</td>
+<td style="text-align:right;">
+216
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:right;">
+0.33 (0.09)
+</td>
+<td style="text-align:right;">
+0.224
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mutual exclusivity
+</td>
+<td style="text-align:right;">
+30 (15-126)
+</td>
+<td style="text-align:right;">
+16 (5-72)
+</td>
+<td style="text-align:right;">
+124
+</td>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:right;">
+1.26 (0.17)
+</td>
+<td style="text-align:right;">
+0.932
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Online word recognition
+</td>
+<td style="text-align:right;">
+18 (15-30)
+</td>
+<td style="text-align:right;">
+25 (16-95)
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+1.12 (0.27)
+</td>
+<td style="text-align:right;">
+0.974
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Phonotactic learning
+</td>
+<td style="text-align:right;">
+11 (4-16)
+</td>
+<td style="text-align:right;">
+18 (8-40)
+</td>
+<td style="text-align:right;">
+47
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+0.12 (0.07)
+</td>
+<td style="text-align:right;">
+0.064
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Pointing and vocabulary (concurrent)
+</td>
+<td style="text-align:right;">
+22 (9-34)
+</td>
+<td style="text-align:right;">
+24.5 (6-50)
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+0.98 (0.18)
+</td>
+<td style="text-align:right;">
+0.919
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sound symbolism
+</td>
+<td style="text-align:right;">
+8 (4-38)
+</td>
+<td style="text-align:right;">
+20 (11-40)
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+0.27 (0.12)
+</td>
+<td style="text-align:right;">
+0.135
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Statistical sound category learning
+</td>
+<td style="text-align:right;">
+8 (2-11)
+</td>
+<td style="text-align:right;">
+15.5 (5-34)
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+0.29 (0.14)
+</td>
+<td style="text-align:right;">
+0.123
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Statistical word segmentation
+</td>
+<td style="text-align:right;">
+8 (4-14)
+</td>
+<td style="text-align:right;">
+22 (13-32)
+</td>
+<td style="text-align:right;">
+90
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+-0.04 (0.05)
+</td>
+<td style="text-align:right;">
+0.052
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Switch Task
+</td>
+<td style="text-align:right;">
+15 (12-25)
+</td>
+<td style="text-align:right;">
+17.5 (10-64)
+</td>
+<td style="text-align:right;">
+128
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:right;">
+-0.16 (0.05)
+</td>
+<td style="text-align:right;">
+0.074
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Vowel discrimination (native)
+</td>
+<td style="text-align:right;">
+7 (0-30)
+</td>
+<td style="text-align:right;">
+12 (6-50)
+</td>
+<td style="text-align:right;">
+116
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+0.6 (0.08)
+</td>
+<td style="text-align:right;">
+0.292
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Vowel discrimination (non-native)
+</td>
+<td style="text-align:right;">
+8 (2-18)
+</td>
+<td style="text-align:right;">
+17 (8-30)
+</td>
+<td style="text-align:right;">
+47
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+0.44 (0.15)
+</td>
+<td style="text-align:right;">
+0.238
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Word segmentation
+</td>
+<td style="text-align:right;">
+8 (4-25)
+</td>
+<td style="text-align:right;">
+22 (4-64)
+</td>
+<td style="text-align:right;">
+279
+</td>
+<td style="text-align:right;">
+66
+</td>
+<td style="text-align:right;">
+0.18 (0.03)
+</td>
+<td style="text-align:right;">
+0.092
+</td>
+</tr>
+</tbody>
+</table>
+<div id="seminal-papers-as-basis-for-sample-size-planning" class="section level3">
+<h3>Seminal papers as basis for sample size planning</h3>
+<p>As Table 1 shows, experimenters only rarely include a sufficient number of participants to observe a given effect – assuming the meta-analytic estimate is accurate. It might, however, be possible, that power has been determined based on a seminal paper to be replicated and expanded. Initial reports tend to overestimate effect sizes , possibly explaining the lack of observed power in the subsequent literature.</p>
+<p>For each meta-analysis, we extracted the oldest paper and the largest effect size reported therein and re-calculated power accordingly, using the median sample size of the same meta-analysis (see Table 2). The largest effect size per paper was chosen because many seminal studies contain at least one null result in a control condition that delineates the limitations of a given phenomenon (for example that older children succeed at a task that their younger peers fail). Thus, it is unlikely that the researchers following up on that work aim for the median or mean effect size.</p>
+<p>In some cases, such as native and non-native vowel discrimination, as shown in Table 2, sample size choices match well with the oldest report. The difference in power, noted in the last column, can be substantial, with native vowel discrimination and phonotactic learning being the two most salient examples. Here, sample sizes match well with the oldest report and studies would be appropriately powered if this estimate were representative of the true effect. In four meta-analyses neither the seminal paper nor meta-analytic effect size seem to be a useful basis for sample size decisions. Since these numbers are based on the largest effect of a seminal paper, all power estimations (but also differences in meta-analytic effect sizes) would be smaller, meaning that sample sizes are less appropriate than implied by the column denoting power based on the seminal paper in Table 2.</p>
+<table>
+<caption>
+For each meta-analysis, largest effect size Cohen’s d and derived power based on the seminal paper, along with the difference between power based on meta-analytic and seminal paper effect size.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Meta-Analysis
+</th>
+<th style="text-align:right;">
+Effect Size Seminal Paper
+</th>
+<th style="text-align:right;">
+Effect Size Overall
+</th>
+<th style="text-align:right;">
+Sample Size
+</th>
+<th style="text-align:right;">
+Power Seminal Paper
+</th>
+<th style="text-align:left;">
+Difference Overall Power
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Switch Task
+</td>
+<td style="text-align:right;">
+0.078
+</td>
+<td style="text-align:right;">
+-0.157
+</td>
+<td style="text-align:right;">
+17.5
+</td>
+<td style="text-align:right;">
+0.056
+</td>
+<td style="text-align:left;">
+-0.018
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Statistical sound category learning
+</td>
+<td style="text-align:right;">
+-0.244
+</td>
+<td style="text-align:right;">
+0.291
+</td>
+<td style="text-align:right;">
+15.5
+</td>
+<td style="text-align:right;">
+0.101
+</td>
+<td style="text-align:left;">
+-0.022
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Function word segmentation
+</td>
+<td style="text-align:right;">
+0.438
+</td>
+<td style="text-align:right;">
+0.040
+</td>
+<td style="text-align:right;">
+16.0
+</td>
+<td style="text-align:right;">
+0.224
+</td>
+<td style="text-align:left;">
+0.173
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mispronunciation sensitivity
+</td>
+<td style="text-align:right;">
+-0.348
+</td>
+<td style="text-align:right;">
+0.330
+</td>
+<td style="text-align:right;">
+27.5
+</td>
+<td style="text-align:right;">
+0.245
+</td>
+<td style="text-align:left;">
+0.021
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Statistical word segmentation
+</td>
+<td style="text-align:right;">
+-0.394
+</td>
+<td style="text-align:right;">
+-0.039
+</td>
+<td style="text-align:right;">
+22.0
+</td>
+<td style="text-align:right;">
+0.248
+</td>
+<td style="text-align:left;">
+0.196
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Word segmentation
+</td>
+<td style="text-align:right;">
+0.557
+</td>
+<td style="text-align:right;">
+0.184
+</td>
+<td style="text-align:right;">
+22.0
+</td>
+<td style="text-align:right;">
+0.439
+</td>
+<td style="text-align:left;">
+0.347
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Label advantage in concept learning
+</td>
+<td style="text-align:right;">
+0.860
+</td>
+<td style="text-align:right;">
+0.412
+</td>
+<td style="text-align:right;">
+13.0
+</td>
+<td style="text-align:right;">
+0.557
+</td>
+<td style="text-align:left;">
+0.385
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Pointing and vocabulary (concurrent)
+</td>
+<td style="text-align:right;">
+0.652
+</td>
+<td style="text-align:right;">
+0.980
+</td>
+<td style="text-align:right;">
+24.5
+</td>
+<td style="text-align:right;">
+0.609
+</td>
+<td style="text-align:left;">
+-0.310
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Phonotactic learning
+</td>
+<td style="text-align:right;">
+0.977
+</td>
+<td style="text-align:right;">
+0.120
+</td>
+<td style="text-align:right;">
+18.0
+</td>
+<td style="text-align:right;">
+0.812
+</td>
+<td style="text-align:left;">
+0.748
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Vowel discrimination (non-native)
+</td>
+<td style="text-align:right;">
+1.025
+</td>
+<td style="text-align:right;">
+0.440
+</td>
+<td style="text-align:right;">
+17.0
+</td>
+<td style="text-align:right;">
+0.826
+</td>
+<td style="text-align:left;">
+0.587
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sound symbolism
+</td>
+<td style="text-align:right;">
+0.952
+</td>
+<td style="text-align:right;">
+0.275
+</td>
+<td style="text-align:right;">
+20.0
+</td>
+<td style="text-align:right;">
+0.835
+</td>
+<td style="text-align:left;">
+0.700
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Online word recognition
+</td>
+<td style="text-align:right;">
+0.889
+</td>
+<td style="text-align:right;">
+1.125
+</td>
+<td style="text-align:right;">
+25.0
+</td>
+<td style="text-align:right;">
+0.868
+</td>
+<td style="text-align:left;">
+-0.105
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Abstract rule learning
+</td>
+<td style="text-align:right;">
+1.182
+</td>
+<td style="text-align:right;">
+0.228
+</td>
+<td style="text-align:right;">
+16.0
+</td>
+<td style="text-align:right;">
+0.899
+</td>
+<td style="text-align:left;">
+0.803
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mutual exclusivity
+</td>
+<td style="text-align:right;">
+1.246
+</td>
+<td style="text-align:right;">
+1.262
+</td>
+<td style="text-align:right;">
+16.0
+</td>
+<td style="text-align:right;">
+0.926
+</td>
+<td style="text-align:left;">
+-0.006
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gaze following
+</td>
+<td style="text-align:right;">
+1.290
+</td>
+<td style="text-align:right;">
+0.995
+</td>
+<td style="text-align:right;">
+23.0
+</td>
+<td style="text-align:right;">
+0.990
+</td>
+<td style="text-align:left;">
+0.080
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Vowel discrimination (native)
+</td>
+<td style="text-align:right;">
+1.867
+</td>
+<td style="text-align:right;">
+0.602
+</td>
+<td style="text-align:right;">
+12.0
+</td>
+<td style="text-align:right;">
+0.992
+</td>
+<td style="text-align:left;">
+0.700
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Familiar word recognition
+</td>
+<td style="text-align:right;">
+1.515
+</td>
+<td style="text-align:right;">
+0.519
+</td>
+<td style="text-align:right;">
+20.0
+</td>
+<td style="text-align:right;">
+0.997
+</td>
+<td style="text-align:left;">
+0.637
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Infant directed speech preference
+</td>
+<td style="text-align:right;">
+2.390
+</td>
+<td style="text-align:right;">
+0.630
+</td>
+<td style="text-align:right;">
+20.0
+</td>
+<td style="text-align:right;">
+1.000
+</td>
+<td style="text-align:left;">
+0.507
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="method-choice" class="section level2">
+<h2>Method choice</h2>
+<div id="exclusion-rates-across-methods" class="section level3">
+<h3>Exclusion rates across methods</h3>
+<p>In most of the analyzed meta-analyses, multiple methods were used to tap into the phenomenon in question. Choosing a robust method can help increase power, because more precise measurements lead to larger effect sizes due to reduced measurement variance and thus require fewer participants to be tested to conduct appropriately-powered studies. However, the number of participants relates to the final sample and not how many participants had to be invited into the lab. We thus first quantify whether methods differ in their typical exclusion rate, as economic considerations might drive method choice. To this end we consider all methods which have more than 10 associated effect sizes and for which information on the number of excluded participants was reported and entered in the meta-analyses. We note that this is exclusion rate, rather than fussout or dropout rates, because it represents the number excluded considering all criteria, including data quality criteria such as a minimum looking time. We chose this variable for practical reasons, as overall exclusion rates are more frequently reported than the number of participants who did not complete the experiment. The following analyses cover 6 methods and 1011 effect sizes.</p>
+<p>The results of a linear mixed effects model predicting exclusion rate by method and mean participant age (while controlling for the different underlying effect sizes per meta-analysis) are summarized in Table 3 and visualized in Figure 1. The results show significant variation across methods, and a tendency toward higher exclusion rates for older participants, with some interaction with method.</p>
+<table>
+<caption>
+Linear mixed effects model predicting exclusion rate by method and participant age while accounting for the specific phenomenon.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Est.
+</th>
+<th style="text-align:right;">
+SE Est
+</th>
+<th style="text-align:right;">
+t
+</th>
+<th style="text-align:left;">
+p
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Intercept
+</td>
+<td style="text-align:right;">
+30.521
+</td>
+<td style="text-align:right;">
+2.131
+</td>
+<td style="text-align:right;">
+14.321
+</td>
+<td style="text-align:left;">
+&lt; 2.22e-16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CondHT
+</td>
+<td style="text-align:right;">
+42.894
+</td>
+<td style="text-align:right;">
+7.758
+</td>
+<td style="text-align:right;">
+5.529
+</td>
+<td style="text-align:left;">
+3.2191e-08
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FC
+</td>
+<td style="text-align:right;">
+-22.155
+</td>
+<td style="text-align:right;">
+4.712
+</td>
+<td style="text-align:right;">
+-4.702
+</td>
+<td style="text-align:left;">
+2.5781e-06
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HPP
+</td>
+<td style="text-align:right;">
+-1.479
+</td>
+<td style="text-align:right;">
+2.065
+</td>
+<td style="text-align:right;">
+-0.716
+</td>
+<td style="text-align:left;">
+0.4740705
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LwL
+</td>
+<td style="text-align:right;">
+-6.920
+</td>
+<td style="text-align:right;">
+3.612
+</td>
+<td style="text-align:right;">
+-1.916
+</td>
+<td style="text-align:left;">
+0.0554144
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SA
+</td>
+<td style="text-align:right;">
+18.078
+</td>
+<td style="text-align:right;">
+4.614
+</td>
+<td style="text-align:right;">
+3.918
+</td>
+<td style="text-align:left;">
+8.9297e-05
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Age
+</td>
+<td style="text-align:right;">
+1.001
+</td>
+<td style="text-align:right;">
+0.216
+</td>
+<td style="text-align:right;">
+4.632
+</td>
+<td style="text-align:left;">
+3.6246e-06
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CondHT*Age
+</td>
+<td style="text-align:right;">
+2.862
+</td>
+<td style="text-align:right;">
+1.004
+</td>
+<td style="text-align:right;">
+2.851
+</td>
+<td style="text-align:left;">
+0.0043576
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FC*Age
+</td>
+<td style="text-align:right;">
+-0.895
+</td>
+<td style="text-align:right;">
+0.388
+</td>
+<td style="text-align:right;">
+-2.304
+</td>
+<td style="text-align:left;">
+0.0212135
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HPP*Age
+</td>
+<td style="text-align:right;">
+-0.338
+</td>
+<td style="text-align:right;">
+0.332
+</td>
+<td style="text-align:right;">
+-1.015
+</td>
+<td style="text-align:left;">
+0.3099546
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LwL*Age
+</td>
+<td style="text-align:right;">
+-0.829
+</td>
+<td style="text-align:right;">
+0.295
+</td>
+<td style="text-align:right;">
+-2.812
+</td>
+<td style="text-align:left;">
+0.0049289
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SA*Age
+</td>
+<td style="text-align:right;">
+-0.874
+</td>
+<td style="text-align:right;">
+0.728
+</td>
+<td style="text-align:right;">
+-1.201
+</td>
+<td style="text-align:left;">
+0.2297776
+</td>
+</tr>
+</tbody>
+</table>
+<div class="figure">
+<img src="ChildDevPaper_inner_files/figure-html/DropoutPlot-1.png" alt="Exclusion rate in percent by different methods. CF = central fixation, CondHT = conditioned headturn, FC = forced choice, HPP = headturn preference procedure, LwL = looking while listening, SA = stimulus alternation. Each point indicates a single study." width="768" />
+<p class="caption">
+Exclusion rate in percent by different methods. CF = central fixation, CondHT = conditioned headturn, FC = forced choice, HPP = headturn preference procedure, LwL = looking while listening, SA = stimulus alternation. Each point indicates a single study.
+</p>
+</div>
+<div class="figure">
+<img src="ChildDevPaper_inner_files/figure-html/DropoutPlot-2.png" alt="Exclusion rate in percent by different methods. CF = central fixation, CondHT = conditioned headturn, FC = forced choice, HPP = headturn preference procedure, LwL = looking while listening, SA = stimulus alternation. Each point indicates a single study." width="768" />
+<p class="caption">
+Exclusion rate in percent by different methods. CF = central fixation, CondHT = conditioned headturn, FC = forced choice, HPP = headturn preference procedure, LwL = looking while listening, SA = stimulus alternation. Each point indicates a single study.
+</p>
+</div>
+</div>
+<div id="effect-sizes-as-a-function-of-method" class="section level3">
+<h3>Effect sizes as a function of method</h3>
+<p>We built a meta-analytic model with Cohen’s <em>d</em> as the dependent variable, and method and mean age centered as independent variables, which we allowed to interact. The model includes the variance of <em>d</em> for sampling variance, aa nested random effect of paper (inner random effect) within meta-analysis (outer random effect). We limited this analysis to the same methods that we investigated in the section on exclusion rates to be able to observe possible links between effect size and exclusion rate in methods. The model results in Table 4 show significant variation in effect sizes across methods, age, and some interaction of method and age.</p>
+<table>
+<caption>
+Meta-analytic regression predicting effect size Cohen’s d with participant age and method (central fixation is baseline method).
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+Est. (CI)
+</th>
+<th style="text-align:right;">
+SE
+</th>
+<th style="text-align:right;">
+z
+</th>
+<th style="text-align:right;">
+p
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Intercept
+</td>
+<td style="text-align:left;">
+0.191 [0.007,0.375]
+</td>
+<td style="text-align:right;">
+0.094
+</td>
+<td style="text-align:right;">
+2.032
+</td>
+<td style="text-align:right;">
+0.042
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Age
+</td>
+<td style="text-align:left;">
+0.005 [-0.005,0.015]
+</td>
+<td style="text-align:right;">
+0.005
+</td>
+<td style="text-align:right;">
+0.937
+</td>
+<td style="text-align:right;">
+0.349
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CondHT
+</td>
+<td style="text-align:left;">
+1.6 [0.556,2.645]
+</td>
+<td style="text-align:right;">
+0.533
+</td>
+<td style="text-align:right;">
+3.002
+</td>
+<td style="text-align:right;">
+0.003
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FC
+</td>
+<td style="text-align:left;">
+0.406 [0.095,0.716]
+</td>
+<td style="text-align:right;">
+0.158
+</td>
+<td style="text-align:right;">
+2.562
+</td>
+<td style="text-align:right;">
+0.010
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HPP
+</td>
+<td style="text-align:left;">
+0.083 [-0.067,0.234]
+</td>
+<td style="text-align:right;">
+0.077
+</td>
+<td style="text-align:right;">
+1.089
+</td>
+<td style="text-align:right;">
+0.276
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LwL
+</td>
+<td style="text-align:left;">
+0.378 [0.025,0.731]
+</td>
+<td style="text-align:right;">
+0.180
+</td>
+<td style="text-align:right;">
+2.101
+</td>
+<td style="text-align:right;">
+0.036
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SA
+</td>
+<td style="text-align:left;">
+0.029 [-0.372,0.43]
+</td>
+<td style="text-align:right;">
+0.205
+</td>
+<td style="text-align:right;">
+0.141
+</td>
+<td style="text-align:right;">
+0.887
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Age*CondHT
+</td>
+<td style="text-align:left;">
+0.113 [-0.004,0.23]
+</td>
+<td style="text-align:right;">
+0.060
+</td>
+<td style="text-align:right;">
+1.891
+</td>
+<td style="text-align:right;">
+0.059
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Age*FC
+</td>
+<td style="text-align:left;">
+0.035 [0.023,0.046]
+</td>
+<td style="text-align:right;">
+0.006
+</td>
+<td style="text-align:right;">
+5.741
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Age*HPP
+</td>
+<td style="text-align:left;">
+0.008 [-0.008,0.024]
+</td>
+<td style="text-align:right;">
+0.008
+</td>
+<td style="text-align:right;">
+0.975
+</td>
+<td style="text-align:right;">
+0.330
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Age*LwL
+</td>
+<td style="text-align:left;">
+0.016 [0.002,0.03]
+</td>
+<td style="text-align:right;">
+0.007
+</td>
+<td style="text-align:right;">
+2.233
+</td>
+<td style="text-align:right;">
+0.026
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Age*SA
+</td>
+<td style="text-align:left;">
+0.012 [-0.03,0.054]
+</td>
+<td style="text-align:right;">
+0.021
+</td>
+<td style="text-align:right;">
+0.572
+</td>
+<td style="text-align:right;">
+0.568
+</td>
+</tr>
+</tbody>
+</table>
+<div class="figure">
+<img src="ChildDevPaper_inner_files/figure-html/MethodPlot-1.png" alt="Effect size by different methods. CF = central fixation, CondHT = conditioned headturn, FC = forced choice, HPP = headturn preference procedure, LwL = looking while listening, SA = stimulus alternation. Each point indicates a single study." width="768" />
+<p class="caption">
+Effect size by different methods. CF = central fixation, CondHT = conditioned headturn, FC = forced choice, HPP = headturn preference procedure, LwL = looking while listening, SA = stimulus alternation. Each point indicates a single study.
+</p>
+</div>
+</div>
+</div>
+<div id="questionable-research-practices" class="section level2">
+<h2>Questionable research practices</h2>
+<p>In the final set of analyses, we assess the relation between absolute observed effect sizes in single studies and the associated sample size. The rationale behind this analysis is simple: The smaller the effect size in a particular study (bear in mind that we assume that experiments sample from a distribution around the population effect), the larger the sample needed for a significant <em>p</em> value. If sample size decisions are made before data collection and all results are published, we expect no relation between observed effect size and sample size. If, on the contrary, authors continue to add infants to achieve significance, there should be a negative correlation between sample size and effect size.</p>
+<div class="figure">
+<img src="ChildDevPaper_inner_files/figure-html/Bias-1.png" alt="For each meta-analysis observed effect size per study plotted against sample size. Each point indicates a single study." width="1344" />
+<p class="caption">
+For each meta-analysis observed effect size per study plotted against sample size. Each point indicates a single study.
+</p>
+</div>
+<p>We illustrate the link between effect size and sample size, separated by meta-analysis, in Figure 3. The statistical test results for each meta-analysis can be found in Table 5.</p>
+<table>
+<caption>
+Non-parametric correlations between sample sizes and effect sizes for each meta-analysis. A significant value indicates bias.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Meta-analysis
+</th>
+<th style="text-align:right;">
+Kendall’s Tau
+</th>
+<th style="text-align:right;">
+p
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Phonotactic learning
+</td>
+<td style="text-align:right;">
+-0.207
+</td>
+<td style="text-align:right;">
+0.052
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Statistical sound category learning
+</td>
+<td style="text-align:right;">
+-0.061
+</td>
+<td style="text-align:right;">
+0.724
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Familiar word recognition
+</td>
+<td style="text-align:right;">
+-0.298
+</td>
+<td style="text-align:right;">
+0.024
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Function word segmentation
+</td>
+<td style="text-align:right;">
+-0.057
+</td>
+<td style="text-align:right;">
+0.765
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gaze following
+</td>
+<td style="text-align:right;">
+0.085
+</td>
+<td style="text-align:right;">
+0.512
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Infant directed speech preference
+</td>
+<td style="text-align:right;">
+0.009
+</td>
+<td style="text-align:right;">
+0.919
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Label advantage in concept learning
+</td>
+<td style="text-align:right;">
+-0.058
+</td>
+<td style="text-align:right;">
+0.583
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mispronunciation sensitivity
+</td>
+<td style="text-align:right;">
+-0.098
+</td>
+<td style="text-align:right;">
+0.038
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mutual exclusivity
+</td>
+<td style="text-align:right;">
+-0.135
+</td>
+<td style="text-align:right;">
+0.035
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Vowel discrimination (native)
+</td>
+<td style="text-align:right;">
+-0.307
+</td>
+<td style="text-align:right;">
+&lt; .001
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Vowel discrimination (non-native)
+</td>
+<td style="text-align:right;">
+-0.278
+</td>
+<td style="text-align:right;">
+0.008
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Pointing and vocabulary (concurrent)
+</td>
+<td style="text-align:right;">
+-0.154
+</td>
+<td style="text-align:right;">
+0.491
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Abstract rule learning
+</td>
+<td style="text-align:right;">
+-0.061
+</td>
+<td style="text-align:right;">
+0.406
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Statistical word segmentation
+</td>
+<td style="text-align:right;">
+-0.299
+</td>
+<td style="text-align:right;">
+&lt; .001
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Switch Task
+</td>
+<td style="text-align:right;">
+-0.213
+</td>
+<td style="text-align:right;">
+&lt; .001
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sound symbolism
+</td>
+<td style="text-align:right;">
+0.046
+</td>
+<td style="text-align:right;">
+0.689
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Online word recognition
+</td>
+<td style="text-align:right;">
+-0.128
+</td>
+<td style="text-align:right;">
+0.539
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Word segmentation
+</td>
+<td style="text-align:right;">
+-0.098
+</td>
+<td style="text-align:right;">
+0.025
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
