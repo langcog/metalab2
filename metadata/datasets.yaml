@@ -22,7 +22,7 @@
     longitudinal: 'FALSE'
     moderators: [speaker, speech_type]
     subset: []
-    comment: ""
+    comment: ''
 -
     name: 'Label advantage in concept learning'
     domain: early_language
@@ -47,7 +47,7 @@
     longitudinal: 'FALSE'
     moderators: [audio_condition, object_stimulus, num_trials]
     subset: []
-    comment: ""
+    comment: ''
 -
     name: 'Gaze following'
     domain: early_language
