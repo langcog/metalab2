@@ -9,10 +9,10 @@ library(langcog)
 library(feather)
 library(plotly)
 
-#project_directory <- "/srv/shiny-server/common/" # path using new deploy script that copies data to the shiny server global directory
+project_directory <- "/srv/shiny-server/common/" # path using new deploy script that copies data to the shiny server global directory
 #project_directory <- "/home/metalab/metalab2/" # path using old deploy script
 #project_directory <- "/Users/Cecile/Documents/Metalab/metalab2/" # path for development purposes
-project_directory <- "../../" # path for development purposes
+# project_directory <- "../../" # path for development purposes
 
 
 
