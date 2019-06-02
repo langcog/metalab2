@@ -552,7 +552,7 @@
     name: 'Symbolic play'
     domain: early_language
     short_name: play
-    key: 1phdZ5ufy2NE5AbwXwVWOwhK-TGzP5Wd_lokrG0wfVXs/edit#gid=0
+    key: 1phdZ5ufy2NE5AbwXwVWOwhK-TGzP5Wd_lokrG0wfVXs
     filename: symbolic_play
     citation: "Quinn & Kidd (2018)"
     internal_citation: ""
@@ -577,7 +577,7 @@
     name: 'Speech preference'
     domain: early_language
     short_name: SpeechPref
-    key: 1CNz2dV6T3hyfxd2m0GSe1TzERaqT151ELpMPpfcEdcI/edit#gid=0
+    key: 1CNz2dV6T3hyfxd2m0GSe1TzERaqT151ELpMPpfcEdcI
     filename: speech_pref
     citation: "Issard & Cristia (in prep.)"
     internal_citation: ""
@@ -602,7 +602,7 @@
     name: 'Cross-situational word learning'
     domain: early_language
     short_name: CrossSituational
-    key: 1CNz2dV6T3hyfxd2m0GSe1TzERaqT151ELpMPpfcEdcI/edit#gid=0
+    key: 1f4ts9KOSSdcQ_tih7pAcREqY5SWEaBfYcduJScAKTUs
     filename: Cross-situational_word-learning
     citation: "Dal Ben, R., Souza,D. & Hay, J. (in prep.). Cross-situational word-learning."
     internal_citation: ""

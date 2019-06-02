@@ -123,7 +123,12 @@
       - reach:
           fullname:     reaching for a target
       - help:
-          fullname:     offering help to a target 
+          fullname:     offering help to a target
+      - PL:
+          fullname:     passive listening
+          description:  typically used in EEG/NIRS/fMRI 
+      - other:
+          fullname:     any other method 
   required:     yes
 
 - field:        dependent_measure
