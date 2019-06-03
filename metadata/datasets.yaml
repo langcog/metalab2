@@ -611,12 +611,12 @@
     doi: ""
     reliability: ""
     systematic: yes
-    search_strategy: 'database search, and seeded from Yu & Smith (2007)'
+    search_strategy: 'database search, and seeded with Yu & Smith (2007)'
     source: 'coded by authors'
     last_update: '2019-05-24'
     link_fields: ""
-    short_desc: ‘Infants' and children's abilities to learn words across multiple ambiguous situations.'
-    description: ‘Infants' and children's abilities to learn words across multiple ambiguous situations.'
+    short_desc: 'Infants' and children's abilities to learn words across multiple ambiguous situations.'
+    description: 'Infants' and children's abilities to learn words across multiple ambiguous situations.'
     curator: 'Rodrigo Dal Ben'
     src: images/datasets/CrossSit.png
     longitudinal: 'FALSE'
