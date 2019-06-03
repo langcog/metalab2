@@ -547,7 +547,7 @@
     longitudinal: 'FALSE'
     moderators: [1+1_2-1, 1_1/2-1_other, solutions,	Age_MedianSplit, Stimultype, Display]
     subset: []
-    comment: ""
+    comment: ''
 -
     name: 'Symbolic play'
     domain: early_language
@@ -615,11 +615,11 @@
     source: 'coded by authors'
     last_update: '2019-05-24'
     link_fields: ""
-    short_desc: 'Infants' and children's abilities to learn words across multiple ambiguous situations.'
-    description: 'Infants' and children's abilities to learn words across multiple ambiguous situations.'
+    short_desc: 'Infants and children s abilities to learn words across multiple ambiguous situations.'
+    description: 'Infants and children s abilities to learn words across multiple ambiguous situations.'
     curator: 'Rodrigo Dal Ben'
     src: images/datasets/CrossSit.png
     longitudinal: 'FALSE'
     moderators: [exposure_phase, method, dependent_measure, mean_age]
     subset: []
-    comment: ""
+    comment: ''
