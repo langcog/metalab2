@@ -126,9 +126,7 @@
           fullname:     offering help to a target
       - PL:
           fullname:     passive listening
-          description:  typically used in EEG/NIRS/fMRI 
-      - other:
-          fullname:     any other method 
+          description:  typically used in EEG/NIRS/fMRI
   required:     yes
 
 - field:        dependent_measure
@@ -146,6 +144,7 @@
     - sucking_time:           in seconds
     - pc_head_turns:          percent correct head turns in CHT
     - laterality_index:       NIRS
+    - mean_amplitude:         NIRS
     - peak_amplitude:         ERP
     - d_prime:                d-prime
     - a_prime:                A-prime
