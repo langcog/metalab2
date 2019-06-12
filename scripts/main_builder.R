@@ -16,7 +16,7 @@ logOnError <- function(expression) {
 
 message(paste0("==> Start main_builder.R execution. ", format(Sys.time(), "%Y-%m-%dT%H:%M:%SZ")))
 
-#setwd("..")
+setwd("..")
 
 unlink("data/", recursive = TRUE)
 dir.create("data")
