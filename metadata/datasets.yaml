@@ -570,7 +570,7 @@
     curator: ''
     src: images/datasets/prosocial.png
     longitudinal: 'FALSE'
-    moderators: [correlation_type, Language_modality, solutions,	Age_qualitative]
+    moderators: [correlation_type, Language_modality, solutions, Age_qualitative]
     subset: []
     comment: "the mean age is not systematic, but the center of the age range provided in the supplementary material."
 -
@@ -620,6 +620,6 @@
     curator: 'Rodrigo Dal Ben'
     src: images/datasets/CrossSit.png
     longitudinal: 'FALSE'
-    moderators: [exposure_phase,	method, dependent_measure,	mean_age]
+    moderators: [exposure_phase, method, dependent_measure]
     subset: []
     comment: ''
