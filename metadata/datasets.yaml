@@ -574,7 +574,7 @@
     subset: []
     comment: "the mean age is not systematic, but the center of the age range provided in the supplementary material."
 -
-    name: 'Speech preference'
+    name: 'Natural speech preference'
     domain: early_language
     short_name: SpeechPref
     key: 1CNz2dV6T3hyfxd2m0GSe1TzERaqT151ELpMPpfcEdcI
@@ -590,8 +590,8 @@
     source: 'new meta-analysis'
     last_update: '2019-05-09'
     link_fields: ""
-    short_desc: 'Do infants prefer speech over other types of sound?'
-    description: 'Do infants prefer speech over other species vocalizations, natural or artificial sounds? Takes part in a larger comparative project.'
+    short_desc: 'Do infants prefer natural speech over other types of sound?'
+    description: 'Do infants prefer natural speech over other species vocalizations, natural or artificial sounds? Takes part in a larger comparative project.'
     curator: 'Cecile Issard'
     src: images/datasets/ids.png
     longitudinal: 'FALSE'
