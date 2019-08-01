@@ -36,7 +36,7 @@ MetaLab allows researchers to use data available on its website. This can be by 
 
 ### Publications on MetaLab
 
-Bergmann, C., Tsuji, S., Piccinini, P. E., Lewis, M. L., Braginsky, M., Frank, M. C., & Cristia, A. (2018) Promoting replicability in developmental research through meta-analyses: Insights from language acquisition research. *Child Development*. [[Repository]](https://osf.io/uhv3d/)
+Bergmann, C., Tsuji, S., Piccinini, P.E., Lewis, M.L., Braginsky, M., Frank, M.C., & Cristia, A. (2018). Promoting replicability in developmental research through meta-analyses: Insights from language acquisition research. *Child Development, 89*, 1996-2009 . DOI: 10.1111/cdev.13079 [[Repository]](https://osf.io/uhv3d/)
 
 Lewis, M. L., Braginsky, M., Tsuji, S., Bergmann, C., Piccinini, P. E., Cristia, A., & Frank, M. C. (2017/under review). A Quantitative Synthesis of Early Language Acquisition Using Meta-Analysis. DOI: 10.17605/OSF.IO/HTSJM [[Preprint]](http://psyarxiv.com/htsjm) 
 
