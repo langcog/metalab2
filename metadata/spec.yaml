@@ -923,3 +923,10 @@
   format:   
   example:  typical word, Atypical word
   required: no
+
+- field:    ME_trial_type
+  description: Familiar-Novel (FN) or Novel-Novel (NN) paradigm
+  type:     string
+  format:   
+  example:  FN, NN
+  required: no
