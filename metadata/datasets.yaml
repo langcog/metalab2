@@ -295,7 +295,7 @@
     curator: 'Molly Lewis'
     src: images/datasets/zot.png
     longitudinal: 'FALSE'
-    moderators: [mean_comprehension_vocab, mean_production_vocab, N_AFC, num_trials, object_stimulus]
+    moderators: [ME_trial_type, infant_type, mean_production_vocab, N_AFC, num_trials, object_stimulus]
     subset: []
     comment: ""
 -
