@@ -149,10 +149,10 @@ logOnError({
 
        es_method  <- "r_one"
 
-    } else  if (complete(d, d_var)) {
+    } else  if (complete(d)) { # MLL added d_var_calc from data
       #if d and d_var were already reported, use those values
       d_calc <- d
-      d_var_calc <- d_var
+      d_var_calc <- (1 / n_1) + (d_calc ^ 2 / (2 * n_1)) # this models what is done in metafor package, escalc(measure="SMCR"() (Viechtbauer, 2010)
       es_method  <- "d_one"
     }
   }

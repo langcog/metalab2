@@ -56,7 +56,7 @@ shinyServer(function(input, output, session) {
   data <- reactive({
     req(input$dataset_name)
     result <- all_data %>%
-      filter(dataset == input$dataset_name, mean_age < 3000)
+      filter(dataset == input$dataset_name, mean_age < 4000) ## MLL changed 3000 -> 4000
 
     subset <- input$subset_input
     if (!is.null(subset)) {
@@ -105,8 +105,8 @@ shinyServer(function(input, output, session) {
       rma_formula <- as.formula(sprintf("%s ~ %s", es(), mods))
       if (ma_method == "REML_mv") {
         metafor::rma.mv(rma_formula, V = mod_data()[[es_var()]],
-                        random = ~ 1 | short_cite / same_infant_calc / unique_row, 
-                        #Cluster by paper, then participant group, then add random effect for each effect size 
+                        random = ~ 1 | short_cite / same_infant_calc / unique_row,
+                        #Cluster by paper, then participant group, then add random effect for each effect size
                         slab = make.unique(short_cite), data = mod_data(),
                         method = "REML")
       } else {
