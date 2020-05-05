@@ -190,16 +190,15 @@ For better organization, try to place all images under the `images/` folder in t
 
 ### Start server locally
 
-For development purposes you might want to start shiny apps locally.
-To do so:
-1. Open shinyapps/common/global.R and change path of project directory:
-instead of the default 
-project_directory <- "/srv/shiny-server/common/, use 
-project_directory <- "../../"
-Save changes.
-2. In the main_builder.R (located in the scripts folder) comment out line 19 (setwd(".."))  
-3. Run main_builder.R (located in the scripts folder) to load the data and the variables needed by the apps.
-4. Go to, e.g., shinyapps/visualization/server.R and run app. Now it should start locally (same goes for other shinyapps folders)
+For development purposes you might want to start Shiny apps locally. To do so:
+
+```
+## load the data and the variables needed by the apps
+source(here::here("scripts", "main_builder.R")) 
+
+## run, e.g., the visualization app locally
+shiny::runApp(here::here("shinyapps", "visualization")) 
+```
 
 
 

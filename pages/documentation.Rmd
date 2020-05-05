@@ -7,13 +7,13 @@ menuNavbar()
 ```
 
 ```{r echo=FALSE, warning=FALSE}
-documentation <- yaml::yaml.load_file("../metadata/documentation.yaml")
+documentation <- yaml::yaml.load_file(here("metadata", "documentation.yaml"))
 header <- "Documentation"
 content <- do.call(tabBox,
       c(width = 12,
         purrr::map(documentation,
           ~ tabPanel(.$title,
-              includeRmd(paste0("../documentation/", .$id, ".Rmd")),
+              includeRmd(here("documentation", paste0(.$id, ".Rmd"))),
               value = .$id)
           )
         ))

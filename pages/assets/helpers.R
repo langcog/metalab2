@@ -34,7 +34,6 @@ valueBoxes <- function(values, descriptions=c("Meta-analyses", "Papers", "Effect
     )
   }
 
-
 includeRmd <- function(path, shiny_data = NULL) {
   rmarkdown::render(path, quiet = TRUE)
   htmltools::includeHTML(gsub(".Rmd", ".html", path))

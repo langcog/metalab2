@@ -126,5 +126,3 @@ htmltools::includeHTML("footer.html")
 
   gtag('config', 'UA-84150050-1');
 </script>
-
-

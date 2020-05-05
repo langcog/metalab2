@@ -14,10 +14,11 @@ menuNavbar()
 </style>
 
 ```{r echo=FALSE, warning=FALSE}
-tutorials <-  yaml::yaml.load_file("../metadata/tutorials.yaml")
+tutorials <-  yaml::yaml.load_file(here("metadata", "tutorials.yaml"))
 header <- "Tutorials"
-content <-  do.call(tabBox, c(width = 12,purrr::map(
-                                tutorials, ~ tabPanel(.$title, includeRmd(paste0("../tutorials/", .$id, ".Rmd")), value = .$id))))
+content <-  do.call(tabBox, c(width = 12,purrr::map(tutorials,
+                                                    ~ tabPanel(.$title, includeRmd(here("tutorials", paste0(.$id, ".Rmd"))),
+                                                               value = .$id))))
 
 fluidRow(
     column(width = 2),

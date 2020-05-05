@@ -1,6 +1,6 @@
 ---
 params:
-  report: !r yaml::yaml.load_file("../metadata/reports.yaml")[[1]]
+  report: !r yaml::yaml.load_file(here("metadata", "reports.yaml"))[[1]]
 ---
 
 ```{r child='assets/setup.Rmd'}

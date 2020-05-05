@@ -2,9 +2,10 @@
 suppressMessages(suppressWarnings({
   library(dplyr)
   library(purrr)
+  library(here)
 }))
 
-source("scripts/compute_es.R")
+source(here("scripts", "compute_es.R"))
 
 # Validate dataset's values for a given field
 validate_dataset_field <- function(dataset_name, dataset_contents, field) {
@@ -156,7 +157,7 @@ tidy_dataset <- function(dataset_meta, dataset_contents) {
 
 # Save a dataset's contents to a csv file
 save_dataset <- function(dataset_meta, dataset_data) {
-  write.csv(dataset_data, file.path("data", paste0(dataset_meta$filename, ".csv")), row.names = FALSE)
+  write.csv(dataset_data, here("data", paste0(dataset_meta$filename, ".csv")), row.names = FALSE)
   cat(sprintf("Dataset '%s' saved successfully.\n", dataset_meta$name))
 }
 
