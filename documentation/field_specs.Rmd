@@ -14,15 +14,15 @@ htmltools::tagList(
   rmarkdown::html_dependency_font_awesome(),
   rmarkdown::html_dependency_bootstrap(theme = "default"),
   rmarkdown::html_dependency_highlightjs(highlight = "default"))
-source('../pages/assets/helpers.R')
+source(here("pages", "assets", "helpers.R"))
 htmltools::includeScript("../pages/assets/custom.js")
 ```
 
 ```{r b, echo=FALSE, warning=FALSE, message=FALSE}
 library(tidyr)
 
-fields <- yaml::yaml.load_file("../metadata/spec.yaml")
-fields_derived <- yaml::yaml.load_file("../metadata/spec_derived.yaml") %>%
+fields <- yaml::yaml.load_file(here("metadata", "spec.yaml"))
+fields_derived <- yaml::yaml.load_file(here("metadata", "spec_derived.yaml")) %>%
   transpose() %>%
   simplify_all() %>%
   dplyr::as_data_frame()

@@ -3,6 +3,7 @@ suppressPackageStartupMessages({
   library(dplyr)
   library(purrr)
   library(magrittr)
+  library(here)
 })
 
 installNeededPackage <- function(packageName, packageVersion, packageRepo, packageRepoName) {
@@ -29,7 +30,7 @@ logOnError <- function(expression) {
 message("==> Log for package installer.")
 
 logOnError({
-  neededPackages <- read.csv("../metadata/packageInfo.csv", stringsAsFactors = FALSE)
+  neededPackages <- read.csv(here("metadata", "packageInfo.csv"), stringsAsFactors = FALSE)
 })
 
 actualPackages <- installed.packages()[, c("Package", "Version")] %>%

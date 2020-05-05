@@ -7,7 +7,7 @@ menuNavbar()
 ```
 
 ```{r echo=FALSE}
-people <- yaml::yaml.load_file("../metadata/people.yaml")
+people <- yaml::yaml.load_file(here("metadata", "people.yaml"))
 
 renderMemberInfo <- function(memberInfo) {
   div(class = "box-pad", 

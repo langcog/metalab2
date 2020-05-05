@@ -10,7 +10,7 @@ params:
 
 ```{r echo=FALSE, warning=FALSE, message=FALSE}
 currentDataset <- datasets %>% dplyr::filter(short_name == params$datasetID)
-data <- read.csv(file.path("../data", paste0(currentDataset$filename, ".csv")), stringsAsFactors = FALSE)
+data <- read.csv(here("data", paste0(currentDataset$filename, ".csv"))), stringsAsFactors = FALSE)
 ```
 
 ```{r echo=FALSE}
