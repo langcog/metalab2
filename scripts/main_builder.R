@@ -264,6 +264,10 @@ logOnError({
     output_format = "html_document")
 })
 
+# prd server will run out of memory on this step (about.Rmd)
+# consistently
+gc()
+
 # rendering about page
 logOnError({
   rmarkdown::render(
