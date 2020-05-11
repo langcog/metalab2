@@ -26,17 +26,6 @@ logOnError({
   reportList <- yaml::yaml.load_file(here("metadata", "reports.yaml"))
 })
 
-logOnError({
-  fields <- yaml::yaml.load_file(here("metadata", "spec.yaml"))
-})
-
-logOnError({
-  fields_derived <- yaml::yaml.load_file(here("metadata", "spec_derived.yaml")) %>%
-    transpose() %>%
-    simplify_all() %>%
-    dplyr::as_data_frame()
-})
-
 # creating datasets object structure (list of lists with metadata)
 logOnError({
   datasets_file <- yaml::yaml.load_file(here("metadata", "datasets.yaml"))
