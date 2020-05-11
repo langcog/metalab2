@@ -1,8 +1,9 @@
-
 ```{r child='assets/setup.Rmd'}
 ```
 
 ```{r echo=FALSE}
+shinyapps <-  yaml::yaml.load_file(here("metadata", "shinyapps.yaml"))
+reportList <- yaml::yaml.load_file(here("metadata", "reports.yaml"))
 menuNavbar()
 ```
 
@@ -45,7 +46,7 @@ renderReport <- function(reportName, reportLink) {
 
 fluidRow(
   column(width = 12,
-         fullWidthPanelBox("Reports", reportList %>% purrr::map(~ renderReport(.$title ,paste0("reports/", .$id,".html"))))
+         fullWidthPanelBox("Reports", reportList %>% purrr::map(~ renderReport(.$title ,paste0("reports/", .$id,"-outer.html"))))
     )
   )
 ```

@@ -1,4 +1,3 @@
-
 ```{r child='assets/setup.Rmd'}
 ```
 
@@ -13,7 +12,7 @@ content <- do.call(tabBox,
       c(width = 12,
         purrr::map(documentation,
           ~ tabPanel(.$title,
-              includeRmd(here("documentation", paste0(.$id, ".Rmd"))),
+              includeRmd(here("pages", "documentation", paste0(.$id, ".Rmd"))),
               value = .$id)
           )
         ))

@@ -1,4 +1,3 @@
-
 ```{r child='assets/setup.Rmd'}
 ```
 
@@ -41,7 +40,7 @@ fullWidthPanelBox(
 
 fullWidthPanelBox(
   "Source code",
-  HTML("The source for this website can be found <a href='https://github.com/langcog/metalab2/'>on GitHub</a>. The website itself is hosted through GitHub Pages, with the accompanying visualizations hosted on a Shiny server.<br/><br/>Many thanks to <a href='https://deanattali.com/' target='_blank'>AttaliTech Ltd</a> for website redesign.")
+  HTML("The source2 for this website can be found <a href='https://github.com/langcog/metalab2/'>on GitHub</a>. The website itself is hosted through GitHub Pages, with the accompanying visualizations hosted on a Shiny server.<br/><br/>Many thanks to <a href='https://deanattali.com/' target='_blank'>AttaliTech Ltd</a> for website redesign.")
 )
 ```
 

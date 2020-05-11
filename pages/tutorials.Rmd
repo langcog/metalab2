@@ -1,4 +1,3 @@
-
 ```{r child='assets/setup.Rmd'}
 ```
 
@@ -17,7 +16,7 @@ menuNavbar()
 tutorials <-  yaml::yaml.load_file(here("metadata", "tutorials.yaml"))
 header <- "Tutorials"
 content <-  do.call(tabBox, c(width = 12,purrr::map(tutorials,
-                                                    ~ tabPanel(.$title, includeRmd(here("tutorials", paste0(.$id, ".Rmd"))),
+                                                    ~ tabPanel(.$title, includeRmd(here("pages", "tutorials", paste0(.$id, ".Rmd"))),
                                                                value = .$id))))
 
 fluidRow(

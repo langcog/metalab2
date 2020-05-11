@@ -1,7 +1,7 @@
 ---
 params:
   dataset: !r data.frame(short_name=character(2), num_papers=integer(2), num_experiments=integer(2), num_subjects=integer(2), stringsAsFactors = FALSE)
-  domainName: !r yaml::yaml.load_file(here("metadata", "domains.yaml"))[[1]]$title
+  domainName: !r yaml::yaml.load_file(here::here("metadata", "domains.yaml"))[[1]]$title
 ---
 
 <style>body {background-color: #ecf0f5;}</style>

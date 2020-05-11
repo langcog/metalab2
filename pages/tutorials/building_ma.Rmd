@@ -353,7 +353,7 @@ No, that's fine the way you did it!
 In some cases you will still need to contact the authors of the study. People probably don???t know you, so think about what in the object would make you open an email from a stranger. Something like ???including your paper in a MA??? should be motivational. People are busy: they don???t have time to read lengthy email, especially from someone they don???t know, so be as concise as possible. You could still give them more details later if they ask for it. Don???t be shy, authors are likely to be happy to hear that someone is interested in their work and is going to cite them!
 
 ### Are there some MA specific plots that I should make?
-```{r video 10, echo = FALSE}
+```{r video 11, echo = FALSE}
 embed_url("https://www.youtube.com/watch?feature=player_embedded&v=dZcqEKFLH6")
 ```
 

@@ -10,12 +10,13 @@ library(shinydashboard)
 library(shiny)
 library(purrr)
 library(DT)
+library(here)
 htmltools::tagList(
   rmarkdown::html_dependency_font_awesome(),
   rmarkdown::html_dependency_bootstrap(theme = "default"),
   rmarkdown::html_dependency_highlightjs(highlight = "default"))
 source(here("pages", "assets", "helpers.R"))
-htmltools::includeScript("../pages/assets/custom.js")
+htmltools::includeScript(here("pages", "assets", "custom.js"))
 ```
 
 ```{r b, echo=FALSE, warning=FALSE, message=FALSE}

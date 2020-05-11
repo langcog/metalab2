@@ -1,11 +1,15 @@
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
 library(htmltools)
 library(magrittr)
 library(shinydashboard)
 library(shiny)
 library(purrr)
 library(DT)
+library(here)
+library(dplyr)
+
 htmltools::tagList(
   rmarkdown::html_dependency_font_awesome(),
   rmarkdown::html_dependency_bootstrap(theme = "default"),

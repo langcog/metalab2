@@ -13,7 +13,7 @@ menuNavbar("../")
 ```{r echo=FALSE}
 fluidRow(class = "parent-cont",
   tags$iframe(
-  src = paste0("../reports/", params$report[["id"]], "_inner.html"),
+  src = paste0("../reports/", params$report[["id"]], ".html"),
   height = "100%",
   width = "100%",
   frameBorder = 0

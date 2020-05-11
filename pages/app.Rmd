@@ -1,9 +1,9 @@
-
 ```{r child='assets/setup.Rmd'}
 ```
 
 ```{r header, echo=FALSE, warning=FALSE}
 menuNavbar()
+shinyapps <-  yaml::yaml.load_file(here("metadata", "shinyapps.yaml"))
 ```
 
 ```{r echo=FALSE}

@@ -1,6 +1,4 @@
 suppressPackageStartupMessages({
-  library(shiny)
-  library(shinydashboard)
   library(dplyr)
   library(tidyr)
   library(ggplot2)
@@ -25,22 +23,8 @@ logOnError({
 })
 
 logOnError({
-  dataset <- yaml::yaml.load_file(here("metadata", "datasets.yaml"))
-  func <- function(x) paste0(substr(x$domain, 1, 1), substr(x$name, 1, 1))
-  dataset <- dataset[order(sapply(dataset, func))] # sort
-})
-
-logOnError({
   reportList <- yaml::yaml.load_file(here("metadata", "reports.yaml"))
 })
-
-logOnError({
-  shinyapps <-  yaml::yaml.load_file(here("metadata", "shinyapps.yaml"))
-})
-
-
-
-### datasets verification and preparing data metrics (code mostly come from global.R script)
 
 logOnError({
   fields <- yaml::yaml.load_file(here("metadata", "spec.yaml"))
@@ -52,7 +36,6 @@ logOnError({
     simplify_all() %>%
     dplyr::as_data_frame()
 })
-
 
 # creating datasets object structure (list of lists with metadata)
 logOnError({
@@ -75,7 +58,7 @@ logOnError({
     })
 })
 
-# combine into proper dataframe, put back moderators and subset
+# combine into proper data.frame, put back moderators and subset
 logOnError({
   datasets <- do.call(rbind, datasets)
   moderators <- map(datasets_file, "moderators")
@@ -117,7 +100,6 @@ logOnError({
     filter(!is.na(d_calc))
 })
 
-
 logOnError({
   studies <- all_data %>%
     group_by(dataset) %>%
@@ -145,27 +127,24 @@ logOnError({
     filter(filename %in% cached_data)
 })
 
-
-###
-# Rendering HTML page
-
-# creating temporary page directory:
-dir.create(here("rendered"))
-
-# initiate final relative state to images
-file.copy(here("images"), here("rendered"), recursive = TRUE)
-
-# extracting domain ids
 domainIDs <- map(domains, "id") %>% unlist()
 
-# rendering landing page:
-logOnError({
-  rmarkdown::render(
-    here("pages", "index.Rmd"),
-    output_file = "index.html",
-    output_dir = here("rendered"),
-    output_format = "html_document")
-})
+## rendering setup
+# creating temporary page directory:
+dir.create(here("rendered"))
+file.copy(here("pages/images"), here("rendered"), recursive = TRUE)
+
+## rendering reports
+reportList %>% map(
+  ~ logOnError({
+    rmarkdown::render(here("pages", "report.Rmd"),
+                      output_file = paste0(.$id, "-outer.html"),
+                      output_dir = here("rendered", "reports"),
+                      params = list(report = .),
+                      output_format = "html_document"
+                      )
+  })
+)
 
 # rendering domain pages:
 seq_along(domains) %>% map(
@@ -180,6 +159,12 @@ seq_along(domains) %>% map(
   })
 )
 
+logOnError({
+  dataset <- yaml::yaml.load_file(here("metadata", "datasets.yaml"))
+  func <- function(x) paste0(substr(x$domain, 1, 1), substr(x$name, 1, 1))
+  dataset <- dataset[order(sapply(dataset, func))] # sort
+})
+
 # rendering datasets pages:
 dataset %>% map_if(
   ~ .$filename %in% cached_data,
@@ -193,84 +178,76 @@ dataset %>% map_if(
   })
 )
 
-# rendering analyses page:
-logOnError({
-  rmarkdown::render(
-    here("pages", "analyses.Rmd"),
-    output_file = "analyses.html",
-    output_dir = here("rendered"),
-    output_format = "html_document")
-})
+## serve the site and watch for changes to .Rmd files
 
+## is this still needed with the changes to output_dirs in the
+## metalab_serve function?
+metalab_build <- function(input, output) {
+  rmarkdown::render(input,
+                    output_file = output,
+                    output_dir = dirname(output),
+                    output_format = "html_document")
+}
 
-# rendering app page:
-logOnError({
-  rmarkdown::render(
-    here("pages", "app.Rmd"),
-    output_file = "app.html",
-    output_dir = here("rendered"),
-    output_format = "html_document")
-})
+metalab_serve <- function (dir, script = metalab_build,
+                           method = "rmdv2", in_session = TRUE) {
+  servr:::dynamic_site(dir, build = function(message) {
+    dirs <- grep("^[.].", list.dirs(), value = TRUE, invert = TRUE)
+    input_dirs <- c(dirs, "./reports", "./tutorials", "./documentation")
+    output_dirs <- c("../rendered", "../rendered/reports", "../rendered/tutorials", "../rendered/documentation")
+    servr:::knit_maybe(input_dirs, output_dirs, script, method, in_session)
+    ##knit_debug(input_dirs, output_dirs, script, method, in_session)
+  }, site.dir = "../rendered")
+}
 
-
-# rendering standalone report pages
-reportList %>% map(
-  ~ logOnError({
-    rmarkdown::render(here("reports", paste0(.$id, ".Rmd")),
-                      output_file = paste0(.$id, "_inner.html"),
-                      output_dir = here("rendered", "reports"),
-                      params = list(report = .),
-                      output_format = "html_document"
-                      )
-  })
-)
-
-# rendering final reports pages
-reportList %>% map(
-  ~ logOnError({
-    rmarkdown::render(here("pages", "report.Rmd"),
-                      output_file = paste0(.$id, ".html"),
-                      output_dir = here("rendered", "reports"),
-                      params = list(report = .),
-                      output_format = "html_document"
-                      )
-  })
-)
-
-# rendering documentation page
-logOnError({
-  rmarkdown::render(
-    here("pages", "documentation.Rmd"),
-    output_file = "documentation.html",
-    output_dir = here("rendered"),
-    output_format = "html_document")
-})
-
-# rendering tutorials page
-logOnError({
-  rmarkdown::render(
-    here("pages", "tutorials.Rmd"),
-    output_file = "tutorials.html",
-    output_dir = here("rendered"),
-    output_format = "html_document")
-})
-
-# rendering publications page
-logOnError({
-  rmarkdown::render(
-    here("pages", "publications.Rmd"),
-    output_file = "publications.html",
-    output_dir = here("rendered"),
-    output_format = "html_document")
-})
-
-# rendering about page
-logOnError({
-  rmarkdown::render(
-    here("pages", "about.Rmd"),
-    output_file = "about.html",
-    output_dir = here("rendered"),
-    output_format = "html_document")
-})
+## knit_debug <- function (input, output, script, method = "jekyll", in_session = FALSE) 
+## {
+##   message("knit_debug here")
+##     if (is.character(script)) {
+##         if (("Makefile" %in% script) && file.exists("Makefile")) {
+##             if (in_session) 
+##                 warning("You cannot use in_session = TRUE with Makefile")
+##             return(make_maybe())
+##         }
+##         script = setdiff(script, "Makefile")
+##         message("are we even here???")
+##         message(script)
+##         if (length(script) != 1) 
+##             stop("The length of the 'script' argument must be 1")
+##     }
+##     outext = switch(method, jekyll = ".md", ".html")
+##     res = mapply(servr:::obsolete_out, input, output, MoreArgs = list(outext = outext), 
+##                  SIMPLIFY = FALSE)
+##   message("str res")
+##   str(res)
+##     update = FALSE
+##   lapply(res, function(r) {
+##       message("str r")
+##       str(r)
+##         if (length(r) == 0) 
+##             return()
+##         update <<- TRUE
+##         for (i in seq_len(nrow(r))) {
+##           message("are we even here???")
+##           if (!in_session && file.exists(script)) {
+##             message("yo we here\n we exist")
+##                 rscript(shQuote(c(script, r[i, 1], r[i, 2])), 
+##                   r[i, 1])
+##                 next
+##             }
+##             if (in_session && is.function(script)) {
+##                 script(r[i, 1], r[i, 2])
+##                 next
+##             }
+##             build = getFromNamespace(paste("build", method, sep = "_"), 
+##                 "servr")
+##             build(r[i, 1], r[i, 2], in_session)
+##         }
+##         if (any(i <- !file.exists(r[, 2]))) 
+##             stop("Some output files were not successfully generated: ", 
+##                 paste(r[i, 2], collapse = ", "))
+##     })
+##     update
+##  }
 
 message("==> Execution of main_builder done!")
