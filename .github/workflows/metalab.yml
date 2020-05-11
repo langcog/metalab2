@@ -2,7 +2,7 @@ name: metalab-deploy-test
 
 on:
   pull_request:
-    branches: [ master ]
+    branches: [ develop ]
 
 jobs:
   build-and-deploy-staging:
@@ -15,5 +15,5 @@ jobs:
     - uses: r-lib/actions/setup-r@v1
       with:
         r-version: '3.6.2'
-    - run: Rscript -e 'print("MetaLab Build...")'
+    - run: Rscript -e 'print("MetaLab Build on Develop...")'
     
