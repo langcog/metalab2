@@ -35,4 +35,4 @@ jobs:
         if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
         renv::restore()
 
-    - run: Rscript -e 'here::here("scripts", "main_builder.R")'
+    - run: Rscript -e 'source(here::here("scripts", "main_builder.R"))'
