@@ -29,10 +29,10 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-renv-
 
-     - name: Restore packages
-       shell: Rscript {0}
-       run: |
-         if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
-         renv::restore()
+    - name: Restore packages
+      shell: Rscript {0}
+      run: |
+        if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
+        renv::restore()
 
     - run: Rscript 'here::here("scripts", "main_builder.R")'
