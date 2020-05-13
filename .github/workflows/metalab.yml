@@ -36,3 +36,9 @@ jobs:
         renv::restore()
 
     - run: Rscript -e 'source(here::here("scripts", "main_builder.R"))'
+    - run: tar -zcvf metalab-shinyapps.tar.gz shinyapps
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: metalab-shiny-apps
+        path: ./metalab-shinyapps.tar.gz
