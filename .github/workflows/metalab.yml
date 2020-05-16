@@ -46,7 +46,7 @@ jobs:
         name: metalab-shiny-apps
         path: ./metalab-shinyapps.tar.gz
 
-    - name: copy shiny apps to staging server
+    - name: scp shiny apps to staging server
       uses: appleboy/scp-action@master
       with:
         host: ${{ secrets.HOST }}
