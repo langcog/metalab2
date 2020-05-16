@@ -46,7 +46,7 @@ jobs:
         name: metalab-shiny-apps
         path: ./metalab-shinyapps.tar.gz
 
-    - name: executing remote ssh commands using key
+    - name: executing remote ssh commands using a key
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
