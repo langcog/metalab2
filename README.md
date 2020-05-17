@@ -65,10 +65,7 @@ reports.
 To add a new shiny app or edit a shiny app, look in the `shinyapps`
 directory. Don't forget to edit the corresponding metadata file.
 
-All current shiny apps use a common R file
-`shinyapps/common/global.R`.
-
-You can access it (source it) using `source('../common/global.R')`.
+All current shiny apps use a common R file `shinyapps/common/global.R`.
 
 Variables that are currently accessible from this file:
 
@@ -90,6 +87,6 @@ The code for the other pages is in the `pages/` directory.
 
 ### Images
 
-For better organization, try to place all images under the
-`pages/images` directory in the correct subdirectoryq, and use that
-path in metadata files when referring to an image.
+Save images in the `pages/images` directory in the correct
+subdirectory, and use that path in metadata files when referring to an
+image.
