@@ -55,4 +55,3 @@ jobs:
         port: ${{ secrets.PORT }}
         source: "./shinyapps/*"
         target: "/srv/shiny-server-staging"
-        strip_components: 1
