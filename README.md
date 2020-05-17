@@ -39,7 +39,8 @@ shiny::runApp(here::here("shinyapps", "visualization"))
 To deploy the Shiny applications to the staging environment, create a
 pull request to the master branch. This will build and deploy the
 Shiny applications to the staging environment. There is not currently
-a staging server for the website itself, only for the Shiny applications.
+a staging server for the website itself, only for the Shiny
+applications.
 
 Note: The pull request cannot be initiated from a forked repostitory. 
 
