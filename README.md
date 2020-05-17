@@ -20,7 +20,7 @@ required R packages using renv.
 renv::restore()
 ```
 
-### Building and Serving the website and Shiny applications
+### Developing the website and Shiny applications locally
 ```
 ## create the datasets needed by the website and the Shiny apps
 source(here::here("scripts", "main_builder.R"))
@@ -33,6 +33,22 @@ metalab_serve(here::here("pages"))
 options(shiny.autoreload = TRUE)
 shiny::runApp(here::here("shinyapps", "visualization")) 
 ```
+
+### Deploying the Shiny applications to staging environment
+
+To deploy the Shiny applications to the staging environment, create a
+pull request to the master branch. This will build and deploy the
+Shiny applications to the staging environment. There is not currently
+a staging server for the website itself, only for the Shiny applications.
+
+Note: The pull request cannot be initiated from a forked repostitory. 
+
+### Deploying the website and Shiny applications to production environment
+
+To deploy the website and Shiny applications to the production
+environment, merge the pull request you created in the step
+above. This will build and deploy both the website and the Shiny
+applications to the production environment. 
 
 ## Project Structure
 

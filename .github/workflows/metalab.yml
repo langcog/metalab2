@@ -19,7 +19,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        sudo apt-get install libcurl4-openssl-dev
+        sudo apt-get install libcurl4-openssl-dev pandoc
 
     - name: Cache packages
       uses: actions/cache@v1
@@ -40,6 +40,8 @@ jobs:
     - run: cp -R metadata/ ./shinyapps/common/
     - run: cp -R data/ ./shinyapps/common/
     - run: tar -zcvf metalab-shinyapps.tar.gz shinyapps
+
+    - run: Rscript -e 'source(here::here("scripts", "main_builder.R"))'
 
     - uses: actions/upload-artifact@v2
       with:
