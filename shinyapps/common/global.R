@@ -9,16 +9,18 @@ library(langcog)
 library(feather)
 library(plotly)
 
+data_path_prefix <- c("shinyapps", "common")
+
 logOnError <- function(expression) {
   tryCatch(expression, error = function(e) { message(e) })
 }
 
 logOnError({
-  fields <- yaml::yaml.load_file(here("metadata", "spec.yaml"))
+  fields <- yaml::yaml.load_file(here(data_path_prefix, "metadata", "spec.yaml"))
 })
 
 logOnError({
-  fields_derived <- yaml::yaml.load_file(here("metadata", "spec_derived.yaml")) %>%
+  fields_derived <- yaml::yaml.load_file(here(data_path_prefix, "metadata", "spec_derived.yaml")) %>%
     transpose() %>%
     simplify_all() %>%
     dplyr::as_data_frame()
@@ -26,7 +28,7 @@ logOnError({
 
 # creating datasets object structure:
 logOnError({
-  datasets_file <- yaml::yaml.load_file(here("metadata", "datasets.yaml"))
+  datasets_file <- yaml::yaml.load_file(here(data_path_prefix, "metadata", "datasets.yaml"))
   func <- function(x) paste0(substr(x$domain, 1, 1), substr(x$name, 1, 1))
   datasets_file <- datasets_file[order(sapply(datasets_file, func))] # sort
 })
@@ -47,14 +49,14 @@ logOnError({
 
 
 logOnError({
-  cached_data <- list.files(here("data"), pattern = "\\.csv$") %>% {
+  cached_data <- list.files(here(data_path_prefix, "data"), pattern = "\\.csv$") %>% {
     substr(., 1, nchar(.) - 4)
   }
 })
 
 load_dataset <- function(filename) {
   read.csv(
-    here("data", paste0(filename, ".csv")),
+    here(data_path_prefix, "data", paste0(filename, ".csv")),
     stringsAsFactors = FALSE) %>%
     mutate(
       filename = filename,
