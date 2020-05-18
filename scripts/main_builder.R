@@ -200,6 +200,5 @@ metalab_serve <- function (dir, script = metalab_build,
 }
 
 metalab_serve(here::here("pages"))
-servr::daemon_stop(1)
 
 message("==> Execution of main_builder done!")
