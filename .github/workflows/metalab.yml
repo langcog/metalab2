@@ -41,8 +41,6 @@ jobs:
     - run: cp -R data/ ./shinyapps/common/
     - run: tar -zcvf metalab-shinyapps.tar.gz shinyapps
 
-    - run: Rscript -e 'source(here::here("scripts", "main_builder.R"))'
-
     - uses: actions/upload-artifact@v2
       with:
         name: metalab-shiny-apps
