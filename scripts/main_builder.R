@@ -191,7 +191,7 @@ metalab_build <- function(input, output) {
 
 metalab_serve <- function (dir, script = metalab_build,
                            method = "rmdv2", in_session = TRUE) {
-  servr:::dynamic_site(dir, build = function(message) {
+  servr:::dynamic_site(dir, daemon = TRUE, build = function(message) {
     dirs <- grep("^[.].", list.dirs(), value = TRUE, invert = TRUE)
     input_dirs <- c(dirs, "./reports", "./tutorials", "./documentation")
     output_dirs <- c("../rendered", "../rendered/reports", "../rendered/tutorials", "../rendered/documentation")
