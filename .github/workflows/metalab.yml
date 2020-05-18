@@ -40,11 +40,17 @@ jobs:
     - run: cp -R metadata/ ./shinyapps/common/
     - run: cp -R data/ ./shinyapps/common/
     - run: tar -zcvf metalab-shinyapps.tar.gz shinyapps
+    - run: tar -zcvf metalab-site.tar.gz rendered
 
     - uses: actions/upload-artifact@v2
       with:
         name: metalab-shiny-apps
         path: ./metalab-shinyapps.tar.gz
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: metalab-site
+        path: ./metalab-site.tar.gz
 
     - name: scp shiny apps to staging server
       uses: appleboy/scp-action@master
