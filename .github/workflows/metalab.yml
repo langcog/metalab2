@@ -55,7 +55,6 @@ jobs:
         path: ./metalab-site.tar.gz
 
     - name: scp shiny apps to staging server
-      if: github.event_name == 'push'
       uses: appleboy/scp-action@master
       with:
         host: ${{ secrets.HOST }}
