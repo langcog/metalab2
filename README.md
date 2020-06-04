@@ -13,7 +13,16 @@ and Shiny apps) locally.
 
 If it is your first time running Metalab locally after cloning, or the
 package dependencies have been updated, you can install all the
-required R packages using renv.
+required R packages using 
+
+
+#### Windows
+
+If you are building MetaLab on Windows, you must install the
+appropriate version of [Rtools]
+(https://cran.r-project.org/bin/windows/Rtools/) before
+proceeding. Rtools will install the appropriate toolchain (compilers
+and linkers) on your computer to build R packages from source code.
 
 ```
 ## install MetaLab package dependencies
