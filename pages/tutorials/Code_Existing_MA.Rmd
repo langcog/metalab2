@@ -12,7 +12,7 @@ Contributing to MetaLab can have several advantages both for you and the communi
 
 ### Who owns the data contributed to MetaLab? 
 
-You remain the owner of your meta-analysis data: Users must cite your data by your preferred citation. If your data are previously unpublished then this doesn't count as publication. Learn more by reading our [full citation policy](https://langcog.github.io/metalab2/publications.html). 
+You remain the owner of your meta-analysis data: Users must cite your data by your preferred citation. If your data are previously unpublished then this doesn't count as publication. Learn more by reading our [full citation policy](/publications.html). 
 
 ### Can I retain control on my data? Must I forever retain control of my data?
 

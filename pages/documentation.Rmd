@@ -3,6 +3,11 @@
 
 ```{r echo=FALSE}
 menuNavbar()
+htmltools::tagList(
+  rmarkdown::html_dependency_font_awesome(),
+  rmarkdown::html_dependency_bootstrap(theme = "default"),
+  rmarkdown::html_dependency_highlightjs(highlight = "default"))
+htmltools::includeScript(here("pages", "assets", "custom.js"))
 ```
 
 ```{r echo=FALSE, warning=FALSE}

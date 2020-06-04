@@ -9,19 +9,6 @@ params:
 <style>.dt-buttons.btn-group {float:left;}</style>
 
 ```{r echo=FALSE, warning=FALSE, message=FALSE}
-  ## datasets_file <- yaml::yaml.load_file(here("metadata", "datasets.yaml"))
-  ## datasets <- datasets_file %>%
-  ##   map(function(row){
-  ##     row$moderators <- NULL
-  ##     row$subset <- NULL
-  ##     as.data.frame(row, stringsAsFactors = FALSE)
-  ##   })
-  ## datasets <- do.call(rbind, datasets)
-  ## moderators <- map(datasets_file, "moderators")
-  ## subset <- map(datasets_file, "subset")
-  ## datasets$moderators <- moderators
-  ## datasets$subset <- subset
-  
 currentDataset <- datasets %>% dplyr::filter(short_name == params$datasetID)
 data <- read.csv(here("data", paste0(currentDataset$filename, ".csv")), stringsAsFactors = FALSE)
 ```
