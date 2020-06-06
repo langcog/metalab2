@@ -191,63 +191,14 @@ metalab_build <- function(input, output) {
 
 metalab_serve <- function (dir, script = metalab_build,
                            method = "rmdv2", in_session = TRUE) {
-  servr:::dynamic_site(dir, build = function(message) {
+  servr:::dynamic_site(dir, daemon = TRUE, build = function(message) {
     dirs <- grep("^[.].", list.dirs(), value = TRUE, invert = TRUE)
     input_dirs <- c(dirs, "./reports", "./tutorials", "./documentation")
     output_dirs <- c("../rendered", "../rendered/reports", "../rendered/tutorials", "../rendered/documentation")
     servr:::knit_maybe(input_dirs, output_dirs, script, method, in_session)
-    ##knit_debug(input_dirs, output_dirs, script, method, in_session)
   }, site.dir = "../rendered")
 }
 
-## knit_debug <- function (input, output, script, method = "jekyll", in_session = FALSE) 
-## {
-##   message("knit_debug here")
-##     if (is.character(script)) {
-##         if (("Makefile" %in% script) && file.exists("Makefile")) {
-##             if (in_session) 
-##                 warning("You cannot use in_session = TRUE with Makefile")
-##             return(make_maybe())
-##         }
-##         script = setdiff(script, "Makefile")
-##         message("are we even here???")
-##         message(script)
-##         if (length(script) != 1) 
-##             stop("The length of the 'script' argument must be 1")
-##     }
-##     outext = switch(method, jekyll = ".md", ".html")
-##     res = mapply(servr:::obsolete_out, input, output, MoreArgs = list(outext = outext), 
-##                  SIMPLIFY = FALSE)
-##   message("str res")
-##   str(res)
-##     update = FALSE
-##   lapply(res, function(r) {
-##       message("str r")
-##       str(r)
-##         if (length(r) == 0) 
-##             return()
-##         update <<- TRUE
-##         for (i in seq_len(nrow(r))) {
-##           message("are we even here???")
-##           if (!in_session && file.exists(script)) {
-##             message("yo we here\n we exist")
-##                 rscript(shQuote(c(script, r[i, 1], r[i, 2])), 
-##                   r[i, 1])
-##                 next
-##             }
-##             if (in_session && is.function(script)) {
-##                 script(r[i, 1], r[i, 2])
-##                 next
-##             }
-##             build = getFromNamespace(paste("build", method, sep = "_"), 
-##                 "servr")
-##             build(r[i, 1], r[i, 2], in_session)
-##         }
-##         if (any(i <- !file.exists(r[, 2]))) 
-##             stop("Some output files were not successfully generated: ", 
-##                 paste(r[i, 2], collapse = ", "))
-##     })
-##     update
-##  }
+metalab_serve(here::here("pages"))
 
 message("==> Execution of main_builder done!")

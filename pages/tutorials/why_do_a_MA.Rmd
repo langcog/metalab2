@@ -16,7 +16,7 @@ Meta-analyses (MAs) can be useful several purposes, including: (1) *theory build
 
 #### Why are single studies not enough?
 
-When thinking about development, we often look at published experiments  testing whether infants have specific abilities, for example whether infants treat native vowels differently from non-native ones, and how those abilities change with age (for more details on this specific topic see <https://langcog.github.io/metalab2/dataset/inphondb-native.html>). 
+When thinking about development, we often look at published experiments  testing whether infants have specific abilities, for example whether infants treat native vowels differently from non-native ones, and how those abilities change with age (for more details on this specific topic see [here] (/dataset/inphondb-native.html). 
 
 The results of a single experiment cannot answer those questions once and for all: Each experiment measures behavior of a set of infants in a very specific situation, which might not be generalizable to other situations. Moreover, there might be a measurement error in this one-time snapshot of reality. Finally, the literature likely contains some false positives and false negatives. 
 

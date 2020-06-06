@@ -1,19 +1,85 @@
-name: metalab-deploy-test
+name: MetaLab Deploy
 
 on:
   pull_request:
     branches: [ develop ]
+  push:
+    branches: [ develop ]
 
 jobs:
-  build-and-deploy-staging:
-    # The type of runner that the job will run on
+  build-and-deploy:
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    env:
+      RENV_PATHS_ROOT: ~/.local/share/renv
+    
     steps:
     - uses: actions/checkout@v2
     - uses: r-lib/actions/setup-r@v1
       with:
         r-version: '3.6.2'
-    - run: Rscript -e 'print("MetaLab Build...")'
-    
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get install libcurl4-openssl-dev pandoc
+
+    - name: Cache packages
+      uses: actions/cache@v1
+      with:
+        path: ${{ env.RENV_PATHS_ROOT }}
+        key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-renv-
+
+    - name: Restore packages 
+      shell: Rscript {0}
+      run: |
+        if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
+        renv::restore()
+
+    - run: Rscript -e 'source(here::here("scripts", "main_builder.R"))'
+    - run: find ./shinyapps/* -type d -exec touch {}/restart.txt \;
+    - run: cp -R metadata/ ./shinyapps/common/
+    - run: cp -R data/ ./shinyapps/common/
+    - run: tar -zcvf metalab-shinyapps.tar.gz shinyapps
+    - run: tar -zcvf metalab-site.tar.gz rendered
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: metalab-shiny-apps
+        path: ./metalab-shinyapps.tar.gz
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: metalab-site
+        path: ./metalab-site.tar.gz
+
+    - name: scp shiny apps to staging server
+      if: github.event_name == 'pull_request'
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.KEY }}
+        port: ${{ secrets.PORT }}
+        source: "./shinyapps/*"
+        target: "/srv/shiny-server-staging"
+
+    - name: scp shiny apps to production server
+      if: github.event_name == 'push'
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.KEY }}
+        port: ${{ secrets.PORT }}
+        source: "./shinyapps/*"
+        target: "/srv/shiny-server"
+
+    - name: deploy static site to gh-pages branch
+      if: github.event_name == 'push'
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./rendered
+        

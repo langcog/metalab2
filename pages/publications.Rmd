@@ -9,7 +9,7 @@ menuNavbar()
 
 MetaLab allows researchers to use data available on its website. This can be by citing meta-analytic results, or downloading dataset and conducting custom analyses. In both cases our citation policy is the following:
 
-1. Researchers publishing or presenting work using data in MetaLab must cite the publications linked to that dataset, as listed in the [Documentation](https://langcog.github.io/metalab2/documentation.html#datasets). (If there is no citation, then no citation for the individual dataset is necessary).
+1. Researchers publishing or presenting work using data in MetaLab must cite the publications linked to that dataset, as listed in the [Documentation](/documentation.html#datasets). (If there is no citation, then no citation for the individual dataset is necessary).
 
 2. For tracking use of MetaLab, please also cite at least one of the following:    
     * Bergmann, C., Tsuji, S., Piccinini, P.E., Lewis, M.L., Braginsky, M., Frank, M.C., & Cristia, A. (2018). Promoting replicability in developmental research through meta-analyses: Insights from language acquisition research. *Child Development, 89*, 1996-2009 . DOI: 10.1111/cdev.13079 [[Repository]](https://osf.io/uhv3d/)

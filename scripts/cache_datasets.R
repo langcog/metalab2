@@ -82,7 +82,6 @@ fetch_dataset <- function(dataset_meta) {
 
 }
 
-
 # Manipulate a dataset's contents to prepare it for saving
 tidy_dataset <- function(dataset_meta, dataset_contents) {
 
