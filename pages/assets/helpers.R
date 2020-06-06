@@ -35,8 +35,12 @@ valueBoxes <- function(values, descriptions=c("Meta-analyses", "Papers", "Effect
   }
 
 includeRmd <- function(path, shiny_data = NULL) {
-  rmarkdown::render(path, quiet = TRUE)
-  htmltools::includeHTML(gsub(".Rmd", ".html", path))
+  output_file <-
+    rmarkdown::render(path,
+                      quiet = TRUE,
+                      output_dir =
+                        dirname(gsub("pages", "rendered", path)))
+  htmltools::includeHTML(output_file)
 }
 
 metricsCounter <- function(database) {
