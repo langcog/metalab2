@@ -29,7 +29,7 @@ shinyUI(
         column(
           width = 6,
           box(width = NULL, #status = "danger",
-              downloadButton("download_data", "Download data (Staging)",
+              downloadButton("download_data", "Download data",
                              class = "btn-xs pull-right"),
               br(),
               uiOutput("domain_selector"),
