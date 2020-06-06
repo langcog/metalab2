@@ -179,7 +179,6 @@ dataset %>% map_if(
 )
 
 ## serve the site and watch for changes to .Rmd files
-
 ## is this still needed with the changes to output_dirs in the
 ## metalab_serve function?
 metalab_build <- function(input, output) {
@@ -193,8 +192,10 @@ metalab_serve <- function (dir, script = metalab_build,
                            method = "rmdv2", in_session = TRUE) {
   servr:::dynamic_site(dir, daemon = TRUE, build = function(message) {
     dirs <- grep("^[.].", list.dirs(), value = TRUE, invert = TRUE)
-    input_dirs <- c(dirs, "./reports", "./tutorials", "./documentation")
-    output_dirs <- c("../rendered", "../rendered/reports", "../rendered/tutorials", "../rendered/documentation")
+
+    input_dirs <- c(dirs, "./reports")
+    output_dirs <- c("../rendered", "../rendered/reports")
+    
     servr:::knit_maybe(input_dirs, output_dirs, script, method, in_session)
   }, site.dir = "../rendered")
 }

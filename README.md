@@ -31,11 +31,8 @@ renv::restore()
 
 ### Developing the website and Shiny applications locally
 ```
-## create the datasets needed by the website and the Shiny apps
-source(here::here("scripts", "main_builder.R"))
-
 ## build and serve the MetaLab website on http://localhost:4321
-metalab_serve(here::here("pages"))
+source(here::here("scripts", "main_builder.R"))
 
 ## build and run, e.g., the visualization Shiny app
 ## (substitute "visualization" with any shiny app directory in ./shinyapps)
