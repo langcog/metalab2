@@ -1,0 +1,591 @@
+---
+title: Model fits for synthesis paper
+author: "Molly Lewis"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: true
+    number_sections: false
+    theme: cerulean
+    code_folding: hide
+---
+  
+***
+***
+
+
+```{r load data, include = F}
+source("../../../dashboard/global.R", chdir = TRUE)
+library(directlabels)
+library(ggrepel)
+library(metafor)
+knitr::opts_chunk$set(cache = T, warning = F, message = F, fig.width = 8, fig.height = 3.5)
+
+# Remove incomplete MAs
+datasets = filter(datasets, filename != "statistical")
+all_data = filter(all_data, dataset != "Statistical word segementation")
+```
+
+
+```{r}
+#setwd("/Documents/GRADUATE_SCHOOL/Projects/metalab/metalab/write-ups/synthesis_paper/paper_analyses")
+ld.df = data.frame(dataset = datasets$name,
+                   domain = c("Prosody", "Words", "Communication", "Sounds",
+                              "Sounds", "Sounds", "Sounds", "Sounds", "Words",
+                              "Words", "Communication", "Words"))
+
+ld.df$domain = factor(ld.df$domain, levels = c("Prosody","Sounds", "Words", "Communication"))
+
+# Fit models using raw d_calc
+raw_data = all_data %>%
+          filter(dataset != "Gaze following" | d_calc > 0) %>% # remove negative ES for gaze following
+          filter(dataset != "Pointing and vocabulary") %>%
+          left_join(ld.df)
+
+```
+
+### Unweighted logarithmic
+```{r,  warning = F, message = F}
+un.l = ggplot(raw_data,
+            aes(x = mean_age/365, y = d_calc, col = dataset)) +
+  facet_grid(~ domain) +
+  geom_point(aes(size = n, y = d_calc), alpha = .1) + 
+  geom_smooth(method="lm", se = FALSE, size = 1, formula = y ~ log(x)) + 
+  ylim(c(-.3, 2))+
+  xlim(0,3.1) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  xlab("Age (years)") + 
+  ylab("Effect size (d)") + 
+  theme_bw() + 
+  theme(legend.position = "none",
+        legend.key = element_blank(),
+        legend.background = element_rect(fill = "transparent"),
+        axis.line= element_line(size = 3),
+        axis.text = element_text(colour = "black", size = 18),
+        strip.text.x = element_text(size = 14),
+        axis.title = element_text(colour = "black", size = 18))
+
+direct.label(un.l, list("top.bumptwice", dl.trans(y = y + 0.1), cex=.7))
+```
+
+
+### Weighted logarithmic
+weight = 1/n
+```{r}
+wl = ggplot(raw_data,
+            aes(x = mean_age/365, y = d_calc, col = dataset, weight = 1/n)) +
+  facet_grid(~ domain) +
+  geom_point(aes(size = n, y = d_calc), alpha = .1) + 
+  geom_smooth(method="lm", se = FALSE, size = 1, formula = y ~ log(x)) + 
+  ylim(c(-.3, 2))+
+  xlim(0,3.1) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  xlab("Age (years)") + 
+  ylab("Effect size (d)") + 
+  theme_bw() + 
+  theme(legend.position = "none",
+        legend.key = element_blank(),
+        legend.background = element_rect(fill = "transparent"),
+        axis.line= element_line(size = 3),
+        axis.text = element_text(colour = "black", size = 18),
+        strip.text.x = element_text(size = 14),
+        axis.title = element_text(colour = "black", size = 18))
+
+direct.label(wl, list("top.bumptwice", dl.trans(y = y + 0.1), cex=.7))
+```
+
+### Unweighted loess
+```{r}
+uwloess = ggplot(raw_data,
+            aes(x = mean_age/365, y = d_calc, col = dataset)) +
+  facet_grid(~ domain) +
+  geom_point(aes(size = n, y = d_calc), alpha = .1) + 
+  geom_smooth(method="loess", se = FALSE, size = 1) + 
+  ylim(c(-.3, 2))+
+  xlim(0,3.1) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  xlab("Age (years)") + 
+  ylab("Effect size (d)") + 
+  theme_bw() + 
+  theme(legend.position = "none",
+        legend.key = element_blank(),
+        legend.background = element_rect(fill = "transparent"),
+        axis.line= element_line(size = 3),
+        axis.text = element_text(colour = "black", size = 18),
+        strip.text.x = element_text(size = 14),
+        axis.title = element_text(colour = "black", size = 18))
+
+direct.label(uwloess, list("top.bumptwice", dl.trans(y = y + 0.1), cex=.7))
+```
+
+### Weighted loess
+weight = 1/n
+```{r}
+wloess = ggplot(raw_data,
+            aes(x = mean_age/365, y = d_calc, col = dataset, weight = 1/n)) +
+  facet_grid(~ domain) +
+  geom_point(aes(size = n, y = d_calc), alpha = .1) + 
+  geom_smooth(method="loess", se = FALSE, size = 1) + 
+  ylim(c(-.3, 2))+
+  xlim(0,3.1) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  xlab("Age (years)") + 
+  ylab("Effect size (d)") + 
+  theme_bw() + 
+  theme(legend.position = "none",
+        legend.key = element_blank(),
+        legend.background = element_rect(fill = "transparent"),
+        axis.line= element_line(size = 3),
+        axis.text = element_text(colour = "black", size = 18),
+        strip.text.x = element_text(size = 14),
+        axis.title = element_text(colour = "black", size = 18))
+
+direct.label(wloess, list("top.bumptwice", dl.trans(y = y + 0.1), cex=.7))
+```
+
+### Unweighted loess with medium span
+span = 1
+```{r}
+loess.med = ggplot(raw_data,
+            aes(x = mean_age/365, y = d_calc, col = dataset)) +
+  facet_grid(~ domain) +
+  geom_point(aes(size = n, y = d_calc), alpha = .1) + 
+  geom_smooth(method="loess",span = 1, se = FALSE, size = 1) + 
+  ylim(c(-.3, 2))+
+  xlim(0,3.1) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  xlab("Age (years)") + 
+  ylab("Effect size (d)") + 
+  theme_bw() + 
+  theme(legend.position = "none",
+        legend.key = element_blank(),
+        legend.background = element_rect(fill = "transparent"),
+        axis.line= element_line(size = 3),
+        axis.text = element_text(colour = "black", size = 18),
+        strip.text.x = element_text(size = 14),
+        axis.title = element_text(colour = "black", size = 18))
+
+direct.label(loess.med, list("top.bumptwice", dl.trans(y = y + 0.1), cex=.7))
+```
+
+
+### Unweighted loess with giant span
+span = 100
+```{r}
+loess.giant = ggplot(raw_data,
+            aes(x = mean_age/365, y = d_calc, col = dataset)) +
+  facet_grid(~ domain) +
+  geom_point(aes(size = n, y = d_calc), alpha = .1) + 
+  geom_smooth(method="loess",span = 100, se = FALSE, size = 1) + 
+  ylim(c(-.3, 2))+
+  xlim(0,3.1) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  xlab("Age (years)") + 
+  ylab("Effect size (d)") + 
+  theme_bw() + 
+  theme(legend.position = "none",
+        legend.key = element_blank(),
+        legend.background = element_rect(fill = "transparent"),
+        axis.line= element_line(size = 3),
+        axis.text = element_text(colour = "black", size = 18),
+        strip.text.x = element_text(size = 14),
+        axis.title = element_text(colour = "black", size = 18))
+
+direct.label(loess.giant, list("top.bumptwice", dl.trans(y = y + 0.1), cex=.7))
+```
+
+
+### Weighted loess with giant span
+span = 100
+weight = 1/n
+```{r}
+loess.giant = ggplot(raw_data,
+            aes(x = mean_age/365, y = d_calc, col = dataset, weight = 1/n)) +
+  facet_grid(~ domain) +
+  geom_point(aes(size = n), alpha = .1) + 
+  geom_smooth(method="loess",span = 100, se = FALSE, size = 1) + 
+  ylim(c(-.3, 2))+
+  xlim(0,3.1) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  xlab("Age (years)") + 
+  ylab("Effect size (d)") + 
+  theme_bw() + 
+  theme(legend.position = "none",
+        legend.key = element_blank(),
+        legend.background = element_rect(fill = "transparent"),
+        axis.line= element_line(size = 3),
+        axis.text = element_text(colour = "black", size = 18),
+        strip.text.x = element_text(size = 14),
+        axis.title = element_text(colour = "black", size = 18))
+
+direct.label(loess.giant, list("top.bumptwice", dl.trans(y = y + 0.1), cex=.7))
+```
+
+
+```{r, eval = F}
+### Vowel discrimination (native), with method moderator
+fit = lm(d_calc ~ method, 
+         data = filter(all_data, dataset == "Vowel discrimination (native)"), 
+         weights = 1/n)
+
+vd.data = all_data %>%
+          filter(dataset == "Vowel discrimination (native)") %>%
+          select(mean_age, d_calc, n, method, response_mode) %>%
+          mutate(lin_preds = predict(fit))
+
+ggplot(vd.data, aes(x = mean_age/365, y = lin_preds)) +
+  geom_point(aes(size = n, y = lin_preds, color = method, shape = response_mode), alpha = .5) + 
+  geom_smooth(method="lm", se = FALSE, size = 1, formula = y ~ log(x)) + 
+  ylim(c(-.3, 2))+
+  xlim(0, 3.1) +
+  xlab("Age (years)") + 
+  ylab("Effect size (d)") +
+  theme_bw()
+```
+
+
+```{r, eval = F}
+### Vowel discrimination (native), no moderators
+
+ggplot(filter(all_data, dataset == "Vowel discrimination (native)"),
+       aes(x = mean_age/365, y = d_calc)) +
+  geom_point(aes(size = n, y = d_calc), alpha = .1) + 
+  geom_smooth(method="lm", se = FALSE, size = 1, formula = y ~ log(x)) + 
+  ylim(c(-.3, 2))+
+  xlim(0,3.1) +
+  xlab("Age (years)") + 
+  ylab("Effect size (d)") +
+  theme_bw()
+```
+
+
+### RMA with method moderator 
+
+#### restricted y-range (old)
+```{r}
+
+## Make data frame of language levels
+ld.df = data.frame(dataset = datasets$name,
+                   domain = c("Prosody", "Words", "Communication", "Sounds",
+                              "Sounds", "Sounds", "Sounds", "Sounds", "Words",
+                              "Words", "Communication", "Words"))
+
+ld.df$domain = factor(ld.df$domain, levels = c("Prosody","Sounds", "Words", "Communication"))
+
+## Get model fits
+single_method_datasets = c("Gaze following",
+                           "Label advantage in concept learning", 
+                           "Mutual exclusivity", 
+                           "Pointing and vocabulary",
+                           "Online word recognition")
+
+all_data.resid = data.frame()
+for (i in 1:length(datasets$name)) {
+    d = filter(all_data, dataset == datasets$name[i],
+               dataset != "Gaze following" | d_calc > 0) # remove negative ES for gaze following
+    if (datasets$name[i] %in% single_method_datasets) {
+      full.model = rma(d_calc, vi = d_var_calc, data = d, method = "REML")
+    } else {
+      full.model = rma(d_calc ~ method, vi = d_var_calc, data = d, method = "REML")
+    }
+  
+  d = as.data.frame(rstandard(full.model)$resid) %>%
+       cbind(d) %>%
+       rename(residual.d = `rstandard(full.model)$resid`) %>%
+       mutate(residual.d = residual.d + full.model$b[1]) %>% # add in intercept term
+       inner_join(all_data) 
+  
+  all_data.resid = rbind(all_data.resid,d)
+}
+
+# Fit models using raw d_calc
+raw_data = all_data.resid %>%
+          left_join(ld.df) %>%
+          filter(dataset != "Pointing and vocabulary")
+
+## plot
+mod.plot = 
+  ggplot(raw_data,aes(x = mean_age/365, y = residual.d, col = dataset, weight = 1/n)) +
+  facet_grid(~ domain) +
+  geom_point(aes(size = n), alpha = .1, data = filter(raw_data, residual.d > -.3 & residual.d < 2 )) +
+  geom_smooth(method="lm", se = FALSE, size = 1, formula = y ~ log(x), data = raw_data) + 
+  #ylim(c(-.3, 4))+
+  xlim(0,3.1) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  xlab("Age (years)") + 
+  ylab("Method-residual effect size (d)") + 
+  theme_bw() + 
+  theme(legend.position = "none",
+        legend.key = element_blank(),
+        legend.background = element_rect(fill = "transparent"),
+        axis.line= element_line(size = 3),
+        axis.text = element_text(colour = "black", size = 18),
+        strip.text.x = element_text(size = 14),
+        axis.title = element_text(colour = "black", size = 18))
+
+direct.label(mod.plot, list("top.bumptwice", dl.trans(y = y + 0.1), cex=.7))
+
+
+ggplot(raw_data, aes(x = mean_age/365, y = residual.d, col = dataset, weight = 1/n)) +
+  #geom_point(aes(size = n), alpha = .1) + 
+  geom_smooth(method="lm", se = FALSE, size = 1, formula = y ~ log(x)) + 
+  #ylim(c(-.3, 2))+
+  xlim(0,3.1) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  xlab("Age (years)") + 
+  ylab("Method-residualneffect size (d)") + 
+  theme_bw() + 
+  theme(legend.position = "none",
+        legend.key = element_blank(),
+        legend.background = element_rect(fill = "transparent"),
+        axis.line= element_line(size = 3),
+        axis.text = element_text(colour = "black", size = 18),
+        strip.text.x = element_text(size = 14),
+        axis.title = element_text(colour = "black", size = 18))
+```
+
+#### unrestricted y-range
+```{r}
+## plot
+mod.plot = ggplot(raw_data, aes(x = mean_age/365, 
+                                y = residual.d, col = dataset, weight = 1/n)) +
+  facet_grid(~ domain) +
+  geom_point(aes(size = n), alpha = .1) + 
+  geom_smooth(method="lm", se = FALSE, size = 1, formula = y ~ log(x)) + 
+  #ylim(c(-.3, 2))+
+  xlim(0,3.1) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  xlab("Age (years)") + 
+  ylab("Method-residualized \neffect size (d)") + 
+  theme_bw() + 
+  theme(legend.position = "none",
+        legend.key = element_blank(),
+        legend.background = element_rect(fill = "transparent"),
+        axis.line= element_line(size = 3),
+        axis.text = element_text(colour = "black", size = 18),
+        strip.text.x = element_text(size = 14),
+        axis.title = element_text(colour = "black", size = 18))
+
+direct.label(mod.plot, list("top.bumptwice", dl.trans(y = y + 0.1), cex=.7))
+
+ggplot(raw_data, aes(x = mean_age/365, y = residual.d, col = dataset, weight = 1/n)) +
+  #geom_point(aes(size = n), alpha = .1) + 
+  geom_smooth(method="lm", se = FALSE, size = 1, formula = y ~ log(x)) + 
+  #ylim(c(-.3, 2))+
+  xlim(0,3.1) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  xlab("Age (years)") + 
+  ylab("Method-residualized \neffect size (d)") + 
+  theme_bw() + 
+  theme(legend.position = "none",
+        legend.key = element_blank(),
+        legend.background = element_rect(fill = "transparent"),
+        axis.line= element_line(size = 3),
+        axis.text = element_text(colour = "black", size = 18),
+        strip.text.x = element_text(size = 14),
+        axis.title = element_text(colour = "black", size = 18))
+
+```
+
+
+```{r, eval = F}
+d = filter(all_data, dataset == "Online word recognition")
+  
+full.model = rma(d_calc, vi = d_var_calc, data = d, method = "REML")
+  
+d = as.data.frame(rstandard(full.model)$resid) %>%
+       cbind(d) 
+
+d %>%
+rename(residual.d = `rstandard(full.model)$resid`) %>%
+ggplot(aes(x = mean_age/365, y = residual.d, col = dataset, 
+           weight = 1/n)) +
+  geom_point(aes(size = n), alpha = .1) + 
+  geom_smooth(method="lm", se = FALSE, size = 1, formula = y ~ log(x)) + 
+  #ylim(c(-.3, 2))+
+  xlim(0,3.1) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  xlab("Age (years)") + 
+  ylab("Method-residualized \neffect size (d)") + 
+  theme_bw() + 
+  theme(legend.position = "none",
+        legend.key = element_blank(),
+        legend.background = element_rect(fill = "transparent"),
+        axis.line= element_line(size = 3),
+        axis.text = element_text(colour = "black", size = 18),
+        strip.text.x = element_text(size = 14),
+        axis.title = element_text(colour = "black", size = 18))
+```
+
+### IDS only
+
+#### response_mode moderator
+```{r}
+d = filter(all_data, dataset == "Infant directed speech preference")
+  
+full.model = rma(d_calc ~ response_mode, vi = d_var_calc, data = d, method = "REML")
+
+full.model
+  
+d = as.data.frame(rstandard(full.model)$resid) %>%
+       cbind(d) 
+
+d %>%
+rename(residual.d = `rstandard(full.model)$resid`) %>%
+ggplot(aes(x = mean_age/365, y = residual.d, col = dataset, weight = 1/n)) +
+  geom_point(aes(size = n), alpha = .1) + 
+  geom_smooth(method="lm", se = FALSE, size = 1, formula = y ~ log(x)) + 
+  #ylim(c(-.3, 2))+
+  xlim(0,3.1) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  xlab("Age (years)") + 
+  ylab("RM-residualized \neffect size (d)") + 
+  theme_bw() + 
+  theme(legend.position = "none",
+        legend.key = element_blank(),
+        legend.background = element_rect(fill = "transparent"),
+        axis.line= element_line(size = 3),
+        axis.text = element_text(colour = "black", size = 18),
+        strip.text.x = element_text(size = 14),
+        axis.title = element_text(colour = "black", size = 18))
+```
+
+#### method moderator
+```{r}
+d = filter(all_data, dataset == "Infant directed speech preference")
+  
+full.model = rma(d_calc ~ method, vi = d_var_calc, data = d, method = "REML")
+
+full.model
+  
+d = as.data.frame(rstandard(full.model)$resid) %>%
+       cbind(d) 
+
+d %>%
+rename(residual.d = `rstandard(full.model)$resid`) %>%
+ggplot(aes(x = mean_age/365, y = residual.d, col = dataset, weight = 1/n)) +
+  geom_point(aes(size = n), alpha = .1) + 
+  geom_smooth(method="lm", se = FALSE, size = 1, formula = y ~ log(x)) + 
+  #ylim(c(-.3, 2))+
+  xlim(0,3.1) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  xlab("Age (years)") + 
+  ylab("Method-residualized \neffect size (d)") + 
+  theme_bw() + 
+  theme(legend.position = "none",
+        legend.key = element_blank(),
+        legend.background = element_rect(fill = "transparent"),
+        axis.line= element_line(size = 3),
+        axis.text = element_text(colour = "black", size = 18),
+        strip.text.x = element_text(size = 14),
+        axis.title = element_text(colour = "black", size = 18))
+```
+
+
+
+```{r, eval = F}
+### LM with method moderator
+all_data.resid = data.frame()
+for (i in 1:length(datasets$name)) {
+    
+  d = filter(all_data, dataset == datasets$name[i])
+    if (datasets$name[i] %in% single_method_datasets) {
+      d = mutate(d, d.corrected = d_calc)
+    } else {
+      full.model = lm(d_calc ~ method, data = d)
+      d = mutate(d, d.corrected = rstandard(full.model))
+    }
+
+  all_data.resid = rbind(all_data.resid,d)
+}
+
+# Fit models using raw d_calc
+raw_data = all_data.resid %>%
+          filter(dataset != "Gaze following" | d_calc > 0) %>% # remove negative ES for gaze following
+          filter(dataset != "Pointing and vocabulary") %>%
+          mutate(mean.year = mean_age/365) %>%
+          left_join(ld.df)
+
+## get ggrepel dataset
+ggrepel.data = raw_data %>%
+  filter(d.corrected > -.3 & d.corrected < 2) %>%
+  filter(mean.year > 0 & mean.year < 3.1) %>%
+  filter(!is.na(d.corrected)) %>%
+  group_by(dataset) %>% 
+  do({
+    mod <- lm(d.corrected ~ log(mean.year), data = .)
+    pred <- predict(mod)
+    data.frame(., pred)
+  }) %>%
+  mutate(pred  == max(pred),
+         mean.year == max(mean.year)) %>%
+  rename(max.pred = pred,
+         max.mean.year = mean.year) %>%
+  select(short_name, max.pred, max.mean.year, domain, dataset) %>%
+  slice(1)
+
+lm.plot = raw_data %>%
+  ggplot(aes(x = mean.year, y = d.corrected, col = dataset)) +
+  geom_point(aes(size = n), alpha = .1) + 
+  geom_smooth(method="lm", se = FALSE, size = 1, formula = y ~ log(x)) + 
+  #geom_text_repel(aes(label = dataset, x= max.mean.year, y = max.pred), data = #ggrepel.data, segment.color = 'transparent', size = 3) +
+  facet_grid(~ domain) +
+  ylim(c(-.3, 2))+
+  xlim(0,3.1) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  xlab("Age (years)") + 
+  ylab("Method-residualized \neffect size (d)") + 
+  theme_bw() + 
+  theme(legend.position = "none",
+        legend.key = element_blank(),
+        legend.background = element_rect(fill = "transparent"),
+        axis.line= element_line(size = 3),
+        axis.text = element_text(colour = "black", size = 18),
+        strip.text.x = element_text(size = 14),
+        axis.title = element_text(colour = "black", size = 18))
+
+direct.label(lm.plot, list("top.bumptwice", dl.trans(y = y + 0.1), cex=.7))
+
+raw_data %>%
+  ggplot(aes(x = mean_age/365, y = d.corrected, col = dataset, weight = 1/n)) +
+  geom_point(aes(size = n), alpha = .1) + 
+  geom_smooth(method="lm", se = FALSE, size = 1, formula = y ~ log(x)) + 
+  ylim(c(-.3, 2))+
+  xlim(0,3.1) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  xlab("Age (years)") + 
+  ylab("Method-residualized \neffect size (d)") + 
+  theme_bw() + 
+  theme(legend.position = "none",
+        legend.key = element_blank(),
+        legend.background = element_rect(fill = "transparent"),
+        axis.line= element_line(size = 3),
+        axis.text = element_text(colour = "black", size = 18),
+        strip.text.x = element_text(size = 14),
+        axis.title = element_text(colour = "black", size = 18))
+
+```
+
+```{r, eval =F}
+
+all_data.resid = data.frame()
+for (i in 1:length(datasets$name)) {
+    
+  d = filter(all_data, dataset == datasets$name[i])
+    if (datasets$name[i] %in% single_method_datasets) {
+      d.corrected = d$d_calc
+    } else {
+      full.model = lm(d_calc ~ method, data = d)
+      d.corrected = as.data.frame(rstandard(full.model))
+    }
+  d = d.corrected %>%
+       cbind(d) %>%
+       right_join(all_data)
+  
+  names(d)[1] = "d.corrected"
+  
+  all_data.resid = rbind(all_data.resid,d)
+}
+
+```
+

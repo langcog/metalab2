@@ -1,0 +1,56 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: pnas-metalab-synthesis.aux
+The style file: pnas-new.bst
+Illegal, another \bibstyle command---line 86 of file pnas-metalab-synthesis.aux
+ : \bibstyle
+ :          {pnas2016}
+I'm skipping whatever remains of this command
+Database file #1: metalab_synthesis.bib
+Warning--empty journal in lfprep
+Warning--empty journal in bergmanneducational
+Warning--empty journal in lammertink2016
+Warning--empty journal in lewisunpublished
+Warning--empty journal in cristiastatisticalinprep
+You've used 38 entries,
+            1837 wiz_defined-function locations,
+            685 strings with 10440 characters,
+and the built_in function-call counts, 8451 in all, are:
+= -- 707
+> -- 399
+< -- 3
++ -- 122
+- -- 84
+* -- 702
+:= -- 1259
+add.period$ -- 70
+call.type$ -- 38
+change.case$ -- 37
+chr.to.int$ -- 0
+cite$ -- 43
+duplicate$ -- 409
+empty$ -- 822
+format.name$ -- 84
+if$ -- 1835
+int.to.chr$ -- 0
+int.to.str$ -- 38
+missing$ -- 39
+newline$ -- 149
+num.names$ -- 38
+pop$ -- 88
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 229
+stack$ -- 0
+substring$ -- 656
+swap$ -- 99
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 5
+while$ -- 91
+width$ -- 40
+write$ -- 361
+(There was 1 error message)

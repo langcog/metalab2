@@ -1,0 +1,125 @@
+---
+title: Double-checking Outliers for MAs coded by Molly
+author: "Molly Lewis"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+  toc: true
+number_sections: false
+theme: cerulean
+code_folding: hide
+---
+  
+***
+***
+  
+Here I want to go back and check the coding for outliers for MAs. Particularly, the ones I coded: Mutual exclusivity, concept-label advantage, online word recognition, and gaze following. 
+
+Method for checking: look at funnel plot for model with age as a moderator and identify outliers.
+
+```{r load data, include = F}
+source("../../../dashboard/global.R", chdir = TRUE)
+library(metafor)
+knitr::opts_chunk$set(cache = T, warning = F, message = F, fig.width = 8, fig.height = 3.5)
+
+# Remove incomplete MAs
+datasets = filter(datasets, filename != "statistical")
+all_data = filter(all_data, dataset != "Statistical word segementation")
+
+# age-moderated funnel plot
+age_funnel_plot <- function(raw.d) {
+  model = rma(d_calc ~ mean_age, vi = d_var_calc, data = raw.d,
+              method = "REML")
+  r <- rstandard(model)
+  d <- data_frame(se = r$se, es = r$resid, lab = paste0(raw.d$study_ID, "_", raw.d$expt_num), cond = raw.d$expt_condition, age = raw.d$mean_age_1)
+  center <- 0
+  lower_lim <- max(d$se) + .05 * max(d$se)
+  funnel95 <- data.frame(x = c(center - lower_lim * CRIT_95, center,
+                               center + lower_lim * CRIT_95),
+                         y = c(-lower_lim, 0, -lower_lim))
+
+ggplot(d, aes(x = es, y = -se)) +
+  scale_colour_solarized(name = "", labels = labels) +
+  scale_y_continuous(expand = c(0, 0),
+                     breaks = round(seq(0, -max(d$se), length.out = 5), 2),
+                     labels = round(seq(0, max(d$se), length.out = 5), 2)) +
+  geom_polygon(aes(x = x, y = y), data = funnel95, alpha = .5,
+               fill = "white") +
+  geom_vline(xintercept = center, linetype = "dotted", color = "black") +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "grey") +
+  geom_text_repel(aes(label = lab), size = 2) +
+  theme(panel.background = element_rect(fill = "grey"),
+        panel.grid.major =  element_line(colour = "darkgrey", size = 0.2),
+        panel.grid.minor =  element_line(colour = "darkgrey", size = 0.5)) 
+}
+
+```
+
+# Concept-label advantage
+```{r}
+age_funnel_plot(filter(all_data, 
+                       dataset == "Label advantage in concept learning"))
+
+to_check = c("fulkerson2003_1", "robinson2007_1", "booth2002_1","booth2002_2", "ferry2013_1", "booth2003_2", "balaban1997_1", "ferry2010_1")
+#f and r seem fine.
+```
+
+# Online word recognition
+```{r}
+age_funnel_plot(filter(all_data, dataset == "Online word recognition"))
+
+to_check = c("fernald2013_1", "fernald2013_1") # these actually look fine
+```
+
+# Gaze following
+```{r}
+age_funnel_plot(filter(all_data, dataset == "Gaze following"))
+
+to_check = c("butler2009_1", "mundy1998_1", "degroote2006_1") 
+#butler2009_1 and mundy1998_1 seem fine, checking on degroote
+```
+
+
+# Mutual exclusivity
+```{r}
+age_funnel_plot(filter(all_data, dataset == "Mutual exclusivity"))
+# looks fine (frank are outliers)
+```
+
+# Sound symbolism
+```{r}
+age_funnel_plot(filter(all_data, dataset == "Sound symbolism"))
+# looks fine
+```
+
+# IDS
+```{r}
+age_funnel_plot(filter(all_data, 
+               dataset == "Infant directed speech preference"))
+
+to_check = c("Trainor1996_2", "Werker1989_1")
+# both fine (didn't go to source papers, though)
+```
+
+# Phonotactic learning
+```{r}
+age_funnel_plot(filter(all_data, dataset == "Phonotactic learning"))
+to_check = c("1008_1", "1001_1")   
+# seems fine
+```
+
+# Statistical sound category learning
+```{r}
+age_funnel_plot(filter(all_data, dataset == "Statistical sound category learning"))
+to_check = c("1036_3", "1043_1")  
+#1043_1 - data from author and SE seem quite small, but can't directly verify (submitted issue)
+```
+
+# Word segementation
+```{r}
+age_funnel_plot(filter(all_data, dataset == "Word segmentation"))
+# too big!
+to_check = c("Flocciaetal2016_10")  
+#fixed!
+```
+

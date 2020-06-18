@@ -1,0 +1,142 @@
+---
+title: "Sampling papers for meta-analysis"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    highlight: tango
+    theme: spacelab
+---
+
+```{r setup, include=FALSE}
+library(metafor)
+library(langcog)
+library(dplyr)
+library(purrr)
+library(ggplot2)
+theme_set(theme_bw())
+font <- "Open Sans"
+library(knitr)
+opts_chunk$set(cache = T, message = F, warning = F)
+source("global.R")
+```
+
+Summary functions.
+```{r summary_funs}
+calculate_effect_size <- function(sample_data) {
+  model <- rma(d, vi = d_var, slab = as.character(short_cite),
+               data = sample_data, method = "REML",
+               control = list(maxiter = 1000, stepadj = 0.5))
+  #verbose = TRUE)
+  predict(model)$pred
+}
+
+calculate_age_effect <- function(sample_data) {
+  model <- rma(d ~ mean_age, vi = d_var, slab = as.character(short_cite),
+               data = sample_data, method = "REML",
+               control = list(maxiter = 1000, stepadj = 0.5))
+  #verbose = TRUE)
+  model$b["mean_age", 1]
+}
+```
+
+Bootstrapping functions.
+```{r bootstrap_funs}
+get_paper_age_weights <- function(ma_data) {
+  years = unlist(lapply(strsplit(ma_data$short_cite, "[()]"),
+                        function(x) x[2])) %>%
+          as.numeric() %>%
+          ifelse(is.na(.), max(., na.rm = T),.)
+  
+  dif = years - min(years, na.rm = T) # get time since seed year
+  weights =  (max(dif) + 1) - dif # add 1 to get rid of zeros
+  weights
+}
+
+one_sample <- function(ma_data, summary_function, n, sample_strategy) {
+  function(k) {
+    if (sample_strategy == "uniform"){
+        do.call(summary_function, list(sample_n(ma_data, size = n, replace = F)))
+    } else if (sample_strategy == "age") {
+       age_weights = get_paper_age_weights(ma_data)
+       do.call(summary_function, list(sample_n(ma_data, size = n,
+                                            weight = age_weights, replace = F)))
+    }
+  }
+}
+
+all_samples <- function(ma_data, summary_function, n, nboot) {
+  sample_values <- 1:nboot %>%
+    map(one_sample(ma_data, summary_function, n, "age")) %>%
+    unlist()
+  data.frame(n = n,
+             mean = mean(sample_values),
+             ci_lower = ci_lower(sample_values),
+             ci_upper = ci_upper(sample_values),
+             row.names = NULL)
+}
+
+dataset_data <- function(ma_data, summary_function, nboot) {
+  overall <- do.call(summary_function, list(ma_data))
+  seq(10, nrow(ma_data), by = 1) %>%
+    map(function(n) all_samples(ma_data, summary_function, n, nboot)) %>%
+    bind_rows() %>%
+    mutate(dataset = unique(ma_data$dataset),
+           overall_est = overall)
+}
+```
+
+Estimate effect size as a function of number of papers sampled.
+```{r calc_es}
+es_data <- all_data %>%
+  split(.$dataset) %>%
+  map(function(ma_data) dataset_data(ma_data, calculate_effect_size, 100)) %>%
+  bind_rows()
+```
+
+```{r plot_es, cache=FALSE, fig.width=10, fig.height=6}
+ggplot(es_data, aes(x = n, y = mean, fill = dataset)) +
+  facet_wrap(~dataset) +
+  geom_ribbon(aes(ymin = ci_lower, ymax = ci_upper), alpha = 0.5) +
+  geom_hline(aes(yintercept = overall_est), linetype = "dashed") +
+  geom_line(weight = 1.5) +
+  xlab("Number of papers") +
+  ylab("Effect Size Estimate") +
+  scale_fill_solarized(guide = FALSE) +
+  theme(text = element_text(family = font),
+        panel.grid.minor = element_blank())
+```
+
+Estimate age coefficient as a function of number of papers sampled.
+```{r calc_age}
+age_data <- all_data %>%
+  split(.$dataset) %>%
+  map(function(ma_data) dataset_data(ma_data, calculate_age_effect, 100)) %>%
+  bind_rows()
+```
+
+```{r plot_age, cache=FALSE, fig.width=10, fig.height=6}
+ggplot(age_data, aes(x = n, y = mean, fill = dataset)) +
+  facet_wrap(~dataset) +
+  geom_ribbon(aes(ymin = ci_lower, ymax = ci_upper), alpha = 0.5) +
+  geom_hline(aes(yintercept = overall_est), linetype = "dashed") +
+  geom_line(weight = 1.5) +
+  xlab("Number of papers") +
+  ylab("Age Coefficient Estimate") +
+  scale_fill_solarized(guide = FALSE) +
+  theme(text = element_text(family = font),
+        panel.grid.minor = element_blank())
+```
+
+Effect size as a function of year
+```{r, plot_es_year, cache=FALSE, fig.width=10, fig.height=6}
+all_data$year =  unlist(lapply(strsplit(all_data$short_cite,
+                                          "[()]"),function(x) x[2])) %>%
+                   as.numeric()
+
+ggplot(all_data, aes(x = year, y = d)) + 
+  geom_smooth(method = lm) +
+  ylab("Effect Size") +
+  facet_wrap(~dataset) +
+  theme(text = element_text(family = font),
+        panel.grid.minor = element_blank())
+```

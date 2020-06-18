@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Molly Lewis" />
+
+<meta name="date" content="2016-08-24" />
+
+<title>Model fits for synthesis paper</title>
+
+<script src="out/libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="out/libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<script src="out/libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="out/libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="out/libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="out/libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="out/libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="out/libs/tocify-1.9.1/jquery.tocify.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+div.sourceCode {
+  overflow-x: visible;
+}
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script src="out/libs/navigation-1.1/tabsets.js"></script>
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+<script src="out/libs/navigation-1.1/codefolding.js"></script>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.9em;
+  padding-left: 5px;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Model fits for synthesis paper</h1>
+<h4 class="author"><em>Molly Lewis</em></h4>
+<h4 class="date"><em>2016-08-24</em></h4>
+
+</div>
+
+
+<hr />
+<hr />
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#setwd(&quot;/Documents/GRADUATE_SCHOOL/Projects/metalab/metalab/write-ups/synthesis_paper/paper_analyses&quot;)</span>
+ld.df =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">dataset =</span> datasets$name,
+                   <span class="dt">domain =</span> <span class="kw">c</span>(<span class="st">&quot;Prosody&quot;</span>, <span class="st">&quot;Words&quot;</span>, <span class="st">&quot;Communication&quot;</span>, <span class="st">&quot;Sounds&quot;</span>,
+                              <span class="st">&quot;Sounds&quot;</span>, <span class="st">&quot;Sounds&quot;</span>, <span class="st">&quot;Sounds&quot;</span>, <span class="st">&quot;Sounds&quot;</span>, <span class="st">&quot;Words&quot;</span>,
+                              <span class="st">&quot;Words&quot;</span>, <span class="st">&quot;Communication&quot;</span>, <span class="st">&quot;Words&quot;</span>))
+
+ld.df$domain =<span class="st"> </span><span class="kw">factor</span>(ld.df$domain, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;Prosody&quot;</span>,<span class="st">&quot;Sounds&quot;</span>, <span class="st">&quot;Words&quot;</span>, <span class="st">&quot;Communication&quot;</span>))
+
+<span class="co"># Fit models using raw d_calc</span>
+raw_data =<span class="st"> </span>all_data %&gt;%
+<span class="st">          </span><span class="kw">filter</span>(dataset !=<span class="st"> &quot;Gaze following&quot;</span> |<span class="st"> </span>d_calc &gt;<span class="st"> </span><span class="dv">0</span>) %&gt;%<span class="st"> </span><span class="co"># remove negative ES for gaze following</span>
+<span class="st">          </span><span class="kw">filter</span>(dataset !=<span class="st"> &quot;Pointing and vocabulary&quot;</span>) %&gt;%
+<span class="st">          </span><span class="kw">left_join</span>(ld.df)</code></pre></div>
+<div id="unweighted-logarithmic" class="section level3">
+<h3>Unweighted logarithmic</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">un.l =<span class="st"> </span><span class="kw">ggplot</span>(raw_data,
+            <span class="kw">aes</span>(<span class="dt">x =</span> mean_age/<span class="dv">365</span>, <span class="dt">y =</span> d_calc, <span class="dt">col =</span> dataset)) +
+<span class="st">  </span><span class="kw">facet_grid</span>(~<span class="st"> </span>domain) +
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">size =</span> n, <span class="dt">y =</span> d_calc), <span class="dt">alpha =</span> .<span class="dv">1</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">formula =</span> y ~<span class="st"> </span><span class="kw">log</span>(x)) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ylim</span>(<span class="kw">c</span>(-.<span class="dv">3</span>, <span class="dv">2</span>))+
+<span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="fl">3.1</span>) +
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) +
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Age (years)&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Effect size (d)&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">theme_bw</span>() +<span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>,
+        <span class="dt">legend.key =</span> <span class="kw">element_blank</span>(),
+        <span class="dt">legend.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&quot;transparent&quot;</span>),
+        <span class="dt">axis.line=</span> <span class="kw">element_line</span>(<span class="dt">size =</span> <span class="dv">3</span>),
+        <span class="dt">axis.text =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">18</span>),
+        <span class="dt">strip.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">14</span>),
+        <span class="dt">axis.title =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">18</span>))
+
+<span class="kw">direct.label</span>(un.l, <span class="kw">list</span>(<span class="st">&quot;top.bumptwice&quot;</span>, <span class="kw">dl.trans</span>(<span class="dt">y =</span> y +<span class="st"> </span><span class="fl">0.1</span>), <span class="dt">cex=</span>.<span class="dv">7</span>))</code></pre></div>
+<p><img src="model_fits_synthesis_paper_files/figure-html/unnamed-chunk-2-1.png" width="768" /></p>
+</div>
+<div id="weighted-logarithmic" class="section level3">
+<h3>Weighted logarithmic</h3>
+<p>weight = 1/n</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wl =<span class="st"> </span><span class="kw">ggplot</span>(raw_data,
+            <span class="kw">aes</span>(<span class="dt">x =</span> mean_age/<span class="dv">365</span>, <span class="dt">y =</span> d_calc, <span class="dt">col =</span> dataset, <span class="dt">weight =</span> <span class="dv">1</span>/n)) +
+<span class="st">  </span><span class="kw">facet_grid</span>(~<span class="st"> </span>domain) +
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">size =</span> n, <span class="dt">y =</span> d_calc), <span class="dt">alpha =</span> .<span class="dv">1</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">formula =</span> y ~<span class="st"> </span><span class="kw">log</span>(x)) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ylim</span>(<span class="kw">c</span>(-.<span class="dv">3</span>, <span class="dv">2</span>))+
+<span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="fl">3.1</span>) +
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) +
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Age (years)&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Effect size (d)&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">theme_bw</span>() +<span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>,
+        <span class="dt">legend.key =</span> <span class="kw">element_blank</span>(),
+        <span class="dt">legend.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&quot;transparent&quot;</span>),
+        <span class="dt">axis.line=</span> <span class="kw">element_line</span>(<span class="dt">size =</span> <span class="dv">3</span>),
+        <span class="dt">axis.text =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">18</span>),
+        <span class="dt">strip.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">14</span>),
+        <span class="dt">axis.title =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">18</span>))
+
+<span class="kw">direct.label</span>(wl, <span class="kw">list</span>(<span class="st">&quot;top.bumptwice&quot;</span>, <span class="kw">dl.trans</span>(<span class="dt">y =</span> y +<span class="st"> </span><span class="fl">0.1</span>), <span class="dt">cex=</span>.<span class="dv">7</span>))</code></pre></div>
+<p><img src="model_fits_synthesis_paper_files/figure-html/unnamed-chunk-3-1.png" width="768" /></p>
+</div>
+<div id="unweighted-loess" class="section level3">
+<h3>Unweighted loess</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">uwloess =<span class="st"> </span><span class="kw">ggplot</span>(raw_data,
+            <span class="kw">aes</span>(<span class="dt">x =</span> mean_age/<span class="dv">365</span>, <span class="dt">y =</span> d_calc, <span class="dt">col =</span> dataset)) +
+<span class="st">  </span><span class="kw">facet_grid</span>(~<span class="st"> </span>domain) +
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">size =</span> n, <span class="dt">y =</span> d_calc), <span class="dt">alpha =</span> .<span class="dv">1</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;loess&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">size =</span> <span class="dv">1</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ylim</span>(<span class="kw">c</span>(-.<span class="dv">3</span>, <span class="dv">2</span>))+
+<span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="fl">3.1</span>) +
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) +
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Age (years)&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Effect size (d)&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">theme_bw</span>() +<span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>,
+        <span class="dt">legend.key =</span> <span class="kw">element_blank</span>(),
+        <span class="dt">legend.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&quot;transparent&quot;</span>),
+        <span class="dt">axis.line=</span> <span class="kw">element_line</span>(<span class="dt">size =</span> <span class="dv">3</span>),
+        <span class="dt">axis.text =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">18</span>),
+        <span class="dt">strip.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">14</span>),
+        <span class="dt">axis.title =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">18</span>))
+
+<span class="kw">direct.label</span>(uwloess, <span class="kw">list</span>(<span class="st">&quot;top.bumptwice&quot;</span>, <span class="kw">dl.trans</span>(<span class="dt">y =</span> y +<span class="st"> </span><span class="fl">0.1</span>), <span class="dt">cex=</span>.<span class="dv">7</span>))</code></pre></div>
+<p><img src="model_fits_synthesis_paper_files/figure-html/unnamed-chunk-4-1.png" width="768" /></p>
+</div>
+<div id="weighted-loess" class="section level3">
+<h3>Weighted loess</h3>
+<p>weight = 1/n</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wloess =<span class="st"> </span><span class="kw">ggplot</span>(raw_data,
+            <span class="kw">aes</span>(<span class="dt">x =</span> mean_age/<span class="dv">365</span>, <span class="dt">y =</span> d_calc, <span class="dt">col =</span> dataset, <span class="dt">weight =</span> <span class="dv">1</span>/n)) +
+<span class="st">  </span><span class="kw">facet_grid</span>(~<span class="st"> </span>domain) +
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">size =</span> n, <span class="dt">y =</span> d_calc), <span class="dt">alpha =</span> .<span class="dv">1</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;loess&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">size =</span> <span class="dv">1</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ylim</span>(<span class="kw">c</span>(-.<span class="dv">3</span>, <span class="dv">2</span>))+
+<span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="fl">3.1</span>) +
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) +
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Age (years)&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Effect size (d)&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">theme_bw</span>() +<span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>,
+        <span class="dt">legend.key =</span> <span class="kw">element_blank</span>(),
+        <span class="dt">legend.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&quot;transparent&quot;</span>),
+        <span class="dt">axis.line=</span> <span class="kw">element_line</span>(<span class="dt">size =</span> <span class="dv">3</span>),
+        <span class="dt">axis.text =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">18</span>),
+        <span class="dt">strip.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">14</span>),
+        <span class="dt">axis.title =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">18</span>))
+
+<span class="kw">direct.label</span>(wloess, <span class="kw">list</span>(<span class="st">&quot;top.bumptwice&quot;</span>, <span class="kw">dl.trans</span>(<span class="dt">y =</span> y +<span class="st"> </span><span class="fl">0.1</span>), <span class="dt">cex=</span>.<span class="dv">7</span>))</code></pre></div>
+<p><img src="model_fits_synthesis_paper_files/figure-html/unnamed-chunk-5-1.png" width="768" /></p>
+</div>
+<div id="unweighted-loess-with-medium-span" class="section level3">
+<h3>Unweighted loess with medium span</h3>
+<p>span = 1</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">loess.med =<span class="st"> </span><span class="kw">ggplot</span>(raw_data,
+            <span class="kw">aes</span>(<span class="dt">x =</span> mean_age/<span class="dv">365</span>, <span class="dt">y =</span> d_calc, <span class="dt">col =</span> dataset)) +
+<span class="st">  </span><span class="kw">facet_grid</span>(~<span class="st"> </span>domain) +
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">size =</span> n, <span class="dt">y =</span> d_calc), <span class="dt">alpha =</span> .<span class="dv">1</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;loess&quot;</span>,<span class="dt">span =</span> <span class="dv">1</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">size =</span> <span class="dv">1</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ylim</span>(<span class="kw">c</span>(-.<span class="dv">3</span>, <span class="dv">2</span>))+
+<span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="fl">3.1</span>) +
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) +
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Age (years)&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Effect size (d)&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">theme_bw</span>() +<span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>,
+        <span class="dt">legend.key =</span> <span class="kw">element_blank</span>(),
+        <span class="dt">legend.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&quot;transparent&quot;</span>),
+        <span class="dt">axis.line=</span> <span class="kw">element_line</span>(<span class="dt">size =</span> <span class="dv">3</span>),
+        <span class="dt">axis.text =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">18</span>),
+        <span class="dt">strip.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">14</span>),
+        <span class="dt">axis.title =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">18</span>))
+
+<span class="kw">direct.label</span>(loess.med, <span class="kw">list</span>(<span class="st">&quot;top.bumptwice&quot;</span>, <span class="kw">dl.trans</span>(<span class="dt">y =</span> y +<span class="st"> </span><span class="fl">0.1</span>), <span class="dt">cex=</span>.<span class="dv">7</span>))</code></pre></div>
+<p><img src="model_fits_synthesis_paper_files/figure-html/unnamed-chunk-6-1.png" width="768" /></p>
+</div>
+<div id="unweighted-loess-with-giant-span" class="section level3">
+<h3>Unweighted loess with giant span</h3>
+<p>span = 100</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">loess.giant =<span class="st"> </span><span class="kw">ggplot</span>(raw_data,
+            <span class="kw">aes</span>(<span class="dt">x =</span> mean_age/<span class="dv">365</span>, <span class="dt">y =</span> d_calc, <span class="dt">col =</span> dataset)) +
+<span class="st">  </span><span class="kw">facet_grid</span>(~<span class="st"> </span>domain) +
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">size =</span> n, <span class="dt">y =</span> d_calc), <span class="dt">alpha =</span> .<span class="dv">1</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;loess&quot;</span>,<span class="dt">span =</span> <span class="dv">100</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">size =</span> <span class="dv">1</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ylim</span>(<span class="kw">c</span>(-.<span class="dv">3</span>, <span class="dv">2</span>))+
+<span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="fl">3.1</span>) +
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) +
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Age (years)&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Effect size (d)&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">theme_bw</span>() +<span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>,
+        <span class="dt">legend.key =</span> <span class="kw">element_blank</span>(),
+        <span class="dt">legend.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&quot;transparent&quot;</span>),
+        <span class="dt">axis.line=</span> <span class="kw">element_line</span>(<span class="dt">size =</span> <span class="dv">3</span>),
+        <span class="dt">axis.text =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">18</span>),
+        <span class="dt">strip.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">14</span>),
+        <span class="dt">axis.title =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">18</span>))
+
+<span class="kw">direct.label</span>(loess.giant, <span class="kw">list</span>(<span class="st">&quot;top.bumptwice&quot;</span>, <span class="kw">dl.trans</span>(<span class="dt">y =</span> y +<span class="st"> </span><span class="fl">0.1</span>), <span class="dt">cex=</span>.<span class="dv">7</span>))</code></pre></div>
+<p><img src="model_fits_synthesis_paper_files/figure-html/unnamed-chunk-7-1.png" width="768" /></p>
+</div>
+<div id="weighted-loess-with-giant-span" class="section level3">
+<h3>Weighted loess with giant span</h3>
+<p>span = 100 weight = 1/n</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">loess.giant =<span class="st"> </span><span class="kw">ggplot</span>(raw_data,
+            <span class="kw">aes</span>(<span class="dt">x =</span> mean_age/<span class="dv">365</span>, <span class="dt">y =</span> d_calc, <span class="dt">col =</span> dataset, <span class="dt">weight =</span> <span class="dv">1</span>/n)) +
+<span class="st">  </span><span class="kw">facet_grid</span>(~<span class="st"> </span>domain) +
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">size =</span> n), <span class="dt">alpha =</span> .<span class="dv">1</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;loess&quot;</span>,<span class="dt">span =</span> <span class="dv">100</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">size =</span> <span class="dv">1</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ylim</span>(<span class="kw">c</span>(-.<span class="dv">3</span>, <span class="dv">2</span>))+
+<span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="fl">3.1</span>) +
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) +
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Age (years)&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Effect size (d)&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">theme_bw</span>() +<span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>,
+        <span class="dt">legend.key =</span> <span class="kw">element_blank</span>(),
+        <span class="dt">legend.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&quot;transparent&quot;</span>),
+        <span class="dt">axis.line=</span> <span class="kw">element_line</span>(<span class="dt">size =</span> <span class="dv">3</span>),
+        <span class="dt">axis.text =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">18</span>),
+        <span class="dt">strip.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">14</span>),
+        <span class="dt">axis.title =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">18</span>))
+
+<span class="kw">direct.label</span>(loess.giant, <span class="kw">list</span>(<span class="st">&quot;top.bumptwice&quot;</span>, <span class="kw">dl.trans</span>(<span class="dt">y =</span> y +<span class="st"> </span><span class="fl">0.1</span>), <span class="dt">cex=</span>.<span class="dv">7</span>))</code></pre></div>
+<p><img src="model_fits_synthesis_paper_files/figure-html/unnamed-chunk-8-1.png" width="768" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">### Vowel discrimination (native), with method moderator
+fit =<span class="st"> </span><span class="kw">lm</span>(d_calc ~<span class="st"> </span>method, 
+         <span class="dt">data =</span> <span class="kw">filter</span>(all_data, dataset ==<span class="st"> &quot;Vowel discrimination (native)&quot;</span>), 
+         <span class="dt">weights =</span> <span class="dv">1</span>/n)
+
+vd.data =<span class="st"> </span>all_data %&gt;%
+<span class="st">          </span><span class="kw">filter</span>(dataset ==<span class="st"> &quot;Vowel discrimination (native)&quot;</span>) %&gt;%
+<span class="st">          </span><span class="kw">select</span>(mean_age, d_calc, n, method, response_mode) %&gt;%
+<span class="st">          </span><span class="kw">mutate</span>(<span class="dt">lin_preds =</span> <span class="kw">predict</span>(fit))
+
+<span class="kw">ggplot</span>(vd.data, <span class="kw">aes</span>(<span class="dt">x =</span> mean_age/<span class="dv">365</span>, <span class="dt">y =</span> lin_preds)) +
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">size =</span> n, <span class="dt">y =</span> lin_preds, <span class="dt">color =</span> method, <span class="dt">shape =</span> response_mode), <span class="dt">alpha =</span> .<span class="dv">5</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">formula =</span> y ~<span class="st"> </span><span class="kw">log</span>(x)) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ylim</span>(<span class="kw">c</span>(-.<span class="dv">3</span>, <span class="dv">2</span>))+
+<span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>, <span class="fl">3.1</span>) +
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Age (years)&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Effect size (d)&quot;</span>) +
+<span class="st">  </span><span class="kw">theme_bw</span>()</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">### Vowel discrimination (native), no moderators
+
+<span class="kw">ggplot</span>(<span class="kw">filter</span>(all_data, dataset ==<span class="st"> &quot;Vowel discrimination (native)&quot;</span>),
+       <span class="kw">aes</span>(<span class="dt">x =</span> mean_age/<span class="dv">365</span>, <span class="dt">y =</span> d_calc)) +
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">size =</span> n, <span class="dt">y =</span> d_calc), <span class="dt">alpha =</span> .<span class="dv">1</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">formula =</span> y ~<span class="st"> </span><span class="kw">log</span>(x)) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ylim</span>(<span class="kw">c</span>(-.<span class="dv">3</span>, <span class="dv">2</span>))+
+<span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="fl">3.1</span>) +
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Age (years)&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Effect size (d)&quot;</span>) +
+<span class="st">  </span><span class="kw">theme_bw</span>()</code></pre></div>
+</div>
+<div id="rma-with-method-moderator" class="section level3">
+<h3>RMA with method moderator</h3>
+<div id="restricted-y-range-old" class="section level4">
+<h4>restricted y-range (old)</h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">single_method_datasets =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Gaze following&quot;</span>,
+                           <span class="st">&quot;Label advantage in concept learning&quot;</span>, 
+                           <span class="st">&quot;Mutual exclusivity&quot;</span>, 
+                           <span class="st">&quot;Pointing and vocabulary&quot;</span>,
+                           <span class="st">&quot;Online word recognition&quot;</span>)
+
+all_data.resid =<span class="st"> </span><span class="kw">data.frame</span>()
+for (i in <span class="dv">1</span>:<span class="kw">length</span>(datasets$name)) {
+    
+  d =<span class="st"> </span><span class="kw">filter</span>(all_data, dataset ==<span class="st"> </span>datasets$name[i])
+    if (datasets$name[i] %in%<span class="st"> </span>single_method_datasets) {
+      full.model =<span class="st"> </span><span class="kw">rma</span>(d_calc , <span class="dt">vi =</span> d_var_calc, <span class="dt">data =</span> d, <span class="dt">method =</span> <span class="st">&quot;REML&quot;</span>)
+    } else {
+      full.model =<span class="st"> </span><span class="kw">rma</span>(d_calc ~<span class="st"> </span>method, <span class="dt">vi =</span> d_var_calc, <span class="dt">data =</span> d, <span class="dt">method =</span> <span class="st">&quot;REML&quot;</span>)
+    }
+  
+  d =<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">rstandard</span>(full.model)$resid) %&gt;%
+<span class="st">       </span><span class="kw">cbind</span>(d) %&gt;%
+<span class="st">       </span><span class="kw">inner_join</span>(all_data)
+  
+  all_data.resid =<span class="st"> </span><span class="kw">rbind</span>(all_data.resid,d)
+}
+
+ld.df =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">dataset =</span> datasets$name,
+                   <span class="dt">domain =</span> <span class="kw">c</span>(<span class="st">&quot;Prosody&quot;</span>, <span class="st">&quot;Words&quot;</span>, <span class="st">&quot;Communication&quot;</span>, <span class="st">&quot;Sounds&quot;</span>,
+                              <span class="st">&quot;Sounds&quot;</span>, <span class="st">&quot;Sounds&quot;</span>, <span class="st">&quot;Sounds&quot;</span>, <span class="st">&quot;Sounds&quot;</span>, <span class="st">&quot;Words&quot;</span>,
+                              <span class="st">&quot;Words&quot;</span>, <span class="st">&quot;Communication&quot;</span>, <span class="st">&quot;Words&quot;</span>))
+
+ld.df$domain =<span class="st"> </span><span class="kw">factor</span>(ld.df$domain, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;Prosody&quot;</span>,<span class="st">&quot;Sounds&quot;</span>, <span class="st">&quot;Words&quot;</span>, <span class="st">&quot;Communication&quot;</span>))
+
+<span class="co"># Fit models using raw d_calc</span>
+raw_data =<span class="st"> </span>all_data.resid %&gt;%
+<span class="st">          </span><span class="kw">filter</span>(dataset !=<span class="st"> &quot;Gaze following&quot;</span> |<span class="st"> </span>d_calc &gt;<span class="st"> </span><span class="dv">0</span>) %&gt;%<span class="st"> </span><span class="co"># remove negative ES for gaze following</span>
+<span class="st">          </span><span class="kw">filter</span>(dataset !=<span class="st"> &quot;Pointing and vocabulary&quot;</span>) %&gt;%
+<span class="st">          </span><span class="kw">left_join</span>(ld.df)
+
+## plot
+mod.plot =<span class="st"> </span>raw_data %&gt;%
+<span class="st">  </span><span class="kw">rename</span>(<span class="dt">residual.d =</span> <span class="st">`</span><span class="dt">rstandard(full.model)$resid</span><span class="st">`</span>) %&gt;%
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> mean_age/<span class="dv">365</span>, <span class="dt">y =</span> residual.d, <span class="dt">col =</span> dataset, <span class="dt">weight =</span> <span class="dv">1</span>/n)) +
+<span class="st">  </span><span class="kw">facet_grid</span>(~<span class="st"> </span>domain) +
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">size =</span> n), <span class="dt">alpha =</span> .<span class="dv">1</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">formula =</span> y ~<span class="st"> </span><span class="kw">log</span>(x)) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ylim</span>(<span class="kw">c</span>(-.<span class="dv">3</span>, <span class="dv">2</span>))+
+<span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="fl">3.1</span>) +
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) +
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Age (years)&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Method-residualized </span><span class="ch">\n</span><span class="st">effect size (d)&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">theme_bw</span>() +<span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>,
+        <span class="dt">legend.key =</span> <span class="kw">element_blank</span>(),
+        <span class="dt">legend.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&quot;transparent&quot;</span>),
+        <span class="dt">axis.line=</span> <span class="kw">element_line</span>(<span class="dt">size =</span> <span class="dv">3</span>),
+        <span class="dt">axis.text =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">18</span>),
+        <span class="dt">strip.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">14</span>),
+        <span class="dt">axis.title =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">18</span>))
+
+<span class="kw">direct.label</span>(mod.plot, <span class="kw">list</span>(<span class="st">&quot;top.bumptwice&quot;</span>, <span class="kw">dl.trans</span>(<span class="dt">y =</span> y +<span class="st"> </span><span class="fl">0.1</span>), <span class="dt">cex=</span>.<span class="dv">7</span>))</code></pre></div>
+<p><img src="model_fits_synthesis_paper_files/figure-html/unnamed-chunk-11-1.png" width="768" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">raw_data %&gt;%
+<span class="kw">rename</span>(<span class="dt">residual.d =</span> <span class="st">`</span><span class="dt">rstandard(full.model)$resid</span><span class="st">`</span>) %&gt;%
+<span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> mean_age/<span class="dv">365</span>, <span class="dt">y =</span> residual.d, <span class="dt">col =</span> dataset, <span class="dt">weight =</span> <span class="dv">1</span>/n)) +
+<span class="st">  </span><span class="co">#geom_point(aes(size = n), alpha = .1) + </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">formula =</span> y ~<span class="st"> </span><span class="kw">log</span>(x)) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ylim</span>(<span class="kw">c</span>(-.<span class="dv">3</span>, <span class="dv">2</span>))+
+<span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="fl">3.1</span>) +
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) +
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Age (years)&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Method-residualized </span><span class="ch">\n</span><span class="st">effect size (d)&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">theme_bw</span>() +<span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>,
+        <span class="dt">legend.key =</span> <span class="kw">element_blank</span>(),
+        <span class="dt">legend.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&quot;transparent&quot;</span>),
+        <span class="dt">axis.line=</span> <span class="kw">element_line</span>(<span class="dt">size =</span> <span class="dv">3</span>),
+        <span class="dt">axis.text =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">18</span>),
+        <span class="dt">strip.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">14</span>),
+        <span class="dt">axis.title =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">18</span>))</code></pre></div>
+<p><img src="model_fits_synthesis_paper_files/figure-html/unnamed-chunk-11-2.png" width="768" /></p>
+</div>
+<div id="unrestricted-y-range" class="section level4">
+<h4>unrestricted y-range</h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## plot
+mod.plot =<span class="st"> </span>raw_data %&gt;%
+<span class="st">  </span><span class="kw">rename</span>(<span class="dt">residual.d =</span> <span class="st">`</span><span class="dt">rstandard(full.model)$resid</span><span class="st">`</span>) %&gt;%
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> mean_age/<span class="dv">365</span>, <span class="dt">y =</span> residual.d, <span class="dt">col =</span> dataset, <span class="dt">weight =</span> <span class="dv">1</span>/n)) +
+<span class="st">  </span><span class="kw">facet_grid</span>(~<span class="st"> </span>domain) +
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">size =</span> n), <span class="dt">alpha =</span> .<span class="dv">1</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">formula =</span> y ~<span class="st"> </span><span class="kw">log</span>(x)) +<span class="st"> </span>
+<span class="st">  </span><span class="co">#ylim(c(-.3, 2))+</span>
+<span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="fl">3.1</span>) +
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) +
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Age (years)&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Method-residualized </span><span class="ch">\n</span><span class="st">effect size (d)&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">theme_bw</span>() +<span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>,
+        <span class="dt">legend.key =</span> <span class="kw">element_blank</span>(),
+        <span class="dt">legend.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&quot;transparent&quot;</span>),
+        <span class="dt">axis.line=</span> <span class="kw">element_line</span>(<span class="dt">size =</span> <span class="dv">3</span>),
+        <span class="dt">axis.text =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">18</span>),
+        <span class="dt">strip.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">14</span>),
+        <span class="dt">axis.title =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">18</span>))
+
+<span class="kw">direct.label</span>(mod.plot, <span class="kw">list</span>(<span class="st">&quot;top.bumptwice&quot;</span>, <span class="kw">dl.trans</span>(<span class="dt">y =</span> y +<span class="st"> </span><span class="fl">0.1</span>), <span class="dt">cex=</span>.<span class="dv">7</span>))</code></pre></div>
+<p><img src="model_fits_synthesis_paper_files/figure-html/unnamed-chunk-12-1.png" width="768" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">raw_data %&gt;%
+<span class="kw">rename</span>(<span class="dt">residual.d =</span> <span class="st">`</span><span class="dt">rstandard(full.model)$resid</span><span class="st">`</span>) %&gt;%
+<span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> mean_age/<span class="dv">365</span>, <span class="dt">y =</span> residual.d, <span class="dt">col =</span> dataset, <span class="dt">weight =</span> <span class="dv">1</span>/n)) +
+<span class="st">  </span><span class="co">#geom_point(aes(size = n), alpha = .1) + </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">formula =</span> y ~<span class="st"> </span><span class="kw">log</span>(x)) +<span class="st"> </span>
+<span class="st">  </span><span class="co">#ylim(c(-.3, 2))+</span>
+<span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="fl">3.1</span>) +
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) +
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Age (years)&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Method-residualized </span><span class="ch">\n</span><span class="st">effect size (d)&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">theme_bw</span>() +<span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>,
+        <span class="dt">legend.key =</span> <span class="kw">element_blank</span>(),
+        <span class="dt">legend.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&quot;transparent&quot;</span>),
+        <span class="dt">axis.line=</span> <span class="kw">element_line</span>(<span class="dt">size =</span> <span class="dv">3</span>),
+        <span class="dt">axis.text =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">18</span>),
+        <span class="dt">strip.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">14</span>),
+        <span class="dt">axis.title =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">18</span>))</code></pre></div>
+<p><img src="model_fits_synthesis_paper_files/figure-html/unnamed-chunk-12-2.png" width="768" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">d =<span class="st"> </span><span class="kw">filter</span>(all_data, dataset ==<span class="st"> &quot;Online word recognition&quot;</span>)
+  
+full.model =<span class="st"> </span><span class="kw">rma</span>(d_calc, <span class="dt">vi =</span> d_var_calc, <span class="dt">data =</span> d, <span class="dt">method =</span> <span class="st">&quot;REML&quot;</span>)
+  
+d =<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">rstandard</span>(full.model)$resid) %&gt;%
+<span class="st">       </span><span class="kw">cbind</span>(d) 
+
+d %&gt;%
+<span class="kw">rename</span>(<span class="dt">residual.d =</span> <span class="st">`</span><span class="dt">rstandard(full.model)$resid</span><span class="st">`</span>) %&gt;%
+<span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> mean_age/<span class="dv">365</span>, <span class="dt">y =</span> residual.d, <span class="dt">col =</span> dataset, 
+           <span class="dt">weight =</span> <span class="dv">1</span>/n)) +
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">size =</span> n), <span class="dt">alpha =</span> .<span class="dv">1</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">formula =</span> y ~<span class="st"> </span><span class="kw">log</span>(x)) +<span class="st"> </span>
+<span class="st">  </span><span class="co">#ylim(c(-.3, 2))+</span>
+<span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="fl">3.1</span>) +
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) +
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Age (years)&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Method-residualized </span><span class="ch">\n</span><span class="st">effect size (d)&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">theme_bw</span>() +<span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>,
+        <span class="dt">legend.key =</span> <span class="kw">element_blank</span>(),
+        <span class="dt">legend.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&quot;transparent&quot;</span>),
+        <span class="dt">axis.line=</span> <span class="kw">element_line</span>(<span class="dt">size =</span> <span class="dv">3</span>),
+        <span class="dt">axis.text =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">18</span>),
+        <span class="dt">strip.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">14</span>),
+        <span class="dt">axis.title =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">18</span>))</code></pre></div>
+</div>
+</div>
+<div id="ids-only" class="section level3">
+<h3>IDS only</h3>
+<div id="response_mode-moderator" class="section level4">
+<h4>response_mode moderator</h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">d =<span class="st"> </span><span class="kw">filter</span>(all_data, dataset ==<span class="st"> &quot;Infant directed speech preference&quot;</span>)
+  
+full.model =<span class="st"> </span><span class="kw">rma</span>(d_calc ~<span class="st"> </span>response_mode, <span class="dt">vi =</span> d_var_calc, <span class="dt">data =</span> d, <span class="dt">method =</span> <span class="st">&quot;REML&quot;</span>)
+
+full.model</code></pre></div>
+<pre><code>## 
+## Mixed-Effects Model (k = 50; tau^2 estimator: REML)
+## 
+## tau^2 (estimated amount of residual heterogeneity):     0.3178 (SE = 0.0878)
+## tau (square root of estimated tau^2 value):             0.5637
+## I^2 (residual heterogeneity / unaccounted variability): 78.44%
+## H^2 (unaccounted variability / sampling variability):   4.64
+## R^2 (amount of heterogeneity accounted for):            0.00%
+## 
+## Test for Residual Heterogeneity: 
+## QE(df = 47) = 217.7351, p-val &lt; .0001
+## 
+## Test of Moderators (coefficient(s) 2,3): 
+## QM(df = 2) = 1.7473, p-val = 0.4174
+## 
+## Model Results:
+## 
+##                            estimate      se     zval    pval    ci.lb
+## intrcpt                      0.8410  0.1609   5.2259  &lt;.0001   0.5256
+## response_modeeye-tracking   -0.2385  0.2042  -1.1683  0.2427  -0.6386
+## response_modeother           0.0279  0.3118   0.0896  0.9286  -0.5832
+##                             ci.ub     
+## intrcpt                    1.1565  ***
+## response_modeeye-tracking  0.1616     
+## response_modeother         0.6391     
+## 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">d =<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">rstandard</span>(full.model)$resid) %&gt;%
+<span class="st">       </span><span class="kw">cbind</span>(d) 
+
+d %&gt;%
+<span class="kw">rename</span>(<span class="dt">residual.d =</span> <span class="st">`</span><span class="dt">rstandard(full.model)$resid</span><span class="st">`</span>) %&gt;%
+<span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> mean_age/<span class="dv">365</span>, <span class="dt">y =</span> residual.d, <span class="dt">col =</span> dataset, <span class="dt">weight =</span> <span class="dv">1</span>/n)) +
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">size =</span> n), <span class="dt">alpha =</span> .<span class="dv">1</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">formula =</span> y ~<span class="st"> </span><span class="kw">log</span>(x)) +<span class="st"> </span>
+<span class="st">  </span><span class="co">#ylim(c(-.3, 2))+</span>
+<span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="fl">3.1</span>) +
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) +
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Age (years)&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;RM-residualized </span><span class="ch">\n</span><span class="st">effect size (d)&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">theme_bw</span>() +<span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>,
+        <span class="dt">legend.key =</span> <span class="kw">element_blank</span>(),
+        <span class="dt">legend.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&quot;transparent&quot;</span>),
+        <span class="dt">axis.line=</span> <span class="kw">element_line</span>(<span class="dt">size =</span> <span class="dv">3</span>),
+        <span class="dt">axis.text =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">18</span>),
+        <span class="dt">strip.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">14</span>),
+        <span class="dt">axis.title =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">18</span>))</code></pre></div>
+<p><img src="model_fits_synthesis_paper_files/figure-html/unnamed-chunk-14-1.png" width="768" /></p>
+</div>
+<div id="method-moderator" class="section level4">
+<h4>method moderator</h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">d =<span class="st"> </span><span class="kw">filter</span>(all_data, dataset ==<span class="st"> &quot;Infant directed speech preference&quot;</span>)
+  
+full.model =<span class="st"> </span><span class="kw">rma</span>(d_calc ~<span class="st"> </span>method, <span class="dt">vi =</span> d_var_calc, <span class="dt">data =</span> d, <span class="dt">method =</span> <span class="st">&quot;REML&quot;</span>)
+
+full.model</code></pre></div>
+<pre><code>## 
+## Mixed-Effects Model (k = 50; tau^2 estimator: REML)
+## 
+## tau^2 (estimated amount of residual heterogeneity):     0.2888 (SE = 0.0826)
+## tau (square root of estimated tau^2 value):             0.5374
+## I^2 (residual heterogeneity / unaccounted variability): 76.64%
+## H^2 (unaccounted variability / sampling variability):   4.28
+## R^2 (amount of heterogeneity accounted for):            7.78%
+## 
+## Test for Residual Heterogeneity: 
+## QE(df = 46) = 205.6447, p-val &lt; .0001
+## 
+## Test of Moderators (coefficient(s) 2,3,4): 
+## QM(df = 3) = 8.8454, p-val = 0.0314
+## 
+## Model Results:
+## 
+##                                       estimate      se     zval    pval
+## intrcpt                                 0.6492  0.1098   5.9150  &lt;.0001
+## methodconditioned head-turn             0.0802  0.3277   0.2448  0.8066
+## methodforced-choice                     1.2905  0.4380   2.9466  0.0032
+## methodhead-turn preference procedure   -0.0086  0.2263  -0.0382  0.9695
+##                                         ci.lb   ci.ub     
+## intrcpt                                0.4341  0.8643  ***
+## methodconditioned head-turn           -0.5621  0.7225     
+## methodforced-choice                    0.4321  2.1489   **
+## methodhead-turn preference procedure  -0.4521  0.4348     
+## 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">d =<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">rstandard</span>(full.model)$resid) %&gt;%
+<span class="st">       </span><span class="kw">cbind</span>(d) 
+
+d %&gt;%
+<span class="kw">rename</span>(<span class="dt">residual.d =</span> <span class="st">`</span><span class="dt">rstandard(full.model)$resid</span><span class="st">`</span>) %&gt;%
+<span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> mean_age/<span class="dv">365</span>, <span class="dt">y =</span> residual.d, <span class="dt">col =</span> dataset, <span class="dt">weight =</span> <span class="dv">1</span>/n)) +
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">size =</span> n), <span class="dt">alpha =</span> .<span class="dv">1</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">formula =</span> y ~<span class="st"> </span><span class="kw">log</span>(x)) +<span class="st"> </span>
+<span class="st">  </span><span class="co">#ylim(c(-.3, 2))+</span>
+<span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="fl">3.1</span>) +
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) +
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Age (years)&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Method-residualized </span><span class="ch">\n</span><span class="st">effect size (d)&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">theme_bw</span>() +<span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>,
+        <span class="dt">legend.key =</span> <span class="kw">element_blank</span>(),
+        <span class="dt">legend.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&quot;transparent&quot;</span>),
+        <span class="dt">axis.line=</span> <span class="kw">element_line</span>(<span class="dt">size =</span> <span class="dv">3</span>),
+        <span class="dt">axis.text =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">18</span>),
+        <span class="dt">strip.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">14</span>),
+        <span class="dt">axis.title =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">18</span>))</code></pre></div>
+<p><img src="model_fits_synthesis_paper_files/figure-html/unnamed-chunk-15-1.png" width="768" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">### LM with method moderator
+all_data.resid =<span class="st"> </span><span class="kw">data.frame</span>()
+for (i in <span class="dv">1</span>:<span class="kw">length</span>(datasets$name)) {
+    
+  d =<span class="st"> </span><span class="kw">filter</span>(all_data, dataset ==<span class="st"> </span>datasets$name[i])
+    if (datasets$name[i] %in%<span class="st"> </span>single_method_datasets) {
+      d =<span class="st"> </span><span class="kw">mutate</span>(d, <span class="dt">d.corrected =</span> d_calc)
+    } else {
+      full.model =<span class="st"> </span><span class="kw">lm</span>(d_calc ~<span class="st"> </span>method, <span class="dt">data =</span> d)
+      d =<span class="st"> </span><span class="kw">mutate</span>(d, <span class="dt">d.corrected =</span> <span class="kw">rstandard</span>(full.model))
+    }
+
+  all_data.resid =<span class="st"> </span><span class="kw">rbind</span>(all_data.resid,d)
+}
+
+<span class="co"># Fit models using raw d_calc</span>
+raw_data =<span class="st"> </span>all_data.resid %&gt;%
+<span class="st">          </span><span class="kw">filter</span>(dataset !=<span class="st"> &quot;Gaze following&quot;</span> |<span class="st"> </span>d_calc &gt;<span class="st"> </span><span class="dv">0</span>) %&gt;%<span class="st"> </span><span class="co"># remove negative ES for gaze following</span>
+<span class="st">          </span><span class="kw">filter</span>(dataset !=<span class="st"> &quot;Pointing and vocabulary&quot;</span>) %&gt;%
+<span class="st">          </span><span class="kw">mutate</span>(<span class="dt">mean.year =</span> mean_age/<span class="dv">365</span>) %&gt;%
+<span class="st">          </span><span class="kw">left_join</span>(ld.df)
+
+## get ggrepel dataset
+ggrepel.data =<span class="st"> </span>raw_data %&gt;%
+<span class="st">  </span><span class="kw">filter</span>(d.corrected &gt;<span class="st"> </span>-.<span class="dv">3</span> &amp;<span class="st"> </span>d.corrected &lt;<span class="st"> </span><span class="dv">2</span>) %&gt;%
+<span class="st">  </span><span class="kw">filter</span>(mean.year &gt;<span class="st"> </span><span class="dv">0</span> &amp;<span class="st"> </span>mean.year &lt;<span class="st"> </span><span class="fl">3.1</span>) %&gt;%
+<span class="st">  </span><span class="kw">filter</span>(!<span class="kw">is.na</span>(d.corrected)) %&gt;%
+<span class="st">  </span><span class="kw">group_by</span>(dataset) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">do</span>({
+    mod &lt;-<span class="st"> </span><span class="kw">lm</span>(d.corrected ~<span class="st"> </span><span class="kw">log</span>(mean.year), <span class="dt">data =</span> .)
+    pred &lt;-<span class="st"> </span><span class="kw">predict</span>(mod)
+    <span class="kw">data.frame</span>(., pred)
+  }) %&gt;%
+<span class="st">  </span><span class="kw">mutate</span>(pred  ==<span class="st"> </span><span class="kw">max</span>(pred),
+         mean.year ==<span class="st"> </span><span class="kw">max</span>(mean.year)) %&gt;%
+<span class="st">  </span><span class="kw">rename</span>(<span class="dt">max.pred =</span> pred,
+         <span class="dt">max.mean.year =</span> mean.year) %&gt;%
+<span class="st">  </span><span class="kw">select</span>(short_name, max.pred, max.mean.year, domain, dataset) %&gt;%
+<span class="st">  </span><span class="kw">slice</span>(<span class="dv">1</span>)
+
+lm.plot =<span class="st"> </span>raw_data %&gt;%
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> mean.year, <span class="dt">y =</span> d.corrected, <span class="dt">col =</span> dataset)) +
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">size =</span> n), <span class="dt">alpha =</span> .<span class="dv">1</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">formula =</span> y ~<span class="st"> </span><span class="kw">log</span>(x)) +<span class="st"> </span>
+<span class="st">  </span><span class="co">#geom_text_repel(aes(label = dataset, x= max.mean.year, y = max.pred), data = #ggrepel.data, segment.color = &#39;transparent&#39;, size = 3) +</span>
+<span class="st">  </span><span class="kw">facet_grid</span>(~<span class="st"> </span>domain) +
+<span class="st">  </span><span class="kw">ylim</span>(<span class="kw">c</span>(-.<span class="dv">3</span>, <span class="dv">2</span>))+
+<span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="fl">3.1</span>) +
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) +
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Age (years)&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Method-residualized </span><span class="ch">\n</span><span class="st">effect size (d)&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">theme_bw</span>() +<span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>,
+        <span class="dt">legend.key =</span> <span class="kw">element_blank</span>(),
+        <span class="dt">legend.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&quot;transparent&quot;</span>),
+        <span class="dt">axis.line=</span> <span class="kw">element_line</span>(<span class="dt">size =</span> <span class="dv">3</span>),
+        <span class="dt">axis.text =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">18</span>),
+        <span class="dt">strip.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">14</span>),
+        <span class="dt">axis.title =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">18</span>))
+
+<span class="kw">direct.label</span>(lm.plot, <span class="kw">list</span>(<span class="st">&quot;top.bumptwice&quot;</span>, <span class="kw">dl.trans</span>(<span class="dt">y =</span> y +<span class="st"> </span><span class="fl">0.1</span>), <span class="dt">cex=</span>.<span class="dv">7</span>))
+
+raw_data %&gt;%
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> mean_age/<span class="dv">365</span>, <span class="dt">y =</span> d.corrected, <span class="dt">col =</span> dataset, <span class="dt">weight =</span> <span class="dv">1</span>/n)) +
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">size =</span> n), <span class="dt">alpha =</span> .<span class="dv">1</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">formula =</span> y ~<span class="st"> </span><span class="kw">log</span>(x)) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ylim</span>(<span class="kw">c</span>(-.<span class="dv">3</span>, <span class="dv">2</span>))+
+<span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="fl">3.1</span>) +
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) +
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Age (years)&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Method-residualized </span><span class="ch">\n</span><span class="st">effect size (d)&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">theme_bw</span>() +<span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>,
+        <span class="dt">legend.key =</span> <span class="kw">element_blank</span>(),
+        <span class="dt">legend.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&quot;transparent&quot;</span>),
+        <span class="dt">axis.line=</span> <span class="kw">element_line</span>(<span class="dt">size =</span> <span class="dv">3</span>),
+        <span class="dt">axis.text =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">18</span>),
+        <span class="dt">strip.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">14</span>),
+        <span class="dt">axis.title =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">18</span>))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">all_data.resid =<span class="st"> </span><span class="kw">data.frame</span>()
+for (i in <span class="dv">1</span>:<span class="kw">length</span>(datasets$name)) {
+    
+  d =<span class="st"> </span><span class="kw">filter</span>(all_data, dataset ==<span class="st"> </span>datasets$name[i])
+    if (datasets$name[i] %in%<span class="st"> </span>single_method_datasets) {
+      d.corrected =<span class="st"> </span>d$d_calc
+    } else {
+      full.model =<span class="st"> </span><span class="kw">lm</span>(d_calc ~<span class="st"> </span>method, <span class="dt">data =</span> d)
+      d.corrected =<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">rstandard</span>(full.model))
+    }
+  d =<span class="st"> </span>d.corrected %&gt;%
+<span class="st">       </span><span class="kw">cbind</span>(d) %&gt;%
+<span class="st">       </span><span class="kw">right_join</span>(all_data)
+  
+  <span class="kw">names</span>(d)[<span class="dv">1</span>] =<span class="st"> &quot;d.corrected&quot;</span>
+  
+  all_data.resid =<span class="st"> </span><span class="kw">rbind</span>(all_data.resid,d)
+}</code></pre></div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

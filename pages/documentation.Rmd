@@ -92,7 +92,7 @@ for (i in 1:nrow(datasets)) {
 cat(ret)
 ```
 
-### Contributing to MetaLab
+### Contributing to MetaLab {#contribute}
 
 #### How to contribute?
 

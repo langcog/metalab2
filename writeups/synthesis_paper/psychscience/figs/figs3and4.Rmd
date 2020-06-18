@@ -1,0 +1,382 @@
+---
+title: Synthesis Paper Figures 3 and 4
+author: Molly Lewis
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: false
+    number_sections: false
+    theme: cerulean
+    #toc_float: true
+    code_folding: hide
+---
+  
+
+```{r setup, include = F}
+rm(list = ls())
+source("../../../dashboard/global.R", chdir = TRUE)
+library(knitr)
+library(metafor)
+library(directlabels)
+
+opts_chunk$set(echo = T, message = F, warning = F, error = F, cache = T, tidy = F)
+```
+
+```{r load data}
+# remove inappropriate conditions
+all_data <- filter(all_data, dataset != "Statistical word segementation") %>% # incomplete MA
+            filter(dataset != "Pointing and vocabulary (longitudinal)") %>%  # longitidinal MA
+            filter(is.na(condition_type) | condition_type == "critical") # remove control conditions from labadv
+
+# need to recompute datasets summary data, based on filtered all_data
+studies <- all_data %>%
+  group_by(dataset) %>%
+  summarise(num_experiments = n(),
+            num_papers = length(unique(study_ID)))
+
+subjects <- all_data %>%
+  rowwise() %>%
+  mutate(n_total = sum(c(n_1, n_2), na.rm = TRUE)) %>%
+  distinct(dataset, study_ID, same_infant, .keep_all = TRUE) %>%
+  group_by(dataset) %>%
+  summarise(num_subjects = sum(n_total))
+
+datasets <- datasets %>%
+  rename(dataset = name) %>%
+  select(-num_experiments, -num_papers, -num_subjects) %>%
+  filter(dataset != "Statistical word segementation") %>% 
+  filter(dataset != "Pointing and vocabulary (longitudinal)") %>%
+  left_join(studies) %>%
+  left_join(subjects) %>%
+  rename(name = dataset)
+
+# rename pointing and vocabulary 
+datasets$name = plyr::mapvalues(datasets$name, from = c("Pointing and vocabulary (concurrent)"), 
+                                to = c("Pointing and vocabulary"))
+
+all_data$dataset = plyr::mapvalues(all_data$dataset , from = c("Pointing and vocabulary (concurrent)"),
+                                   to = c("Pointing and vocabulary"))
+```
+
+Fig 3 data
+```{r}
+# make levels df
+ld.df = data.frame(dataset = datasets$name,
+                   domain = c("Prosody", "Words", "Communication", "Sounds",
+                              "Sounds", "Sounds", "Sounds", "Sounds", "Words",
+                              "Words", "Communication", "Words"))
+
+ld.df$domain = factor(ld.df$domain, levels = c("Prosody","Sounds", "Words", "Communication"))
+
+single_method_datasets = all_data %>%
+  group_by(dataset) %>%
+  summarise(n_methods = length(levels(as.factor(method)))) %>%
+  filter(n_methods == 1) %>%
+  .[["dataset"]]
+
+# get model fits
+all_data.resid = data.frame()
+for (i in 1:length(datasets$name)) {
+    d = filter(all_data, dataset == datasets$name[i])
+    if (datasets$name[i] %in% single_method_datasets) {
+      full.model = rma(d_calc, vi = d_var_calc, data = d)
+    } else {
+      full.model = rma(d_calc ~ method, vi = d_var_calc, data = d)
+    }
+  
+  d = as.data.frame(rstandard(full.model)$resid) %>%
+       cbind(d) %>%
+       rename(residual.d = `rstandard(full.model)$resid`) %>%
+       mutate(residual.d = residual.d + full.model$b[1]) %>% # add in intercept term
+       inner_join(all_data) 
+  
+  all_data.resid = rbind(all_data.resid,d)
+}
+
+# merge in levels
+residualized.es = all_data.resid %>%
+          left_join(ld.df) %>%
+          filter(dataset != "Statistical sound category learning") %>%
+          filter(dataset != "Phonotactic learning") %>%
+          mutate(age.years = mean_age/365) %>%
+          filter(age.years < 3)
+```
+
+Fig 4 data
+```{r}
+## real data
+all_data.f = residualized.es %>%
+  select(age.years, dataset, residual.d, n) %>%
+  mutate(model = "Observed")
+
+## simulated data
+# bottom-up
+x = seq(0, 3, .01)
+slope = 1.1
+y1 = ifelse((log(x - 1) * slope) < 0, NA, log(x - 1) * slope)
+y2 = ifelse((log(x) * slope) < 0, NA, log(x) * slope)
+y3 = ifelse((log(x + 1) * slope) < 0, NA, log(x + 1) * slope)
+
+# interactive 
+y4 = log((x + 1)) * .2
+y5 = log((x + 1)) * .5
+y6 = log((x + 1)) * 1.1
+
+# ad hoc 
+y7 = .2 * x
+y8 = dnorm(x, mean = 1.7, sd = .5) 
+y9 = log(x + .0001, base = .02) + .3
+y9[1] = 1.47464029
+
+# merge together simulated data
+simulated.development = data.frame(age.years = c(x,x,x,x,x,x,x,x,x),
+                                   residual.d = c(y3, y2, y1, y6, y5, y4, y9, y8, y7),
+                                   dataset = c(rep(1:3, each = length(x)), rep(1:3, each = length(x)),
+                                               rep(1:3, each = length(x))),
+                                   model = rep(c("Sequential", "Simultaneous", "Ad hoc"), each = length(x) * 3),
+                                   n = 1)
+
+## merge together simulated and real
+simulated.development.all = mutate(simulated.development, dataset = as.factor(dataset)) %>%
+  rbind(all_data.f) %>%
+  mutate(model = ordered(model, levels = c("Sequential", "Simultaneous", "Ad hoc", "Observed")),
+         level = ifelse(model != "Observed", dataset, 
+                        ifelse(dataset == "Infant directed speech preference", 1,
+                               ifelse(dataset == "Pointing and vocabulary" | dataset == "Gaze following", 4, 
+                                      ifelse(dataset == "Word segmentation" | dataset == "Vowel discrimination (native)" | dataset == "Vowel discrimination (non-native)", 2, 3)))))
+
+real.levels = levels(simulated.development.all$dataset)
+fake.levels = c("1", "2", "3") 
+
+simulated.development.all = simulated.development.all %>%
+  mutate(dataset.label = as.factor(dataset)) %>%
+  mutate(dataset.label = plyr::mapvalues(dataset.label, from = c("1", "2", "3", "Gaze following",  "Infant directed speech preference", "Label advantage in concept learning", "Mutual exclusivity", "Vowel discrimination (native)", "Vowel discrimination (non-native)", "Sound symbolism" , "Online word recognition" , "Word segmentation"), to = c("","","", "GF", "IDS", "LA", "ME", "VD-N", "VD-NN", "SS", "WR", "WS")))
+```
+
+params
+```{r}
+
+fs = 16
+
+
+pink1 = "#F8766D"
+barf = "#D89000"
+yellowgreen = "#A3A500" 
+green1 = "#39B600" 
+green2 = "#00BF7D" 
+blue1 = "#00BFC4"
+blue2 = "#00B0F6"
+purple = "#9590FF"
+pink2 = "#E76BF3"
+pink3 = "#FF62BC"
+```
+
+## Fig. 3
+default - ggplot 10 color palatte
+```{r, fig.width = 9.6, fig.height = 3.6}
+level.plot = ggplot(residualized.es, aes(x = age.years, y = residual.d, col = dataset)) +
+  facet_grid(~ domain) +
+  geom_point(aes(size = n), alpha = .1, data = filter(residualized.es, residual.d > -.5 & residual.d < 2.5 )) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  geom_line(stat="smooth", method="lm", se = FALSE, size = 1, formula = y ~ log(x)) + 
+  coord_cartesian(ylim = c(-.5, 2.5), xlim = c(0, 3.1)) +  # doesn't remove data from geom_smooth
+  xlab("Age (years)") + 
+  ylab("Method-residualized\n effect size") + 
+  theme_bw() + 
+  theme(legend.position = "none",
+        legend.key = element_blank(),
+        legend.background = element_rect(fill = "transparent"),
+        axis.line= element_line(size = 3),
+        axis.text = element_text(colour = "black", size = fs),
+        strip.text.x = element_text(size = 14),
+        axis.title = element_text(colour = "black", size = fs),
+        strip.background = element_rect(fill="grey"))
+
+direct.label(level.plot, list("top.bumptwice", dl.trans(y = y + 0.1), cex = .7))
+```
+
+re-arranged ggplot 10 color palatte
+```{r, fig.width = 9.6, fig.height = 3.6}
+level.plot = ggplot(residualized.es, aes(x = age.years, y = residual.d, col = dataset)) +
+  facet_grid(~ domain) +
+  geom_point(aes(size = n), alpha = .1, data = filter(residualized.es, residual.d > -.5 & residual.d < 2.5 )) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  geom_line(stat="smooth", method="lm", se = FALSE, size = 1, formula = y ~ log(x)) + 
+  coord_cartesian(ylim = c(-.5, 2.5), xlim = c(0, 3.1)) +  # doesn't remove data from geom_smooth
+  xlab("Age (years)") + 
+  ylab("Method-residualized\n effect size") + 
+  scale_colour_manual(values = c(pink2, blue1, purple, green2, pink1, yellowgreen, barf, green1, pink3, blue2)) +
+  theme_bw() + 
+  theme(legend.position = "none",
+        legend.key = element_blank(),
+        legend.background = element_rect(fill = "transparent"),
+        axis.line= element_line(size = 3),
+        axis.text = element_text(colour = "black", size = fs),
+        strip.text.x = element_text(size = 14),
+        axis.title = element_text(colour = "black", size = fs),
+        strip.background = element_rect(fill="grey"))
+
+direct.label(level.plot, list("top.bumptwice", dl.trans(y = y + 0.1), cex = .7))
+
+```
+
+solarized
+```{r, fig.width = 9.6, fig.height = 3.6}
+
+#pdf("fig3.pdf", width=8, height=3.5)
+level.plot = ggplot(residualized.es, aes(x = age.years, y = residual.d, col = dataset)) +
+  facet_grid(~ domain) +
+  geom_point(aes(size = n), alpha = .1, data = filter(residualized.es, residual.d > -.5 & residual.d < 2.5 )) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  geom_line(stat="smooth", method="lm", se = FALSE, size = 1, formula = y ~ log(x)) + 
+  coord_cartesian(ylim = c(-.5, 2.5), xlim = c(0, 3.1)) +  # doesn't remove data from geom_smooth
+  xlab("Age (years)") + 
+  ylab("Method-residualized\n effect size") + 
+  theme_bw() + 
+  scale_color_solarized() +
+  theme(legend.position = "none",
+        legend.key = element_blank(),
+        axis.line= element_line(size = 3),
+        axis.text = element_text(colour = "black", size = fs),
+        strip.text.x = element_text(size = 14),
+        axis.title = element_text(colour = "black", size = fs),
+        strip.background = element_rect(fill="grey"))
+direct.label(level.plot, list("top.bumptwice", dl.trans(y = y + 0.1), cex = .7))
+
+#dev.off()
+```
+
+legend text (for illustrator)
+```{r, fig.width = 9.6, fig.height = 3.6}
+
+legend.desc = residualized.es %>%
+  group_by(dataset) %>%
+  slice(1) %>%
+  ungroup() %>%
+  mutate(x = 1, y = seq(1,20,2)) %>%
+  select(dataset,x,y) %>%
+  ggplot(aes(x = x, y = y, col = dataset)) +
+  geom_point() +
+  theme_bw() + 
+  scale_color_solarized() +
+  theme(legend.position = "none",
+        legend.key = element_blank(), 
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),
+      panel.background = element_blank())
+
+pdf("fig3legend.pdf")
+direct.label(legend.desc)
+dev.off()
+
+```
+
+
+
+## Fig. 4
+no alpha
+```{r, fig.width = 9.6, fig.height = 3.6}
+## plot
+ggplot(simulated.development.all,
+       aes(x = age.years, y = residual.d, col = dataset)) + 
+  geom_line(data = filter(simulated.development.all, model != "Observed"), 
+            size = 1) +
+  geom_line(stat="smooth", 
+            data = filter(simulated.development.all, model == "Observed"), 
+            size = 1,
+            method = "lm",
+            formula = y~log(x),
+            se = FALSE) + 
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  coord_cartesian(ylim = c(-.5, 2.5), xlim = c(0, 3.1)) +  # doesn't remove data from geom_smooth
+  facet_grid(.~model) +
+  scale_colour_manual(values=c( "grey70", "grey35", "grey20", pink2, blue1, purple, green2, pink1, 
+                                yellowgreen, barf,  green1, pink3, blue2),
+                      breaks = real.levels[real.levels!=fake.levels])+
+  xlab("Age (years)") +
+  ylab("Method-residualized\neffect size") + 
+  theme_bw() + 
+  theme(legend.position = "none",
+        legend.key = element_blank(),
+        legend.background = element_rect(fill = "transparent"),
+        legend.title = element_blank(),
+        axis.line= element_line(size = 3),
+        axis.text = element_text(colour = "black", size = fs),
+        strip.text.x = element_text(size = 14),
+        axis.title = element_text(colour = "black", size = fs),
+        strip.background = element_rect(fill="grey"))
+```
+
+
+alpha
+```{r, fig.width = 9.6, fig.height = 3.6}
+## plot
+ggplot(simulated.development.all,
+       aes(x = age.years, y = residual.d, col = dataset)) + 
+  geom_line(data = filter(simulated.development.all, model != "Observed"), 
+            aes(alpha = level),
+            size = 1) +
+  geom_line(stat="smooth", 
+            data = filter(simulated.development.all, model == "Observed"), 
+            aes(alpha = level ),
+            size = 1,
+            method = "lm",
+            formula = y~log(x),
+            se = FALSE) + 
+  scale_alpha(range = c(0.25, 1)) +
+  coord_cartesian(ylim = c(-.5, 2.5), xlim = c(0, 3.1)) +  # doesn't remove data from geom_smooth
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  facet_grid(.~model) +
+  scale_colour_manual(values=c( "black", "black", "black", pink2, blue1, purple, green2, pink1, 
+                                yellowgreen, barf,  green1, pink3, blue2),
+                      breaks = real.levels[real.levels!=fake.levels])+
+  xlab("Age (years)") +
+  ylab("Method-residualized\neffect size") + 
+  theme_bw() + 
+  theme(legend.position = "none",
+        legend.key = element_blank(),
+        legend.background = element_rect(fill = "transparent"),
+        legend.title = element_blank(),
+        axis.line= element_line(size = 3),
+        axis.text = element_text(colour = "black", size = fs),
+        strip.text.x = element_text(size = 14),
+        axis.title = element_text(colour = "black", size = fs),
+        strip.background = element_rect(fill="grey"))
+```
+
+
+bw alpha
+```{r, fig.width = 9.6, fig.height = 3.6}
+ggplot(simulated.development.all,
+       aes(x = age.years, y = residual.d, color = dataset)) + 
+  geom_line(data = filter(simulated.development.all, model != "Observed"), 
+            aes(alpha = level),
+            size = 1) +
+  geom_line(stat="smooth", 
+            data = filter(simulated.development.all, model == "Observed"), 
+            aes(alpha = level),
+            size = 1,
+            method = "lm",
+            formula = y~log(x),
+            se = FALSE) + 
+  scale_colour_manual(values=c( "black", "black", "black", "black", "black", "black", "black", "black" ,"black", "black", "black", "black", "black", "black", "black", "black")) + 
+  scale_alpha(range = c(0.2, 1)) +
+  coord_cartesian(ylim = c(-.5, 2.5), xlim = c(0, 3.1)) +  # doesn't remove data from geom_smooth
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  facet_grid(.~model) +
+  xlab("Age (years)") +
+  ylab("Method-residualized\neffect size") + 
+  theme_bw() + 
+  theme(legend.position = "none",
+        legend.key = element_blank(),
+        legend.background = element_rect(fill = "transparent"),
+        legend.title = element_blank(),
+        axis.line= element_line(size = 3),
+        axis.text = element_text(colour = "black", size = fs),
+        strip.text.x = element_text(size = 14),
+        axis.title = element_text(colour = "black", size = fs),
+        strip.background = element_rect(fill="grey"))
+```
+
+
+

@@ -1,0 +1,22 @@
+STEPS FOR GOING FROM METALAB_SYNTHESIS.RMD TO LATEX
+
+PNAS requires latex format but paper is written in rmd. To produce PNAS latex, start with metalab_synthesis.rmd file in psychscience folder and do the following steps.
+
+Note these steps are for the case where where changes are made to the data only and it is not necssary to edit the paper text in the original rmd (I'm not sure why this would be necessary now). Paper text can be edited now directly in pnas_metalab_synthesis.tex.
+
+(1) Run raw r code to produce:
+		* Table 2, which needs to be printed in the console as latex code and content pasted into rmd
+		* save figure 3 and figure 4 to pdfs so can be edited in illustrator (1 for fig; 1 for the legend)
+(2) Knit metalab_synthesis.Rmd and then open metalab_synthesis.tex
+(3) From metalab_synthesis.tex paste the following into pnas_metalab_synthesis.tex:
+		* Table 1 (content only)
+		* Table 2 (content only) -> edit backslashes for "dagger" and "discrim"
+		* Edit inline r code in text (this occurs in 5 different paragraphs, identifiable by searching "`r" ) and abstract
+(4) From "write-ups/synthesis_paper/psychscience/metalab_synthesis_files/figure-latex/" move the following files to "write-ups/synthesis_paper/PNAS/figs/":
+		* "unnamed-chunk-2-1.pdf" (funnel) 
+		* "p_curve_plots-1.pdf" (p-curve)
+(5) From "write-ups/synthesis_paper/psychscience/figs/" move the following files to "write-ups/synthesis_paper/PNAS/figs/":
+		* fig3.pdf, fig3legend.pdf
+		* fig4.pdf, fig4legend.pdf
+(6) Edit figures 3 and 4 in illustrator (just open both and move text), and save as fig3_lab.pdf/fig4_lab.pdf (font size = 9)
+(7) Compile pnas_metalab_synthesis.tex

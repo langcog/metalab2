@@ -1,0 +1,470 @@
+---
+title: "Replicability Analyses for Synthesis Paper"
+author: "Molly Lewis, Christina Bergmann, and Mike Frank"
+date: "`r Sys.Date()`"
+---
+
+```{r, setup, include = FALSE}
+rm(list=ls())
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, cache = TRUE)
+ggplot2::theme_set(langcog::theme_mikabr(base_family = "Ubuntu"))
+source("../../../dashboard/global.R", chdir = TRUE)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(langcog)
+library(metafor)
+library(pwr)
+library(metafor)
+library(knitr)
+```
+
+This document includes all the analyses for the "replicability" section of the Synthesis Paper. Abbreviated versions of this code are included in the manuscript. Here we analyze five different features of replicability: overall effect size, p-curve, power, fail-safe-N, and funnel plot skew.
+
+
+## Average effect size
+```{r}
+overall_es <- function(ma_data){
+  model = rma(ma_data$d_calc, ma_data$d_var_calc, method = "REML",
+               control = list(maxiter = 1000, stepadj = 0.5))
+    data.frame(dataset = ma_data$dataset[1],
+               overall.d = model$b,
+               ci_lower = model$ci.lb,
+               ci_upper = model$ci.ub)
+}
+
+all_ds = all_data %>%
+  split(.$short_name) %>%
+  map(function(ma_data) overall_es(ma_data)) %>%
+  bind_rows() %>%
+  group_by(dataset) %>%
+  mutate(overall.d = round(overall.d, digits = 2),
+         ci_lower  = round(ci_lower, digits = 2),
+         ci_upper = round(ci_upper, digits = 2))
+
+#kable(all_ds)
+
+qplot(reorder(dataset,-overall.d), overall.d, ymin = ci_lower, ymax = ci_upper,
+          geom = "linerange",
+          data = all_ds) +
+      geom_point(aes(y = overall.d)) +
+      geom_pointrange(aes_string(x = "dataset", y = "overall.d",
+                                 ymin = "ci_lower", ymax = "ci_upper")) +
+      geom_hline(yintercept = 0, linetype = "dashed", color = "grey") +
+      coord_flip() +
+      scale_size_continuous(guide = FALSE) +
+      scale_colour_solarized(name = "", labels = labels) +
+      xlab("Dataset") +
+      ylab("Effect Size")
+```
+
+## P-curves
+P-curves have been proposed as one (of many) ways to measure publication biases, because so-called p-hacking (conducting multiple statistical analyses, excluding data points, etc. until a p-value below the significance threshold [typically .05] is reached) can lead to an inflation of high p-values that are nonetheless significant. The exected distribution of p-values in the absence of prevalent p-hacking of a null effect is biased towards smaller values. The present script is based on the p-curve app version 4.0.
+
+One of the main problems with p-curve is the use of text mining to generate input, and the presence of heterogeneous tests (https://peerj.com/articles/1715/). In the case of MetaLab, however, all test statistics were entered by hand and concern a homogeneous research literature (within each dataset). Further, we only enter the *main* test statistic which would also be used to calculate effect sizes in our meta-analysis. Therefore, we believe that p-curve is an appropriate analysis for the dataset. 
+
+
+### Data preparation
+
+When reported or necessary to calculate effect sizes, we note the t-value or F-score for each record (a single study). We do not consider studies for which this information was unavailable in the following analyses. 
+
+To calculate p-values from $t$-values and $F$-scores, we also need the degrees of freedom. When one group of participants was tested, we use $N-1$, for a two group comparison design we use $N-2$. $F$-scores require two degrees of freedom, the first one however is always one in the main analysis of interest (we do not enter or consider e.g., interactions of the main effect of interest with covariates such as age, gender, etc.).
+
+We need to source code from the p-curve app. This p-curve report is based on the p-curve app 4.0 via code from the [app](http://p-curve.com/app4/App%204.0%20p-curve%202016%2001%2011.r). We have heavily adapted this code, however. 
+
+```{r}
+source("pcurve.R")
+
+# Set global variables
+ALPHA = .05
+P_INCREMENT = .01 
+
+# Get all data necessary to do p-curve calculations
+pc.data <- get_all_pc_data(all_data, ALPHA, P_INCREMENT)
+```
+
+### P-curves
+```{r}
+pc.data %>%
+  group_by(dataset) %>%
+  do(get_p_curve_df(., ALPHA, P_INCREMENT)) %>%
+  ggplot(aes(x = p, y = value, linetype = measure, color = measure)) + 
+  geom_line(size = 1) +
+  scale_colour_manual(name = "", values = c("red", "green", "blue"),labels=c("baseline", "expected", "observed")) +
+  scale_linetype_manual(values = c("dashed", "dashed", "solid"), guide = FALSE)  +
+  ylab("") +
+  #scale_colour_discrete(labels=c("baseline", "expected", "observed")) +
+  facet_wrap(~ dataset) 
+```
+
+### Test for right skew.
+We employ inferential statistics to test whether the p-curves are right skewed, i.e. whether they have eveidential value. Following Simonsohn, Simmons and Nelson (2015) we use the  Stouffer method. This method is less sensitive to outliers, relative to Fischer method (in the 2014a paper). We test full, half, 33 power, and full powered versions.
+
+```{r}
+stouffer.data = pc.data %>%
+  group_by(dataset) %>%
+  do(data.frame(stouffer = stouffer_test(., ALPHA))) 
+
+ggplot(stouffer.data, aes(x = dataset, y = stouffer.pp.measure, 
+                          fill = stouffer.sig)) +
+  geom_tile() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_fill_manual(values = c("blue", "pink"))
+  
+```
+
+## Power
+### Raw power
+Just for comparision, let's  get an estimate of the power using pwr.t.test to compare to p-curve. (I'm not totally sure this is reasonable)
+```{r}
+powers = all_data %>%
+  left_join(all_ds %>% rename(short_name = dataset)) %>%
+  select(dataset, short_name, overall.d, n_1, n_2,participant_design) %>%
+  rowwise %>%
+  mutate(power = unlist(ifelse(participant_design == "within_one",
+                         pwr.t.test(d = overall.d, n = n_1, type = "one.sample")["power"],
+                            ifelse(participant_design == "within_two",
+                            pwr.t.test(d = overall.d, n = n_1, type = "two.sample")["power"],
+                            pwr.t.test(d = overall.d, n = sum(n_1, n_2)/2, type = "paired")["power"]))))
+
+raw_power_means = powers %>%
+  group_by(dataset) %>%
+  multi_boot_standard(column = "power", na.rm = T) %>%
+  rename(mean_power = mean) 
+
+powers = left_join(powers, raw_power_means) %>%
+  filter(!is.na(mean_power))
+  
+ggplot(powers, aes(x = power, fill = short_name)) +
+  geom_density() +
+  geom_vline(aes(xintercept = mean_power), size = 1) +
+  facet_wrap(~short_name, scales =  "free_y") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        legend.position = "none")
+
+```
+
+### P-curve power
+```{r}
+power.data = pc.data %>%
+  group_by(dataset) %>%
+  do(data.frame(power = get_pc_power(., ALPHA))) 
+```
+
+### Compare power estimates
+```{r}
+left_join(raw_power_means, power.data) %>%
+  rename(p.curve.power = power,
+         raw.mean.power = mean_power) %>%
+  gather("method", "power",  c(2,5)) %>%
+  mutate(ci_lower = ifelse(method == "p.curve.power", NA, ci_lower),
+         ci_upper = ifelse(method == "p.curve.power", NA, ci_upper)) %>%
+  ggplot(aes(x = dataset, group = method, y = power, fill = method)) +
+  geom_hline(yintercept = .8, lty = 2) +
+  geom_bar(stat = "identity",  position = "dodge") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  ylim(0,1) 
+```
+Pretty different...
+
+
+### P-curve effect size
+Can use a similiar approach as power to calculate effect sizes. However, p-curve effect size dramatically inflates effect size in our set of meta-analyses. This is because an assumption of this calculation is that the test statistic is greater than 0, and thus we inflate the effect size by including only positive effects. For this reason, we are not including p-curve based effect sizes in the paper. 
+
+```{r, eval = F}
+pc_es = pc.data %>%
+  group_by(dataset) %>%
+  do(data.frame(get_pc_es(., ALPHA))) 
+
+obs_es =  all_data %>%
+  group_by(dataset) %>%
+  summarise(d = summary(rma(d_calc,d_var_calc,
+             slab = short_cite, 
+             data = .))$b[1],
+            ci_lb = summary(rma(d_calc,d_var_calc,
+             slab = short_cite, 
+             data = .))$ci.lb[1],
+            ci_ub = summary(rma(d_calc,d_var_calc,
+             slab = short_cite, 
+             data = .))$ci.ub[1]) %>%
+  mutate(method = "observed")
+
+all_es = rbind(pc_es, obs_es)
+
+ggplot(all_es, aes(y = d, x = dataset, group = method, 
+                   color = method)) +
+  geom_pointrange(aes(ymin = ci_lb, ymax = ci_ub ), 
+                  position = position_dodge(width = .1)) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+# TO DO:
+# check code!!
+# ncp parameter for f? Can't interpret effect sizes.
+# why are some datasets missing? -> we only have test statistics for 6/11- is there a way to recover this?
+```
+
+## Fail-Safe-N
+From Metafor package documentation: "The Orwin method calculates the number of studies averaging null results that would have to be added to the given set of observed outcomes to reduce the (unweighted) average effect size to a target (unweighted) average effect size. The method is described in Orwin (1983)."
+ The first is that the unpublished or omitted studies, on average, show a null result.
+
+### Comparision of FSN measures
+Analysis of different measures of FSN. With no target, package assumes half of unweighted average. Book and metafor the same. Weighted average of ds (from rma) only slightly less.
+```{r}
+fsn.package.data = all_data %>%
+  group_by(dataset) %>%
+  summarise(fsn_package_small_T = fsn(d_calc, d_var_calc, data = all_data, 
+                         target = .01, type="Orwin")$fsnum,
+            fsn_package_noT = fsn(d_calc, d_var_calc, data = all_data, type="Orwin")$fsnum
+            ) %>%
+  left_join(datasets %>% select(name, short_name), by= c("dataset" = "name"))
+
+fsn.manual.data = all_data %>%
+  group_by(short_name) %>%
+  summarise(n = n(),
+            mean_d = mean(d_calc),
+            target =  .01) %>%
+  select(short_name, mean_d, n, target)  %>%
+  left_join(all_ds %>% rename(short_name = dataset)) %>%
+  select(short_name, mean_d, n, target, overall.d) %>%
+  mutate(fsn_book1_small_T = round(n * (mean_d /target-1),0),
+         fsn_book2_noT = round(n*mean_d, 0),
+         fsn_raw_package = round(n * ((mean_d - target)/target),0),
+         fsn_book1_MA_small_T  = round(n * (overall.d /target-1),0),
+         fsn_book2_MA_noT  = round(n*overall.d, 0),
+         fsn_raw_package_MA = round(n * ((overall.d - target)/target),0)) 
+
+fsn.data = left_join(fsn.manual.data, fsn.package.data) %>%
+          select(-n, -mean_d, -target, -dataset, -overall.d) %>%
+          select(-fsn_raw_package, -fsn_raw_package_MA) %>%
+          gather("fsn_type", "fsn", -1)
+
+ggplot(fsn.data, aes(y = fsn, x = short_name, color = fsn_type)) +
+  geom_point(stat = "identity") +
+  ylab("Fail-Safe-N") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+ggplot(fsn.data, aes(y = fsn, x = fsn_type, color = short_name)) +
+  geom_point() +
+  ylab("Fail-Safe-N") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+Conclusion: Just use the package, unless we think the weighted average is better.
+
+### Plot Fail-Safe-N
+```{r}
+fsn.package.data = all_data %>%
+  group_by(dataset) %>%
+  summarise(fsn_package= fsn(d_calc, d_var_calc, data = all_data, 
+                         target = .01, type="Orwin")$fsnum) %>%
+  left_join(datasets %>% select(name, short_name), by= c("dataset" = "name")) %>%
+  select(-dataset)
+
+ggplot(fsn.package.data, aes(y = fsn_package, x = short_name, fill = short_name)) +
+  geom_bar(stat = "identity") +
+  ylab("Fail-Safe-N") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        legend.position = "none")
+```
+Assuming a critical value of zero (techincally, .01), the FSN are huge for the most part. These values are much larger than a previous version because I wasn't passing a critical value (namely, 0), and without this argument the function assumes the critical values is half of the mean effect size.
+
+## Funnel Plot
+### Plots
+```{r}
+CRIT_95 = 1.96 
+CRIT_99 = 2.58
+funnel.es.data = all_data %>%
+  group_by(dataset) %>%
+  mutate(se = sqrt(d_var_calc), 
+         es = d_calc, 
+         center = mean(d_calc), 
+         lower_lim = max(se) + .05 * max(se))
+
+# separate data frame for 95 CI funnel shape
+funnel95.data.wide <- funnel.es.data %>%
+                select(center, lower_lim, dataset) %>%
+                group_by(dataset) %>%
+                summarise(x1 = (center-lower_lim * CRIT_95)[1], 
+                          x2 = center[1],
+                          x3 = center[1] + lower_lim[1] * CRIT_95,
+                          y1 = -lower_lim[1],
+                          y2 =  0, 
+                          y3 = -lower_lim[1]) 
+
+funnel95.data.x = funnel95.data.wide  %>%
+                  select(dataset, contains("x")) %>%
+                  gather("coordx", "x", 2:4) %>%
+                  arrange(dataset, coordx) %>%
+                  select(-coordx)
+
+funnel95.data.y = funnel95.data.wide  %>%
+                  select(dataset, contains("y")) %>%
+                  gather("coordy", "y", 2:4) %>%
+                  arrange(dataset, coordy) %>%
+                  select(-coordy)
+
+funnel95.data = bind_cols(funnel95.data.x, funnel95.data.y)
+
+# separate data frame for 99 CI funnel shape
+funnel99.data.wide <- funnel.es.data %>%
+                select(center, lower_lim, dataset) %>%
+                group_by(dataset) %>%
+                summarise(x1 = (center-lower_lim* CRIT_99)[1], 
+                          x2 = center[1],
+                          x3 = center[1] + lower_lim[1] * CRIT_99,
+                          y1 = -lower_lim[1],
+                          y2 =  0, 
+                          y3 = -lower_lim[1]) 
+
+funnel99.data.x = funnel99.data.wide  %>%
+                  select(dataset, contains("x")) %>%
+                  gather("coordx", "x", 2:4) %>%
+                  arrange(dataset, coordx) %>%
+                  select(-coordx)
+
+funnel99.data.y = funnel99.data.wide  %>%
+                  select(dataset, contains("y")) %>%
+                  gather("coordy", "y", 2:4) %>%
+                  arrange(dataset, coordy) %>%
+                  select(-coordy)
+
+funnel99.data = bind_cols(funnel99.data.x, funnel99.data.y)
+
+ggplot(funnel.es.data, aes(x = es, y = -se)) +
+  facet_wrap(~dataset, scales = "free") +
+  xlab("Effect Size")  +
+  ylab("Standard Error\n")  +
+  scale_colour_solarized(name = "") +
+  geom_polygon(aes(x = x, y = y), 
+               data = funnel95.data, alpha = .5,
+               fill = "white") +
+  geom_polygon(aes(x = x, y = y), 
+               data = funnel99.data, alpha = .5,
+               fill = "white") +
+  geom_vline(aes(xintercept=center[1]), 
+             linetype = "dotted", color = "black") +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "grey") +
+  geom_point() +
+  theme(panel.background = element_rect(fill = "grey"),
+        panel.grid.major =  element_line(colour = "darkgrey", size = 0.2),
+        panel.grid.minor =  element_line(colour = "darkgrey", size = 0.5))
+
+```
+
+### Test for funnel plot asymmetry
+
+Egger and Sterne (2005): "
+Egger et al. (1997) introduced a linear regression approach in which the standard normal deviate zi (defined as zi = i/si is regressed against its precision preci (defined as preci =1/si) <>. The smaller the trial, the smaller will be its precision. In the absence of funnel plot asymmetry, the points in a plot of zi against preci – a plot that corresponds to Galbraith’s (1988) radial plot – will scatter about a line that runs through the origin at standard normal deviate zero (intercept 0 = 0), with the slope 1 indicating the size and direction of effect. This situation corresponds to a symmetrical funnel plot. If there is funnel plot asymmetry, the regression line will not run through the origin, so that the intercept 0 provides a measure of asymmetry – the larger its deviation from zero the more pronounced the asymmetry. A test of the null hypothesis that 0 = 0 (no funnel plot asymmetry) can be derived from the usual regression output produced by statistical packages: the two-sided p-value should be reported. This test is often referred to as the ‘Egger test’ and has been widely used as a test for funnel plot asymmetry."
+
+Anzures-Cabrera & Higgins (2010): "Mathematically, a Galbraith plot is a scatter plot of standardized effect estimates (estimates divided by their standard errors, or yi / si) against inverse standard error (1/ si). Imprecise estimates of effect lie near the origin and precise estimates further away, so that distance from the origin conveys the relative amounts of information in the different studies. An unweighted regression line constrained through the origin has a slope equal to  the fixed-effectmeta-analysis point estimate. Similarly, lines from the origin to each individual point have slope equal to the (unstandardized) point estimate in each study. A radial (arc of a circle) scale can be used to illustrate these slopes, allowing immediate derivation of point estimates from the studies and the meta-analysis. When the radial scale is added, Galbraith plots are sometimes called ‘radial plots’. A statistical test for non-zero intercept in an unconstrained line through the plotted points is equivalent to a particular test for funnel plot asymmetry [33]."
+
+#### Trying to understand the different tests.
+```{r, eval = F}
+me = filter(all_data, dataset == "Mutual exclusivity")
+# [1] No moderators
+# (1a) classical egger test (random effect model) 
+re_model <- rma(d_calc, d_var_calc, data=me)
+regtest(re_model, model="lm") # regtest implements as: lm(yi ~ sqrt(vi) - 1, weights = 1/vi)
+
+# (1b) classical egger test, by hand
+summary(lm(d_calc ~ sqrt(d_var_calc),weights = 1/d_var_calc, data = me))
+
+# (1c) classical egger test different version. Eggers and Sterne (2005) say that  1a/1b should be the same as the below ...but they're not. Need this to do Egger's plot. Maybe because doesnt include overdispersion parameter?
+summary(lm(d_calc/sqrt(d_var_calc) ~ 1/sqrt(d_var_calc), data = me))
+
+# (1d) random/mixed-effects version of the Egger test
+regtest(re_model)
+ 
+# Egger plot of 1c
+ggplot(all_data, aes(y = d_calc/sqrt(d_var_calc), x = 1/sqrt(d_var_calc))) +
+  geom_point() +
+  facet_wrap(~ dataset, scales = "free_x") +
+  ylab("Standarized effect size") +
+  xlab("Precision") +
+  geom_smooth(method = "lm") +
+  geom_hline(yintercept = 0)
+
+
+# [2] Age moderator
+res_mixed <- rma(d_calc ~ mean_age_1, d_var_calc, data=me)
+
+# (2a) classic eggers
+regtest(res_mixed, model="lm")
+
+# (2b) random/mixed-effects version of the Egger test
+regtest(res_mixed)
+
+## Egger plot of 2a -- not sure how do do this.
+resid_df = data.frame(d_resid = resid(res_mixed), d_var_calc = me$d_var_calc)
+ggplot(resid_df, aes(x = 1/sqrt(d_resid), y = d_resid/sqrt(d_var_calc))) +
+  geom_point() +
+  #facet_wrap(~ dataset, scales = "free_x") +
+  ylab("Standarized effect size") +
+  xlab("Precision") +
+  geom_smooth(method = "lm") +
+  geom_hline(yintercept = 0)
+```
+
+#### Summary
+```{r}
+eggers_tests <- function(ma_data){
+    # models
+    model.basic = metafor::rma(ma_data$d_calc, ma_data$d_var_calc, method = "REML",
+               control = list(maxiter = 1000, stepadj = 0.5))
+    
+    N_response_mode  = length(levels(droplevels(as.factor(ma_data$response_mode)))) 
+    N_response_method = length(levels(droplevels(as.factor(ma_data$method)))) 
+
+    if (N_response_mode > 1 & N_response_method > 1){
+      model.mod = metafor::rma(ma_data$d_calc ~ ma_data$mean_age_1 + 
+                                 ma_data$response_mode +  ma_data$method, 
+                                ma_data$d_var_calc, method = "REML",
+               control = list(maxiter = 1000, stepadj = 0.5))
+    } else if (N_response_mode > 1) {
+        model.mod = metafor::rma(ma_data$d_calc ~ ma_data$mean_age_1 + ma_data$response_mode  , 
+                             ma_data$d_var_calc, method = "REML",
+               control = list(maxiter = 1000, stepadj = 0.5))
+      
+    } else if (N_response_method > 1) {
+              model.mod = metafor::rma(ma_data$d_calc ~ ma_data$mean_age_1  + ma_data$method, 
+                             ma_data$d_var_calc, method = "REML",
+               control = list(maxiter = 1000, stepadj = 0.5))
+    } else {
+             model.mod = metafor::rma(ma_data$d_calc ~ ma_data$mean_age_1 , 
+                             ma_data$d_var_calc, method = "REML",
+               control = list(maxiter = 1000, stepadj = 0.5))
+    }         
+      
+    # Eggers tests
+    egg.basic = regtest(model.basic, model="lm") 
+    egg.basic.random = regtest(model.basic) 
+    egg.mod = regtest(model.mod, model="lm") 
+    egg.mod.random = regtest(model.mod) 
+    
+    data.frame(dataset = ma_data$short_name[1],
+               egg.basic.z = egg.basic$zval,
+               egg.basic.p = egg.basic$pval,
+               egg.basic.random.z =  egg.basic.random$zval,
+               egg.basic.random.p =  egg.basic.random$pval,
+               egg.mod.z = egg.mod$zval,
+               egg.mod.p = egg.mod$pval,
+               egg.mod.random.z = egg.mod.random$zval,
+               egg.mod.random.p = egg.mod.random$pval)
+}
+
+eggers = all_data %>%
+  split(.$short_name) %>%
+  map(function(ma_data) eggers_tests(ma_data)) %>%
+  bind_rows() %>%
+  gather("p.type","p", contains(".p")) %>%
+  mutate(sig = ifelse(p<.05,"skewed", "not skewed")) %>%
+  select(p.type, sig, dataset)
+
+ggplot(eggers, aes(x = dataset, y =  p.type , 
+                          fill = sig)) +
+  geom_tile() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_fill_manual(values = c("blue","pink"))
+```
+
+Overall, mostly not skewed. It matters for inworddb and idspref which measure we use. My vote is for random with age moderator.

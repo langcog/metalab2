@@ -1,0 +1,497 @@
+---
+title: "A Quantitative Synthesis of Early Language Acquisition Using Meta-Analysis"
+author: Molly Lewis, Mika Braginsky, Sho Tsuji, Christina Bergmann, Page Piccinini,
+  Alejandrina Cristia, and Michael C. Frank
+date: '`r Sys.Date()`'
+output:
+  html_document:
+    code_folding: hide
+    number_sections: no
+    theme: cerulean
+    toc: true
+subtitle: Supplementary Information
+header-includes:
+- \usepackage{longtable}
+- \usepackage{caption}
+---
+
+```{r setup, include = F}
+rm(list = ls())
+
+# load packages
+source("../paper_analyses/pcurve.R")
+library(knitr)
+library(xtable)
+
+opts_chunk$set(message = F, warning = F, 
+               error = F, cache = T, tidy = T, tidy.opts=list(width.cutoff=50))
+```
+
+\captionsetup[figure]{labelformat=empty}
+
+This document was created from an [R markdown file](http://github.com/langcog/metalab/blob/master/write-ups/synthesis_paper/SI/synthesis_SI.Rmd). Data from the paper can be interactively explored on the [Metalab website, http://metalab.stanford.edu/](http://metalab.stanford.edu/). The manuscript itself was also produced from an  [R markdown file](http://github.com/langcog/metalab/blob/master/write-ups/synthesis_paper/metalab_synthesis.Rmd), and thus all analyses presented in the paper can be reproduced from that document.
+
+
+```{r load data, include = F}
+source("../../../dashboard/global.R", chdir = TRUE)
+
+# remove inappropriate conditions
+all_data <- filter(all_data, dataset != "Statistical word segementation") %>% # incomplete MA
+            filter(dataset != "Pointing and vocabulary (longitudinal)") %>%  # longitidinal MA
+            filter(is.na(condition_type) | condition_type == "critical") %>% # remove control conditions from labadv
+            filter(infant_type == "typical") # exclude bilingual, delays, etc.
+
+# need to recompute datasets summary data, based on filtered all_data
+studies <- all_data %>%
+  group_by(dataset) %>%
+  summarise(num_experiments = n(),
+            num_papers = length(unique(study_ID)))
+
+subjects <- all_data %>%
+  rowwise() %>%
+  mutate(n_total = sum(c(n_1, n_2), na.rm = TRUE)) %>%
+  distinct(dataset, study_ID, same_infant, .keep_all = TRUE) %>%
+  group_by(dataset) %>%
+  summarise(num_subjects = sum(n_total))
+
+datasets <- datasets %>%
+  rename(dataset = name) %>%
+  select(-num_experiments, -num_papers, -num_subjects) %>%
+  filter(dataset != "Statistical word segementation") %>% 
+  filter(dataset != "Pointing and vocabulary (longitudinal)") %>%
+  left_join(studies) %>%
+  left_join(subjects) %>%
+  rename(name = dataset)
+
+# rename pointing and vocabulary 
+datasets$name = plyr::mapvalues(datasets$name, from = c("Pointing and vocabulary (concurrent)"), 
+                                to = c("Pointing and vocabulary"))
+
+all_data$dataset = plyr::mapvalues(all_data$dataset , from = c("Pointing and vocabulary (concurrent)"),
+                                   to = c("Pointing and vocabulary"))
+```
+## Search strategies
+Meta-analyses were conducted by the authors for all but two phenomena (IDS preference and Pointing and Vocabulary). Data for these two phenomena were obtained by adapting effect size estimates from existing, published meta-analyses (Dunst, Gorman, & Hamby, 2012; Colonnesi et al., 2010). Across phenomena, meta-analyses varied in their degree of systematicty in selecting papers. In the table below, we describe the search strategy for each phenomenon. Quoted descriptions are taken directly from the published source.
+
+```{r}
+methods.table = datasets %>%
+                  select(name, search_strategy, internal_citation)  %>%
+                  mutate(name = as.factor(name),
+                  name = plyr::revalue(name, 
+  c("Infant directed speech preference"="IDS preference",
+                                   "Statistical sound category learning"="Statistical sound learning", 
+                                   "Label advantage in concept learning"="Concept-label advantage",
+                                   "Vowel discrimination (native)"="Native vowel discrimination",
+                                   "Vowel discrimination (non-native)"="Non-native vowel discrimination"))) %>%
+                  mutate(name=paste(name, internal_citation)) %>%
+                  select(-internal_citation) %>%
+                  .[c(1, 6, 4, 5, 7, 8, 10, 12, 2, 9, 3, 11),] %>%
+                  rename(Phenomenon = name,
+                          `Search Strategy` = search_strategy)
+kable(methods.table, row.names = F)
+```
+
+
+## Statistical approach
+Effect sizes were computed by a script, [compute_es.R](https://github.com/langcog/metalab/blob/master/scripts/compute_es.R), available in the Github repository. We calculated effect sizes from reported means and standard deviations where available, otherwise we relied on reported test-statistics (*t* and *F*). Several pre-existing MAs deal with special cases, and these are listed in the script. Except where noted, formulas are from<a href="http://www.amazon.com/Statistical-Methods-Meta-Analysis-Larry-Hedges/dp/0123363802" target= "_top"> Hedges & Olkin's textbook</a> (2014). All analyses were conducted with the [metafor](http://www.metafor-project.org/doku.php) package (Viechtbauer, 2010), using random-effects models. Note that a subset of individual MAs (such as Sound Symbolism) contain effect sizes that are not statistically independent, while the current implementation of random-effect models assumes independence of all individual effect sizes.
+
+For many analyses, the use of a multi-level approach (with grouping by paper) is useful. We do not implement these models in our main analyses because many common statistics are not implemented for these models, e.g. the test for funnel-plot asymmetry. The table below compares the overall ES estimate for the multi-level model to the random effect model (presented in the main text). 95% confidence intervals are given in brackets. These models differ only slightly in their estimates of overall effect size, and in no case do they affect whether the ES differs from zero.
+
+```{r}
+overall_es <- function(ma_data, multilevel){
+    if (multilevel){
+        model = metafor::rma.mv(d_calc, V = d_var_calc,
+                random = ~ 1 | short_cite, data = ma_data)
+    } else {
+        model = metafor::rma(d_calc, d_var_calc, data = ma_data)
+    }
+    data.frame(dataset = ma_data$short_name[1],
+               overall.d = model$b,
+               ci_lower = model$ci.lb,
+               ci_upper = model$ci.ub)
+}
+
+all_ds_random = all_data %>%
+  split(.$short_name) %>%
+  map(function(ma_data) overall_es(ma_data, 0)) %>%
+  bind_rows() %>%
+  mutate_each_(funs(round(., digits = 2)), 
+               vars = c("overall.d", "ci_lower", "ci_upper")) %>%
+  mutate(d_string_random = paste0(overall.d, " [", ci_lower, ", ",ci_upper, "]")) %>%
+  mutate(short_name = dataset) %>%
+  select(short_name, d_string_random)
+
+all_ds_multi = all_data %>%
+  split(.$short_name) %>%
+  map(function(ma_data) overall_es(ma_data, 1)) %>%
+  bind_rows() %>%
+  mutate_each_(funs(round(., digits = 2)), 
+               vars = c("overall.d", "ci_lower", "ci_upper")) %>%
+  mutate(d_string_multi = paste0(overall.d, " [", ci_lower, ", ",ci_upper, "]")) %>%
+  mutate(short_name = dataset) %>%
+  select(short_name, d_string_multi)
+
+left_join(all_ds_random, all_ds_multi) %>%
+            left_join(select(datasets, name, short_name)) %>%
+  select(name, d_string_random, d_string_multi) %>%
+  mutate(name = as.factor(name),
+       name = plyr::revalue(name, 
+                            c("Infant directed speech preference"="IDS preference",
+                              "Statistical sound category learning"="Statistical sound learning", 
+                             "Label advantage in concept learning"="Concept-label advantage",
+                             "Vowel discrimination (native)"="Native vowel discrimination",
+                             "Vowel discrimination (non-native)"="Non-native vowel discrimination"))) %>%
+  .[c(2,8,3,4,10,5,7,11,6,12,1,9),]   %>%
+  kable(col.names = c("Phenomenon", "Random-effect model ES",  "Mixed-effect model ES"), row.names = F, align = c("l", "r", "r"))
+```
+
+## Funnel plots
+```{r}
+funnel.es.with.outliers = all_data %>%
+  mutate(dataset = as.factor(dataset),
+         dataset= gdata::reorder.factor(dataset, 
+                                    new.order = c(2,6,10,11,9,12,4,8,3,5,1,7)),
+         dataset = plyr::revalue(dataset, 
+                                 c("Infant directed speech preference"="IDS preference",
+                                   "Statistical sound category learning"="Statistical sound learning", 
+                                   "Label advantage in concept learning"="Concept-label advantage",
+                                   "Vowel discrimination (native)"="Vowel discrimination\n(native)",
+                                   "Vowel discrimination (non-native)"="Vowel discrimination\n(non-native)"))) %>%
+  group_by(dataset) %>%
+  mutate(outlier = ifelse(d_calc > mean(d_calc)  + (3 * sd(d_calc)) | d_calc < mean(d_calc)  - (3 * sd(d_calc)), 1, 0),
+         outlier = as.factor(outlier)) 
+```
+If an effect size is an extreme outlier from the overall mean, this may indicate that the effect size estimates a different psychological phenomenon than the one estimated by others in the sample. One approach for dealing with this type of heterogenity is to exclude outliers from analyses. Here we present funnel plots that exclude effect sizes that lie 3 standard deviations above or below the mean effect size for each meta-analysis. Of the `r nrow(funnel.es.with.outliers)` effect sizes in the dataset, `r nrow(filter(funnel.es.with.outliers, outlier == 1))` were outliers (`r round(nrow(filter(funnel.es.with.outliers, outlier == 1))/nrow(funnel.es.with.outliers),3)*100`%).
+
+```{r, fig.pos = "T!", fig.width=8, fig.height=5.5, fig.cap = "Figure S1: Funnel plots for each meta-analysis with outliers excluded. Each effect size estimate is represented by a point, and the mean effect size is shown as a red dashed line. The grey dashed line shows an effect size of zero. The funnel corresponds to a 95%  CI around this mean."}
+
+CRIT_95 = 1.96 
+
+funnel.es.data = funnel.es.with.outliers %>%
+  filter(outlier == 0) %>%
+  mutate(se = sqrt(d_var_calc), 
+         es = d_calc, 
+         center = mean(d_calc), 
+         lower_lim = max(se) + .05 * max(se))
+
+# separate df for 95 CI funnel shape
+funnel95.data.wide <- funnel.es.data %>%
+                select(center, lower_lim, dataset) %>%
+                group_by(dataset) %>%
+                summarise(x1 = (center-lower_lim * CRIT_95)[1], 
+                          x2 = center[1],
+                          x3 = center[1] + lower_lim[1] * CRIT_95,
+                          y1 = -lower_lim[1],
+                          y2 =  0, 
+                          y3 = -lower_lim[1]) 
+
+funnel95.data.x = funnel95.data.wide  %>%
+                  select(dataset,  dplyr::contains("x")) %>%
+                  gather("coordx", "x", 2:4) %>%
+                  arrange(dataset, coordx) %>%
+                  select(-coordx)
+
+funnel95.data.y = funnel95.data.wide  %>%
+                  select(dataset, dplyr::contains("y")) %>%
+                  gather("coordy", "y", 2:4) %>%
+                  arrange(dataset, coordy) %>%
+                  select(-coordy)
+
+funnel95.data = bind_cols(funnel95.data.x, funnel95.data.y)
+
+ggplot(funnel.es.data, aes(x = es, y = -se)) +
+  facet_wrap(~dataset, scales = "free") +
+  xlab("Effect Size")  +
+  ylab("Standard Error\n")  +
+  scale_colour_solarized(name = "") +
+  geom_polygon(aes(x = x, y = y), 
+               data = funnel95.data,
+               fill = "white") +
+  geom_vline(aes(xintercept=x2), 
+             linetype = "dashed", color = "red", size = .8, data = funnel95.data.wide) +
+  geom_vline(xintercept = 0, linetype = "dashed",
+             color = "grey44",  size = .8) +
+  scale_y_continuous(labels = function(x){abs(x)}) +
+  geom_point(size = .5) +
+  theme(panel.grid.major = element_line(colour = "grey", size = 0.2),
+        panel.grid.minor = element_line(colour = "grey", size = 0.5),
+        strip.text.x = element_text(size = 9),
+        strip.background = element_rect(fill="grey")) 
+```
+
+
+We next compare the results of funnel skew (Egger's test) for the dataset with outliers excluded to the full dataset (which is reported in the main text). There is a difference in significance for only Statistical Sound Learning: With outliers excluded, these meta-analyses no longer show evidence for skew.
+
+```{r, funnel_skew,}
+eggers_tests <- function(ma_data){
+    model = metafor::rma(d_calc, d_var_calc, data = ma_data) # model
+    egg.random = metafor::regtest(model) # Egger's test
+    data.frame(dataset = ma_data$short_name[1],
+               egg.random.z = egg.random$zval,
+               egg.random.p = egg.random$pval)
+}
+
+eggers.data.f = all_data %>%
+  group_by(dataset) %>%
+  mutate(outlier = ifelse(d_calc > mean(d_calc)  + (3 * sd(d_calc)) |
+                            d_calc < mean(d_calc)  - (3 * sd(d_calc)), 1, 0),
+         outlier = as.factor(outlier)) %>%
+  filter(outlier == 0) %>%
+  ungroup() %>%
+  split(.$short_name) %>%
+  map(function(ma_data) eggers_tests(ma_data)) %>%
+  bind_rows() %>%
+  mutate(egg.random.z = round(egg.random.z, digits = 2)) %>%
+  mutate(egg.random.p = round(egg.random.p, digits = 2)) %>%
+  mutate(egg_string.f = paste0(egg.random.z, " (", egg.random.p, ")")) %>%
+  select(dataset, egg_string.f)
+
+eggers.data.all = all_data %>%
+  group_by(dataset) %>%
+  ungroup() %>%
+  split(.$short_name) %>%
+  map(function(ma_data) eggers_tests(ma_data)) %>%
+  bind_rows() %>%
+  mutate(egg.random.z = round(egg.random.z, digits = 2)) %>%
+  mutate(egg.random.p = round(egg.random.p, digits = 2)) %>%
+  mutate(egg_string.all = paste0(egg.random.z, " (", egg.random.p, ")")) %>%
+  select(dataset, egg_string.all)
+
+left_join(eggers.data.all, eggers.data.f) %>%
+              ungroup() %>%
+             .[c(2,8,3,4,10,5,7,11,6,12,1,9),]  %>% # reorder rows 
+              left_join(select(datasets, name, short_name),
+                        by=c("dataset" = "short_name" )) %>%
+              select(-dataset) %>%
+              mutate(dataset = as.factor(name),
+                    dataset = plyr::revalue(dataset,
+                    c("Infant directed speech preference" ="IDS preference",
+                    "Statistical sound category learning"= "Statistical sound learning",
+                    "Label advantage in concept learning" =  "Concept-label advantage"))) %>%
+              mutate(egg_string.f = sub("(0)", "(< .01)", egg_string.f, fixed = T),
+                    egg_string.all = sub("(0)", "(< .01)", egg_string.all, fixed = T)) %>%
+  select(dataset, egg_string.all, egg_string.f) %>%
+  kable(col.names = c("Phenomenon", "funnel skew (all conditions)",
+                      "funnel skew (excluding outliers)"), 
+        align = c("l", "r", "r"))
+```
+
+
+## P-curves
+When available,  we calculated p-values based on test statistics reported in the paper. However, when unavailable, we calculated p-values based on raw descriptive statistics (means and standard deviations) or reported effect sizes (the method used for IDS Preference). The main text shows the results of the p-curve analysis based on p-values derived by both approaches. Here, we compare these results to the same analysis on the subset of p-values derived only from reported test statistics. Presented below are p-curves calculated from this subset.
+
+```{r get_pcurves, fig.height = 6, fig.cap = "Figure S2: In the main text, we calculate p-curves based on all conditions in the dataset. In cases where a p-value was not directly available from the reported test statistic, we calculated a p-value based on a significance test using the reported means and standard deviations. The table compares the test of right-skew (Stouffer method) for this full dataset, as reported in the main text, to the subset of conditions for which  p-values were directly available. Error bars are 95% confidence intervals calculated from a multinomial distribution."}
+ALPHA = .05
+P_INCREMENT = .01 
+
+pc.data <- get_all_pc_data(all_data, ALPHA, P_INCREMENT, transform = FALSE)
+
+p.source = pc.data %>%
+  select(f.transform, f.value, dataset, study_ID, p_round) %>%
+  group_by(dataset) %>%
+  summarise(n.total = n(),
+            n.transform = length(which(!is.na(f.transform))),
+            sig.p = length(which(p_round < ALPHA))) %>%
+  mutate(dataset = plyr::revalue(dataset, 
+  c("Infant directed speech preference"="IDS preference",
+"Statistical sound category learning"="Statistical sound learning", 
+ "Label advantage in concept learning"="Concept-label advantage",
+"Vowel discrimination (native)"="Vowel discrimination\n(native)",
+ "Vowel discrimination (non-native)"="Vowel discrimination\n(non-native)")),
+          dataset = as.factor(dataset),
+          dataset = gdata::reorder.factor(dataset, 
+                                    new.order = c(2,6,10,11,9,12,4,8,3,5,1,7))) %>%
+  mutate(stat_only = ifelse(n.total > n.transform, 1, 0)) %>%
+  arrange(-stat_only) %>%
+  mutate(prop.ts = 1-n.transform/n.total,
+         prop.ts.string = as.character(round(prop.ts, digits = 2))) %>%
+  as.data.frame()
+
+get.all.CIS.multi <- function(df) {
+  ps <-  seq(P_INCREMENT, ALPHA, P_INCREMENT)
+  props = ps %>%
+    map(function(p,d){sum(d == p)}, df$p_round) %>%
+    unlist()
+  cis = MultinomialCI::multinomialCI(props, alpha = ALPHA)
+  data.frame(dataset = df$dataset[1],
+             p = ps,
+             ci.lower = cis[,1],
+             ci.upper = cis[,2])
+}
+
+ci.data = pc.data %>%
+  split(.$dataset) %>%
+  map(function(data) get.all.CIS.multi(data)) %>%
+  bind_rows() %>%
+  mutate(dataset = as.factor(dataset),
+         dataset = plyr::revalue(dataset, 
+  c("Infant directed speech preference"="IDS preference","Statistical sound category learning"="Statistical sound learning", "Label advantage in concept learning"="Concept-label advantage","Vowel discrimination (native)"="Vowel discrimination\n(native)","Vowel discrimination (non-native)"="Vowel discrimination\n(non-native)")))
+
+ci.data[ci.data$dataset == "Sound symbolism" & ci.data$p == .01, "ci.lower"] = 0 # there's only one datapoint for this dataset
+
+pc.data %>%
+  group_by(dataset) %>%
+  do(get_p_curve_df(., ALPHA, P_INCREMENT)) %>%
+  ungroup() %>%
+  mutate(dataset = as.factor(dataset),
+         dataset = plyr::revalue(dataset, 
+c("Statistical sound category learning"="Statistical sound learning","Label advantage in concept learning"="Concept-label advantage","Vowel discrimination (native)"="Vowel discrimination\n(native)","Vowel discrimination (non-native)"="Vowel discrimination\n(non-native)")), 
+dataset = gdata::reorder.factor(dataset,new.order = c(3, 7, 8, 6, 9, 2, 5, 1, 4))) %>%
+  ggplot() + 
+  facet_wrap(~ dataset, nrow = 3) +
+  geom_ribbon(aes(ymin = ci.lower, ymax = ci.upper, x = p), fill = "grey87", data = ci.data) +
+  geom_line(size = 1, aes(x = p, y = value, linetype = measure, color = measure)) +
+  scale_colour_manual(name = "", values = c("red", "green", "blue"), 
+                      labels=c("Null of no effect", "Null of 33% power", "Observed")) +
+  scale_linetype_manual(values = c("dashed", "dashed", "solid"), guide = FALSE)  +
+  ylab("Proportion p-values\n") +
+  xlab("p-value") +
+  geom_text(aes(label = paste("prop. test stat. = ", prop.ts.string,
+                              "\nnum. sig. ps = ", sig.p),
+                x = .028, y = .8), data = p.source, 
+            colour = "black", size = 2, hjust = 0) +
+  theme_bw() + 
+  theme(legend.position = "top",
+        legend.key = element_blank(),
+        legend.background = element_rect(fill = "transparent"),
+        strip.text.x = element_text(size = 9),
+        axis.title = element_text(colour = "black", size = 12),
+        panel.margin = unit(.65, "lines"),
+       strip.background = element_rect(fill="grey"))
+```
+
+We next compare the test of right-skew presented in the main text for both the full set of p-values and those only derived from test statistics.  In no case does the significance of the test differ between the two analyses.
+
+```{r}
+stouffer.data = pc.data %>%
+  group_by(dataset) %>%
+  do(data.frame(stouffer = stouffer_test(., ALPHA))) %>%
+  filter(stouffer.pp.measure == "ppr.full") %>%
+  full_join(datasets %>% select(name, short_name), by= c("dataset" = "name")) %>%
+  select(short_name,stouffer.Z.pp, stouffer.p.Z.pp) %>%
+  mutate_each_(funs(round(., digits = 2)),
+               vars = c("stouffer.p.Z.pp", "stouffer.Z.pp")) %>%
+  mutate(stouff_string = ifelse(is.na(as.character(stouffer.Z.pp)), "",
+              paste0(stouffer.Z.pp, " (", stouffer.p.Z.pp,")"))) %>%
+   mutate(stouff_string = sub("(0)", "(< .01)", stouff_string, fixed = T)) %>%
+   select(dataset, stouff_string)
+
+stouffer.data_all = get_all_pc_data(all_data, ALPHA, P_INCREMENT, transform = TRUE) %>%
+  group_by(dataset) %>%
+  do(data.frame(stouffer = stouffer_test(., ALPHA))) %>%
+  filter(stouffer.pp.measure == "ppr.full") %>%
+  full_join(datasets %>% select(name, short_name), by= c("dataset" = "name")) %>%
+  select(short_name,stouffer.Z.pp, stouffer.p.Z.pp) %>%
+  mutate_each_(funs(round(., digits = 2)), vars = c("stouffer.p.Z.pp",
+                                                    "stouffer.Z.pp")) %>%
+  mutate(stouff_string = ifelse(is.na(as.character(stouffer.Z.pp)), "",
+                                paste0(stouffer.Z.pp, " (", stouffer.p.Z.pp,")"))) %>%
+   mutate(stouff_string = sub("(0)", "(< .01)", stouff_string, fixed = T)) %>%
+   select(dataset, stouff_string)
+
+# p-curve data using from all conditions (same as reported in paper)
+pc.data.all <- get_all_pc_data(all_data, ALPHA, P_INCREMENT, transform = TRUE)
+
+left_join(stouffer.data_all, stouffer.data, by = "dataset") %>%
+  .[c(2,6,10,11,9,12,4,8,3,5,1,7),]  %>%
+
+  kable(col.names = c("Phenomenon", "p-curve skew  (all conditions)",
+                      "p-curve skew (p-values only from test-statistics)"), align = c("l", "r", "r"))
+```
+
+
+## Method heterogeneity
+The plot below presents model coefficients for method for datasets with more than one method. Coefficients are estimated from random-effects meta-analytic models. For the most part, we see that method only has a small influence on the effect size within a given phenomenon. There are exceptions, however: For example, for Sound Symbolism the forced choice method has an overall larger effect size than other methods.
+
+```{r, fig.height = 5.5, fig.width = 10}
+single_method_datasets = all_data %>%
+  group_by(dataset) %>%
+  summarise(n_methods = length(levels(as.factor(method)))) %>%
+  filter(n_methods == 1) %>%
+  .[["dataset"]]
+
+method.betas = data.frame()
+for (i in 1:length(datasets$name)) {
+    
+    if (!(datasets$name[i] %in% single_method_datasets)) {
+        d = filter(all_data, dataset == datasets$name[i])
+        model = metafor::rma(d_calc ~ method - 1, vi = d_var_calc, data = d, method = "REML")
+  
+        d = data.frame(dataset = datasets$name[i], 
+                       method = row.names(model$b),
+                       betas = model$b,
+                       ci.lb = model$ci.lb,
+                       ci.ub= model$ci.ub,
+                       row.names = NULL) 
+        
+        method.betas = rbind(method.betas,d)
+    }
+}
+
+method.betas = method.betas %>%
+         mutate(dataset = as.factor(dataset),
+         dataset = plyr::revalue(dataset, 
+          c("Infant directed speech preference"="IDS preference")),
+         method = gsub("method", "", method))
+
+ggplot(method.betas, aes(x = dataset, y = betas, ymin = ci.lb, 
+                             ymax = ci.ub, color = method)) +
+  geom_hline(aes(yintercept = 0), linetype = "dashed") +
+  geom_pointrange(position=position_jitter(0.5)) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1.1))
+
+```
+
+The plot below presents the developmental trajectory of each phenomenon, with a separate color for each method. Lines show log-linear model fits. Word Segmentation shows the most notable interaction between age and method: Effect sizes increase with age for head-turn preference procedure, but decrease for central fixation.
+
+```{r, fig.height = 10, fig.width = 10}
+  all_data %>%
+    filter(mean_age_1/365 < 3) %>%
+  mutate(dataset = as.factor(dataset),
+         dataset= gdata::reorder.factor(dataset, 
+                                    new.order = c(2, 6, 10, 11, 9, 12, 4, 8, 3, 5, 1, 7)),
+         dataset = plyr::revalue(dataset, 
+                                 c("Infant directed speech preference"="IDS preference",
+                                   "Statistical sound category learning"="Statistical sound learning", 
+                                   "Label advantage in concept learning"="Concept-label advantage",
+                                   "Vowel discrimination (native)"="Vowel discrimination\n(native)",
+                                   "Vowel discrimination (non-native)"="Vowel discrimination\n(non-native)"))) %>%
+      ggplot(aes(x = mean_age_1/365, y = d_calc, color = method)) +
+        geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
+         facet_wrap(~dataset, scales = "free_y", ncol = 3) +
+         geom_smooth(method = "lm", formula = y ~ log(x)) +
+         xlab("Age (years)") +
+         ylab("Effect size (d)") +
+         theme_bw() +
+         theme(legend.position = "right",
+         legend.key = element_blank(),
+         legend.background = element_rect(fill = "transparent"))
+```
+
+
+
+## References
+Bergmann, C., & Cristia, A. (in press). Development of infants’ segmentation of words from native speech: A meta-analytic approach. _Developmental Science_.    
+
+Colonnesi, C., Stamsa, G. J., Kostera, I., & Noomb, M. J. (2010). The relation between pointing and language development: A meta-analysis. _Developmental Review_, 30, 352–366.
+                                                
+Cristia, A. (in prep.). Infants' phonology learning in the lab.    
+
+Dunst, C. J., Gorman, E., & Hamby, D. W. (2012). Preference for infant-directed speech in preverbal young children. _Center for Early Literacy Learning_, _5_(1).                
+
+Frank, M. C., Lewis, M., & MacDonald, K. (2016). A performance model for early wordlearning. In _Proceedings of the 38th Annual Conference of the Cognitive Science Society_.
+
+Hedges, L. V., & Olkin, I. (2014). _Statistical methods for meta-analysis_. Academic Press.
+
+Lammertink, I., Fort, M., Peperkamp, S., Fikkert, P., Guevara-Rukoz, A., & Tsuji, S. (2016). SymBuki: A meta-analysis on the sound-symbolic bouba-kiki effect in infants and toddlers. Poster presented at the XXI Biennial International Congress of Infant Studies, New Orleans, USA.
+
+Lewis, M. & Frank, M. (in prep.). Mutual exclusivity: A meta-analysis. 
+
+Lewis, M. & Long, B. (unpublished). A meta-analysis of the concept-label advantage.  
+
+Tsuji, S. & Cristia, A. (2014). Perceptual attunement in vowels: A meta-analysis. _Developmental Psychobiology_, _56_(2), 179-191.    
+
+Viechtbauer, W. (2010). Conducting meta-analyses in R with the metafor package. _Journal of Statistical Software_, _36_(3), 1-48. URL: http://www.jstatsoft.org/v36/i03/
+
+

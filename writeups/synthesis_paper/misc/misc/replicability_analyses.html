@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="author" content="Molly Lewis, Christina Bergmann, and Mike Frank" />
+
+<meta name="date" content="2016-05-27" />
+
+<title>Replicability Analyses for Synthesis Paper</title>
+
+<script src="out/libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="out/libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="out/libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="out/libs/tocify-1.9.1/jquery.tocify.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="out/libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="out/libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="out/libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="out/libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; }
+code > span.dt { color: #204a87; }
+code > span.dv { color: #0000cf; }
+code > span.bn { color: #0000cf; }
+code > span.fl { color: #0000cf; }
+code > span.ch { color: #4e9a06; }
+code > span.st { color: #4e9a06; }
+code > span.co { color: #8f5902; font-style: italic; }
+code > span.ot { color: #8f5902; }
+code > span.al { color: #ef2929; }
+code > span.fu { color: #000000; }
+code > span.er { font-weight: bold; }
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script src="out/libs/navigation-1.0/tabsets.js"></script>
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+<script src="out/libs/navigation-1.0/codefolding.js"></script>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+
+
+<script>
+$(document).ready(function ()  {
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: "h1.title, .toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.9em;
+  padding-left: 5px;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="text-muted">Code</span> <span class="text-muted caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All</a></li>
+</ul>
+</div>
+
+<h1 class="title">Replicability Analyses for Synthesis Paper</h1>
+<h4 class="author"><em>Molly Lewis, Christina Bergmann, and Mike Frank</em></h4>
+<h4 class="date"><em>2016-05-27</em></h4>
+
+</div>
+
+
+<p>This document includes all the analyses for the “replicability” section of the Synthesis Paper. Abbreviated versions of this code are included in the manuscript. Here we analyze five different features of replicability: overall effect size, p-curve, power, fail-safe-N, and funnel plot skew.</p>
+<div id="average-effect-size" class="section level2">
+<h2>Average effect size</h2>
+<pre class="sourceCode r"><code class="sourceCode r">overall_es &lt;-<span class="st"> </span>function(ma_data){
+  model =<span class="st"> </span><span class="kw">rma</span>(ma_data$d_calc, ma_data$d_var_calc, <span class="dt">method =</span> <span class="st">&quot;REML&quot;</span>,
+               <span class="dt">control =</span> <span class="kw">list</span>(<span class="dt">maxiter =</span> <span class="dv">1000</span>, <span class="dt">stepadj =</span> <span class="fl">0.5</span>))
+    <span class="kw">data.frame</span>(<span class="dt">dataset =</span> ma_data$short_name[<span class="dv">1</span>],
+               <span class="dt">overall.d =</span> model$b,
+               <span class="dt">ci_lower =</span> model$ci.lb,
+               <span class="dt">ci_upper =</span> model$ci.ub)
+}
+
+all_ds =<span class="st"> </span>all_data %&gt;%
+<span class="st">  </span><span class="kw">split</span>(.$short_name) %&gt;%
+<span class="st">  </span><span class="kw">map</span>(function(ma_data) <span class="kw">overall_es</span>(ma_data)) %&gt;%
+<span class="st">  </span><span class="kw">bind_rows</span>() %&gt;%
+<span class="st">  </span><span class="kw">group_by</span>(dataset) %&gt;%
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">overall.d =</span> <span class="kw">round</span>(overall.d, <span class="dt">digits =</span> <span class="dv">2</span>),
+         <span class="dt">ci_lower  =</span> <span class="kw">round</span>(ci_lower, <span class="dt">digits =</span> <span class="dv">2</span>),
+         <span class="dt">ci_upper =</span> <span class="kw">round</span>(ci_upper, <span class="dt">digits =</span> <span class="dv">2</span>))
+
+<span class="co">#kable(all_ds)</span>
+
+<span class="kw">qplot</span>(<span class="kw">reorder</span>(dataset,-overall.d), overall.d, <span class="dt">ymin =</span> ci_lower, <span class="dt">ymax =</span> ci_upper,
+          <span class="dt">geom =</span> <span class="st">&quot;linerange&quot;</span>,
+          <span class="dt">data =</span> all_ds) +
+<span class="st">      </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y =</span> overall.d)) +
+<span class="st">      </span><span class="kw">geom_pointrange</span>(<span class="kw">aes_string</span>(<span class="dt">x =</span> <span class="st">&quot;dataset&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;overall.d&quot;</span>,
+                                 <span class="dt">ymin =</span> <span class="st">&quot;ci_lower&quot;</span>, <span class="dt">ymax =</span> <span class="st">&quot;ci_upper&quot;</span>)) +
+<span class="st">      </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;grey&quot;</span>) +
+<span class="st">      </span><span class="kw">coord_flip</span>() +
+<span class="st">      </span><span class="kw">scale_size_continuous</span>(<span class="dt">guide =</span> <span class="ot">FALSE</span>) +
+<span class="st">      </span><span class="kw">scale_colour_solarized</span>(<span class="dt">name =</span> <span class="st">&quot;&quot;</span>, <span class="dt">labels =</span> labels) +
+<span class="st">      </span><span class="kw">xlab</span>(<span class="st">&quot;Dataset&quot;</span>) +
+<span class="st">      </span><span class="kw">ylab</span>(<span class="st">&quot;Effect Size&quot;</span>)</code></pre>
+<p><img src="replicability_analyses_files/figure-html/unnamed-chunk-1-1.png" title="" alt="" width="672" /></p>
+</div>
+<div id="p-curves" class="section level2">
+<h2>P-curves</h2>
+<p>P-curves have been proposed as one (of many) ways to measure publication biases, because so-called p-hacking (conducting multiple statistical analyses, excluding data points, etc. until a p-value below the significance threshold [typically .05] is reached) can lead to an inflation of high p-values that are nonetheless significant. The exected distribution of p-values in the absence of prevalent p-hacking of a null effect is biased towards smaller values. The present script is based on the p-curve app version 4.0.</p>
+<p>One of the main problems with p-curve is the use of text mining to generate input, and the presence of heterogeneous tests (<a href="https://peerj.com/articles/1715/" class="uri">https://peerj.com/articles/1715/</a>). In the case of MetaLab, however, all test statistics were entered by hand and concern a homogeneous research literature (within each dataset). Further, we only enter the <em>main</em> test statistic which would also be used to calculate effect sizes in our meta-analysis. Therefore, we believe that p-curve is an appropriate analysis for the dataset.</p>
+<div id="data-preparation" class="section level3">
+<h3>Data preparation</h3>
+<p>When reported or necessary to calculate effect sizes, we note the t-value or F-score for each record (a single study). We do not consider studies for which this information was unavailable in the following analyses.</p>
+<p>To calculate p-values from <span class="math">\(t\)</span>-values and <span class="math">\(F\)</span>-scores, we also need the degrees of freedom. When one group of participants was tested, we use <span class="math">\(N-1\)</span>, for a two group comparison design we use <span class="math">\(N-2\)</span>. <span class="math">\(F\)</span>-scores require two degrees of freedom, the first one however is always one in the main analysis of interest (we do not enter or consider e.g., interactions of the main effect of interest with covariates such as age, gender, etc.).</p>
+<p>We need to source code from the p-curve app. This p-curve report is based on the p-curve app 4.0 via code from the <a href="http://p-curve.com/app4/App%204.0%20p-curve%202016%2001%2011.r">app</a>. We have heavily adapted this code, however.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;pcurve.R&quot;</span>)
+
+<span class="co"># Set global variables</span>
+ALPHA =<span class="st"> </span>.<span class="dv">05</span>
+P_INCREMENT =<span class="st"> </span>.<span class="dv">01</span> 
+
+<span class="co"># Get all data necessary to do p-curve calculations</span>
+pc.data &lt;-<span class="st"> </span><span class="kw">get_all_pc_data</span>(all_data, ALPHA, P_INCREMENT)</code></pre>
+</div>
+<div id="p-curves-1" class="section level3">
+<h3>P-curves</h3>
+<pre class="sourceCode r"><code class="sourceCode r">pc.data %&gt;%
+<span class="st">  </span><span class="kw">group_by</span>(dataset) %&gt;%
+<span class="st">  </span><span class="kw">do</span>(<span class="kw">get_p_curve_df</span>(., ALPHA, P_INCREMENT)) %&gt;%
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> p, <span class="dt">y =</span> value, <span class="dt">linetype =</span> measure, <span class="dt">color =</span> measure)) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size =</span> <span class="dv">1</span>) +
+<span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">name =</span> <span class="st">&quot;&quot;</span>, <span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;blue&quot;</span>),<span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;baseline&quot;</span>, <span class="st">&quot;expected&quot;</span>, <span class="st">&quot;observed&quot;</span>)) +
+<span class="st">  </span><span class="kw">scale_linetype_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;dashed&quot;</span>, <span class="st">&quot;dashed&quot;</span>, <span class="st">&quot;solid&quot;</span>), <span class="dt">guide =</span> <span class="ot">FALSE</span>)  +
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;&quot;</span>) +
+<span class="st">  </span><span class="co">#scale_colour_discrete(labels=c(&quot;baseline&quot;, &quot;expected&quot;, &quot;observed&quot;)) +</span>
+<span class="st">  </span><span class="kw">facet_wrap</span>(~<span class="st"> </span>dataset) </code></pre>
+<p><img src="replicability_analyses_files/figure-html/unnamed-chunk-3-1.png" title="" alt="" width="672" /></p>
+</div>
+<div id="test-for-right-skew." class="section level3">
+<h3>Test for right skew.</h3>
+<p>We employ inferential statistics to test whether the p-curves are right skewed, i.e. whether they have eveidential value. Following Simonsohn, Simmons and Nelson (2015) we use the Stouffer method. This method is less sensitive to outliers, relative to Fischer method (in the 2014a paper). We test full, half, 33 power, and full powered versions.</p>
+<pre class="sourceCode r"><code class="sourceCode r">stouffer.data =<span class="st"> </span>pc.data %&gt;%
+<span class="st">  </span><span class="kw">group_by</span>(dataset) %&gt;%
+<span class="st">  </span><span class="kw">do</span>(<span class="kw">data.frame</span>(<span class="dt">stouffer =</span> <span class="kw">stouffer_test</span>(., ALPHA))) 
+
+<span class="kw">ggplot</span>(stouffer.data, <span class="kw">aes</span>(<span class="dt">x =</span> dataset, <span class="dt">y =</span> stouffer.pp.measure, 
+                          <span class="dt">fill =</span> stouffer.sig)) +
+<span class="st">  </span><span class="kw">geom_tile</span>() +
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>)) +
+<span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;pink&quot;</span>))</code></pre>
+<p><img src="replicability_analyses_files/figure-html/unnamed-chunk-4-1.png" title="" alt="" width="672" /></p>
+</div>
+</div>
+<div id="power" class="section level2">
+<h2>Power</h2>
+<div id="raw-power" class="section level3">
+<h3>Raw power</h3>
+<p>Just for comparision, let’s get an estimate of the power using pwr.t.test to compare to p-curve. (I’m not totally sure this is reasonable)</p>
+<pre class="sourceCode r"><code class="sourceCode r">powers =<span class="st"> </span>all_data %&gt;%
+<span class="st">  </span><span class="kw">left_join</span>(all_ds %&gt;%<span class="st"> </span><span class="kw">rename</span>(<span class="dt">short_name =</span> dataset)) %&gt;%
+<span class="st">  </span><span class="kw">select</span>(dataset, short_name, overall.d, n_1, n_2,participant_design) %&gt;%
+<span class="st">  </span>rowwise %&gt;%
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">power =</span> <span class="kw">unlist</span>(<span class="kw">ifelse</span>(participant_design ==<span class="st"> &quot;within_one&quot;</span>,
+                         <span class="kw">pwr.t.test</span>(<span class="dt">d =</span> overall.d, <span class="dt">n =</span> n_1, <span class="dt">type =</span> <span class="st">&quot;one.sample&quot;</span>)[<span class="st">&quot;power&quot;</span>],
+                            <span class="kw">ifelse</span>(participant_design ==<span class="st"> &quot;within_two&quot;</span>,
+                            <span class="kw">pwr.t.test</span>(<span class="dt">d =</span> overall.d, <span class="dt">n =</span> n_1, <span class="dt">type =</span> <span class="st">&quot;two.sample&quot;</span>)[<span class="st">&quot;power&quot;</span>],
+                            <span class="kw">pwr.t.test</span>(<span class="dt">d =</span> overall.d, <span class="dt">n =</span> <span class="kw">sum</span>(n_1, n_2)/<span class="dv">2</span>, <span class="dt">type =</span> <span class="st">&quot;paired&quot;</span>)[<span class="st">&quot;power&quot;</span>]))))
+
+raw_power_means =<span class="st"> </span>powers %&gt;%
+<span class="st">  </span><span class="kw">group_by</span>(dataset) %&gt;%
+<span class="st">  </span><span class="kw">multi_boot_standard</span>(<span class="dt">column =</span> <span class="st">&quot;power&quot;</span>, <span class="dt">na.rm =</span> T) %&gt;%
+<span class="st">  </span><span class="kw">rename</span>(<span class="dt">mean_power =</span> mean) 
+
+powers =<span class="st"> </span><span class="kw">left_join</span>(powers, raw_power_means) %&gt;%
+<span class="st">  </span><span class="kw">filter</span>(!<span class="kw">is.na</span>(mean_power))
+  
+<span class="kw">ggplot</span>(powers, <span class="kw">aes</span>(<span class="dt">x =</span> power, <span class="dt">fill =</span> short_name)) +
+<span class="st">  </span><span class="kw">geom_density</span>() +
+<span class="st">  </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept =</span> mean_power), <span class="dt">size =</span> <span class="dv">1</span>) +
+<span class="st">  </span><span class="kw">facet_wrap</span>(~short_name, <span class="dt">scales =</span>  <span class="st">&quot;free_y&quot;</span>) +
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>),
+        <span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</code></pre>
+<p><img src="replicability_analyses_files/figure-html/unnamed-chunk-5-1.png" title="" alt="" width="672" /></p>
+</div>
+<div id="p-curve-power" class="section level3">
+<h3>P-curve power</h3>
+<pre class="sourceCode r"><code class="sourceCode r">power.data =<span class="st"> </span>pc.data %&gt;%
+<span class="st">  </span><span class="kw">group_by</span>(dataset) %&gt;%
+<span class="st">  </span><span class="kw">do</span>(<span class="kw">data.frame</span>(<span class="dt">power =</span> <span class="kw">get_pc_power</span>(., ALPHA))) </code></pre>
+</div>
+<div id="compare-power-estimates" class="section level3">
+<h3>Compare power estimates</h3>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">left_join</span>(raw_power_means, power.data) %&gt;%
+<span class="st">  </span><span class="kw">rename</span>(<span class="dt">p.curve.power =</span> power,
+         <span class="dt">raw.mean.power =</span> mean_power) %&gt;%
+<span class="st">  </span><span class="kw">gather</span>(<span class="st">&quot;method&quot;</span>, <span class="st">&quot;power&quot;</span>,  <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">5</span>)) %&gt;%
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">ci_lower =</span> <span class="kw">ifelse</span>(method ==<span class="st"> &quot;p.curve.power&quot;</span>, <span class="ot">NA</span>, ci_lower),
+         <span class="dt">ci_upper =</span> <span class="kw">ifelse</span>(method ==<span class="st"> &quot;p.curve.power&quot;</span>, <span class="ot">NA</span>, ci_upper)) %&gt;%
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> dataset, <span class="dt">group =</span> method, <span class="dt">y =</span> power, <span class="dt">fill =</span> method)) +
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> .<span class="dv">8</span>, <span class="dt">lty =</span> <span class="dv">2</span>) +
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>,  <span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>) +
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>)) +
+<span class="st">  </span><span class="kw">ylim</span>(<span class="dv">0</span>,<span class="dv">1</span>) </code></pre>
+<p><img src="replicability_analyses_files/figure-html/unnamed-chunk-7-1.png" title="" alt="" width="672" /> Pretty different…</p>
+</div>
+<div id="p-curve-effect-size" class="section level3">
+<h3>P-curve effect size</h3>
+<p>Can use a similiar approach as power to calculate effect sizes. However, p-curve effect size dramatically inflates effect size in our set of meta-analyses. This is because an assumption of this calculation is that the test statistic is greater than 0, and thus we inflate the effect size by including only positive effects. For this reason, we are not including p-curve based effect sizes in the paper.</p>
+<pre class="sourceCode r"><code class="sourceCode r">pc_es =<span class="st"> </span>pc.data %&gt;%
+<span class="st">  </span><span class="kw">group_by</span>(dataset) %&gt;%
+<span class="st">  </span><span class="kw">do</span>(<span class="kw">data.frame</span>(<span class="kw">get_pc_es</span>(., ALPHA))) 
+
+obs_es =<span class="st">  </span>all_data %&gt;%
+<span class="st">  </span><span class="kw">group_by</span>(dataset) %&gt;%
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">d =</span> <span class="kw">summary</span>(<span class="kw">rma</span>(d_calc,d_var_calc,
+             <span class="dt">slab =</span> short_cite, 
+             <span class="dt">data =</span> .))$b[<span class="dv">1</span>],
+            <span class="dt">ci_lb =</span> <span class="kw">summary</span>(<span class="kw">rma</span>(d_calc,d_var_calc,
+             <span class="dt">slab =</span> short_cite, 
+             <span class="dt">data =</span> .))$ci.lb[<span class="dv">1</span>],
+            <span class="dt">ci_ub =</span> <span class="kw">summary</span>(<span class="kw">rma</span>(d_calc,d_var_calc,
+             <span class="dt">slab =</span> short_cite, 
+             <span class="dt">data =</span> .))$ci.ub[<span class="dv">1</span>]) %&gt;%
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">method =</span> <span class="st">&quot;observed&quot;</span>)
+
+all_es =<span class="st"> </span><span class="kw">rbind</span>(pc_es, obs_es)
+
+<span class="kw">ggplot</span>(all_es, <span class="kw">aes</span>(<span class="dt">y =</span> d, <span class="dt">x =</span> dataset, <span class="dt">group =</span> method, 
+                   <span class="dt">color =</span> method)) +
+<span class="st">  </span><span class="kw">geom_pointrange</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> ci_lb, <span class="dt">ymax =</span> ci_ub ), 
+                  <span class="dt">position =</span> <span class="kw">position_dodge</span>(<span class="dt">width =</span> .<span class="dv">1</span>)) +
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>))
+
+<span class="co"># TO DO:</span>
+<span class="co"># check code!!</span>
+<span class="co"># ncp parameter for f? Can&#39;t interpret effect sizes.</span>
+<span class="co"># why are some datasets missing? -&gt; we only have test statistics for 6/11- is there a way to recover this?</span></code></pre>
+</div>
+</div>
+<div id="fail-safe-n" class="section level2">
+<h2>Fail-Safe-N</h2>
+<p>From Metafor package documentation: “The Orwin method calculates the number of studies averaging null results that would have to be added to the given set of observed outcomes to reduce the (unweighted) average effect size to a target (unweighted) average effect size. The method is described in Orwin (1983).” The first is that the unpublished or omitted studies, on average, show a null result.</p>
+<div id="comparision-of-fsn-measures" class="section level3">
+<h3>Comparision of FSN measures</h3>
+<p>Analysis of different measures of FSN. With no target, package assumes half of unweighted average. Book and metafor the same. Weighted average of ds (from rma) only slightly less.</p>
+<pre class="sourceCode r"><code class="sourceCode r">fsn.package.data =<span class="st"> </span>all_data %&gt;%
+<span class="st">  </span><span class="kw">group_by</span>(dataset) %&gt;%
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">fsn_package_small_T =</span> <span class="kw">fsn</span>(d_calc, d_var_calc, <span class="dt">data =</span> all_data, 
+                         <span class="dt">target =</span> .<span class="dv">01</span>, <span class="dt">type=</span><span class="st">&quot;Orwin&quot;</span>)$fsnum,
+            <span class="dt">fsn_package_noT =</span> <span class="kw">fsn</span>(d_calc, d_var_calc, <span class="dt">data =</span> all_data, <span class="dt">type=</span><span class="st">&quot;Orwin&quot;</span>)$fsnum
+            ) %&gt;%
+<span class="st">  </span><span class="kw">left_join</span>(datasets %&gt;%<span class="st"> </span><span class="kw">select</span>(name, short_name), <span class="dt">by=</span> <span class="kw">c</span>(<span class="st">&quot;dataset&quot;</span> =<span class="st"> &quot;name&quot;</span>))
+
+fsn.manual.data =<span class="st"> </span>all_data %&gt;%
+<span class="st">  </span><span class="kw">group_by</span>(short_name) %&gt;%
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>(),
+            <span class="dt">mean_d =</span> <span class="kw">mean</span>(d_calc),
+            <span class="dt">target =</span>  .<span class="dv">01</span>) %&gt;%
+<span class="st">  </span><span class="kw">select</span>(short_name, mean_d, n, target)  %&gt;%
+<span class="st">  </span><span class="kw">left_join</span>(all_ds %&gt;%<span class="st"> </span><span class="kw">rename</span>(<span class="dt">short_name =</span> dataset)) %&gt;%
+<span class="st">  </span><span class="kw">select</span>(short_name, mean_d, n, target, overall.d) %&gt;%
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">fsn_book1_small_T =</span> <span class="kw">round</span>(n *<span class="st"> </span>(mean_d /target<span class="dv">-1</span>),<span class="dv">0</span>),
+         <span class="dt">fsn_book2_noT =</span> <span class="kw">round</span>(n*mean_d, <span class="dv">0</span>),
+         <span class="dt">fsn_raw_package =</span> <span class="kw">round</span>(n *<span class="st"> </span>((mean_d -<span class="st"> </span>target)/target),<span class="dv">0</span>),
+         <span class="dt">fsn_book1_MA_small_T  =</span> <span class="kw">round</span>(n *<span class="st"> </span>(overall.d /target<span class="dv">-1</span>),<span class="dv">0</span>),
+         <span class="dt">fsn_book2_MA_noT  =</span> <span class="kw">round</span>(n*overall.d, <span class="dv">0</span>),
+         <span class="dt">fsn_raw_package_MA =</span> <span class="kw">round</span>(n *<span class="st"> </span>((overall.d -<span class="st"> </span>target)/target),<span class="dv">0</span>)) 
+
+fsn.data =<span class="st"> </span><span class="kw">left_join</span>(fsn.manual.data, fsn.package.data) %&gt;%
+<span class="st">          </span><span class="kw">select</span>(-n, -mean_d, -target, -dataset, -overall.d) %&gt;%
+<span class="st">          </span><span class="kw">select</span>(-fsn_raw_package, -fsn_raw_package_MA) %&gt;%
+<span class="st">          </span><span class="kw">gather</span>(<span class="st">&quot;fsn_type&quot;</span>, <span class="st">&quot;fsn&quot;</span>, -<span class="dv">1</span>)
+
+<span class="kw">ggplot</span>(fsn.data, <span class="kw">aes</span>(<span class="dt">y =</span> fsn, <span class="dt">x =</span> short_name, <span class="dt">color =</span> fsn_type)) +
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) +
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Fail-Safe-N&quot;</span>) +
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>))</code></pre>
+<p><img src="replicability_analyses_files/figure-html/unnamed-chunk-9-1.png" title="" alt="" width="672" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(fsn.data, <span class="kw">aes</span>(<span class="dt">y =</span> fsn, <span class="dt">x =</span> fsn_type, <span class="dt">color =</span> short_name)) +
+<span class="st">  </span><span class="kw">geom_point</span>() +
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Fail-Safe-N&quot;</span>) +
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>))</code></pre>
+<p><img src="replicability_analyses_files/figure-html/unnamed-chunk-9-2.png" title="" alt="" width="672" /></p>
+<p>Conclusion: Just use the package, unless we think the weighted average is better.</p>
+</div>
+<div id="plot-fail-safe-n" class="section level3">
+<h3>Plot Fail-Safe-N</h3>
+<pre class="sourceCode r"><code class="sourceCode r">fsn.package.data =<span class="st"> </span>all_data %&gt;%
+<span class="st">  </span><span class="kw">group_by</span>(dataset) %&gt;%
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">fsn_package=</span> <span class="kw">fsn</span>(d_calc, d_var_calc, <span class="dt">data =</span> all_data, 
+                         <span class="dt">target =</span> .<span class="dv">01</span>, <span class="dt">type=</span><span class="st">&quot;Orwin&quot;</span>)$fsnum) %&gt;%
+<span class="st">  </span><span class="kw">left_join</span>(datasets %&gt;%<span class="st"> </span><span class="kw">select</span>(name, short_name), <span class="dt">by=</span> <span class="kw">c</span>(<span class="st">&quot;dataset&quot;</span> =<span class="st"> &quot;name&quot;</span>)) %&gt;%
+<span class="st">  </span><span class="kw">select</span>(-dataset)
+
+<span class="kw">ggplot</span>(fsn.package.data, <span class="kw">aes</span>(<span class="dt">y =</span> fsn_package, <span class="dt">x =</span> short_name, <span class="dt">fill =</span> short_name)) +
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) +
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Fail-Safe-N&quot;</span>) +
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>),
+        <span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</code></pre>
+<p><img src="replicability_analyses_files/figure-html/unnamed-chunk-10-1.png" title="" alt="" width="672" /> Assuming a critical value of zero (techincally, .01), the FSN are huge for the most part. These values are much larger than a previous version because I wasn’t passing a critical value (namely, 0), and without this argument the function assumes the critical values is half of the mean effect size.</p>
+</div>
+</div>
+<div id="funnel-plot" class="section level2">
+<h2>Funnel Plot</h2>
+<div id="plots" class="section level3">
+<h3>Plots</h3>
+<pre class="sourceCode r"><code class="sourceCode r">CRIT_95 =<span class="st"> </span><span class="fl">1.96</span> 
+CRIT_99 =<span class="st"> </span><span class="fl">2.58</span>
+funnel.es.data =<span class="st"> </span>all_data %&gt;%
+<span class="st">  </span><span class="kw">group_by</span>(dataset) %&gt;%
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">se =</span> <span class="kw">sqrt</span>(d_var_calc), 
+         <span class="dt">es =</span> d_calc, 
+         <span class="dt">center =</span> <span class="kw">mean</span>(d_calc), 
+         <span class="dt">lower_lim =</span> <span class="kw">max</span>(se) +<span class="st"> </span>.<span class="dv">05</span> *<span class="st"> </span><span class="kw">max</span>(se))
+
+<span class="co"># separate data frame for 95 CI funnel shape</span>
+funnel95.data.wide &lt;-<span class="st"> </span>funnel.es.data %&gt;%
+<span class="st">                </span><span class="kw">select</span>(center, lower_lim, dataset) %&gt;%
+<span class="st">                </span><span class="kw">group_by</span>(dataset) %&gt;%
+<span class="st">                </span><span class="kw">summarise</span>(<span class="dt">x1 =</span> (center-lower_lim *<span class="st"> </span>CRIT_95)[<span class="dv">1</span>], 
+                          <span class="dt">x2 =</span> center[<span class="dv">1</span>],
+                          <span class="dt">x3 =</span> center[<span class="dv">1</span>] +<span class="st"> </span>lower_lim[<span class="dv">1</span>] *<span class="st"> </span>CRIT_95,
+                          <span class="dt">y1 =</span> -lower_lim[<span class="dv">1</span>],
+                          <span class="dt">y2 =</span>  <span class="dv">0</span>, 
+                          <span class="dt">y3 =</span> -lower_lim[<span class="dv">1</span>]) 
+
+funnel95.data.x =<span class="st"> </span>funnel95.data.wide  %&gt;%
+<span class="st">                  </span><span class="kw">select</span>(dataset, <span class="kw">contains</span>(<span class="st">&quot;x&quot;</span>)) %&gt;%
+<span class="st">                  </span><span class="kw">gather</span>(<span class="st">&quot;coordx&quot;</span>, <span class="st">&quot;x&quot;</span>, <span class="dv">2</span>:<span class="dv">4</span>) %&gt;%
+<span class="st">                  </span><span class="kw">arrange</span>(dataset, coordx) %&gt;%
+<span class="st">                  </span><span class="kw">select</span>(-coordx)
+
+funnel95.data.y =<span class="st"> </span>funnel95.data.wide  %&gt;%
+<span class="st">                  </span><span class="kw">select</span>(dataset, <span class="kw">contains</span>(<span class="st">&quot;y&quot;</span>)) %&gt;%
+<span class="st">                  </span><span class="kw">gather</span>(<span class="st">&quot;coordy&quot;</span>, <span class="st">&quot;y&quot;</span>, <span class="dv">2</span>:<span class="dv">4</span>) %&gt;%
+<span class="st">                  </span><span class="kw">arrange</span>(dataset, coordy) %&gt;%
+<span class="st">                  </span><span class="kw">select</span>(-coordy)
+
+funnel95.data =<span class="st"> </span><span class="kw">bind_cols</span>(funnel95.data.x, funnel95.data.y)
+
+<span class="co"># separate data frame for 99 CI funnel shape</span>
+funnel99.data.wide &lt;-<span class="st"> </span>funnel.es.data %&gt;%
+<span class="st">                </span><span class="kw">select</span>(center, lower_lim, dataset) %&gt;%
+<span class="st">                </span><span class="kw">group_by</span>(dataset) %&gt;%
+<span class="st">                </span><span class="kw">summarise</span>(<span class="dt">x1 =</span> (center-lower_lim*<span class="st"> </span>CRIT_99)[<span class="dv">1</span>], 
+                          <span class="dt">x2 =</span> center[<span class="dv">1</span>],
+                          <span class="dt">x3 =</span> center[<span class="dv">1</span>] +<span class="st"> </span>lower_lim[<span class="dv">1</span>] *<span class="st"> </span>CRIT_99,
+                          <span class="dt">y1 =</span> -lower_lim[<span class="dv">1</span>],
+                          <span class="dt">y2 =</span>  <span class="dv">0</span>, 
+                          <span class="dt">y3 =</span> -lower_lim[<span class="dv">1</span>]) 
+
+funnel99.data.x =<span class="st"> </span>funnel99.data.wide  %&gt;%
+<span class="st">                  </span><span class="kw">select</span>(dataset, <span class="kw">contains</span>(<span class="st">&quot;x&quot;</span>)) %&gt;%
+<span class="st">                  </span><span class="kw">gather</span>(<span class="st">&quot;coordx&quot;</span>, <span class="st">&quot;x&quot;</span>, <span class="dv">2</span>:<span class="dv">4</span>) %&gt;%
+<span class="st">                  </span><span class="kw">arrange</span>(dataset, coordx) %&gt;%
+<span class="st">                  </span><span class="kw">select</span>(-coordx)
+
+funnel99.data.y =<span class="st"> </span>funnel99.data.wide  %&gt;%
+<span class="st">                  </span><span class="kw">select</span>(dataset, <span class="kw">contains</span>(<span class="st">&quot;y&quot;</span>)) %&gt;%
+<span class="st">                  </span><span class="kw">gather</span>(<span class="st">&quot;coordy&quot;</span>, <span class="st">&quot;y&quot;</span>, <span class="dv">2</span>:<span class="dv">4</span>) %&gt;%
+<span class="st">                  </span><span class="kw">arrange</span>(dataset, coordy) %&gt;%
+<span class="st">                  </span><span class="kw">select</span>(-coordy)
+
+funnel99.data =<span class="st"> </span><span class="kw">bind_cols</span>(funnel99.data.x, funnel99.data.y)
+
+<span class="kw">ggplot</span>(funnel.es.data, <span class="kw">aes</span>(<span class="dt">x =</span> es, <span class="dt">y =</span> -se)) +
+<span class="st">  </span><span class="kw">facet_wrap</span>(~dataset, <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>) +
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Effect Size&quot;</span>)  +
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Standard Error</span><span class="ch">\n</span><span class="st">&quot;</span>)  +
+<span class="st">  </span><span class="kw">scale_colour_solarized</span>(<span class="dt">name =</span> <span class="st">&quot;&quot;</span>) +
+<span class="st">  </span><span class="kw">geom_polygon</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y), 
+               <span class="dt">data =</span> funnel95.data, <span class="dt">alpha =</span> .<span class="dv">5</span>,
+               <span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>) +
+<span class="st">  </span><span class="kw">geom_polygon</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y), 
+               <span class="dt">data =</span> funnel99.data, <span class="dt">alpha =</span> .<span class="dv">5</span>,
+               <span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>) +
+<span class="st">  </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept=</span>center[<span class="dv">1</span>]), 
+             <span class="dt">linetype =</span> <span class="st">&quot;dotted&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>) +
+<span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="dv">0</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;grey&quot;</span>) +
+<span class="st">  </span><span class="kw">geom_point</span>() +
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&quot;grey&quot;</span>),
+        <span class="dt">panel.grid.major =</span>  <span class="kw">element_line</span>(<span class="dt">colour =</span> <span class="st">&quot;darkgrey&quot;</span>, <span class="dt">size =</span> <span class="fl">0.2</span>),
+        <span class="dt">panel.grid.minor =</span>  <span class="kw">element_line</span>(<span class="dt">colour =</span> <span class="st">&quot;darkgrey&quot;</span>, <span class="dt">size =</span> <span class="fl">0.5</span>))</code></pre>
+<p><img src="replicability_analyses_files/figure-html/unnamed-chunk-11-1.png" title="" alt="" width="672" /></p>
+</div>
+<div id="test-for-funnel-plot-asymmetry" class="section level3">
+<h3>Test for funnel plot asymmetry</h3>
+<p>Egger and Sterne (2005): &quot; Egger et al. (1997) introduced a linear regression approach in which the standard normal deviate zi (defined as zi = i/si is regressed against its precision preci (defined as preci =1/si) &lt;&gt;. The smaller the trial, the smaller will be its precision. In the absence of funnel plot asymmetry, the points in a plot of zi against preci – a plot that corresponds to Galbraith’s (1988) radial plot – will scatter about a line that runs through the origin at standard normal deviate zero (intercept 0 = 0), with the slope 1 indicating the size and direction of effect. This situation corresponds to a symmetrical funnel plot. If there is funnel plot asymmetry, the regression line will not run through the origin, so that the intercept 0 provides a measure of asymmetry – the larger its deviation from zero the more pronounced the asymmetry. A test of the null hypothesis that 0 = 0 (no funnel plot asymmetry) can be derived from the usual regression output produced by statistical packages: the two-sided p-value should be reported. This test is often referred to as the ‘Egger test’ and has been widely used as a test for funnel plot asymmetry.&quot;</p>
+<p>Anzures-Cabrera &amp; Higgins (2010): “Mathematically, a Galbraith plot is a scatter plot of standardized effect estimates (estimates divided by their standard errors, or yi / si) against inverse standard error (1/ si). Imprecise estimates of effect lie near the origin and precise estimates further away, so that distance from the origin conveys the relative amounts of information in the different studies. An unweighted regression line constrained through the origin has a slope equal to the fixed-effectmeta-analysis point estimate. Similarly, lines from the origin to each individual point have slope equal to the (unstandardized) point estimate in each study. A radial (arc of a circle) scale can be used to illustrate these slopes, allowing immediate derivation of point estimates from the studies and the meta-analysis. When the radial scale is added, Galbraith plots are sometimes called ‘radial plots’. A statistical test for non-zero intercept in an unconstrained line through the plotted points is equivalent to a particular test for funnel plot asymmetry [33].”</p>
+<div id="trying-to-understand-the-different-tests." class="section level4">
+<h4>Trying to understand the different tests.</h4>
+<pre class="sourceCode r"><code class="sourceCode r">me =<span class="st"> </span><span class="kw">filter</span>(all_data, dataset ==<span class="st"> &quot;Mutual exclusivity&quot;</span>)
+<span class="co"># [1] No moderators</span>
+<span class="co"># (1a) classical egger test (random effect model) </span>
+re_model &lt;-<span class="st"> </span><span class="kw">rma</span>(d_calc, d_var_calc, <span class="dt">data=</span>me)
+<span class="kw">regtest</span>(re_model, <span class="dt">model=</span><span class="st">&quot;lm&quot;</span>) <span class="co"># regtest implements as: lm(yi ~ sqrt(vi) - 1, weights = 1/vi)</span>
+
+<span class="co"># (1b) classical egger test, by hand</span>
+<span class="kw">summary</span>(<span class="kw">lm</span>(d_calc ~<span class="st"> </span><span class="kw">sqrt</span>(d_var_calc),<span class="dt">weights =</span> <span class="dv">1</span>/d_var_calc, <span class="dt">data =</span> me))
+
+<span class="co"># (1c) classical egger test different version. Eggers and Sterne (2005) say that  1a/1b should be the same as the below ...but they&#39;re not. Need this to do Egger&#39;s plot. Maybe because doesnt include overdispersion parameter?</span>
+<span class="kw">summary</span>(<span class="kw">lm</span>(d_calc/<span class="kw">sqrt</span>(d_var_calc) ~<span class="st"> </span><span class="dv">1</span>/<span class="kw">sqrt</span>(d_var_calc), <span class="dt">data =</span> me))
+
+<span class="co"># (1d) random/mixed-effects version of the Egger test</span>
+<span class="kw">regtest</span>(re_model)
+ 
+<span class="co"># Egger plot of 1c</span>
+<span class="kw">ggplot</span>(all_data, <span class="kw">aes</span>(<span class="dt">y =</span> d_calc/<span class="kw">sqrt</span>(d_var_calc), <span class="dt">x =</span> <span class="dv">1</span>/<span class="kw">sqrt</span>(d_var_calc))) +
+<span class="st">  </span><span class="kw">geom_point</span>() +
+<span class="st">  </span><span class="kw">facet_wrap</span>(~<span class="st"> </span>dataset, <span class="dt">scales =</span> <span class="st">&quot;free_x&quot;</span>) +
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Standarized effect size&quot;</span>) +
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Precision&quot;</span>) +
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>) +
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>)
+
+
+<span class="co"># [2] Age moderator</span>
+res_mixed &lt;-<span class="st"> </span><span class="kw">rma</span>(d_calc ~<span class="st"> </span>mean_age_1, d_var_calc, <span class="dt">data=</span>me)
+
+<span class="co"># (2a) classic eggers</span>
+<span class="kw">regtest</span>(res_mixed, <span class="dt">model=</span><span class="st">&quot;lm&quot;</span>)
+
+<span class="co"># (2b) random/mixed-effects version of the Egger test</span>
+<span class="kw">regtest</span>(res_mixed)
+
+## Egger plot of 2a -- not sure how do do this.
+resid_df =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">d_resid =</span> <span class="kw">resid</span>(res_mixed), <span class="dt">d_var_calc =</span> me$d_var_calc)
+<span class="kw">ggplot</span>(resid_df, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">1</span>/<span class="kw">sqrt</span>(d_resid), <span class="dt">y =</span> d_resid/<span class="kw">sqrt</span>(d_var_calc))) +
+<span class="st">  </span><span class="kw">geom_point</span>() +
+<span class="st">  </span><span class="co">#facet_wrap(~ dataset, scales = &quot;free_x&quot;) +</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Standarized effect size&quot;</span>) +
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Precision&quot;</span>) +
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>) +
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>)</code></pre>
+</div>
+<div id="summary" class="section level4">
+<h4>Summary</h4>
+<pre class="sourceCode r"><code class="sourceCode r">eggers_tests &lt;-<span class="st"> </span>function(ma_data){
+    <span class="co"># models</span>
+    model.basic =<span class="st"> </span>metafor::<span class="kw">rma</span>(ma_data$d_calc, ma_data$d_var_calc, <span class="dt">method =</span> <span class="st">&quot;REML&quot;</span>,
+               <span class="dt">control =</span> <span class="kw">list</span>(<span class="dt">maxiter =</span> <span class="dv">1000</span>, <span class="dt">stepadj =</span> <span class="fl">0.5</span>))
+    model.mod =<span class="st"> </span>metafor::<span class="kw">rma</span>(ma_data$d_calc ~ma_data$mean_age_1, ma_data$d_var_calc, <span class="dt">method =</span> <span class="st">&quot;REML&quot;</span>,
+               <span class="dt">control =</span> <span class="kw">list</span>(<span class="dt">maxiter =</span> <span class="dv">1000</span>, <span class="dt">stepadj =</span> <span class="fl">0.5</span>))
+    <span class="co"># Eggers tests</span>
+    egg.basic =<span class="st"> </span><span class="kw">regtest</span>(model.basic, <span class="dt">model=</span><span class="st">&quot;lm&quot;</span>) 
+    egg.basic.random =<span class="st"> </span><span class="kw">regtest</span>(model.basic) 
+    egg.mod =<span class="st"> </span><span class="kw">regtest</span>(model.mod, <span class="dt">model=</span><span class="st">&quot;lm&quot;</span>) 
+    egg.mod.random =<span class="st"> </span><span class="kw">regtest</span>(model.mod) 
+    
+    <span class="kw">data.frame</span>(<span class="dt">dataset =</span> ma_data$short_name[<span class="dv">1</span>],
+               <span class="dt">egg.basic.z =</span> egg.basic$zval,
+               <span class="dt">egg.basic.p =</span> egg.basic$pval,
+               <span class="dt">egg.basic.random.z =</span>  egg.basic.random$zval,
+               <span class="dt">egg.basic.random.p =</span>  egg.basic.random$pval,
+               <span class="dt">egg.mod.z =</span> egg.mod$zval,
+               <span class="dt">egg.mod.p =</span> egg.mod$pval,
+               <span class="dt">egg.mod.random.z =</span> egg.mod.random$zval,
+               <span class="dt">egg.mod.random.p =</span> egg.mod.random$pval)
+}
+
+eggers =<span class="st"> </span>all_data %&gt;%
+<span class="st">  </span><span class="kw">split</span>(.$short_name) %&gt;%
+<span class="st">  </span><span class="kw">map</span>(function(ma_data) <span class="kw">eggers_tests</span>(ma_data)) %&gt;%
+<span class="st">  </span><span class="kw">bind_rows</span>() %&gt;%
+<span class="st">  </span><span class="kw">gather</span>(<span class="st">&quot;p.type&quot;</span>,<span class="st">&quot;p&quot;</span>, <span class="kw">contains</span>(<span class="st">&quot;.p&quot;</span>)) %&gt;%
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sig =</span> <span class="kw">ifelse</span>(p&lt;.<span class="dv">05</span>,<span class="st">&quot;skewed&quot;</span>, <span class="st">&quot;not skewed&quot;</span>)) %&gt;%
+<span class="st">  </span><span class="kw">select</span>(p.type, sig, dataset)
+
+<span class="kw">ggplot</span>(eggers, <span class="kw">aes</span>(<span class="dt">x =</span> dataset, <span class="dt">y =</span>  p.type , 
+                          <span class="dt">fill =</span> sig)) +
+<span class="st">  </span><span class="kw">geom_tile</span>() +
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>)) +
+<span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;pink&quot;</span>))</code></pre>
+<p><img src="replicability_analyses_files/figure-html/unnamed-chunk-13-1.png" title="" alt="" width="672" /></p>
+<p>Overall, mostly not skewed. It matters for inworddb and idspref which measure we use. My vote is for random with age moderator.</p>
+</div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
