@@ -67,7 +67,7 @@ div(
       br(),
       br(),
       "Learn how to ",
-      tags$a(href = "/#contribute", "contribute,"),
+      tags$a(href = "/documentation.html", "contribute,"),
       "and visit our", 
       tags$a(href = "/tutorials.html", "tutorials.")),
     column(width = 1)
