@@ -11,6 +11,7 @@ params:
 ```{r echo=FALSE, warning=FALSE, message=FALSE}
 currentDataset <- datasets %>% dplyr::filter(short_name == params$datasetID)
 data <- read.csv(here("data", paste0(currentDataset$filename, ".csv")), stringsAsFactors = FALSE)
+data <- data[colSums(!is.na(data)) > 0]
 ```
 
 ```{r echo=FALSE}

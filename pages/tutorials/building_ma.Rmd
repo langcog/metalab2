@@ -187,7 +187,7 @@ In this case, how large should your sample be? Mika and Molly have done some [si
 ### How should I structure the data for my MA?
 
 We are hoping that eventually all of these MAs may be included in
-[*MetaLab*](http://metalab.stanford.edu), so we ask you to use the [*MA
+[*MetaLab*](.), so we ask you to use the [*MA
 template*](https://docs.google.com/spreadsheets/d/12Y_2BcFSu48t0F8a_xrY1Ro2fJoCIV1h8O627WNcrjY/edit?usp=sharing)
 (create a copy, as you did in step 1), and follow the [*field specifications*](/documentation.html#field_specs).
 Ideally, you would code all potentially relevant moderator variables

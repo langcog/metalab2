@@ -2,7 +2,7 @@ How should I structure the data for my meta-analysis?
 ==============================
 
 We are hoping that eventually all of your MAs (meta-analyses) will be included in
-[*MetaLab*](http://metalab.stanford.edu), so we ask you to use the [*MA
+[*MetaLab*](.), so we ask you to use the [*MA
 template*](https://docs.google.com/spreadsheets/d/12Y_2BcFSu48t0F8a_xrY1Ro2fJoCIV1h8O627WNcrjY/edit?usp=sharing)
 (create a copy), and follow the [*field specifications*](/documentation.html#field_specs) to ensure compatibility. (Note that right now, winter 2018, these specifications are biased towards language acquisition research. If you work on another topic, we would be thrilled if you helped us expand and adapt MetaLab).
 

@@ -127,6 +127,9 @@
       - PL:
           fullname:     passive listening
           description:  typically used in EEG/NIRS/fMRI
+      - observational:   
+          fullname:     observational
+          description:  observational
   required:     yes
 
 - field:        dependent_measure
