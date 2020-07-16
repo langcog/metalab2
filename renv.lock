@@ -4,7 +4,7 @@
     "Repositories": [
       {
         "Name": "CRAN",
-        "URL": "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"
+        "URL": "https://packagemanager.rstudio.com/cran/__linux__/bionic/latest"
       }
     ]
   },
