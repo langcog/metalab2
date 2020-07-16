@@ -65,7 +65,8 @@ load_dataset <- function(filename) {
     ) %>%
     mutate(
       study_ID = as.character(study_ID),
-      same_infant = as.character(same_infant))
+      same_infant = as.character(same_infant),
+      expt_condition = as.character(expt_condition))
 }
 
 avg_month <- 365.2425 / 12.0

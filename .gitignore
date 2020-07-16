@@ -10,3 +10,4 @@ tutorials/*.html
 scripts/log/
 tutorials/building_ma.Rmd
 restart.txt
+writeups/
