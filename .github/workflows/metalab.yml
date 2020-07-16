@@ -34,6 +34,7 @@ jobs:
     - name: Restore packages 
       shell: Rscript {0}
       run: |
+        options(repos = c(CRAN = "https://packagemanager.rstudio.com/cran/__linux__/bionic/latest"))
         if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
         renv::restore()
 
