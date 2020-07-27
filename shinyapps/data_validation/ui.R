@@ -1,4 +1,4 @@
-shinyUI(
+ui <- shinyUI(
   fluidPage(
     sidebarLayout(
       sidebarPanel(

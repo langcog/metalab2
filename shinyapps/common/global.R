@@ -8,6 +8,9 @@ library(purrr)
 library(langcog)
 library(feather)
 library(plotly)
+##library(metalabr)
+##load_all("path/to/package")
+## how to deal with switching between these ^ 
 
 logOnError <- function(expression) {
   tryCatch(expression, error = function(e) { message(e) })

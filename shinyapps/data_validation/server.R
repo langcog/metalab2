@@ -3,6 +3,7 @@ suppressMessages(suppressWarnings({
   library(purrr)
   library(here)
   library(DT)
+  library(metalab)
 }))
 
 # Validate dataset's values for all fields
@@ -229,7 +230,7 @@ make_fields <- function(fields) {
     tidyr::unite(`format/options`, format, options, sep = "") 
 }
 
-shinyServer(function(input, output, session) {
+server <- function(input, output, session) {
   output$dataset_spec <- renderPrint(as.list(datasets %>% filter(name == input$dataset)))
   output$fields_spec <- renderDT(make_fields(fields))
   output$selected_name <- renderText(input$dataset)
@@ -242,4 +243,5 @@ shinyServer(function(input, output, session) {
     validate_dataset(datasets %>% filter(name == input$dataset),
                      get_data(datasets %>% filter(name == input$dataset)))
   })
-})
+}
+
