@@ -8,7 +8,7 @@ ui <- shinyUI(
                    ".shiny-output-error { visibility: hidden; }",
                    ".shiny-output-error:before { visibility: hidden; }"),
         h2("MetaLab Dataset Validation Tool"),
-        selectInput("dataset", "Select a dataset to validate", datasets$name,
+        selectInput("dataset", "Select a dataset to validate", dataset_info$name,
                     selected = NULL, multiple = FALSE,
                     selectize = TRUE, width = NULL, size = NULL),
         h3("Validation Results"),

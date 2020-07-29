@@ -1,14 +1,15 @@
 library(dplyr)
 library(purrr)
 library(here)
-library(metalabr)
+##library(metalabr)
+
 
 knitr::opts_chunk$set(cache = FALSE)
 
 domains <- get_metalab_domain_info()
 reports <- get_metalab_report_info()
 dataset_yaml <- get_metalab_dataset_info()
-metalab_data <- get_metalab_data(dataset_yaml[1:3,])
+metalab_data <- get_metalab_data(dataset_yaml)
 dataset_info <- add_metalab_summary_info(dataset_yaml, metalab_data)
 
 ## 'rendered' directory setup
@@ -68,12 +69,6 @@ dataset_info %>% purrr::pmap(function(...) {
 
 ## functions to help build and serve the site for local development
 metalab_build <- function(input, output) {
-  cat("metalab_build input: ", input, "\n")
-
-  if (input %in% c("./dataset-template.Rmd")) {
-    return()
-  }
-  
   rmarkdown::render(input,
                     output_file = output,
                     output_dir = dirname(output),

@@ -24,11 +24,11 @@ library(langcog)
 ## Data available for each design choice variable
 Method
 ```{r}
-all_data <- all_data %>%
+metalab_data <- metalab_data %>%
             filter(mean_age_months <= 60)
 
-all_data$method = as.factor(all_data$method)
-method.pd = all_data %>%
+metalab_data$method = as.factor(metalab_data$method)
+method.pd = metalab_data %>%
   group_by(method, dataset) %>%
   filter(n() > 3) %>%
   summarise(n = n())
@@ -43,9 +43,9 @@ ggplot(method.pd, aes(y = n, fill = dataset, x = method)) +
 
 Response Mode
 ```{r}
-all_data$response_mode = as.factor(all_data$response_mode)
+metalab_data$response_mode = as.factor(metalab_data$response_mode)
 
-response.pd = all_data %>%
+response.pd = metalab_data %>%
   group_by(response_mode, dataset) %>%
   summarise(n = n())
 
@@ -59,8 +59,8 @@ ggplot(response.pd, aes(y = n, fill = dataset, x = response_mode)) +
 
 Dependent Measure
 ```{r}
-all_data$dependent_measure= as.factor(all_data$dependent_measure)
-dm.pd = all_data %>%
+metalab_data$dependent_measure= as.factor(metalab_data$dependent_measure)
+dm.pd = metalab_data %>%
   group_by(dependent_measure, dataset) %>%
   summarise(n = n())
 
@@ -74,8 +74,8 @@ ggplot(dm.pd, aes(y = n, fill = dataset, x = dependent_measure)) +
 
 Participant design
 ```{r}
-all_data$participant_design = as.factor(all_data$participant_design)
-participant_design.pd = all_data %>%
+metalab_data$participant_design = as.factor(metalab_data$participant_design)
+participant_design.pd = metalab_data %>%
   group_by(participant_design, dataset) %>%
   summarise(n = n())
 
@@ -89,7 +89,7 @@ ggplot(participant_design.pd, aes(y = n, fill = dataset, x = participant_design)
 
 ## Design choice  variables by age
 ```{r} 
-age.response_mode.pd = all_data %>%
+age.response_mode.pd = metalab_data %>%
   mutate(mean_age_months_rounded = cut_width(mean_age_months,  width = 3, boundary = 0))  %>%
   group_by(mean_age_months_rounded, response_mode) %>%
   summarise(n = n()) %>%
@@ -109,7 +109,7 @@ ggplot(age.response_mode.pd, aes(x = mean_age_months_rounded, y = n, color = res
   theme (axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5)) +
   ggtitle("Response Mode")
 
-age.method.pd = all_data %>%
+age.method.pd = metalab_data %>%
   mutate(mean_age_months_rounded = cut_width(mean_age_months,  width = 3, boundary = 0))  %>%
   group_by(mean_age_months_rounded, method) %>%
   summarise(n = n()) %>%
@@ -129,7 +129,7 @@ ggplot(age.method.pd, aes(x = mean_age_months_rounded, y = n, color = method)) +
   theme (axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5)) +
   ggtitle("Method")
 
-age.dm.pd = all_data %>%
+age.dm.pd = metalab_data %>%
   mutate(mean_age_months_rounded = cut_width(mean_age_months,  width = 3, boundary = 0))  %>%
   group_by(mean_age_months_rounded, dependent_measure) %>%
   summarise(n = n()) %>%
@@ -149,7 +149,7 @@ ggplot(age.dm.pd, aes(x = mean_age_months_rounded, y = n, color = dependent_meas
   theme (axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5)) +
   ggtitle("Dependent Measure")
 
-age.pd.pd = all_data %>%
+age.pd.pd = metalab_data %>%
   mutate(mean_age_months_rounded = cut_width(mean_age_months,  width = 3, boundary = 0))  %>%
   group_by(mean_age_months_rounded, participant_design) %>%
   summarise(n = n()) %>%
@@ -176,11 +176,11 @@ ggplot(age.pd.pd, aes(x = mean_age_months_rounded, y = n, color = participant_de
 Get residual effect size, controling for age and phenonmenon
 ```{r}
 full.model = rma(d_calc ~ dataset + mean_age_1, 
-        vi = d_var_calc, data = all_data, method = "REML")
+        vi = d_var_calc, data = metalab_data, method = "REML")
 
 residuals = rstandard(full.model)
 
-all_data = all_data %>%
+metalab_data = metalab_data %>%
             bind_cols(as.data.frame(residuals$resid),
                       as.data.frame(residuals$z)) %>%
             rename(residual.d = `residuals$resid`, 
@@ -188,7 +188,7 @@ all_data = all_data %>%
 ```
 
 ```{r, fig.width = 10}
-method.pd = all_data %>%
+method.pd = metalab_data %>%
   group_by(method, dataset) %>%
   summarise(residual.d = mean(residual.d),
             n = n())
@@ -200,7 +200,7 @@ ggplot(method.pd, aes(x = method, y = residual.d, color = dataset)) +
   ggtitle("Method") +
   guides(colour=guide_legend(ncol=2))
 
-response.pd = all_data %>%
+response.pd = metalab_data %>%
   group_by(response_mode, dataset) %>%
   summarise(residual.d = mean(residual.d),
             n = n())
@@ -212,7 +212,7 @@ ggplot(response.pd, aes(x = response_mode, y = residual.d, color = dataset)) +
   ggtitle("Response Mode") +
   guides(colour=guide_legend(ncol=2))
 
-dm.pd = all_data %>%
+dm.pd = metalab_data %>%
   group_by(dependent_measure, dataset) %>%
   summarise(residual.d = mean(residual.d),
             n = n())
@@ -224,7 +224,7 @@ ggplot(dm.pd, aes(x = dependent_measure, y = residual.d, color = dataset)) +
   ggtitle("Dependent Measure") +
   guides(colour=guide_legend(ncol=2))
 
-participant_design.pd = all_data %>%
+participant_design.pd = metalab_data %>%
   group_by(participant_design, dataset) %>%
   summarise(residual.d = mean(residual.d),
             n = n())
@@ -239,7 +239,7 @@ ggplot(participant_design.pd, aes(x = participant_design, y = residual.d, color 
 
 ### Across datasets
 ```{r}
-method.pd.all = all_data %>%
+method.pd.all = metalab_data %>%
   group_by(method) %>%
   multi_boot_standard(col = "residual.d") %>%
   ungroup() %>%
@@ -254,7 +254,7 @@ ggplot(method.pd.all, aes(x = method, y = mean, fill = method)) +
   theme(legend.position="none") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5)) 
 
-response.pd.all = all_data %>%
+response.pd.all = metalab_data %>%
   group_by(response_mode) %>%
   multi_boot_standard(col = "residual.d") %>%
   ungroup() %>%
@@ -269,7 +269,7 @@ ggplot(response.pd.all, aes(x = response_mode, y = mean, fill = response_mode)) 
   theme(legend.position = "none") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5)) 
 
-dm.pd.all = all_data %>%
+dm.pd.all = metalab_data %>%
   group_by(dependent_measure) %>%
   multi_boot_standard(col = "residual.d") %>%
     ungroup() %>%
@@ -284,7 +284,7 @@ ggplot(dm.pd.all, aes(x =dependent_measure, y = mean, fill = dependent_measure))
   theme(legend.position="none") +
   theme (axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5)) 
 
-participant_design.pd.all = all_data %>%
+participant_design.pd.all = metalab_data %>%
   group_by(participant_design) %>%
   multi_boot_standard(col = "residual.d") %>%
   ungroup() %>%

@@ -40,7 +40,7 @@ shinyServer(function(input, output, session) {
 
   subsets <- reactive({
     req(input$dataset_name)
-    datasets %>%
+    dataset_info %>%
       filter(name == input$dataset_name) %>%
       .$subset %>%
       unlist()
@@ -48,14 +48,14 @@ shinyServer(function(input, output, session) {
 
   dataset_names <- reactive({
     req(input$domain)
-    datasets %>%
+    dataset_info %>%
       filter(domain == input$domain) %>%
       pull(name)
   })
 
   data <- reactive({
     req(input$dataset_name)
-    result <- all_data %>%
+    result <- metalab_data %>%
       filter(dataset == input$dataset_name, mean_age < 4000) ## MLL changed 3000 -> 4000
 
     subset <- input$subset_input
@@ -82,7 +82,7 @@ shinyServer(function(input, output, session) {
   })
 
   table_data <- reactive({
-    all_data %>%
+    metalab_data %>%
       filter(dataset == input$table_dataset_name) %>%
       select(-long_cite, -dataset, -short_name, -filename, -all_mod)
   })
@@ -149,7 +149,7 @@ shinyServer(function(input, output, session) {
   output$domain_selector <- renderUI({
     selectInput(inputId = "domain",
                 label = "Domain",
-                choices = datasets$domain %>%
+                choices = dataset_info$domain %>%
                   unique %>%
                   set_names(display_name(.))
     )
@@ -158,25 +158,25 @@ shinyServer(function(input, output, session) {
   output$link_to_dataset <- renderUI({
     req(input$dataset_name)
     base_url <- "https://langcog.github.io/metalab2/dataset/"
-    short_name <- datasets %>%
+    short_name <- dataset_info %>%
       filter(name == input$dataset_name) %>%
       select(short_name)
     HTML(paste0("<i class=\"text-muted\">For more information see
-                <a href='https://langcog.github.io/metalab2/documentation.html#datasets' target='_blank'>
+                <a href='https://langcog.github.io/metalab2/documentation.html#dataset_info' target='_blank'>
                 Documentation</a> or <a href='", base_url, short_name, ".html', target='_blank'>
-                View raw dataset</a>. Please cite the datasets that you use following <a href='https://langcog.github.io/metalab2/publications.html' target='_blank'> our citation policy.</a> </a></i>"))
+                View raw dataset</a>. Please cite the dataset_info that you use following <a href='https://langcog.github.io/metalab2/publications.html' target='_blank'> our citation policy.</a> </a></i>"))
   })
 
     output$data_decription <- renderText({
     req(input$dataset_name)
-    short_desc <- datasets %>%
+    short_desc <- dataset_info %>%
       filter(name == input$dataset_name) %>%
       select(short_desc)
     paste("Dataset decription:", short_desc)})
 
    output$data_citation <- renderText({
      req(input$dataset_name)
-     full_citation <- datasets %>%
+     full_citation <- dataset_info %>%
        filter(name == input$dataset_name) %>%
        select(full_citation)
      paste("Dataset citation:", full_citation)})
@@ -189,7 +189,7 @@ shinyServer(function(input, output, session) {
 
   output$moderator_input <- renderUI({
     req(input$dataset_name)
-    custom_mods <- datasets %>%
+    custom_mods <- dataset_info %>%
       filter(name == input$dataset_name) %>%
       .$moderators %>%
       unlist()
@@ -327,7 +327,7 @@ shinyServer(function(input, output, session) {
 
   output$longitudinal <- reactive({
     req(input$dataset_name)
-    filter(datasets, name == input$dataset_name)$longitudinal
+    filter(dataset_info, name == input$dataset_name)$longitudinal
   })
 
   outputOptions(output, "longitudinal", suspendWhenHidden = FALSE)

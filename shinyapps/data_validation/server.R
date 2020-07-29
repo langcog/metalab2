@@ -3,7 +3,7 @@ suppressMessages(suppressWarnings({
   library(purrr)
   library(here)
   library(DT)
-  library(metalab)
+  ##library(metalab)
 }))
 
 # Validate dataset's values for all fields
@@ -11,8 +11,15 @@ validate_dataset <- function(dataset_meta, dataset_contents) {
   valid_fields <- map(fields, function(field) {
     validate_dataset_field(dataset_meta$name, dataset_contents, field)
   })
-  return(datatable(data.frame(Field = unlist(sapply(fields, "[[", "field")),
-                              Valid = unlist(valid_fields)), options = list(dom = 'tp', pageLength = 50)))
+
+  ret_df <- data.frame(Field = unlist(sapply(fields, "[[", "field")),
+                       Valid = unlist(valid_fields))
+
+  cat('here\nhere\n');
+  str(ret_df)
+  print("TEST")
+
+  return(datatable(ret_df, options = list(dom = 'tp', pageLength = 50)))
 }
 
 check_key <- function(dataset_meta) {
@@ -35,10 +42,10 @@ fetch_dataset <- function(dataset_meta) {
       httr::content(col_names = TRUE, col_types = NULL, encoding = "UTF-8")
   },
   error = function(e) {
-    return("error")
+    return ("error")
   })
 
-  if (result == "error") {
+  if ("string" %in% class(result)) {
     return("\U274C Cannot load dataset from Google Sheets")
   } else {
     return("\U2705 OK!")
@@ -64,103 +71,13 @@ get_data <- function(dataset_meta) {
   ret
 }
 
-# Manipulate a dataset's contents to prepare it for saving
-tidy_dataset <- function(dataset_meta, dataset_contents) {
-
-  # Coerce each field's values to the field's type, discard any columns not in
-  # field spec, add NA columns for missing (optional) fields
-  dataset_data <- data_frame(row = 1:nrow(dataset_contents))
-  for (field in fields) {
-    if (field$field %in% names(dataset_contents)) {
-      if (field$type == "string") {
-        field_fun <- as.character
-      } else if (field$type == "numeric") {
-        field_fun <- as.numeric
-      } else {
-        field_fun <- function(x) x
-      }
-      dataset_data[,field$field] <- field_fun(dataset_contents[[field$field]])
-    } else {
-      dataset_data[,field$field] <- NA
-    }
-  }
-
-  # Impute values for missing correlations
-  set.seed(111)
-  # First we replace corr values outside the range (.01,.99) with NA
-  dataset_data = dataset_data %>%
-    mutate(corr = abs(corr)) %>%
-    mutate(corr = ifelse(corr > .99 | corr < .01, NA, corr))
-  # Then impute NA values
-  if (all(is.na(dataset_data$corr))) {
-    dataset_data$corr_imputed <- NA
-  } else {
-    dataset_data$corr_imputed <- dataset_data$corr %>%
-      Hmisc::impute(fun = "random") %>%
-      as.numeric()
-  }
-
-  # Compute effect sizes and variances
-  dataset_data_calc <- dataset_data %>%
-    mutate(dataset = dataset_meta[["name"]],
-           short_name = dataset_meta[["short_name"]],
-           domain = dataset_meta[["domain"]]) %>%
-    split(.$row) %>%
-    map_df(~bind_cols(
-      .x, compute_es(
-        .x$participant_design, .x$x_1, .x$x_2, .x$x_dif, .x$SD_1, .x$SD_2,
-        .x$SD_dif, .x$n_1, .x$n_2, .x$t, .x$F, .x$d, .x$d_var, .x$corr,
-        .x$corr_imputed, .x$r, .x$r_var, .x$study_ID, .x$expt_num,
-        .x$special_cases_measures, .x$contrast_sampa, .x$short_name
-      ))) %>%
-    select(-row)
-
-  # Add any other derived values
-  method_options <- keep(fields, ~.x$field == "method")[[1]]$options
-  method_names <- unlist(map(method_options, ~.x[[names(.x)]]$fullname))
-  names(method_names) <- unlist(map(method_options, names))
-
-  dataset_data_calc %>%
-    # mutate(dataset = dataset_meta[["name"]],
-    #        short_name = dataset_meta[["short_name"]],
-    #        method = unlist(method_names[method])) %>%
-    mutate(method = unlist(method_names[method])) %>%
-    rowwise() %>%
-    mutate(mean_age = weighted.mean(c(mean_age_1, mean_age_2), c(n_1, n_2),
-                                    na.rm = TRUE),
-           n = mean(c(n_1, n_2), na.rm = TRUE),
-           same_infant_calc = paste(study_ID,same_infant)) %>%
-    add_rownames("unique_row") %>%
-    ungroup()
-
-}
-
-
 check_data_exists <- function(dataset_short_name) {
-  dataset_meta <- datasets %>% filter(datasets$short_name == dataset_short_name)
+  dataset_meta <- dataset_info %>% filter(dataset_info$short_name == dataset_short_name)
   if (!nrow(dataset_meta)) {
-    return(sprintf("\U274C Dataset is not listed in datasets metadata")) 
+    return(sprintf("\U274C Dataset is not listed in dataset_info metadata")) 
   } else {
     return(sprintf("\U2705 OK!", dataset_meta$name))
   }
-}
-
-# Fetch a dataset from google sheets, run it through field validation,
-# perform any necessary manipulations of its contents, save it to a file
-load_dataset <- function(dataset_short_name) {
-
-  if (dataset_short_name == '') {
-    return("")
-  }
-
-  dataset_meta <- datasets %>% filter(short_name == dataset_short_name)
-
-  dataset_contents <- fetch_dataset(dataset_meta)
-  if (is.null(dataset_contents)) {
-    return()
-  }
-
-  valid_dataset <- validate_dataset(dataset_meta, dataset_contents)
 }
 
 validate_dataset_field <- function(dataset_name, dataset_contents, field) {
@@ -231,17 +148,16 @@ make_fields <- function(fields) {
 }
 
 server <- function(input, output, session) {
-  output$dataset_spec <- renderPrint(as.list(datasets %>% filter(name == input$dataset)))
-  output$fields_spec <- renderDT(make_fields(fields))
+  output$dataset_spec <- renderPrint(as.list(dataset_info %>% filter(name == input$dataset)))
+##  output$fields_spec <- renderDT(make_fields(fields))
   output$selected_name <- renderText(input$dataset)
 
-  output$check_key <- renderText(check_key(datasets %>% filter(name == input$dataset)))
-  output$check_data_exists <- renderText(check_data_exists(datasets %>% filter(name == input$dataset)%>% pull(short_name)))
-  output$check_fetch <- renderText(fetch_dataset(datasets %>% filter(name == input$dataset)))
+  output$check_key <- renderText(check_key(dataset_info %>% filter(name == input$dataset)))
+  output$check_data_exists <- renderText(check_data_exists(dataset_info %>% filter(name == input$dataset)%>% pull(short_name)))
+  output$check_fetch <- renderText(fetch_dataset(dataset_info %>% filter(name == input$dataset)))
   
   output$field_validation <- renderDT({
-    validate_dataset(datasets %>% filter(name == input$dataset),
-                     get_data(datasets %>% filter(name == input$dataset)))
+    validate_dataset(dataset_info %>% filter(name == input$dataset),
+                     get_data(dataset_info %>% filter(name == input$dataset)))
   })
 }
-

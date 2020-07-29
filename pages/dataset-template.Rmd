@@ -1,7 +1,7 @@
 ---
 params:
-  dataset_info: NULL 
-  dataset_raw: NULL
+  dataset_info: !r NULL
+  dataset_raw: !r NULL
 ---
 
 ```{r child='assets/setup.Rmd'}
@@ -10,6 +10,10 @@ params:
 <style>.dt-buttons.btn-group {float:left;}</style>
 
 ```{r echo=FALSE, warning=FALSE, message=FALSE}
+if (is.null(params$dataset_info) || is.null(params$dataset_raw)) {
+  knitr::knit_exit()
+}
+
 dataset_raw <- params$dataset_raw
 dataset_info <- params$dataset_info
 ## what is this attempting to do?
