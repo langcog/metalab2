@@ -3,161 +3,66 @@ suppressMessages(suppressWarnings({
   library(purrr)
   library(here)
   library(DT)
-  ##library(metalab)
+  library(shinyjs)
+  ## library(metalab)
 }))
 
-# Validate dataset's values for all fields
-validate_dataset <- function(dataset_meta, dataset_contents) {
-  valid_fields <- map(fields, function(field) {
-    validate_dataset_field(dataset_meta$name, dataset_contents, field)
-  })
-
-  ret_df <- data.frame(Field = unlist(sapply(fields, "[[", "field")),
-                       Valid = unlist(valid_fields))
-
-  cat('here\nhere\n');
-  str(ret_df)
-  print("TEST")
-
-  return(datatable(ret_df, options = list(dom = 'tp', pageLength = 50)))
-}
-
-check_key <- function(dataset_meta) {
-  if (dataset_meta$key == "") {
-    return("\U274C Cannot load dataset, key missing.\n")
-  } else {
-    return("\U2705 OK!")
-  }
-}
-
-fetch_dataset <- function(dataset_meta) {
-  dataset_url <- sprintf(
-    "https://docs.google.com/spreadsheets/d/%s/export?id=%s&format=csv",
-    dataset_meta$key, dataset_meta$key
-  )
-
-  result <- tryCatch({
-    dataset_url %>%
-      httr::GET() %>%
-      httr::content(col_names = TRUE, col_types = NULL, encoding = "UTF-8")
-  },
-  error = function(e) {
-    return ("error")
-  })
-
-  if ("string" %in% class(result)) {
-    return("\U274C Cannot load dataset from Google Sheets")
-  } else {
-    return("\U2705 OK!")
-  }
-}
-
-get_data <- function(dataset_meta) {
-  dataset_url <- sprintf(
-    "https://docs.google.com/spreadsheets/d/%s/export?id=%s&format=csv",
-    dataset_meta$key, dataset_meta$key
-  )
-
-  tryCatch({
-    ret <- dataset_url %>%
-      httr::GET() %>%
-      httr::content(col_names = TRUE, col_types = NULL, encoding = "UTF-8")
-  },
-  error = function(e) {
-    sprintf("\U274C Cannot load dataset '%s' with key '%s'. Exception: %s.\n", dataset_meta$name,
-            dataset_meta$key, e)
-  })
-
-  ret
-}
-
-check_data_exists <- function(dataset_short_name) {
-  dataset_meta <- dataset_info %>% filter(dataset_info$short_name == dataset_short_name)
-  if (!nrow(dataset_meta)) {
-    return(sprintf("\U274C Dataset is not listed in dataset_info metadata")) 
-  } else {
-    return(sprintf("\U2705 OK!", dataset_meta$name))
-  }
-}
-
-validate_dataset_field <- function(dataset_name, dataset_contents, field) {
-  if (field$required) {
-    if (field$field %in% names(dataset_contents)) {
-      if (field$type == "options") {
-        if (class(field$options) == "list") {
-          options <- names(unlist(field$options, recursive = FALSE))
-        } else {
-          options <- field$options
-        }
-        invalid_values <- unique(dataset_contents[[field$field]]) %>%
-          setdiff(options)
-        if (!is.null(field$nullable) && field$nullable) {
-          invalid_values <- na.omit(invalid_values)
-        }
-        if (length(invalid_values)) {
-          ret <- ""
-          for (value in invalid_values) {
-            ret <- paste(ret, 
-                         sprintf("Dataset '%s' has invalid value '%s' for field '%s'.\n",
-                                 dataset_name, value, field$field))
-          }
-          return(ret)
-        }
-      } else if (field$type == "numeric") {
-        field_contents <- dataset_contents[[field$field]]
-        if (!(is.numeric(field_contents) || all(is.na(field_contents)))) {
-          ret <- sprintf("Dataset '%s' has wrong type for numeric field '%s'.\n",
-                         dataset_name, field$field)
-          return(ret)
-        }
-      }
-    } else {
-      ret <- sprintf("Dataset '%s' is missing required field: '%s'.\n",
-                     dataset_name, field$field)
-      return(ret)
-    }
-  }
-  return("\U2705")
-}
-get_property <- function(property, property_fun = function(x) x) {
-  map_chr(fields, function(entry) {
-    if (property %in% names(entry) && !is.null(entry[[property]]))
-      property_fun(entry[[property]])
-    else ""
-  })
-}
-
-process_options <- function(options) {
-  if (class(options) == "list") {
-    opts <- names(unlist(options, recursive = FALSE))
-  } else {
-    opts <- options
-  }
-  paste(map_chr(opts, ~sprintf("<code>%s</code>", .x)), collapse = ", ")
-}
-
-
-make_fields <- function(fields) {
-  fields_data <- dplyr::data_frame(field = get_property("field"),
-                                   description = get_property("description"),
-                                   type = get_property("type"),
-                                   format = get_property("format"),
-                                   options = get_property("options", process_options),
-                                   required = get_property("required")) %>%
-    tidyr::unite(`format/options`, format, options, sep = "") 
-}
-
 server <- function(input, output, session) {
-  output$dataset_spec <- renderPrint(as.list(dataset_info %>% filter(name == input$dataset)))
-##  output$fields_spec <- renderDT(make_fields(fields))
+  output$dataset_spec <- renderDT(
+    data.frame(column = names(dataset_info),
+               value = t(dataset_info %>% filter(name == input$dataset))),
+    rownames = "", options = list(dom = 't', pageLength = 50)
+  )
+
+  output$fields_spec <- renderDT(make_fields(fields))
   output$selected_name <- renderText(input$dataset)
 
-  output$check_key <- renderText(check_key(dataset_info %>% filter(name == input$dataset)))
-  output$check_data_exists <- renderText(check_data_exists(dataset_info %>% filter(name == input$dataset)%>% pull(short_name)))
-  output$check_fetch <- renderText(fetch_dataset(dataset_info %>% filter(name == input$dataset)))
+  output$check_key_m <- renderText(check_key(dataset_info %>% filter(name == input$dataset)))
+  output$check_data_exists_m <- renderText(check_data_exists(dataset_info %>% filter(name == input$dataset)%>% pull(short_name)))
+  output$check_fetch_m <- renderText(fetch_dataset(dataset_info %>% filter(name == input$dataset)))
   
-  output$field_validation <- renderDT({
-    validate_dataset(dataset_info %>% filter(name == input$dataset),
-                     get_data(dataset_info %>% filter(name == input$dataset)))
+  output$field_validation_m <- renderDT({
+    valid_fields <- validate_dataset(dataset_info %>% filter(name == input$dataset),
+                                     get_data(dataset_info %>% filter(name == input$dataset)),
+                                     fields)
+
+    ret_df <- data.frame(Field = unlist(sapply(fields, "[[", "field")),
+                         Valid = unlist(valid_fields)) %>%
+      mutate(Valid = ifelse(Valid, "\u2705", "No")) %>% 
+      arrange(Valid)
+
+    return(datatable(ret_df, options = list(dom = 'tp', pageLength = 50)))
+  })
+
+  observeEvent(input$validate_sheet_button,
+  {
+    df <- get_data(data.frame(key = get_google_sheet_id(input$google_sheet_url),
+                              name = "input url"))
+    output$field_validation_g <-
+      renderDT({
+        valid_fields <- validate_dataset(data.frame(name = 'from url'), df, fields)
+
+        ret_df <- data.frame(Field = unlist(sapply(fields, "[[", "field")),
+                             Valid = unlist(valid_fields)) %>% arrange(Valid)
+
+        return(datatable(ret_df, options = list(dom = 'tp', pageLength = 50)))
+      })
+    ## shinyjs::toggle("dataset_spec")    
+    output$dataset_spec_m <- renderDT(data.frame(column = "Not available for datasets not included in Metalab",
+                                                 value = ""))
+  })
+
+  output$field_validation_csv <- renderDT({
+    req(input$csv_file)
+
+    df <- read.csv(input$csv_file$datapath,
+                   header = TRUE)
+    
+    valid_fields <- validate_dataset(data.frame(name = 'from csv'), df, fields)
+
+    ret_df <- data.frame(Field = unlist(sapply(fields, "[[", "field")),
+                         Valid = unlist(valid_fields)) %>% arrange(Valid)
+
+    return(datatable(ret_df, options = list(dom = 'tp', pageLength = 50)))
   })
 }
