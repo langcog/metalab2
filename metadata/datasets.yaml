@@ -587,7 +587,7 @@
     reliability: ""
     systematic: yes
     search_strategy: 'database search'
-    source: 'new meta-analysis'
+    source: 'coded by authors'
     last_update: '2020-08-09'
     link_fields: ""
     short_desc: 'Do infants prefer natural speech over other types of sound?'
