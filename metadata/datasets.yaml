@@ -579,16 +579,16 @@
     short_name: SpeechPref
     key: 1Nc7X0zNUAwKyXJro--MbGiXKrM5NlkYR10Y3KJd-N_c
     filename: nat_speech_pref
-    citation: "Issard & Cristia (in prep.)"
-    internal_citation: ""
-    link: "https://drive.google.com/open?id=1CNz2dV6T3hyfxd2m0GSe1TzERaqT151ELpMPpfcEdcI"
-    full_citation: "Issard, C., & Cristia, A. (2019, April 4). Infants prefer to listen to speech: A meta-analysis. Retrieved from osf.io/4stz9."
-    doi: ""
+    citation: "Issard et al. (2020)"
+    internal_citation: "(Issard et al., 2020)"
+    link: "https://osf.io/4stz9/"
+    full_citation: "Issard, C., Tsuji, S., & Cristia, A. (2020, August 8). Infants' preference for speech decomposed: Meta-analytic evidence. Retrieved from osf.io/4stz9."
+    doi: "10.17605/OSF.IO/4STZ9"
     reliability: ""
     systematic: yes
     search_strategy: 'database search'
-    source: 'new meta-analysis'
-    last_update: '2019-05-09'
+    source: 'coded by authors'
+    last_update: '2020-08-09'
     link_fields: ""
     short_desc: 'Do infants prefer natural speech over other types of sound?'
     description: 'Do infants prefer natural speech over other species vocalizations, natural or artificial sounds?'
@@ -597,7 +597,7 @@
     longitudinal: 'FALSE'
     moderators: [natural, vocal, test_lang]
     subset: []
-    comment: "This meta-analysis is in progress."
+    comment: ""
 -
     name: 'Cross-situational word learning'
     domain: early_language
