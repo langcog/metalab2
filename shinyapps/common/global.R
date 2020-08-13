@@ -8,7 +8,7 @@ library(purrr)
 library(langcog)
 library(feather)
 library(plotly)
-load_all("../../../metalabr")
+library(metalabr)
 
 if (!exists("dataset_yaml")) {
   fields <- get_metalab_field_info()
