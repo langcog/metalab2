@@ -26,7 +26,7 @@ Each effect size is nested within an experiment which is in turn nested within a
 Standard random effects model, no moderators. First we run the model without accounting for any hierarchical structure (as reported in the publication by Bergmann & Cristia 2015; note that differences in effect size estimation are due to an updated dataset here that also includes nonnative studies, as compared to the paper).
 
 ```{r Data}
-inworddb <- droplevels(all_data[all_data$short_name=="inworddb", ])
+inworddb <- droplevels(metalab_data[metalab_data$short_name=="inworddb", ])
 
 StandardMod <- rma(g_calc, g_var_calc, data = inworddb)
 summary(StandardMod)
