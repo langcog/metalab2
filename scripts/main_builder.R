@@ -1,7 +1,7 @@
 library(dplyr)
 library(purrr)
 library(here)
-##library(metalabr)
+library(metalabr)
 
 
 knitr::opts_chunk$set(cache = FALSE)
