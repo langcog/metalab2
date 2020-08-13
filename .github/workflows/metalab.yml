@@ -41,7 +41,6 @@ jobs:
     - run: Rscript -e 'source(here::here("scripts", "main_builder.R"))'
     - run: find ./shinyapps/* -type d -exec touch {}/restart.txt \;
     - run: cp -R metadata/ ./shinyapps/common/
-    - run: cp -R data/ ./shinyapps/common/
     - run: tar -zcvf metalab-shinyapps.tar.gz shinyapps
     - run: tar -zcvf metalab-site.tar.gz rendered
 
