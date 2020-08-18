@@ -20,7 +20,7 @@ shinyServer(function(input, output, session) {
   # ########### DATA ###########
   pwrdata <- reactive({
     req(input$dataset_name_pwr)
-    result <- all_data %>%
+    result <- metalab_data %>%
       filter(dataset == input$dataset_name_pwr)
 
     subset <- input$subset_input
