@@ -11,12 +11,14 @@ library(plotly)
 library(metalabr)
 
 get_metalab_data_local <- function(directory) {
-  files <- list.files(directory, full.names = TRUE)
+  files <- list.files(directory, full.names = TRUE, pattern = "csv")
   data <- lapply(files, read.csv, stringsAsFactors = FALSE)
   do.call(rbind, data)
 }
 
 fields <- get_metalab_field_info()
-metalab_data <- get_metalab_data_local(here("shinyapps", "site_data"))
 
+metalab_data <- get_metalab_data_local(here("shinyapps", "site_data"))
+dataset_yaml <- get_metalab_dataset_info()
+dataset_info <- add_metalab_summary_info(dataset_yaml, metalab_data)
 
