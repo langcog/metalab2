@@ -1,15 +1,18 @@
 ---
 params:
-  dataset: !r data.frame(short_name=character(2), num_papers=integer(2), num_experiments=integer(2), num_subjects=integer(2), stringsAsFactors = FALSE)
-  domainName: !r yaml::yaml.load_file(here::here("metadata", "domains.yaml"))[[1]]$title
+  dataset: !r data.frame(name=character(2), short_name=character(2), num_papers=integer(2), num_experiments=integer(2), num_subjects=integer(2), stringsAsFactors = FALSE)
+  domain_name: !r yaml::yaml.load_file(here::here("metadata", "domains.yaml"))[[1]]$title
 ---
 
 <style>body {background-color: #ecf0f5;}</style>
 
 ```{r child='assets/setup.Rmd'}
 ```
-
+```{r arrange, echo=FALSE}
+params_dataset <- params$dataset %>% arrange(name)
+```
 ```{r tools, echo=FALSE}
+
 datasetBox <- function(i, data) {
   data <- data[i, ]
   box(
@@ -35,27 +38,28 @@ fluidRow(
     fluidRow(class = "domain-boxes",
       column(width = 5, 
         valueBoxes(
-          params$dataset %>% metricsCounter)
+          params_dataset %>% metricsCounter)
         ),
       column(width = 7))
     )
   )
 
-if (nrow(params$dataset) > 1) {
+if (nrow(params_dataset) > 1) {
+  
   fluidRow(
     column(width = 1),
     column(width = 5, class = "cont-dom",
-      map(seq(1, ceiling(nrow(params$dataset) / 2), 1),
+      map(seq(1, ceiling(nrow(params_dataset) / 2), 1),
         ~ a(class = "no-format",
-            href = paste0("../dataset/", params$dataset[["short_name"]][[.]], ".html"),
-            datasetBox(., params$dataset))
+            href = paste0("../dataset/", params_dataset[["short_name"]][[.]], ".html"),
+            datasetBox(., params_dataset))
         )
       ),
     column(width = 5, class = "cont-dom",
-      map(seq(ceiling(nrow(params$dataset) / 2 + 1), nrow(params$dataset), 1),
+      map(seq(ceiling(nrow(params_dataset) / 2 + 1), nrow(params_dataset), 1),
         ~ a(class = "no-format",
-            href = paste0("../dataset/", params$dataset[["short_name"]][[.]], ".html"),
-            datasetBox(., params$dataset))
+            href = paste0("../dataset/", params_dataset[["short_name"]][[.]], ".html"),
+            datasetBox(., params_dataset))
         )
       ),
     column(width = 1)
@@ -65,8 +69,8 @@ if (nrow(params$dataset) > 1) {
     column(width = 1),
     column(width = 10,
       a(class = "no-format",
-        href = paste0("../dataset/", params$dataset$short_name, ".html"),
-        datasetBox(1, params$dataset))
+        href = paste0("../dataset/", params_dataset$short_name, ".html"),
+        datasetBox(1, params_dataset))
       ),
     column(width = 1)
     )

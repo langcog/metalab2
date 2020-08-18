@@ -39,10 +39,10 @@ htmltools::includeScript(here("pages", "assets", "custom.js"))
 ### Overview
 
 #### Overview
-MetaLab is a research tool for aggregating across studies in the cognitive development literature. Currently, MetaLab contains `r as.integer(sum(as.numeric(datasets$num_experiments), na.rm = TRUE))` effect sizes across
-meta-analyses in `r nrow(datasets)` domains of cognitive development, based on
-data from `r as.integer(sum(as.numeric(datasets$num_papers), na.rm = TRUE))` papers collecting
-`r as.integer(sum(as.numeric(datasets$num_subjects), na.rm = TRUE))` subjects. These studies
+MetaLab is a research tool for aggregating across studies in the cognitive development literature. Currently, MetaLab contains `r as.integer(sum(as.numeric(dataset_info$num_experiments), na.rm = TRUE))` effect sizes across
+meta-analyses in `r nrow(dataset_info)` domains of cognitive development, based on
+data from `r as.integer(sum(as.numeric(dataset_info$num_papers), na.rm = TRUE))` papers collecting
+`r as.integer(sum(as.numeric(dataset_info$num_subjects), na.rm = TRUE))` subjects. These studies
 can be used to obtain better estimates of effect sizes across different domains,
 methods, and ages. Using our power calculator, researchers can use these
 estimates to plan appropriate sample sizes for prospective studies. More
@@ -78,8 +78,8 @@ display_name <- function(fields) {
 domain <- ""
 
 ret <- ""
-for (i in 1:nrow(datasets)) {
-  dataset <- datasets[i,]
+for (i in 1:nrow(dataset_info)) {
+  dataset <- dataset_info[i,]
   
   if (domain != dataset$domain) {
     domain <- dataset$domain

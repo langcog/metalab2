@@ -68,7 +68,7 @@ div(
       br(),
       "Learn how to ",
       tags$a(href = "/documentation.html", "contribute,"),
-      "and visit our", 
+      "and read our", 
       tags$a(href = "/tutorials.html", "tutorials.")),
     column(width = 1)
   )
@@ -84,7 +84,7 @@ fluidRow(class = "domain-info",
           column(width = 2),
           column(width = 10,
             valueBoxes(
-              filter(ungroup(datasets), domain == domainIDs[[.]]) %>% metricsCounter)
+              filter(ungroup(dataset_info), domain == domain_ids[[.]]) %>% metricsCounter)
             )
           )
         )
@@ -98,7 +98,7 @@ fluidRow(class = "domain-info",
             domainBox(., domains, c(0, 2), link = paste0("domain/", domains[[.]][["id"]], ".html"))),
           fluidRow(class = "right-part",
             column(width = 10, valueBoxes(
-              filter(ungroup(datasets), domain == domainIDs[[.]]) %>% metricsCounter)
+              filter(ungroup(dataset_info), domain == domain_ids[[.]]) %>% metricsCounter)
               ),
             column(width = 2)
             )

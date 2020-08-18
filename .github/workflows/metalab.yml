@@ -27,20 +27,20 @@ jobs:
       uses: actions/cache@v1
       with:
         path: ${{ env.RENV_PATHS_ROOT }}
-        key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
+        key: ${{ runner.os }}-renv-20200715-${{ hashFiles('**/renv.lock') }}
         restore-keys: |
           ${{ runner.os }}-renv-
 
     - name: Restore packages 
       shell: Rscript {0}
       run: |
+        options(repos = c(CRAN = "https://packagemanager.rstudio.com/cran/__linux__/bionic/latest"))
         if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
         renv::restore()
 
     - run: Rscript -e 'source(here::here("scripts", "main_builder.R"))'
     - run: find ./shinyapps/* -type d -exec touch {}/restart.txt \;
     - run: cp -R metadata/ ./shinyapps/common/
-    - run: cp -R data/ ./shinyapps/common/
     - run: tar -zcvf metalab-shinyapps.tar.gz shinyapps
     - run: tar -zcvf metalab-site.tar.gz rendered
 

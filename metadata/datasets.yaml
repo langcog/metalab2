@@ -19,7 +19,7 @@
     description: 'Looking times as a function of whether infant-directed vs. adult-directed speech is presented as stimulation, in infants aged 0 - 12 months.'
     curator: 'Alex Cristia'
     src: images/datasets/ids.png
-    longitudinal: 'FALSE'
+    longitudinal: no
     moderators: [speaker, speech_type]
     subset: []
     comment: ''
@@ -44,7 +44,7 @@
     description: 'Previous research suggests that labels support the formation of novel categories in young children. This meta-analysis includes studies exploring this question that use a paradigm similar to Balaban and Waxman (1997), resulting in a selection of experiments using behavioral methods on infants 3 to 18 months.'
     curator: 'Molly Lewis'
     src: images/datasets/dinosaur.png
-    longitudinal: 'FALSE'
+    longitudinal: no
     moderators: [audio_condition, object_stimulus, num_trials]
     subset: []
     comment: ''
@@ -69,7 +69,7 @@
     description: 'Gaze-following using standard multi-alternative forced-choice paradigms, in infants and children from 3 months to two years.'
     curator: 'Molly Lewis'
     src: images/datasets/gaze.png
-    longitudinal: 'FALSE'
+    longitudinal: no
     moderators: [num_trials, cue_type, N_AFC]
     subset: []
     comment: ""
@@ -94,7 +94,7 @@
     description: 'Discrimination of native-language vowels, including results from behavioral, electrophysiological, and neuroimaging methods applied to infants 0 - 14 months of age.'
     curator: 'Sho Tsuji'
     src: images/datasets/discrim.png
-    longitudinal: 'FALSE'
+    longitudinal: no
     moderators: []
     subset: []
     comment: ""
@@ -119,7 +119,7 @@
     description: 'Discrimination of non-native language vowels, including results from behavioral, electrophysiological, and neuroimaging methods applied to infants 0 - 14 months of age.'
     curator: 'Sho Tsuji'
     src: images/datasets/discrim.png
-    longitudinal: 'FALSE'
+    longitudinal: no
     moderators: []
     subset: []
     comment: ""
@@ -144,7 +144,7 @@
     description: 'Laboratory experiments in which infants are exposed to a set of pseudo-words that could support a phonotactic generalization, and thereafter tested on their preference between new types that follow or violate the familiarized phonotactics.'
     curator: 'Alex Cristia'
     src: images/datasets/phonotactics.png
-    longitudinal: 'FALSE'
+    longitudinal: no
     moderators: []
     subset: []
     comment: ""
@@ -169,7 +169,7 @@
     description: 'Laboratory experiments in which infants are exposed to a set of syllables that have been generated using a bimodal distribution of acoustic cues or not, and infants are tested on their discrimination of two sounds differing along the same dimension.'
     curator: 'Alex Cristia'
     src: images/datasets/distrib.png
-    longitudinal: 'FALSE'
+    longitudinal: no
     moderators: []
     subset: []
     comment: ""
@@ -194,7 +194,7 @@
     description: 'Can infants segment words from artificial mini-languages based on syllable-level statistics?'
     curator: 'Christina Bergmann'
     src: images/datasets/statistical.png
-    longitudinal: 'FALSE'
+    longitudinal: no
     moderators: [native_lang, stimuli_type]
     subset: [replication]
     comment: ""
@@ -219,7 +219,7 @@
     description: 'Recognition of familiarized content or non-words from running, natural speech using behavioral methods applied to infants 0 - 20 months of age.'
     curator: 'Christina Bergmann'
     src: images/datasets/segmentation.png
-    longitudinal: 'FALSE'
+    longitudinal: no
     moderators: [native_lang, method]
     subset: [native]
     comment: ""
@@ -244,7 +244,7 @@
     description: 'Recognition of familiarized function words from natural speech using behavioral methods applied to infants 0 - 20 months of age.'
     curator: 'Christina Bergmann'
     src: images/datasets/segmentation.png
-    longitudinal: 'FALSE'
+    longitudinal: no
     moderators: [native_lang, method]
     subset: []
     comment: ""
@@ -269,7 +269,7 @@
     description: 'Online word recognition of familiar words using two-alternative forced choice preferential looking. Experiments in this MA follow Fernald et al. (1998) and were included based on their reporting of reaction time as well as effect size.'
     curator: 'Molly Lewis'
     src: images/datasets/word_rec.png
-    longitudinal: 'FALSE'
+    longitudinal: no
     moderators: []
     subset: []
     comment: ""
@@ -294,7 +294,7 @@
     description: 'Mutual exclusivity is the bias for children to assume a novel word refers to a novel object, in the presence of one novel and one familiar object. This meta-analysis covers behavioral experiments on infants aged 14 months to 5 years.'
     curator: 'Molly Lewis'
     src: images/datasets/zot.png
-    longitudinal: 'FALSE'
+    longitudinal: no
     moderators: [ME_trial_type, infant_type, mean_production_vocab, N_AFC, num_trials, object_stimulus]
     subset: []
     comment: ""
@@ -319,7 +319,7 @@
     description: 'The pointing gesture has been argued to be related to the development of language. This meta-analysis explores the relationship between pointing and language development, both concurrently and longitudinally.'
     curator: 'Molly Lewis'
     src: images/datasets/pointing.png
-    longitudinal: 'TRUE'
+    longitudinal: yes
     moderators: [motive, pointing_modality]
     subset: []
     comment: ""
@@ -344,7 +344,7 @@
     description: 'The pointing gesture has been argued to be related to the development of language. This meta-analysis explores the relationship between pointing and language development, both concurrently and longitudinally.'
     curator: 'Molly Lewis'
     src: images/datasets/pointing.png
-    longitudinal: 'FALSE'
+    longitudinal: no
     moderators: [motive, pointing_modality]
     subset: []
     comment: ""
@@ -369,7 +369,7 @@
     description: 'Do infants recognize systematic relationships between form and meaning, e.g. that bouba tends to refer to a round object and kiki tends to refer to a spiky one?'
     curator: 'Sho Tsuji'
     src: images/datasets/bouba-kiki.png
-    longitudinal: 'FALSE'
+    longitudinal: no
     moderators: []
     subset: []
     comment: ""
@@ -394,7 +394,7 @@
     description: 'In a triad-task, bias to generalize to taxonomic as opposed to thematic alternative.'
     curator: 'Molly Lewis'
     src: images/datasets/catBias.png
-    longitudinal: 'FALSE'
+    longitudinal: no
     moderators: [label_present, instruction_code, object_stimulus, taxonomic_type]
     subset: []
     comment: ""
@@ -419,7 +419,7 @@
     description: 'Within-subject comparisons of attention to lists of familiar words vs novel/rare words.'
     curator: 'Julia Carbajal'
     src: images/datasets/familiarwords.png
-    longitudinal: 'FALSE'
+    longitudinal: no
     moderators: [main_or_baseline_study, native_lang]
     subset: []
     comment: ""
@@ -444,7 +444,7 @@
     description: ""
     curator: 'Hugh Rabagliati'
     src: images/datasets/AbstractRules.png
-    longitudinal: 'FALSE'
+    longitudinal: no
     moderators: [Modality, Semantics, TrainingRule, PreferenceType]
     subset: [Speech, Nonspeech]
     comment: ""
@@ -469,7 +469,7 @@
     description: ""
     curator: 'Angeline Tsui'
     src: images/datasets/Switch.png
-    longitudinal: 'FALSE'
+    longitudinal: no
     moderators: [minimal_pairs, word_typicality, cues_present]
     subset: []
     comment: ""
@@ -494,7 +494,7 @@
     description: ""
     curator: 'Katie Von Holzen'
     src: images/datasets/MPSens.png
-    longitudinal: 'FALSE'
+    longitudinal: no
     moderators: [is_correct, n_feature, type_feature, mispron_location]
     subset: [CorrectPronunciation, Mispronunciation]
     comment: ""
@@ -519,7 +519,7 @@
     description: 'Do infants prefer a prosocial agent (helper, giver, more fair) over an antisocial (hinderer, taker, less fair) agent?'
     curator: 'Francesco Margoni'
     src: images/datasets/prosocial.png
-    longitudinal: 'FALSE'
+    longitudinal: no
     moderators: [scenarios]
     subset: [Hamlin_Lab]
     comment: ""
@@ -544,7 +544,7 @@
     description: 'Do infants look longer at stimuli representing “incorrect” versus “correct” solutions of basic addition and subtraction problems?'
     curator: ''
     src: images/datasets/prosocial.png
-    longitudinal: 'FALSE'
+    longitudinal: no
     moderators: [1+1_2-1, 1_1/2-1_other, solutions,	Age_MedianSplit, Stimultype, Display]
     subset: []
     comment: ''
@@ -569,7 +569,7 @@
     description: 'Do infants who show more symbolic play have better language development?'
     curator: ''
     src: images/datasets/prosocial.png
-    longitudinal: 'FALSE'
+    longitudinal: no
     moderators: [correlation_type, Language_modality, solutions, Age_qualitative]
     subset: []
     comment: "the mean age is not systematic, but the center of the age range provided in the supplementary material."
@@ -594,7 +594,7 @@
     description: 'Do infants prefer natural speech over other species vocalizations, natural or artificial sounds?'
     curator: 'Cecile Issard'
     src: images/datasets/ids.png
-    longitudinal: 'FALSE'
+    longitudinal: no
     moderators: [natural, vocal, test_lang]
     subset: []
     comment: "This meta-analysis is in progress."
@@ -619,7 +619,7 @@
     description: 'Infants and children s abilities to learn words across multiple ambiguous situations.'
     curator: 'Rodrigo Dal Ben'
     src: images/datasets/CrossSit.png
-    longitudinal: 'FALSE'
+    longitudinal: no
     moderators: [exposure_phase, method, dependent_measure]
     subset: []
     comment: ''

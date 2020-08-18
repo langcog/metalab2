@@ -9,20 +9,20 @@ development research.
 For development purposes, you can build MetaLab (datasets, web site,
 and Shiny apps) locally. 
 
+#### Special Intructions for Windows Users
+
+If you are building MetaLab on Windows, you must install the
+appropriate version of [Rtools]
+(https://cran.r-project.org/bin/windows/Rtools/) before
+proceeding. Rtools will install the toolchain (compilers and linkers)
+necessary to build R packages from source code in the Windows
+environment.
+
 ### Package Dependencies
 
 If it is your first time running Metalab locally after cloning, or the
 package dependencies have been updated, you can install all the
 required R packages using 
-
-
-#### Windows
-
-If you are building MetaLab on Windows, you must install the
-appropriate version of [Rtools]
-(https://cran.r-project.org/bin/windows/Rtools/) before
-proceeding. Rtools will install the appropriate toolchain (compilers
-and linkers) on your computer to build R packages from source code.
 
 ```
 ## install MetaLab package dependencies

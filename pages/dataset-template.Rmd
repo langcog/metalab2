@@ -1,6 +1,7 @@
 ---
 params:
-  datasetID: "labadv"
+  dataset_info: !r NULL
+  dataset_raw: !r NULL
 ---
 
 ```{r child='assets/setup.Rmd'}
@@ -9,9 +10,14 @@ params:
 <style>.dt-buttons.btn-group {float:left;}</style>
 
 ```{r echo=FALSE, warning=FALSE, message=FALSE}
-currentDataset <- datasets %>% dplyr::filter(short_name == params$datasetID)
-data <- read.csv(here("data", paste0(currentDataset$filename, ".csv")), stringsAsFactors = FALSE)
-data <- data[colSums(!is.na(data)) > 0]
+if (is.null(params$dataset_info) || is.null(params$dataset_raw)) {
+  knitr::knit_exit()
+}
+
+dataset_raw <- params$dataset_raw
+dataset_info <- params$dataset_info
+## what is this attempting to do?
+## dataset_raw <- dataset_raw[colSums(!is.na(dataset_raw)) > 0]
 ```
 
 ```{r echo=FALSE}
@@ -21,26 +27,26 @@ menuNavbar("../")
 ```{r results='asis', echo=FALSE}
 fluidRow(
   column(width = 12,
-    h1(currentDataset$name),
+    h1(dataset_info$name),
     tags$ul(
-      if (currentDataset$citation != "") {
-        if (currentDataset$link == "") {
-          tags$li(currentDataset$citation)
+      if (dataset_info$citation != "") {
+        if (dataset_info$link == "") {
+          tags$li(dataset_info$citation)
         } else {
-          tags$li(a(href = currentDataset$link, currentDataset$citation))
+          tags$li(a(href = dataset_info$link, dataset_info$citation))
         } 
       } else {
         NULL
       },
       tags$li(
         paste0(
-          "N papers = ", as.integer(currentDataset$num_papers),
-          ", N experiments = ", as.integer(currentDataset$num_experiments),
-          ", N participants = ", as.integer(currentDataset$num_subjects)
+          "N papers = ", as.integer(dataset_info$num_papers),
+          ", N experiments = ", as.integer(dataset_info$num_experiments),
+          ", N participants = ", as.integer(dataset_info$num_subjects)
           )
         ),
-      tags$li(currentDataset$short_desc),
-      tags$li(paste("Curator is", currentDataset$curator))
+      tags$li(dataset_info$short_desc),
+      tags$li(paste("Curator is", dataset_info$curator))
       )
     )
   )
@@ -52,7 +58,7 @@ fluidRow(
     tabBox(width = 12,
       tabPanel("Data",
         DT::datatable(
-          select(data, -long_cite, -dataset, -short_name),
+          select(dataset_raw, -long_cite, -dataset, -short_name),
           fillContainer = TRUE,
           width = "100%",
           style = "bootstrap",
@@ -65,25 +71,25 @@ fluidRow(
               list(
                 extend = 'collection',
                 buttons = list(
-                  list(extend='csv', filename = currentDataset$short_name),
-                  list(extend='excel', filename = currentDataset$short_name)),
+                  list(extend='csv', filename = dataset_info$short_name),
+                  list(extend='excel', filename = dataset_info$short_name)),
                 text = 'Download')
               )
             )
         )
       ),
       tabPanel("Papers",
-        purrr::map(unique(data$long_cite), ~ tagList(p(.)))
+        purrr::map(unique(dataset_raw$long_cite), ~ tagList(p(.)))
       ),
       tabPanel(
         "Detailed info",
         value = "detailed_info",
-        h4(currentDataset$description),
+        h4(dataset_info$description),
         p(
-          strong("Search strategy:"), currentDataset$search_strategy
+          strong("Search strategy:"), dataset_info$search_strategy
         ),
         p(strong("Systematic:"),
-          if(!is.null(currentDataset$systematic) && currentDataset$systematic == "TRUE") "yes" else "no"
+          if(!is.null(dataset_info$systematic) && dataset_info$systematic) "yes" else "no"
         )
       )
     )
