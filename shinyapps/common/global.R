@@ -20,6 +20,8 @@ get_metalab_data_local <- function(directory) {
 fields <- get_metalab_field_info()
 
 metalab_data <- get_metalab_data_local(here("shinyapps", "site_data"))
-dataset_yaml <- get_metalab_dataset_info()
+dataset_yaml <- get_metalab_dataset_info() #this goes to github, maybe
+                                           #should be local too? how
+                                           #is it used?
 dataset_info <- add_metalab_summary_info(dataset_yaml, metalab_data)
 
