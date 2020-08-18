@@ -10,9 +10,13 @@ library(feather)
 library(plotly)
 library(metalabr)
 
-if (!exists("dataset_yaml")) {
-  fields <- get_metalab_field_info()
-  dataset_yaml <- get_metalab_dataset_info()
-  metalab_data <- get_metalab_data(dataset_yaml)
-  dataset_info <- add_metalab_summary_info(dataset_yaml, metalab_data)
+get_metalab_data_local <- function(directory) {
+  files <- list.files(directory, full.names = TRUE)
+  data <- lapply(files, read.csv, stringsAsFactors = FALSE)
+  do.call(rbind, data)
 }
+
+fields <- get_metalab_field_info()
+metalab_data <- get_metalab_data_local(here("shinyapps", "site_data"))
+
+
