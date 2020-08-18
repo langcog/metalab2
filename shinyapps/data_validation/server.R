@@ -3,7 +3,7 @@ suppressMessages(suppressWarnings({
   library(purrr)
   library(here)
   library(DT)
-  library(metalab)
+  library(metalabr)
 }))
 
 server <- function(input, output, session) {
