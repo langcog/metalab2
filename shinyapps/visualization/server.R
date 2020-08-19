@@ -493,13 +493,12 @@ shinyServer(function(input, output, session) {
       setNames(paste(mod_data()[[mod_group()]], "  "),
                mod_data()[[mod_group()]])
     guide <- if (mod_group() == "all_mod") FALSE else "legend"
-
     p <- ggplot(d) +
       geom_polygon(aes(x = x, y = y), data = funnel95, alpha = .5,
                    fill = "white") +
       geom_polygon(aes(x = x, y = y), data = funnel99, alpha = .5,
                    fill = "white") +
-      geom_point(aes_string(x = "es", y = "-se", colour = mod_group())) +
+      geom_point(aes_string(x = "es", y = "-se", colour = "all_mod")) +
       geom_vline(aes(), xintercept = center, linetype = "dotted", color = "black") +
       xlab(xlabel) +
       ylab(ylabel) +
@@ -511,12 +510,11 @@ shinyServer(function(input, output, session) {
             panel.grid.minor =  element_line(colour = "darkgrey", size = 0.5))
 
     # ggplotly hack - avoid weird lines by preventing overlapping geom_vlines
-    if (center != 0) {
-      p <- p + geom_vline(aes(), xintercept = 0, linetype = "dashed", color = "grey")
-    }
+    ## if (center != 0) {
+    ##   p <- p + geom_vline(aes(), xintercept = 0, linetype = "dashed", color = "grey")
+    ## }
 
-    ggplotly(p, tooltip = NULL) %>%
-      layout(showlegend = FALSE)
+    ggplotly(p, tooltip = NULL) %>% layout(showlegend = FALSE)
   }
 
   output$funnel <- renderPlotly(funnel())

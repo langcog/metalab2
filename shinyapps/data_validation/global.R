@@ -1,7 +1,6 @@
 library(here)
 source(here("shinyapps", "common", "global.R"))
 
-
 get_google_sheet_id <- function(url) {
   str_match(url, "/spreadsheets/d/([a-zA-Z0-9-_]+)")[2]
 }

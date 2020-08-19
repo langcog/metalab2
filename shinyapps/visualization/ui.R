@@ -84,7 +84,7 @@ shinyUI(
               uiOutput("ma_model_blurb")
           ),
           conditionalPanel(
-            condition = "output.longitudinal == 'FALSE'",
+            condition = "output.longitudinal == FALSE",
             box(width = NULL, #status = "danger",
                 fluidRow(
                   column(
@@ -93,7 +93,7 @@ shinyUI(
                   ),
                 fluidRow(column(
                   width = 7,
-                  # uiOutput("select_scatter_curve")),
+                  ## uiOutput("select_scatter_curve"),
                   selectInput("scatter_curve", label = "Curve type",
                               choices = scatter_choices, selected = "loess")),
                   bsPopover("scatter_curve", title = NULL,
