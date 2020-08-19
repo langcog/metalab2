@@ -1,5 +1,3 @@
-library(here)
-library(stringr)
 source(here("shinyapps", "common", "global.R"))
 
 get_google_sheet_id <- function(url) {

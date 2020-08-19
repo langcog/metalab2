@@ -1,11 +1,3 @@
-suppressMessages(suppressWarnings({
-  library(dplyr)
-  library(purrr)
-  library(here)
-  library(DT)
-  library(metalabr)
-}))
-
 server <- function(input, output, session) {
   output$dataset_spec <- renderDT(
     data.frame(column = names(dataset_info),

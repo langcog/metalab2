@@ -8,8 +8,10 @@ library(purrr)
 library(langcog)
 library(feather)
 library(plotly)
-library(metalabr)
 library(here)
+library(DT)
+library(stringr)
+library(metalabr)
 
 get_metalab_data_local <- function(directory) {
   files <- list.files(directory, full.names = TRUE, pattern = "csv")
