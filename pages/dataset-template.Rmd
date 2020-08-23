@@ -46,7 +46,9 @@ fluidRow(
           )
         ),
       tags$li(dataset_info$short_desc),
-      tags$li(paste("Curator is", dataset_info$curator))
+      tags$li(paste("Curator is", dataset_info$curator)),
+      tags$li(strong("Search Strategy:"), dataset_info$search_strategy),
+      tags$li(strong("Systematic:"), if(!is.null(dataset_info$systematic) && dataset_info$systematic) "yes" else "no")       
       )
     )
   )
@@ -80,17 +82,6 @@ fluidRow(
       ),
       tabPanel("Papers",
         purrr::map(unique(dataset_raw$long_cite), ~ tagList(p(.)))
-      ),
-      tabPanel(
-        "Detailed info",
-        value = "detailed_info",
-        h4(dataset_info$description),
-        p(
-          strong("Search strategy:"), dataset_info$search_strategy
-        ),
-        p(strong("Systematic:"),
-          if(!is.null(dataset_info$systematic) && dataset_info$systematic) "yes" else "no"
-        )
       )
     )
   )
