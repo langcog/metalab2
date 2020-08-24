@@ -32,12 +32,6 @@ Governing Board:
     affiliation:  University of Chicago/University of Wisconsin-Madison
     image:        images/people/molly.jpg
 
-Data manager:
-
-  - name:         Cécile Issard
-    email:        cecile.issard@gmail.com
-    affiliation:  École Normale Supérieure
-    image:        images/people/cecile.jpg
 
 Curators:
 
@@ -61,10 +55,16 @@ Curators:
   email:        francesco.margoni@unitn.it
   affiliation:  Università di Trento
 
+- name:         Cécile Issard
+  email:        cecile.issard@gmail.com
+  affiliation:  École Normale Supérieure
+  image:        images/people/cecile.jpg
+  
 - name:         Rodrigo Dal Ben
   email:        dalbenwork@gmail.com
   affiliation:  Concordia University
   image:        images/people/RodrigoDalBen.jpg
+  
 
 Former members:
 
