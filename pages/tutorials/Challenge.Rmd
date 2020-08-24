@@ -1,3 +1,11 @@
+# Contribution Challenge 2020
+
+To celebrate the latest (ongoing) upgrade and the inclusion of 25 meta-analyses to date, the MetaLab team with support of the Fetzer Franklin Fund is organizing a challenge for authors of meta-analyses on cognitive development (data challenge) and for contributors of shiny apps (code challenge). The contribution challenge will offer three $1,000 US in cash prizes distributed between (teams of) authors or coders, who contribute meta-analysis data to the MetaLab database or, who make substantial contributions to the site, for example proposing and implementing a shiny app providing a new analysis or functionality in coordination with the MetaLab team. Deadline is 2020-10-15 (15 October). 
+You can find more information here: https://bit.ly/MetaLabChallenge2020
+
+
+# Contribution Challenge 2018
+
 The MetaLab challenge calling for meta-analyses on cognitive development, with support from Berkeley Initiative for Transparency in the Social Sciences (BITSS), has closed. We received data for 7 meta-analyses, which will be added to MetaLab in the coming months.
 
 The winners are three early career researchers: Angeline Tsui (Ottawa / Stanford), M. Julia Carbajal (LSCP Paris), and Katie Von Holzen (LPP Paris / Maryland).
