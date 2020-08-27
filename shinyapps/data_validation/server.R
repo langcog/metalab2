@@ -5,6 +5,17 @@ server <- function(input, output, session) {
     rownames = "", options = list(dom = 't', pageLength = 50)
   )
 
+  dataset_versions <- reactive({
+    if (input$google_sheet_url != "") {
+      return(get_google_sheet_named_versions(get_google_sheet_id(input$google_sheet_url)))
+    }
+  })
+
+  observe({
+    ##input$google_sheet_url
+    updateSelectInput(session, "dataset_versions_select", choices = dataset_versions()[[1]]$name)
+  })
+
   output$fields_spec <- renderDT(make_fields(fields))
   output$selected_name <- renderText(input$dataset)
 
@@ -27,8 +38,17 @@ server <- function(input, output, session) {
 
   observeEvent(input$validate_sheet_button,
   {
-    df <- get_data(data.frame(key = get_google_sheet_id(input$google_sheet_url),
-                              name = "input url"))
+    ## get specific revision if a named version is specified, the named
+    ## we have the version information available, and the named version exists
+    ## in the version dataset
+      
+    dataset_revision <- dataset_versions()[[1]] %>%
+      filter(name == input$dataset_versions_select) %>% .$end
+
+    ## export fetch_dataset
+    df <- metalabr:::fetch_dataset(key = get_google_sheet_id(input$google_sheet_url),
+                                     revision = dataset_revision)
+                                       
     output$field_validation_g <-
       renderDT({
         valid_fields <- validate_dataset(data.frame(name = 'from url'), df, fields)

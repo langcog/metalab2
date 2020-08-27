@@ -3,13 +3,16 @@ library(purrr)
 library(here)
 library(metalabr)
 
-
 knitr::opts_chunk$set(cache = FALSE)
 
 domains <- get_metalab_domain_info()
 reports <- get_metalab_report_info()
-dataset_yaml <- get_metalab_dataset_info()
+dataset_yaml <- get_metalab_dataset_info(here("metadata", "datasets-tests.yaml"))
+
+## we should check for cached data here, and only read if file is
+## missing OR if version does not match
 metalab_data <- get_metalab_data(dataset_yaml)
+
 dataset_info <- add_metalab_summary_info(dataset_yaml, metalab_data)
 
 persist_metalab_data <- function(x, dataset_info) {
