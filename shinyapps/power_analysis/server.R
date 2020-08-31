@@ -37,7 +37,7 @@ shinyServer(function(input, output, session) {
 
   subsets <- reactive({
     req(input$dataset_name_pwr)
-    datasets %>%
+    dataset_info %>%
       filter(name == input$dataset_name_pwr) %>%
       .$subset %>%
       unlist()
@@ -45,7 +45,7 @@ shinyServer(function(input, output, session) {
 
   dataset_names <- reactive({
     req(input$domain)
-    datasets %>%
+    dataset_info %>%
       filter(domain == input$domain) %>%
       pull(name)
   })
@@ -76,7 +76,7 @@ shinyServer(function(input, output, session) {
       keep(~length(unique(pwrdata()[[.x]])) > 1)
 
     # remove age moderator in longitudinal
-    if (filter(datasets, name == input$dataset_name_pwr)$longitudinal) {
+    if (filter(dataset_info, name == input$dataset_name_pwr)$longitudinal) {
       valid_mod_choices <- valid_mod_choices %>%
         keep(~.x != "mean_age_months")
     }
@@ -210,7 +210,7 @@ shinyServer(function(input, output, session) {
   output$domain_selector <- renderUI({
     selectInput(inputId = "domain",
                 label = "Domain",
-                choices = datasets$domain %>%
+                choices = dataset_info$domain %>%
                   unique %>%
                   set_names(display_name(.))
     )
