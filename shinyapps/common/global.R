@@ -23,6 +23,8 @@ get_metalab_data_shiny <- function(directory) {
 
 fields <- get_metalab_field_info()
 
+fields_derived <- get_metalab_derived_field_info()
+
 metalab_data <- get_metalab_data_shiny(here("shinyapps", "site_data"))
 dataset_yaml <- get_metalab_dataset_info() #this goes to github, maybe
                                            #should be local too? how
