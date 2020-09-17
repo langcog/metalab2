@@ -1,0 +1,18 @@
+# Theme metadata
+name = "Metalab"
+
+# Is theme light or dark?
+light = true
+
+# Primary
+primary = "#2962ff"
+
+# Menu
+menu_primary = "#dd4b39"
+menu_text = "#ecf0f5"
+menu_text_active = "#000000"
+menu_title = "#ffffff"
+
+# Home sections
+home_section_odd = "rgb(255, 255, 255)"
+home_section_even = "rgb(247, 247, 247)"

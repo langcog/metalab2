@@ -4,34 +4,43 @@
 #   The weight parameter defines the order that the links will appear in.
 
 [[main]]
-  name = "Demo"
-  url = "#hero"
+  name = "Explore Data"
+  url = "/explore"
   weight = 10
+  identifier = "a-unique-reference"
 
 [[main]]
-  name = "Posts"
-  url = "#posts"
+  name = "Applications"
+  url = "/explore/apps"
+  weight = 11
+  parent = "a-unique-reference"
+
+[[main]]
+  name = "Dataset Domains"
+  url = "/explore/domains"
+  weight = 12
+  parent = "a-unique-reference"
+
+[[main]]
+  name = "Reports"
+  url = "/explore/reports"
+  weight = 13
+  parent = "a-unique-reference"
+
+[[main]]
+  name = "Documentation"
+  url = "/documentation"
   weight = 20
 
 [[main]]
-  name = "Projects"
-  url = "#projects"
+  name = "Publications"
+  url = "/publications"
   weight = 30
 
 [[main]]
-  name = "Publications"
-  url = "#featured"
+  name = "Team"
+  url = "/team"
   weight = 40
-
-[[main]]
-  name = "Courses"
-  url = "courses/"
-  weight = 50
-
-[[main]]
-  name = "Contact"
-  url = "#contact"
-  weight = 60
 
 # Link to a PDF of your resume/CV from the menu.
 # To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.

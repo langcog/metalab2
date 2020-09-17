@@ -4,13 +4,13 @@ Leaders:
     email:        chbergma@gmail.com 
     website:      https://sites.google.com/site/chbergma/
     affiliation:  Max Planck Institute for Psycholinguistics
-    image:        images/people/christina.jpg
+    image:        /media/people/christina.jpg
     
   - name:         Sho Tsuji
     email:        tsujish@gmail.com
     website:      https://sites.google.com/site/tsujish/
     affiliation:  The University of Tokyo
-    image:        images/people/sho.jpg
+    image:        /media/people/sho.jpg
 
 Governing Board:
 
@@ -18,26 +18,20 @@ Governing Board:
     email:        alecristia@gmail.com
     website:      https://sites.google.com/site/acrsta/
     affiliation:  École Normale Supérieure
-    image:        images/people/alex.jpg
+    image:        /media/people/alex.jpg
 
   - name:         Michael C. Frank
     email:        mcfrank@stanford.edu
     website:      http://web.stanford.edu/~mcfrank/
     affiliation:  Stanford University
-    image:        images/people/mike.jpg
+    image:        /media/people/mike.jpg
 
   - name:         Molly Lewis
     email:        mollyllewis@gmail.com
-    website:      http://www.andrew.cmu.edu/user/mollylew/
-    affiliation:  Carnegie Mellon University
-    image:        images/people/molly.jpg
+    website:      http://home.uchicago.edu/~mollylewis/
+    affiliation:  University of Chicago/University of Wisconsin-Madison
+    image:        /media/people/molly.jpg
 
-Team:
-
-  - name:         Loretta Gasparini
-    email:        gasparini.lorett@gmail.com
-    affiliation:  Murdoch Children's Research Institute
-    image:        images/people/lottie.jpg
 
 Curators:
 
@@ -45,12 +39,12 @@ Curators:
   email:        katie.m.vonholzen@gmail.com
   website:      https://kvonholzen.github.io/
   affiliation:  Technical University of Dortmund
-  image:        images/people/katie.jpg
+  image:        /media/people/katie.jpg
   
 - name:         Angeline Tsui
   email:        atsui029@uottawa.ca
   affiliation:  University of Ottawa
-  image:        images/people/angeline.jpg
+  image:        /media/people/angeline.jpg
   
 - name:         Hugh Rabagliati
   email:        hugh.rabagliati@ed.ac.uk
@@ -64,12 +58,12 @@ Curators:
 - name:         Cécile Issard
   email:        cecile.issard@gmail.com
   affiliation:  École Normale Supérieure
-  image:        images/people/cecile.jpg
+  image:        /media/people/cecile.jpg
   
 - name:         Rodrigo Dal Ben
   email:        dalbenwork@gmail.com
   affiliation:  Concordia University
-  image:        images/people/RodrigoDalBen.jpg
+  image:        /media/people/RodrigoDalBen.jpg
   
 
 Former members:
@@ -78,22 +72,22 @@ Former members:
     email:        mika.br@gmail.com
     website:      http://mikabr.github.io/
     affiliation:  Stanford University
-    image:        images/people/mika.jpg
+    image:        /media/people/mika.jpg
 
   - name:         Page Piccinini
     email:        page.piccinini@gmail.com
     website:      http://idiom.ucsd.edu/~ppiccinini/
     affiliation:  École Normale Supérieure
-    image:        images/people/page.jpg
+    image:        /media/people/page.jpg
 
   - name:         Alessandro Sanchez
     email:        sanchez7@stanford.edu
     website:      https://github.com/amsan7
     affiliation:  Stanford University
-    image:        images/people/alessandro.jpg
+    image:        /media/people/alessandro.jpg
     
   - name:         Julia Carbajal
     email:        carbajalmjulia@gmail.com
     website:      https://github.com/juliacarbajal
     affiliation:  École Normale Supérieure
-    image:        images/people/julia.jpg
+    image:        /media/people/julia.jpg

@@ -1,0 +1,290 @@
+---
+title: "Hierarchical Random Effects in Meta-Analyses: Do they change stuff?"
+author: "Sho Tsuji and Christina Bergmann"
+date: "2020-09-16"
+summary: "Here we explore whether and how accounting for this possible correlation affects both a random effects base model and a moderator analysis."
+output: 
+  blogdown::html_page:
+    self_contained: false
+    toc: true
+    highlight: tango
+    fig.width: 8
+    fig.height: 5
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<div id="TOC">
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#base-model">Base Model</a>
+<ul>
+<li><a href="#two-level-model-paper">Two Level Model: Paper</a></li>
+<li><a href="#three-level-model-paper-and-experiment">Three Level Model: Paper and Experiment</a></li>
+</ul></li>
+<li><a href="#moderator-model-from-the-paper">Moderator Model from the Paper</a>
+<ul>
+<li><a href="#two-level-model-paper-1">Two Level Model: Paper</a></li>
+<li><a href="#three-level-model-paper-and-experiment-1">Three Level Model: Paper and Experiment</a></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>Each effect size is nested within an experiment which is in turn nested within a paper (this includes unpublished reports, theses, and the likes). It can be assumed that effect sizes within these nested structures are not independent. Here we explore whether and how accounting for this possible correlation affects both a random effects base model and a moderator analysis. As example we chose InWordDB.</p>
+</div>
+<div id="base-model" class="section level1">
+<h1>Base Model</h1>
+<p>Standard random effects model, no moderators. First we run the model without accounting for any hierarchical structure (as reported in the publication by Bergmann &amp; Cristia 2015; note that differences in effect size estimation are due to an updated dataset here that also includes nonnative studies, as compared to the paper).</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">library</span>(here)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">load</span>(<span class="kw">here</span>(<span class="st">&quot;shinyapps&quot;</span>, <span class="st">&quot;site_data&quot;</span>, <span class="st">&quot;Rdata&quot;</span>, <span class="st">&quot;metalab.Rdata&quot;</span>))</span>
+<span id="cb1-3"><a href="#cb1-3"></a>inworddb &lt;-<span class="st"> </span><span class="kw">droplevels</span>(metalab_data[metalab_data<span class="op">$</span>short_name<span class="op">==</span><span class="st">&quot;inworddb&quot;</span>, ])</span>
+<span id="cb1-4"><a href="#cb1-4"></a></span>
+<span id="cb1-5"><a href="#cb1-5"></a>StandardMod &lt;-<span class="st"> </span><span class="kw">rma</span>(g_calc, g_var_calc, <span class="dt">data =</span> inworddb)</span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="kw">summary</span>(StandardMod)</span></code></pre></div>
+<pre><code>## 
+## Random-Effects Model (k = 299; tau^2 estimator: REML)
+## 
+##    logLik   deviance        AIC        BIC       AICc 
+## -144.6900   289.3799   293.3799   300.7741   293.4206   
+## 
+## tau^2 (estimated amount of total heterogeneity): 0.1023 (SE = 0.0115)
+## tau (square root of estimated tau^2 value):      0.3199
+## I^2 (total heterogeneity / total variability):   76.99%
+## H^2 (total variability / sampling variability):  4.35
+## 
+## Test for Heterogeneity:
+## Q(df = 298) = 1143.3988, p-val &lt; .0001
+## 
+## Model Results:
+## 
+## estimate      se    zval    pval   ci.lb   ci.ub 
+##   0.2099  0.0218  9.6275  &lt;.0001  0.1672  0.2526  *** 
+## 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div id="two-level-model-paper" class="section level2">
+<h2>Two Level Model: Paper</h2>
+<p>We first add a level for the paper a given effect size was reported in. These effect sizes presumably stem from a batch of studies that were conducted in the same lab in a very similar fashion and by the same set of experimenters, introducing possible correlations.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>PerPaperMod &lt;-<span class="st"> </span><span class="kw">rma.mv</span>(g_calc, g_var_calc, <span class="dt">random =</span> <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">|</span><span class="st"> </span>short_cite, <span class="dt">data =</span> inworddb)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="kw">summary</span>(PerPaperMod)</span></code></pre></div>
+<pre><code>## 
+## Multivariate Meta-Analysis Model (k = 299; method: REML)
+## 
+##    logLik   Deviance        AIC        BIC       AICc 
+## -268.1654   536.3308   540.3308   547.7250   540.3715   
+## 
+## Variance Components:
+## 
+##             estim    sqrt  nlvls  fixed      factor 
+## sigma^2    0.0367  0.1916     68     no  short_cite 
+## 
+## Test for Heterogeneity:
+## Q(df = 298) = 1143.3988, p-val &lt; .0001
+## 
+## Model Results:
+## 
+## estimate      se    zval    pval   ci.lb   ci.ub 
+##   0.1832  0.0264  6.9494  &lt;.0001  0.1315  0.2349  *** 
+## 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<div id="three-level-model-paper-and-experiment" class="section level2">
+<h2>Three Level Model: Paper and Experiment</h2>
+<p>Nested within paper, we introduce a level for experiment number. Experiments can report several effect sizes, for example when infants are run in conditions; slight variations of the same study which are presumed to be even more similar than effect sizes within a paper.
+A caveat is that conventions on what counts as experiment and what counts as conditions within an experiment might differ across papers.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>PerExpPaperMod &lt;-<span class="st"> </span><span class="kw">rma.mv</span>(g_calc, g_var_calc, <span class="dt">random =</span> <span class="op">~</span><span class="st"> </span><span class="kw">factor</span>(expt_num) <span class="op">|</span><span class="st">  </span>short_cite, <span class="dt">data =</span> inworddb)</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="kw">summary</span>(PerExpPaperMod)</span></code></pre></div>
+<pre><code>## 
+## Multivariate Meta-Analysis Model (k = 299; method: REML)
+## 
+##    logLik   Deviance        AIC        BIC       AICc 
+## -211.2785   422.5570   428.5570   439.6483   428.6386   
+## 
+## Variance Components:
+## 
+## outer factor: short_cite       (nlvls = 68)
+## inner factor: factor(expt_num) (nlvls = 15)
+## 
+##             estim    sqrt  fixed 
+## tau^2      0.0635  0.2521     no 
+## rho        0.2483             no 
+## 
+## Test for Heterogeneity:
+## Q(df = 298) = 1143.3988, p-val &lt; .0001
+## 
+## Model Results:
+## 
+## estimate      se    zval    pval   ci.lb   ci.ub 
+##   0.1837  0.0265  6.9291  &lt;.0001  0.1318  0.2357  *** 
+## 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>To summarize, all these models differ in their effect size estimates, but do not change the statistical outcome. The effect remains small but significantly above 0. Adding the level of experiment number did not dramatically change the result.</p>
+</div>
+</div>
+<div id="moderator-model-from-the-paper" class="section level1">
+<h1>Moderator Model from the Paper</h1>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co">#Centering mean age</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>inworddb<span class="op">$</span>ageC &lt;-<span class="st"> </span>inworddb<span class="op">$</span>mean_age<span class="op">-</span><span class="kw">mean</span>(inworddb<span class="op">$</span>mean_age)</span>
+<span id="cb7-3"><a href="#cb7-3"></a></span>
+<span id="cb7-4"><a href="#cb7-4"></a>StandardMod &lt;-<span class="st"> </span><span class="kw">rma</span>(g_calc, g_var_calc, <span class="dt">mod =</span> ageC, <span class="dt">data =</span> inworddb)</span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="kw">summary</span>(StandardMod)</span></code></pre></div>
+<pre><code>## 
+## Mixed-Effects Model (k = 299; tau^2 estimator: REML)
+## 
+##    logLik   deviance        AIC        BIC       AICc 
+## -144.5660   289.1320   295.1320   306.2132   295.2139   
+## 
+## tau^2 (estimated amount of residual heterogeneity):     0.1027 (SE = 0.0116)
+## tau (square root of estimated tau^2 value):             0.3205
+## I^2 (residual heterogeneity / unaccounted variability): 77.04%
+## H^2 (unaccounted variability / sampling variability):   4.36
+## R^2 (amount of heterogeneity accounted for):            0.00%
+## 
+## Test for Residual Heterogeneity:
+## QE(df = 297) = 1141.6702, p-val &lt; .0001
+## 
+## Test of Moderators (coefficient 2):
+## QM(df = 1) = 0.3885, p-val = 0.5331
+## 
+## Model Results:
+## 
+##          estimate      se    zval    pval    ci.lb   ci.ub 
+## intrcpt    0.2099  0.0218  9.6125  &lt;.0001   0.1671  0.2527  *** 
+## mods       0.0002  0.0003  0.6233  0.5331  -0.0004  0.0007      
+## 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div id="two-level-model-paper-1" class="section level2">
+<h2>Two Level Model: Paper</h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>PerPaperMod &lt;-<span class="st"> </span><span class="kw">rma.mv</span>(g_calc, g_var_calc, <span class="dt">mod =</span> ageC, <span class="dt">random =</span> <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">|</span><span class="st"> </span>short_cite, <span class="dt">data =</span> inworddb)</span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="kw">summary</span>(PerPaperMod)</span></code></pre></div>
+<pre><code>## 
+## Multivariate Meta-Analysis Model (k = 299; method: REML)
+## 
+##    logLik   Deviance        AIC        BIC       AICc 
+## -263.7595   527.5190   533.5190   544.6002   533.6009   
+## 
+## Variance Components:
+## 
+##             estim    sqrt  nlvls  fixed      factor 
+## sigma^2    0.0414  0.2035     68     no  short_cite 
+## 
+## Test for Residual Heterogeneity:
+## QE(df = 297) = 1141.6702, p-val &lt; .0001
+## 
+## Test of Moderators (coefficient 2):
+## QM(df = 1) = 9.6131, p-val = 0.0019
+## 
+## Model Results:
+## 
+##          estimate      se    zval    pval   ci.lb   ci.ub 
+## intrcpt    0.1806  0.0277  6.5200  &lt;.0001  0.1263  0.2349  *** 
+## mods       0.0007  0.0002  3.1005  0.0019  0.0002  0.0011   ** 
+## 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<div id="three-level-model-paper-and-experiment-1" class="section level2">
+<h2>Three Level Model: Paper and Experiment</h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>PerExpPaperMod &lt;-<span class="st"> </span><span class="kw">rma.mv</span>(g_calc, g_var_calc, <span class="dt">mod =</span> ageC, <span class="dt">random =</span> <span class="op">~</span><span class="st"> </span><span class="kw">factor</span>(expt_num) <span class="op">|</span><span class="st">  </span>short_cite, <span class="dt">data =</span> inworddb)</span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="kw">summary</span>(PerExpPaperMod)</span></code></pre></div>
+<pre><code>## 
+## Multivariate Meta-Analysis Model (k = 299; method: REML)
+## 
+##    logLik   Deviance        AIC        BIC       AICc 
+## -209.1634   418.3268   426.3268   441.1017   426.4638   
+## 
+## Variance Components:
+## 
+## outer factor: short_cite       (nlvls = 68)
+## inner factor: factor(expt_num) (nlvls = 15)
+## 
+##             estim    sqrt  fixed 
+## tau^2      0.0663  0.2575     no 
+## rho        0.2952             no 
+## 
+## Test for Residual Heterogeneity:
+## QE(df = 297) = 1141.6702, p-val &lt; .0001
+## 
+## Test of Moderators (coefficient 2):
+## QM(df = 1) = 4.6265, p-val = 0.0315
+## 
+## Model Results:
+## 
+##          estimate      se    zval    pval   ci.lb   ci.ub 
+## intrcpt    0.1819  0.0276  6.5924  &lt;.0001  0.1279  0.2360  *** 
+## mods       0.0005  0.0003  2.1509  0.0315  0.0000  0.0010    * 
+## 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>To summarize, introducing hierarchical structure changed the outcome for the moderator test. Age (centered) now has a small, but significant, effect on effect sizes. This is not the case when ignoring the nested structure of effect sizes.
+This result mirrors the reported analyses in Bergmann &amp; Cristia (2015) that there is a small, positive effect of age when only considering papers which test at least two age groups in the same set-up.</p>
+</div>
+</div>

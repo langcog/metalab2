@@ -1,0 +1,26 @@
+-
+    name: 'MetaLab Sample Dataset for Validation Tests'
+    domain: test
+    short_name: test_validation
+    key: 11GfQYs9h2cauCbHc7Ud9ZedcI8ofKekWysPPt-l6iu4
+    version: 2020-08-15
+    filename: test_validation
+    citation: 'Test Citation'
+    internal_citation: 'Test Citation'
+    link: ''
+    full_citation: ''
+    doi: ""
+    systematic: yes
+    search_strategy: ''
+    reliability: ""
+    source: ''
+    last_update: ''
+    link_fields: ''
+    short_desc: ''
+    description: ''
+    curator: ''
+    src: images/datasets/ids.png
+    longitudinal: no
+    moderators: [speaker, speech_type]
+    subset: []
+    comment: ''
