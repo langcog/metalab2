@@ -1,0 +1,130 @@
+---
+title: Structure for MA
+date: 2020-07-26
+type: book
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<div id="how-should-i-structure-the-data-for-my-meta-analysis" class="section level1">
+<h1>How should I structure the data for my meta-analysis?</h1>
+<p>We are hoping that eventually all of your MAs (meta-analyses) will be included in
+<a href="."><em>MetaLab</em></a>, so we ask you to use the <a href="https://docs.google.com/spreadsheets/d/12Y_2BcFSu48t0F8a_xrY1Ro2fJoCIV1h8O627WNcrjY/edit?usp=sharing"><em>MA
+template</em></a>
+(create a copy), and follow the <a href="/documentation.html#field_specs"><em>field specifications</em></a> to ensure compatibility. (Note that right now, winter 2018, these specifications are biased towards language acquisition research. If you work on another topic, we would be thrilled if you helped us expand and adapt MetaLab).</p>
+<p>Ideally, you would code all potentially relevant moderator variables
+(e.g., experimental manipulations) in addition to the core
+characteristics (columns in red; e.g., number of participants). However, in the interest
+of time, you can get started with the core characteristics only.
+Remember once more to give us viewing rights.</p>
+<div id="what-are-the-relevant-variables-for-a-ma-and-how-many-input-rowscolumns-should-i-make" class="section level3">
+<h3>What are the relevant variables for a MA, and how many input rows/columns should I make?</h3>
+<iframe src="https://www.youtube.com/embed/spge3nZqCng" width="420" height="315" frameborder="0" allowfullscreen=""></iframe>
+<p><strong><em>One of my papers has a single experiment but involves both Spanish and English speakers who are tested on a native and a nonnative speech sound contrast. Should that count as 4 experiments (2 languages x 2 contrasts)?</em></strong></p>
+<p>How many rows you make depends on how the results are reported. In this case, the authors report the outcome separately for all four groups. Therefore, please enter the four groups separately; each into their own row. You can copy over descriptions of the experiment.</p>
+<p><strong><em>In Experiment 1, there are two age groups. Do I have to report the age for both groups or do I average both groups into one? If I have to report both groups, how do I report this in the input form?</em></strong></p>
+<p>How many rows you make depends on how the results are reported. In this case, the authors report an average outcome over both age groups, since they did not find a significant difference between the two groups. Therefore, please enter only one row and calculate the average age. If the results were reported separately per age group, make a</p>
+</div>
+<div id="how-do-i-retrieve-studies" class="section level3">
+<h3>How do I retrieve studies?</h3>
+<p>In a typical full MA, you go through the whole list and only then start
+entering. The procedure is as follows. Go back to your spreadsheet, and
+for each study that has been decided as a “yes” during screening, try to
+retrieve the full text for the paper as you normally would (e.g., search
+through scholar.google.com; regular google; your institution’s library,
+etc.) If you cannot retrieve it, update your spreadsheet sheet
+Relevant_studies_search to mark this paper as “no” in column F
+entitled “Fulltext_retrieved”. If you want, you can contact the authors
+to try to get the full text from them, in which case you can note this
+on column G.</p>
+<p>If you do find the full text, go through the paper to find the first
+experiment reported. You will enter all experiments and conditions one
+at a time, and fill in their information in the MA spreadsheet you
+created in step 4.</p>
+</div>
+<div id="how-do-i-enter-and-code-relevant-studies" class="section level3">
+<h3>How do I enter and code relevant studies?</h3>
+<iframe src="https://www.youtube.com/embed/OQ5m5YZE57M" width="420" height="315" frameborder="0" allowfullscreen=""></iframe>
+<p>IMPORTANT: You should work backwards from the <strong>results</strong> section: look
+at what dependent measures are reported fully enough that you will be
+able to extract an effect size from them.</p>
+<p>The following information
+allows one to calculate an effect size (we are sticking to experimental
+designs, since most of our MAs are experimental):</p>
+<ul>
+<li><p><strong>between-participant studies</strong>:<br />
+&gt; Means and SDs (not SEs!) of the dependent variable for each infant group are all that is required for the calculation of Cohen’s <em>d</em>. Sometimes, means and SDs are not available as numbers. If there are clear figures, you can try to estimate means and SDs using <a href="http://arohatgi.info/WebPlotDigitizer/"><strong>this online app</strong></a> or <a href="https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.13118"><strong>the R package metaDigitise</strong></a>. If you decide to estimate values from figures, add a column to keep track of this. Finally, <strong>t or F values for the <em>main</em> effect in combination with sample sizes</strong> can be used to calculate Cohen’s <em>d</em>. Note them when available.</p></li>
+<li><p><strong>within-participant studies</strong>:<br />
+&gt; Effect sizes for this type of study are calculated the <strong>same way as in between-participant studies</strong>, but in order to calculate the weight of these studies the <strong>correlation</strong> between the first and second measurements is required (to account for the amount of within-participant variation). Since this measure is usually not reported, we provide below median and range for correlations found in existing MAs.</p>
+<ul>
+<li><p>Infant word segmentation from native speech: 0.641 (range: 0.140 to 0.921)</p></li>
+<li><p>Infant vowel discrimination (native and nonnative): 0.496 (range: -0.413 to 0.855)</p></li>
+</ul></li>
+</ul>
+<p>When entering papers, please remember a key thing: all analyses are done
+by machines, and machines cannot read text! So if a column is “numeric”,
+please do <strong><em>not</em></strong> enter things that aren’t numbers (such as text,
+spaces, ~, etc). This is particularly important for the dependent
+measures!</p>
+<p>At this stage, you might find that a given paper does not contain the
+right information for being included. In this case, you can and should
+exclude it. If you have already started entering it, you can leave the
+information you entered and put in “comments” that the entry is
+incomplete (although if you followed our advice above, you won’t have
+wasted time entering it!). Remember to update your spreadsheet with each
+paper you read and made a decision on.</p>
+<p><strong><em>The article I enter has 3 experiments, and the first is with adult participants. Do I need to enter this experiment?</em></strong></p>
+<p>No, please only enter the infant/child experiments</p>
+</div>
+<div id="what-level-of-detail-should-i-report" class="section level3">
+<h3>What level of detail should I report?</h3>
+<p><strong><em>The sound stimuli differ approx. 6 ms in length, but the experiment is not about length differences. Do I have to report this difference although it is very small?</em></strong></p>
+<p>In case there’s a column for stimulus length, please report it. You are right that this experiment is not about length differences, but having the information cannot hurt, and eventual analyses will reflect that the difference is very small.</p>
+<p><strong><em>The article reports a table with the lengths of each individual stimulus. Should I calculate and report the average value?</em></strong></p>
+<p>Yes, please report the averaged value in the appropriate column.</p>
+<p><strong><em>I am entering an article with the HAS method. The authors report results for both the 2 and 4 minutes after the test phase has started. Your example only reports the results after 2 minutes, but would you still want me to report both?</em></strong></p>
+<p>It is often the case that articles report more than one type of result. Please just report the ones that we also provide in the example file!</p>
+</div>
+<div id="how-do-i-calculate-effect-sizes" class="section level3">
+<h3>How do I calculate Effect Sizes?</h3>
+<iframe src="https://www.youtube.com/embed/WDxA8TfU1sk" width="420" height="315" frameborder="0" allowfullscreen=""></iframe>
+<p>We use R to calculate effect sizes. Visit <a href="https://github.com/langcog/metalab2/tree/master/scripts" class="uri">https://github.com/langcog/metalab2/tree/master/scripts</a> for our code.
+The metafor package also includes functions to compute the observed effect sizes.</p>
+<p>We recommend the following for an introduction to effect sizes:</p>
+<ol style="list-style-type: decimal">
+<li><p>Textbooks are great to get a basic overview of how to calculate
+effect sizes. We consulted: Lipsey, M. W. &amp; Wilson, D. B. (2001).
+Practical meta-analysis. Thousand Oaks, CA: Sage.</p></li>
+<li><p>A great primer and a spreadsheet document to calculate effect sizes
+by hand can be found via: D. Lakens. (2013). Calculating and Reporting
+Effect Sizes to Facilitate Cumulative Science: A Practical Primer for
+t-tests and ANOVAs . Frontiers in Psychology 4:863. <a href="https://osf.io/ixgcd/files/">Materials on OSF</a></p></li>
+<li><p>Since textbooks do not cover every possible question that different
+meta-analysts may encounter, we turned to articles for more specific
+questions. We found this article useful for considering the
+comparability of effect sizes from within- and between-participant
+designs: Morris, S. B., &amp; DeShon, R. P. (2002). Combining Effect Size
+Estimates in Meta-Analysis With Repeated Measures and Independent-Groups
+Designs. Psychological Methods, 7(1), 1805-125. doi:
+<a href="http://dx.doi.org/10.1037//1082-989X.7.1.105">10.1037//1082-989X.7.1.105</a></p></li>
+</ol>
+</div>
+<div id="what-if-i-dont-have-all-the-required-information" class="section level3">
+<h3>What if I don’t have all the required information?</h3>
+<iframe src="https://www.youtube.com/embed/UPLhl32YBU4" width="420" height="315" frameborder="0" allowfullscreen=""></iframe>
+<p><strong><em>Two groups of infants are tested and I treat them as two different entries, but the number of included and excluded infants are only reported as a whole over both groups. What do I do?</em></strong></p>
+<p>As the best approximation we can get, please divide the reported number through the number of groups (in your case 2).</p>
+<p><strong><em>The age of infants is reported in weeks, therefore I multiplied it with 7 to convert it into days. I read in your instructions that you have to multiply months with 30.42 to get a proxy for days. So my question is whether I have to multiply with a different number than 7 to get a proxy for days?</em></strong></p>
+<p>No, that’s fine the way you did it!</p>
+<p>In some cases you will still need to contact the authors of the study. People probably don’t know you, so think about what in the object would make you open an email from a stranger. Something like “including your paper in a MA” should be motivational. People are busy: they don’t have time to read lengthy email, especially from someone they don’t know, so be as concise as possible. You could still give them more details later if they ask for it. Don’t be shy, authors are likely to be happy to hear that someone is interested in their work and is going to cite them!</p>
+</div>
+<div id="how-to-run-a-meta-analytic-regression" class="section level3">
+<h3>How to run a meta-analytic regression ?</h3>
+<iframe src="https://www.youtube.com/embed/VvP2DMLCRjU" width="420" height="315" frameborder="0" allowfullscreen=""></iframe>
+</div>
+<div id="are-there-some-ma-specific-plots-that-i-should-make" class="section level3">
+<h3>Are there some MA specific plots that I should make?</h3>
+<iframe src="https://www.youtube.com/embed/dZcqEKFLH6I" width="420" height="315" frameborder="0" allowfullscreen=""></iframe>
+</div>
+</div>

@@ -46,7 +46,7 @@ cta_alt:
 # Note. An optional note to show underneath the links.
 cta_note:
 
-  label: "New MetaLab User? Check out <a href='documentation/getting_started'>Getting Started</a> first!"
+  label: "New MetaLab User? Check out <a href='documentation/getting-started'>Getting Started</a> first!"
   
 right_hand_text:
   label: "The MetaLab database contains `r nrow(mtcars)` effect sizes across
@@ -56,4 +56,4 @@ right_hand_text:
 
 Interactive,  community-augmented meta-analysis tools for cognitive development research
 
-#### New: The [2020 Contribution Challenge](/blah)
+#### New: The [2020 Contribution Challenge](/documentation/tutorials/challenge)

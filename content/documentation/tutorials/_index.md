@@ -6,4 +6,4 @@ icon: chalkboard-teacher
 weight: 190
 ---
 
-{{< list_children >}}
+

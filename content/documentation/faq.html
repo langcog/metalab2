@@ -1,46 +1,11 @@
 ---
-title: Troubleshooting
-date: 2016-04-10
+title: FAQ
 type: book
-weight: 170
+weight: 5
 summary: Troubleshoot common issues.
 ---
 
 <script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
-<p>Some common questions and answers are listed below.</p>
-<p><strong>Changes do not show on my site</strong></p>
-<p>Login to Netlify and check the status of the latest deploy in the <em>Deploys</em> tab.</p>
-<p>If there is a progress indicator, Netlify is still updating your site.</p>
-<p>If there is a red cross, click on the failed deploy and check the error message. You can either revert the change which broke the site, or consider addressing the issue.</p>
-<p>Feel free to join the Wowchemy community chat (link in the menu above) and post a detailed description of the issue with the error message and a link to your GitHub repository.</p>
-<p><strong>Error: Homepage not found at <code>/home/index.md</code></strong></p>
-<p>Possible causes:</p>
-<ul>
-<li>A Widget Page was modified whilst running Hugo Server
-<ul>
-<li>Stop Hugo Server and then restart it</li>
-</ul></li>
-<li><code>content/home/index.md</code> is missing
-<ul>
-<li>Add the <code>/home/index.md</code> homepage file to each language’s content folder</li>
-<li>For example, your site should have a <code>content/home/</code> folder containing <code>index.md</code> and your homepage sections, or for multi-language sites, <code>content/en/home/</code> and <code>content/zh/home/</code> etc.</li>
-<li>Refer to the ‘Build Your Homepage’ and ‘Language’ documentation pages as well as the example homepage file at <a href="https://github.com/gcushen/hugo-academic/tree/master/exampleSite/content/home/index.md" class="uri">https://github.com/gcushen/hugo-academic/tree/master/exampleSite/content/home/index.md</a></li>
-</ul></li>
-</ul>
-<p><strong>Error: failed to download modules: go command failed: go: unknown subcommand “mod”</strong></p>
-<p>Login to Netlify and set <code>GO_VERSION</code> to <code>1.12</code> in your <em>Environment</em> settings.</p>
-<p>Then click <em>Deploys</em> tab, and from the <em>Trigger Deploy</em> dropdown, choose <em>Deploy Site</em>.</p>
-<p><strong>File not found errors after updating</strong></p>
-<p>Depending on the specific error, it may be resolved by clearing Hugo’s module cache:</p>
-<pre class="sh"><code>hugo mod clean
-hugo server</code></pre>
-<p><strong>I cloned/downloaded Wowchemy but Hugo produces errors when using it with my existing Hugo site</strong></p>
-<p>Wowchemy is a website <em>framework</em> rather than just a <em>theme</em>. Please follow the step-by-step guide on the Installation and Getting Started pages of the documentation.</p>
-<p>If you experience issues, first try running Hugo on an unedited template and then compare the configuration parameters in the demo site’s <code>config/</code> folder and front matter of content files with the files in your site.</p>
-<p>Feel free to join the Wowchemy community chat (link in the menu above) and post a detailed description of the issue with the error message and a link to your GitHub repository.</p>
-<p><strong>Hosting your site with Netlify or Cloudflare and experience strange behavior such as filters not working?</strong></p>
-<p>Disable post-processing steps such as <em>minification</em> in your Netlify/Cloudflare admin panel.</p>
-<p><strong>Publications and other content are not sorted by newest first</strong></p>
-<p>Hugo requires a valid date field, as per the front matter of the Demo publications in <code>themes/academic/content/publication/</code>. If you wish to display a partial date, such as just the year, a full valid date should still be entered in the front matter - the Customization page describes how to change the format in which dates are displayed on your site.</p>
+<p>FAQ</p>
