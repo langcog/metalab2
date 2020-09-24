@@ -2,7 +2,7 @@
 title: Using MetaLab Data
 type: book
 icon_pack: fas
-icon: chalkboard-teacher
+icon: chart-area
 weight: 100
 ---
 

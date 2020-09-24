@@ -1,0 +1,77 @@
+---
+title: <<LONG_NAME>>
+layout: data
+type: dataset
+tags: 
+- <<DOMAIN_NAME>>
+---
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+library(here)
+library(dplyr)
+load(here("shinyapps", "site_data", "Rdata", "metalab.Rdata"))
+
+dataset_info <- dataset_info %>% filter(short_name == "<<SHORT_NAME>>")
+dataset_raw <- metalab_data %>% filter(short_name == "<<SHORT_NAME>>")
+
+```
+# `r dataset_info$name` 
+
+```{r results='asis', echo=FALSE}
+library(shiny)
+fluidRow(
+  column(width = 12,
+    tags$ul(
+      if (dataset_info$citation != "") {
+        if (dataset_info$link == "") {
+          tags$li(dataset_info$citation)
+        } else {
+          tags$li(a(href = dataset_info$link, dataset_info$citation))
+        } 
+      } else {
+        NULL
+      },
+      tags$li(
+        paste0(
+          "N papers = ", as.integer(dataset_info$num_papers),
+          ", N experiments = ", as.integer(dataset_info$num_experiments),
+          ", N participants = ", as.integer(dataset_info$num_subjects)
+          )
+        ),
+      tags$li(dataset_info$short_desc),
+      tags$li(paste("Curator is", dataset_info$curator)),
+      tags$li(strong("Search Strategy:"), dataset_info$search_strategy),
+      tags$li(strong("Systematic:"), if(!is.null(dataset_info$systematic) && dataset_info$systematic) "yes" else "no")       
+      )
+    )
+  )
+```
+
+```{r echo=FALSE, warning=FALSE}
+
+DT::datatable(
+  select(dataset_raw, -long_cite, -dataset, -short_name),
+  fillContainer = TRUE,
+  width = "100%",
+  style = "bootstrap",
+  rownames = FALSE,
+  extensions = 'Buttons',
+  options = list(scrollX = TRUE, autoWidth = TRUE, pageLength = 20, 
+                 dom = 'Bfrtip', 
+                 buttons = list(
+                   'print', 
+                   list(
+                     extend = 'collection',
+                     buttons = list(
+                       list(extend='csv', filename = dataset_info$short_name),
+                       list(extend='excel', filename = dataset_info$short_name)),
+                     text = 'Download')
+                 )
+                 )
+)
+
+```
+
+<script>
+// $('.tab-pane > div').css("width", '100%');
+</script>

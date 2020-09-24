@@ -29,3 +29,21 @@ lapply(
 ## save all metalab data locally in Rdata format
 save(metalab_data, dataset_info, domains, reports,
      file = here("shinyapps", "site_data", "Rdata", paste0("metalab", ".Rdata")))
+
+
+## build dataset Rmd files from Rmd template, filling in each value of dataset.
+
+## read template
+dataset_template <- readLines(here("build", "dataset-template.Rmd"))
+
+lapply(dataset_info$short_name, function(s_name) {
+  to_write <- sapply(dataset_template, function(template_line) {
+    current_dataset <- dataset_info %>% filter(short_name == s_name)
+    template_line <- gsub("<<SHORT_NAME>>", current_dataset$short_name, template_line)
+    template_line <- gsub("<<LONG_NAME>>", current_dataset$name, template_line)
+    gsub("<<DOMAIN_NAME>>", current_dataset$domain, template_line)
+  })
+  cat(to_write,
+      file = here("content", "dataset", paste0(s_name, ".Rmd")),
+      sep = "\n")
+})

@@ -16,8 +16,8 @@
   parent = "a-unique-reference"
 
 [[main]]
-  name = "Dataset Domains"
-  url = "/explore/domains"
+  name = "Datasets by Domain"
+  url = "/explore/datasets"
   weight = 12
   parent = "a-unique-reference"
 
