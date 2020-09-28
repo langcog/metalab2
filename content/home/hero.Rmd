@@ -49,9 +49,9 @@ cta_note:
   label: "New MetaLab User? Check out <a href='documentation/getting-started'>Getting Started</a> first!"
   
 right_hand_text:
-  label: "The MetaLab database contains `r nrow(mtcars)` effect sizes across
-      meta-analyses in 25 domains of cognitive development, based on
-      data from 548 papers and 38,229 subjects."
+  label: "The MetaLab database contains <b>2,103 effect sizes</b> across
+      meta-analyses in <b>25 domains</b> of cognitive development, based on
+      data from <b>548 papers</b> and <b>38,229 subjects</b>."
 ---
 
 Interactive,  community-augmented meta-analysis tools for cognitive development research

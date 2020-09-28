@@ -5,7 +5,7 @@ library(metalabr)
 
 domains <- get_metalab_domain_info()
 reports <- get_metalab_report_info()
-dataset_yaml <- get_metalab_dataset_info()
+dataset_yaml <- get_metalab_dataset_info(here("metadata", "datasets.yaml"))
 metalab_data <- get_metalab_data(dataset_yaml)
 dataset_info <- add_metalab_summary_info(dataset_yaml, metalab_data)
 
@@ -35,15 +35,24 @@ save(metalab_data, dataset_info, domains, reports,
 
 ## read template
 dataset_template <- readLines(here("build", "dataset-template.Rmd"))
-
 lapply(dataset_info$short_name, function(s_name) {
+  current_dataset <- dataset_info %>% filter(short_name == s_name)
   to_write <- sapply(dataset_template, function(template_line) {
-    current_dataset <- dataset_info %>% filter(short_name == s_name)
     template_line <- gsub("<<SHORT_NAME>>", current_dataset$short_name, template_line)
     template_line <- gsub("<<LONG_NAME>>", current_dataset$name, template_line)
+    template_line <- gsub("<<SHORT_DESC>>", current_dataset$short_desc, template_line)
+    template_line <- gsub("<<NUMERIC_SUMMARY>>",
+                          paste(floor(current_dataset$num_papers), "papers |",
+                                floor(current_dataset$num_experiments), "experiments |",
+                                floor(current_dataset$num_subjects), "subjects") ,
+                          template_line)
     gsub("<<DOMAIN_NAME>>", current_dataset$domain, template_line)
   })
+  dir.create(here("content", "dataset", s_name))
   cat(to_write,
-      file = here("content", "dataset", paste0(s_name, ".Rmd")),
+      file = here("content", "dataset", s_name, "index.Rmd"),
       sep = "\n")
+  cat("copying file:", here("static", current_dataset$src))
+  file.copy(from = here("static", current_dataset$src),
+            to = here("content", "dataset", s_name, "featured.png"))
 })

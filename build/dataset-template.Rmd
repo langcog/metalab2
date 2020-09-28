@@ -4,6 +4,7 @@ layout: data
 type: dataset
 tags: 
 - <<DOMAIN_NAME>>
+summary: <<SHORT_DESC>><br><<NUMERIC_SUMMARY>>
 ---
 
 ```{r echo=FALSE, warning=FALSE, message=FALSE}

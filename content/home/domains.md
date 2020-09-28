@@ -5,7 +5,7 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 30  # Order that this section will appear.
 
-title = "Meta-Analysis Domains"
+title = "Domains"
 subtitle = ""
 
 # Showcase personal skills or business features.
@@ -20,16 +20,23 @@ subtitle = ""
   name = "Early Language"
   description = "How do children learn their native language?"
   meta_analyses = "22"
-  effect_sizes = "10"
-  papers = "100"
-  subjects = "10,000"
+  effect_sizes = "1,948"
+  papers = "507"
+  subjects = "36,287"
   link = "/explore/datasets"
+  domain_image = "/media/domains/domain1.png"
   
 [[feature]]
   icon = "book"
   icon_pack = "fas"
   name = "Cognitive Development"
   description = "What is the nature of children's understanding?"
+  meta_analyses = "3"
+  effect_sizes = "155"
+  papers = "41"
+  subjects = "1,941"
+  domain_image = "/media/domains/domain2.png"
+
   link = "/explore/datasets"
 
 # Uncomment to use emoji icons.
