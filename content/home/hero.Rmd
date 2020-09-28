@@ -56,4 +56,4 @@ right_hand_text:
 
 Interactive,  community-augmented meta-analysis tools for cognitive development research
 
-#### New: The [2020 Contribution Challenge](/documentation/tutorials/challenge)
+#### New: The [2020 Contribution Challenge](/documentation/challenge)
