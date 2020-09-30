@@ -1,11 +1,21 @@
-- id:    early_language
-  title: Early Language
-  image: images/domains/domain1.png
-  desc:  How do children learn their native language?
+- id:    schizophrenia
+  title: Schizophrenia
+  image: NA
+  desc:  schizophrenia description
 
-- id:    cognitive_development
-  title: Cognitive Development
-  image: images/domains/domain2.png
-  desc:  What is the nature of children's understanding?
+- id:    asd
+  title: Autism Spectrum Disorder
+  image: NA
+  desc:  asd description
+
+- id:    rhd
+  title: Right Hemisphere Damage
+  image: NA
+  desc:  rhd description
+
+- id:    depression
+  title: Depression
+  image: NA
+  desc:  depression description
 
 
