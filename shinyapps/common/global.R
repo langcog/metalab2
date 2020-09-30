@@ -21,11 +21,12 @@ get_metalab_data_shiny <- function(directory) {
   ret_df
 }
 
-fields <- get_metalab_field_info()
+fields <- get_metalab_field_info(field_file = "https://raw.githubusercontent.com/LNJ-ND/metalab_lnjnd/master/metadata/spec.yaml")
 
-fields_derived <- get_metalab_derived_field_info()
+fields_derived <- get_metalab_derived_field_info(derived_field_file = "https://raw.githubusercontent.com/LNJ-ND/metalab_lnjnd/master/metadata/spec_derived.yaml")
 
 metalab_data <- get_metalab_data_shiny(here("shinyapps", "site_data"))
+
 dataset_yaml <- get_metalab_dataset_info() #this goes to github, maybe
                                            #should be local too? how
                                            #is it used?
