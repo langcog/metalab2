@@ -1,625 +1,100 @@
 -
-    name: 'Infant directed speech preference'
-    domain: early_language
-    short_name: idspref
-    key: 1HvD_DvcKqzlBuiirVdDVr9t2DnWtKmiv98ee8vp345w
-    filename: infant_directed_speech_preference
-    citation: 'Dunst, Gorman, & Hamby (2012)'
-    internal_citation: '(Dunst, Gorman, & Hamby, 2012)'
-    link: 'http://earlyliteracylearning.org/cellreviews/cellreviews_v5_n1.pdf'
-    full_citation: 'Dunst, C. J., Gorman, E., & Hamby, D. W. (2012). Preference for infant-directed speech in preverbal young children. Center for Early Literacy Learning, 5(1).'
-    doi: ""
+    name: 'Voice patterns in schizophrenia: A systematic review and Bayesian meta-analysis'
+    domain: schizophrenia
+    short_name: schizophrenia_parola_2020
+    key: 1z5WF7l8aFSVV6qkg46bUHV_zDDZ4KF14nOyiR9Yk9qA
+    filename: schizophrenia_parola_2020
+    citation: 'Parola, Simonsen, Bliksted, & Fusaroli (2020)'
+    internal_citation: '(Parola, Simonsen, Bliksted, & Fusaroli, 2020)'
+    link: 'https://www.sciencedirect.com/science/article/pii/S0920996419305389'
+    full_citation: 'Parola, A., Simonsen, A., Bliksted, V., & Fusaroli, R. (2020). Voice patterns in schizophrenia: A systematic review and Bayesian meta-analysis. Schizophrenia Research, 216, 24-40.'
+    doi: 'https://doi.org/10.1016/j.schres.2019.11.031'
     systematic: yes
-    search_strategy: '"Studies were located using motherese or parentese or fatherese or infant directed speech or infant-directed speech or infant directed talk or child directed speech or child-directed speech or child directed talk or child-directed talk or baby talk AND infant* or neonate* or toddler* as search terms. Both controlled-vocabulary and natural-language searches were conducted (Lucas & Cutspec, 2007). Psychological Abstracts (PsychInfo), Educational Resource Information Center (ERIC), MEDLINE, Academic Search Premier, CINAHL, Education Resource Complete, and Dissertation Abstracts International were searched. These were supplemented by Google Scholar, Scirus, and Ingenta searches as well as a search of an extensive EndNote Library maintained by our Institute. Hand searches of the reference sections of all retrieved journal articles, book chapters, books, dissertations, and unpublished papers were also examined to locate additional studies. Studies were included if the effects of infant-directed speech on child behavior were compared to the effects of adult-directed speech on child behavior. Studies that intentionally manipulated word boundaries (e.g., Hirsh-Pasek et al., 1987; Nelson, Hirsh-Pasek, Jusczyk, & Cassidy, 1989) or used nonsense words or phrases (e.g., Mattys, Jusczyk, Luce, & Morgan, 1999; Thiessen, Hill, & Saffran, 2005) were excluded."'
-    reliability: ""
-    source: 'adapted from published MA'
-    last_update: '2012-01-01'
-    link_fields: 'http://earlyliteracylearning.org/cellreviews/cellreviews_v5_n1.pdf'
-    short_desc: 'Looking times as a function of whether infant-directed vs. adult-directed speech is presented as stimulation.'
-    description: 'Looking times as a function of whether infant-directed vs. adult-directed speech is presented as stimulation, in infants aged 0 - 12 months.'
-    curator: 'Alex Cristia'
+    search_strategy: '"We adopted the Preferred Reporting Items for Systematic Reviews and Meta-Analyses Guidelines (PRISMA, Stewart et al., 2015) for trans- parent reporting of a systematic review. We pre-registered our protocol by specifying a priori the study rationale, eligibility criteria, search strat- egy, moderator variables, and statistical analyses (see https://bit.ly/ 2EEFeQZ). The literature search was conducted on Pubmed and Google Scholar, the latter including dissertations and unpublished manuscripts. The search terms used were (prosody OR inflection OR intensity OR pitch OR fundamental frequency OR speech rate OR voice quality OR acoustic OR intonation OR vocal) AND (schizo*). The search was con- ducted on August 21 2017, and updated on April 12 2018. We complemented the list by performing a backward and forward literature search: we screened the bibliography of the papers found, and the papers citing them as identified by Google Scholar. Articles were screened for eligibility by two authors (AP and AS).Study selection was conducted according to the following inclusioncriteria: (a) empirical study, (b) quantification of acoustic features inthe  vocal  production  of  participants  with  schizophrenia  orschizoaffective disorder1(c) sample including at least two individualswith schizophrenia or schizoaffective disorder, (d) inclusion of a non-clinical comparison group, or an assessment of variation in acoustic fea-tures in relation to severity of clinical features. Clinical comparisongroups (e.g. with depression) were excluded because the limited num-ber of studies did not permit meta-analytic estimations"'
+    #reliability: ""
+    #source: 'adapted from published MA'
+    #last_update: '2020-09-30'
+    link_fields: ''
+    short_desc: 'short_desc'
+    description: 'description'
+    curator: 'LNJ, ND'
     src: images/datasets/ids.png
     longitudinal: no
-    moderators: [speaker, speech_type]
-    subset: []
-    comment: ''
+    moderators: [task_type, native_lang]
+    features: [speech_duration, speech_rate, speech_percentage, pause_duration, pause_number, pause_total_length, response_latency, pause_variability, pitch_f0, pitch_f1, pitch_f2, pitch_f3, pitch_f4, pitch_f5, pitch_f6, pitch_f0_variability, pitch_f0_entropy, pitch_f1_variability, pitch_f2_variability, pitch_bandwidth, pitch_f0_ran, intensity_mean, intensity_variability, intensity_variability_entropy]
+    #subset: []
+    comment: 'Dataset from the original MA was provided by Riccardo Fusaroli.'
 -
-    name: 'Label advantage in concept learning'
-    domain: early_language
-    short_name: labadv
-    key: 163QOxPcb_bNbnMrnoZee3peIKvLlo8EYJUHVd06W81I
-    filename: label_advantage
-    citation: 'Lewis & Long (unpublished)'
-    internal_citation: '(Lewis & Long, unpublished)'
-    link: ""
-    full_citation: ""
-    doi: ""
-    systematic: no
-    search_strategy: '"We conducted a forward search based on Balaban and Waxman (1997) in Google Scholar and Web of Science (October 2015). This was supplemented with papers identified through citations and publication lists on lab websites. The final sample included only peer-reviewed publications."'
-    reliability: no
-    source: 'coded by authors'
-    last_update: ""
+    name: 'Is voice a marker for Autism spectrum disorder? A systematic review and meta-analysis'
+    domain: asd
+    short_name: asd_fusaroli_2017
+    key: NA # get key from google sheets
+    filename: asd_fusaroli_2017
+    citation: 'Fusaroli, Lambrechts, Bang, Bowler, & Gaigg (2017)'
+    internal_citation: '(Fusaroli, Lambrechts, Bang, Bowler, & Gaigg, 2017)'
+    link: 'https://onlinelibrary.wiley.com/doi/full/10.1002/aur.1678'
+    full_citation: 'Fusaroli, R., Lambrechts, A., Bang, D., Bowler, D. M., & Gaigg, S. B. (2017). Is voice a marker for Autism spectrum disorder? A systematic review and meta‐analysis. Autism Research, 10(3), 384-407.'
+    doi: 'https://doi.org/10.1002/aur.1678'
+    systematic: yes
+    search_strategy: '"A literature search was conducted using Google Scholar, PubMed and Web of Science on April 15, 2015, updated on March 4, 2016 and then again on June 21, 2016. The search terms used were (prosody OR intonation OR inflection OR intensity OR pitch OR fundamental frequency OR speech rate OR voice quality OR acoustic) AND (autis* OR Asperger). Additional search for unpublished studies was performed through additional web searches (on Google and Bing), and by directly contacting authors of the published studies and interested participants of the IMFAR 2014, 2015 and 2016 conferences. Furthermore it should be noted that Google Scholar covers most (if not all) dissertation repositories. The papers thus found were searched for additional references and the resulting set was screened by two of the authors (RF and AL) according to the following criteria: empirical study, quantification of acoustic features in the vocal production of participants with ASD, sample including at least two individuals with ASD, inclusion of a typically developing comparison group (TD) or an assessment of variation in acoustic features in relation to severity of clinical features. Non-TD comparison groups (e.g., with language impairment, or ADHD) were not included as not enough studies were present to assess patterns beyond the single study."'
+    # reliability: ‘’
+    # source: ‘’
+    # last_update: ‘’
+    link_fields: ‘’
+    short_desc: 'To be updated.'
+    curator: 'LNJ, ND'
+    src: images/datasets/dinosaur.png # change
+    longitudinal: no
+    moderators: [] # e.g. task_type, native_lang
+    # subset: []
+    comment: 'Dataset from the original MA was provided by Riccardo Fusaroli'
+-
+    name: 'Acoustic Measures of Prosody in Right-Hemisphere Damage: A Systematic Review and Meta-Analysis'
+    domain: rhd
+    short_name: rhd_weed_2020
+    key: ''
+    filename: rhd_weed_2020
+    citation: 'Weed & Fusaroli (2020)'
+    internal_citation: '(Weed & Fusaroli, 2020)'
+    link: "https://www.biorxiv.org/content/biorxiv/early/2019/06/24/676734.full.pdf"
+    full_citation: 'Weed, E., & Fusaroli, R. (2020). Acoustic Measures of Prosody in Right-Hemisphere Damage: A Systematic Review and Meta-Analysis. Journal of Speech, Language, and Hearing Research, 1-14.'
+    doi: 'https://doi.org/10.1044/2020_JSLHR-19-00241'
+    systematic: yes
+    search_strategy: '"We queried PubMed, PsychINFO, Web of Science, and Google Scholar, using the following combination of search terms: (prosody OR intonation OR inflection OR intensity OR pitch OR fundamental frequency OR speech rate OR voice quality) AND (RHD OR right hemisphere) AND (stroke) AND (acoustic), with no restrictions on date of publication. Further papers were identified by searching the references in the papers identified by the initial search. Our search resulted in a total of 49 papers. Our initial list of 49 papers was then screened, and we included only papers meeting the following criteria: (1) The study quantified acoustic measures of vocal production of participants with RHD, (2) The study reported original research (not a review), (3) The study included data from at least two participants, (4) The study included a control group. Of the initial 49 papers, 8 were case studies with data from only one individual, 6 did not report sufficient data in either tables or plots for inclusion in a meta-analysis, 2 papers did not report data from an acoustic analysis, 2 papers lacked a control group, 11 papers did not measure vocal production, 2 did not include participants with RHD, 1 did not report original data (review article), and 1 only included RHD participants who were actively selected to differ from NBD controls. Although this final paper otherwise met our inclusion criteria, we felt that actively choosing patients who differed from the control group on the object of study introduced unnecessary bias, and we did not include it. We note in passing that the effect sizes for this paper (which measured variation in F0) were somewhat larger (Hedges’s g = 1.3 – 1.8) than many of the included papers, although not unlike the effect size in a paper with the same first author which was included (Ross & Monnot, 2008). After these 33 papers were excluded, 16 papers remained for analysis."'
+    #reliability: no
+    #source: 'coded by authors'
+    #last_update: ""
     link_fields: ""
-    short_desc: 'Infants'' categorization judgments in the presence and absence of labels.'
-    description: 'Previous research suggests that labels support the formation of novel categories in young children. This meta-analysis includes studies exploring this question that use a paradigm similar to Balaban and Waxman (1997), resulting in a selection of experiments using behavioral methods on infants 3 to 18 months.'
-    curator: 'Molly Lewis'
+    short_desc: 'short_desc'
+    description: 'description'
+    curator: 'LNJ, ND'
     src: images/datasets/dinosaur.png
-    longitudinal: no
-    moderators: [audio_condition, object_stimulus, num_trials]
-    subset: []
-    comment: ''
+    moderators: []
+    #subset: []
+    comment: 'Dataset from the original MA was provided by Riccardo Fusaroli.'
 -
-    name: 'Gaze following'
-    domain: early_language
-    short_name: gaze_following
-    key: 1OY1FhtIOolS9p84_hQnsDfSLeqRdl8tiV9BYS4Wou1g
-    filename: gaze_following
-    citation: 'Frank, Lewis, & MacDonald (2016)'
-    internal_citation: '(Frank, Lewis, & MacDonald, 2016)'
-    link: 'http://langcog.stanford.edu/papers_new/frank-2016-underrev.pdf'
-    full_citation: 'Frank, M. C., Lewis, M., & MacDonald, K. (2016). A performance model for early word-learning. In Proceedings of the 38th Annual Conference of the Cognitive Science Society.'
-    doi: ""
+    name: 'Depression Data (unpublished)'
+    domain: depression
+    short_name: depression
+    key: NA # get key from google sheets
+    filename: depression
+    citation: '(unpublished)'
+    internal_citation: 'Depression Data (unpublished)'
+    link: ‘’
+    full_citation: '(unpublished)'
+    doi: ‘’
     systematic: no
-    search_strategy: '"We identified papers using a Google Scholar search for “gaze following” and included those studies that (a) included data from typically-developing children, (b) used a standard face-to-face gaze-following task, and (c) reported percentage accuracy (rather than a score or other composite measure). Although we coded all papers that fit these criteria, we focused on papers with a simple two-alternative forced choice (9 papers); integrating across different numbers of alternatives added additional complexity to our model. In our first iteration of this analysis, we found that very few studies reported reaction times for gaze following, and those that did had no data from children older than 15 months and no data from gaze plus pointing. To remedy this issue we include new analyses of data from Yurovsky, Wade, & Frank (2013) and Yurovsky & Frank (2015)."'
-    reliability: no
-    source: 'coded by authors'
-    last_update: '2016-2-1'
-    link_fields: ""
-    short_desc: 'Gaze following using standard multi-alternative forced-choice paradigms.'
-    description: 'Gaze-following using standard multi-alternative forced-choice paradigms, in infants and children from 3 months to two years.'
-    curator: 'Molly Lewis'
-    src: images/datasets/gaze.png
+    search_strategy: '""'
+    # reliability: ‘’
+    # source: ‘’ # potentially: data collected by student, XXX
+    # last_update: ‘’
+    link_fields: ‘’
+    short_desc: 'To be updated.'
+    curator: 'LNJ, ND'
+    src: images/datasets/dinosaur.png # change
     longitudinal: no
-    moderators: [num_trials, cue_type, N_AFC]
-    subset: []
-    comment: ""
--
-    name: 'Vowel discrimination (native)'
-    domain: early_language
-    short_name: inphondb-native
-    key: 13ytBtSP9ZUNDeW5K2uf_VfyTFOILivTFZN1YBLZtmuU
-    filename: phonemic_discrimination_native
-    citation: 'Tsuji & Cristia (2014)'
-    internal_citation: '(Tsuji & Cristia, 2014)'
-    link: 'https://sites.google.com/site/inphondb/'
-    full_citation: 'Tsuji, S. & Cristia, A. (2014). Perceptual attunement in vowels: A meta-analysis. Developmental Psychobiology, 56(2), 179-191.'
-    doi: 10.1002/dev.21179
-    systematic: yes
-    search_strategy: '"A full search on scholar.google.com was conducted in September 2012 with the keyword combination “{infant|infancy} & {vowel|speech sound|syllable} & discrimination.” Additionally, the search terms were translated into French, German, Japanese, and Spanish for additional searches. We also asked experts in the field to inform us of any published or unpublished studies we had missed. Experts were defined as scientists having participated in at least two studies identified in our intermediate search sample or who were part of a lab where such research had taken place, and who were still active in the field or could be otherwise contacted. Further, articles were added based on a screening of articles cited and articles citing the articles in the remaining search sample. The complete sample is available as a public resource (Tsuji & Cristia, in preparation, https://sites.google.com/site/inphondb/). The search sample was then narrowed down to the final search sample of 19 articles." (See paper for additional details)'
-    reliability: no
-    source: 'coded by authors'
-    last_update: '2015-12-14'
-    link_fields: 'https://drive.google.com/file/d/0B_tr1H-CJ3AIb1VpeUtqalhxNkU/view'
-    short_desc: 'Discrimination of native-language vowels, including results from a variety of methods.'
-    description: 'Discrimination of native-language vowels, including results from behavioral, electrophysiological, and neuroimaging methods applied to infants 0 - 14 months of age.'
-    curator: 'Sho Tsuji'
-    src: images/datasets/discrim.png
-    longitudinal: no
-    moderators: []
-    subset: []
-    comment: ""
--
-    name: 'Vowel discrimination (non-native)'
-    domain: early_language
-    short_name: inphondb-nonnative
-    key: 1K7iCsLUXTB8GXbynuQ9aJOM6O-EcrnDDlmYspdW_Sh8
-    filename: phonemic_discrimination_nonnative
-    citation: 'Tsuji & Cristia (2014)'
-    internal_citation: '(Tsuji & Cristia, 2014)'
-    link: 'https://sites.google.com/site/inphondb/'
-    full_citation: 'Tsuji, S. & Cristia, A. (2014). Perceptual attunement in vowels: A meta-analysis. Developmental Psychobiology, 56(2), 179-191.'
-    doi: 10.1002/dev.21179
-    systematic: yes
-    search_strategy: 'See Native Vowel Discrimination, above.'
-    reliability: no
-    source: 'coded by authors'
-    last_update: '2015-12-14'
-    link_fields: 'https://drive.google.com/file/d/0B_tr1H-CJ3AIb1VpeUtqalhxNkU/view'
-    short_desc: 'Discrimination of non-native vowels, including results from a variety of methods.'
-    description: 'Discrimination of non-native language vowels, including results from behavioral, electrophysiological, and neuroimaging methods applied to infants 0 - 14 months of age.'
-    curator: 'Sho Tsuji'
-    src: images/datasets/discrim.png
-    longitudinal: no
-    moderators: []
-    subset: []
-    comment: ""
--
-    name: 'Phonotactic learning'
-    domain: early_language
-    short_name: phonotactics
-    key: 1RrTszWki-AiIFz7DZ30OqfyK-JDhO1cSIEk3mXNQea0
-    filename: AGL_phonotactics
-    citation: 'Cristia (2018)'
-    internal_citation: '(Cristia, 2018)'
-    link: ""
-    full_citation: 'Cristia, A., (2018). Can infants learn phonology in the lab? A meta-analytic answer. Cognition, 170, 312-327.'
-    doi: ""
-    systematic: yes
-    search_strategy: '"Studies were considered based on a forward search from a seminal paper on both pubmed and google search, a list of references produced by the author, direct contact of labs having published on the topic, and announcements to several mailing lists."'
-    reliability: no
-    source: 'coded by authors'
-    last_update: '2015-12-14'
-    link_fields: 'https://osf.io/5c3gp/'
-    short_desc: 'Infants'' ability to learn phonotactic generalizations from a short exposure.'
-    description: 'Laboratory experiments in which infants are exposed to a set of pseudo-words that could support a phonotactic generalization, and thereafter tested on their preference between new types that follow or violate the familiarized phonotactics.'
-    curator: 'Alex Cristia'
-    src: images/datasets/phonotactics.png
-    longitudinal: no
-    moderators: []
-    subset: []
-    comment: ""
--
-    name: 'Statistical sound category learning'
-    domain: early_language
-    short_name: sounds
-    key: 1yCKAsu-vvQGemPga22F1cdtn90gs7Vp8UCto7HH10cE
-    filename: AGL_soundsDL
-    citation: 'Cristia (2018)'
-    internal_citation: '(Cristia, 2018)'
-    link: ""
-    full_citation: 'Cristia, A., (2018). Can infants learn phonology in the lab? A meta-analytic answer. Cognition, 170, 312-327.'
-    doi: ""
-    systematic: yes
-    search_strategy: '"Studies were considered based on a forward search from a seminal paper on both pubmed and google search, a list of references produced by the author, manual inspection of several editions of two leading conferences (ISIS and IASCL 2004-2012), direct contact of labs having published on the topic, and announcements to several mailing lists."'
-    reliability: no
-    source: 'coded by authors'
-    last_update: '2015-12-14'
-    link_fields: 'https://osf.io/5c3gp/'
-    short_desc: 'Infants'' ability to learn sound categories from their acoustic distribution.'
-    description: 'Laboratory experiments in which infants are exposed to a set of syllables that have been generated using a bimodal distribution of acoustic cues or not, and infants are tested on their discrimination of two sounds differing along the same dimension.'
-    curator: 'Alex Cristia'
-    src: images/datasets/distrib.png
-    longitudinal: no
-    moderators: []
-    subset: []
-    comment: ""
--
-    name: 'Statistical word segmentation'
-    domain: early_language
-    short_name: statSeg
-    key: 1s9sMw6aUOaSqipPOVJMbR8UZkBv_f_fL9yD-kn8lLJQ
-    filename: statSeg
-    citation: 'Black & Bergmann (2017)'
-    internal_citation: '(Black & Bergmann, 2017)'
-    link: 'https://github.com/christinabergmann/StatLearnDB'
-    full_citation: "Black, A. & Bergmann, C. (2017). Quantifying infants' statistical word segmentation: A meta-analysis. In: Proceedings of the 39th Annual Conference of the Cognitive Science Society, pp. 124-129, Austin, TX: Cognitive Science Society"
-    doi: ""
-    systematic: yes
-    search_strategy: '"Expert list and strategic scholar search papers citing Saffran, Aslin, & Newport (1996) with infant/infancy, but not visual in the title. Second search with month/s and not infant/infancy or visual"'
-    reliability: no
-    source: 'coded by authors'
-    last_update: '2017-11-31'
-    link_fields: ""
-    short_desc: 'Can infants segment words from artificial mini-languages based on syllable-level statistics?'
-    description: 'Can infants segment words from artificial mini-languages based on syllable-level statistics?'
-    curator: 'Christina Bergmann'
-    src: images/datasets/statistical.png
-    longitudinal: no
-    moderators: [native_lang, stimuli_type]
-    subset: [replication]
-    comment: ""
--
-    name: 'Word segmentation'
-    domain: early_language
-    short_name: inworddb
-    key: 1djn_-iE4uOs6yRmvBgzYAhB5guzfo3-3wnC7LJVLCe8
-    filename: word_segmentation
-    citation: 'Bergmann & Cristia (2016)'
-    internal_citation: '(Bergmann & Cristia, 2016)'
-    link: 'https://sites.google.com/site/inworddb/'
-    full_citation: 'Bergmann, C., & Cristia, A. (2016). Development of infants’ segmentation of words from native speech: A meta-analytic approach. Developmental Science, 19, 901–917'
-    doi: 10.1111/desc.12341
-    systematic: yes
-    search_strategy: '"We first generated a list of potentially relevant items to be included in our meta-analysis using the Google Scholar search engine, with the broad search term ‘infant word segmentation’ (following Gehanno, Rollin & Darmoni, 2013). This search was carried out on 27 November 2012 and we inspected the first 1000 results. Fifteen additional items were included based on recommendations and by scanning references of included papers. After removing duplicates, we screened the title and abstract of each remaining item and identified 231 items for full-text inspection using the following inclusion criteria: (1) original data were reported; (2) the stimulus material was continuous natural speech spoken in the participants’ native language; (3) the dependent measure was looking time (LT) at a neutral visual target (i.e. not a possible referent of one set of stimuli); (4) infants were normally developing."'
-    reliability: no
-    source: 'coded by authors'
-    last_update: '2017-11-31'
-    link_fields: 'https://sites.google.com/site/inworddb/db/files/InWordDB%20FieldNames.pdf?attredirects=0&d=1'
-    short_desc: 'Recognition of familiarized content or non-words from running, natural speech using behavioral methods.'
-    description: 'Recognition of familiarized content or non-words from running, natural speech using behavioral methods applied to infants 0 - 20 months of age.'
-    curator: 'Christina Bergmann'
-    src: images/datasets/segmentation.png
-    longitudinal: no
-    moderators: [native_lang, method]
-    subset: [native]
-    comment: ""
--
-    name: 'Function word segmentation'
-    domain: early_language
-    short_name: inworddb_function
-    key: 1v9xAvhniLVsFkqJebJfMXRkQGLljoUvy3duQxawpBf0
-    filename: function_word_segmentation
-    citation: 'Bergmann & Cristia (2016)'
-    internal_citation: '(Bergmann & Cristia, 2016)'
-    link: 'https://sites.google.com/site/inworddb/'
-    full_citation: 'Bergmann, C., & Cristia, A. (2016). Development of infants’ segmentation of words from native speech: A meta-analytic approach. Developmental Science, 19, 901–917'
-    doi: 10.1111/desc.12341
-    systematic: yes
-    search_strategy: '"We first generated a list of potentially relevant items to be included in our meta-analysis using the Google Scholar search engine, with the broad search term ‘infant word segmentation’ (following Gehanno, Rollin & Darmoni, 2013). This search was carried out on 27 November 2012 and we inspected the first 1000 results. Fifteen additional items were included based on recommendations and by scanning references of included papers. After removing duplicates, we screened the title and abstract of each remaining item and identified 231 items for full-text inspection using the following inclusion criteria: (1) original data were reported; (2) the stimulus material was continuous natural speech spoken in the participants’ native language; (3) the dependent measure was looking time (LT) at a neutral visual target (i.e. not a possible referent of one set of stimuli); (4) infants were normally developing."'
-    reliability: no
-    source: 'coded by authors'
-    last_update: '2017-11-31'
-    link_fields: 'https://sites.google.com/site/inworddb/db/files/InWordDB%20FieldNames.pdf?attredirects=0&d=1'
-    short_desc: 'Recognition of familiarized function words from natural speech using behavioral methods.'
-    description: 'Recognition of familiarized function words from natural speech using behavioral methods applied to infants 0 - 20 months of age.'
-    curator: 'Christina Bergmann'
-    src: images/datasets/segmentation.png
-    longitudinal: no
-    moderators: [native_lang, method]
-    subset: []
-    comment: ""
--
-    name: 'Online word recognition'
-    domain: early_language
-    short_name: word_recognition
-    key: 18VSjm5D-qeafUaQ4wxZp2RL-316zCF3JtixsiHOEu-U
-    filename: word_recognition
-    citation: 'Frank, Lewis, & MacDonald (2016)'
-    internal_citation: '(Frank, Lewis, & MacDonald, 2016)'
-    link: 'http://mindmodeling.org/cogsci2016/papers/0450/paper0450.pdf'
-    full_citation: 'Frank, M. C., Lewis, M., & MacDonald, K. (2016). A performance model for early word-learning. In Proceedings of the 38th Annual Conference of the Cognitive Science Society.'
-    doi: ""
-    systematic: no
-    search_strategy: '"We conducted a systematic literature review by using Google Scholar to identify peer-reviewed papers citing Fernald et al. (1998). We screened this sample manually to find the subsample of 12 papers that reported both accuracy and reaction time with sufficient detail to permit coding."'
-    reliability: no
-    source: 'coded by authors'
-    last_update: '2016-2-1'
-    link_fields: ""
-    short_desc: 'Online word recognition of familiar words using two-alternative forced choice preferential looking.'
-    description: 'Online word recognition of familiar words using two-alternative forced choice preferential looking. Experiments in this MA follow Fernald et al. (1998) and were included based on their reporting of reaction time as well as effect size.'
-    curator: 'Molly Lewis'
-    src: images/datasets/word_rec.png
-    longitudinal: no
-    moderators: []
-    subset: []
-    comment: ""
--
-    name: 'Mutual exclusivity'
-    domain: early_language
-    short_name: mutex
-    key: 14WdgHLcizDz7vjpxPkNlBkYi8s6yO3tnSTs69SSG7yY
-    filename: mutual_exclusivity
-    citation: '(Lewis, Cristiano, Lake, Kwan, & Frank, under review)'
-    internal_citation: '(Lewis, Cristiano, Lake, Kwan, & Frank, under review)'
-    link: 'https://doi.org/10.31234/osf.io/wsx3a'
-    full_citation: Lewis, M., Cristiano, V., Lake, B. M., Kwan, T., & Frank, M. C. (under review). The role of developmental change and linguistic experience in the mutual exclusivity effect.
-    doi: ""
-    systematic: yes
-    search_strategy: '"We conducted a forward search based on citations of Markman and Wachtel (1988) in Google Scholar (September 2013). We also searched from papers using the keyword combination ``mutual exclusivity'''' in both PsychInfo and Google Scholar. We identified additional papers that were cited from this initial list. From these, we identified a relevant subset using the following criteria: (a) monolingual child participants, (b) one familiar object present at test, (c) referents were objects (not facts or object parts), (d)  no incongruent cues (e.g. eye gaze at familiar object), and (e) peer-reviewed. We also included a series of studies reported in Frank et al. (2016)."'
-    reliability: no
-    source: 'coded by authors'
-    last_update: ""
-    link_fields: ""
-    short_desc: 'Bias to assume that a novel word refers to a novel object in forced-choice paradigms.'
-    description: 'Mutual exclusivity is the bias for children to assume a novel word refers to a novel object, in the presence of one novel and one familiar object. This meta-analysis covers behavioral experiments on infants aged 14 months to 5 years.'
-    curator: 'Molly Lewis'
-    src: images/datasets/zot.png
-    longitudinal: no
-    moderators: [ME_trial_type, infant_type, mean_production_vocab, N_AFC, num_trials, object_stimulus]
-    subset: []
-    comment: ""
--
-    name: 'Pointing and vocabulary (longitudinal)'
-    domain: early_language
-    short_name: pointing_longitudinal
-    key: 1uEOJFzG6RojZ8otHCrJh1Clav6nJHmNw85Ch6F3mS0M
-    filename: pointing_longitudinal
-    citation: 'Colonnesi et al. (2010)'
-    internal_citation: '(Colonnesi et al., 2010)'
-    link: 'http://www.sciencedirect.com/science/article/pii/S0273229710000377'
-    full_citation: 'Colonnesi, C., Stamsa, G. J., Kostera, I., & Noomb, M. J. (2010). The relation between pointing and language development: A meta-analysis. Developmental Review, 30, 352–366.'
-    doi: 10.1016/j.dr.2010.10.001
-    systematic: yes
-    search_strategy: '"The search method involved inspection of digital databases (Web of Knowledge, Picarta, PsychInfo) using the following keywords: pointing, gesture, declarative, imperative, precursors, language, words, vocabulary, infancy, intentional communication, and joint attention. Inspection of the reference section of relevant literature was an additional search method (ancestry method). Additionally, also unpublished sources were consulted, such as dissertations and presentations and studies under revision, by using Google Scholar, contacting researchers in the field and consulting digital databases of dissertations (e.g., PROQUEST). Three selection criteria were used to select studies: (a) measurement of infant production and/or comprehension of the pointing gesture; (b) measurement of language by assessing either receptive or expressive language; (c) report of a relation between pointing and language or the presence of data in the article allowing the calculation of a relation between pointing and language development. Exclusion criteria were: (a) subjects with mental or developmental disorders; (b) children older than 60 months; (c) studies in which the pointing gesture was not coded separately from other gestures."'
-    reliability: yes
-    source: 'adapted from published MA'
-    last_update: '2010-12-01'
-    link_fields: ""
-    short_desc: 'Longitudinal correlations between pointing and later vocabulary.'
-    description: 'The pointing gesture has been argued to be related to the development of language. This meta-analysis explores the relationship between pointing and language development, both concurrently and longitudinally.'
-    curator: 'Molly Lewis'
-    src: images/datasets/pointing.png
-    longitudinal: yes
-    moderators: [motive, pointing_modality]
-    subset: []
-    comment: ""
--
-    name: 'Pointing and vocabulary (concurrent)'
-    domain: early_language
-    short_name: pointing_concurrent
-    key: 1ywuzdzvNE2H86_sM8heX33QUolzV3phJlQeonnkH4NM
-    filename: pointing_concurrent
-    citation: 'Colonnesi et al. (2010)'
-    internal_citation: '(Colonnesi et al., 2010)'
-    link: 'http://www.sciencedirect.com/science/article/pii/S0273229710000377'
-    full_citation: 'Colonnesi, C., Stamsa, G. J., Kostera, I., & Noomb, M. J. (2010). The relation between pointing and language development: A meta-analysis. Developmental Review, 30, 352–366.'
-    doi: 10.1016/j.dr.2010.10.001
-    systematic: yes
-    search_strategy: '"The search method involved inspection of digital databases (Web of Knowledge, Picarta, PsychInfo) using the following keywords: pointing, gesture, declarative, imperative, precursors, language, words, vocabulary, infancy, intentional communication, and joint attention. Inspection of the reference section of relevant literature was an additional search method (ancestry method). Additionally, also unpublished sources were consulted, such as dissertations and presentations and studies under revision, by using Google Scholar, contacting researchers in the field and consulting digital databases of dissertations (e.g., PROQUEST). Three selection criteria were used to select studies: (a) measurement of infant production and/or comprehension of the pointing gesture; (b) measurement of language by assessing either receptive or expressive language; (c) report of a relation between pointing and language or the presence of data in the article allowing the calculation of a relation between pointing and language development. Exclusion criteria were: (a) subjects with mental or developmental disorders; (b) children older than 60 months; (c) studies in which the pointing gesture was not coded separately from other gestures."'
-    reliability: yes
-    source: 'adapted from published MA'
-    last_update: '2010-12-01'
-    link_fields: ""
-    short_desc: 'Concurrent correlations between pointing and vocabulary.'
-    description: 'The pointing gesture has been argued to be related to the development of language. This meta-analysis explores the relationship between pointing and language development, both concurrently and longitudinally.'
-    curator: 'Molly Lewis'
-    src: images/datasets/pointing.png
-    longitudinal: no
-    moderators: [motive, pointing_modality]
-    subset: []
-    comment: ""
--
-    name: 'Sound symbolism'
-    domain: early_language
-    short_name: symbolism
-    key: 1oQpM21C0MPdljdTeacsKr7zIe46cabzD5fizlgp5w_U
-    filename: symbolism
-    citation: 'Lammertink et al. (2016)'
-    internal_citation: '(Lammertink et al., 2016)'
-    link: "https://pure.uva.nl/ws/files/22575657/Fort_et_al_2018_Developmental_Science.pdf"
-    full_citation: 'Fort, M., Lammertink, I., Peperkamp, S., Guevara-Rukoz, A., Fikkert, P., & Tsuji, S. (2018). SymBouki: a meta-analysis on the emergence of sound symbolism in early language acquisition. Developmental Science, Early View. doi: 10.1111/desc.12659.'
-    doi: ""
-    systematic: yes
-    search_strategy: '"We followed the PRISMA statement (Moher, Liberati, Tetzlaff, Altmann, & The PRISMA Group, 2009) for selecting and reporting on the studies to be included in our meta-analysis. We decided to include articles if they were assessing the on-line processing of sound-symbolically matching or mismatching sound-shape correspondences related to the bouba-kiki effect (thus, testing both ‘round’ and ‘spiky’ correspondences) in children up to and inclusive of the age of 3 years.  ‘Matching’ responses refer to children’s responses to congruent sound-shape associations (round word+round object; spiky word+spiky object) and ‘mismatching’  responses refer to children’s responses to incongruent sound-shape associations (round word+spiky shape; spiky word+round shape), respectively. Since we were already aware of 10 published articles, conference presentations or conference proceedings papers that fit our inclusion criteria,and since we considered our strict inclusion this criteria to lead to a rather small selection of articles, we chose a seed strategy rather than a broad literature search. We began by assembling 4 key articles that fit the inclusion criteria (Asano et al., 2015; Maurer, Pathman & Mondloch, 2006; Ozturk, Krehm & Vouloumanos, 2012; Spector & Maurer, 2013) as well as two recent review papers on sound symbolism including infancy (Imai & Kita, 2014; Lockwood & Dingemanse, 2015). For all of these articles, we screened all potentially relevant references cited in these articles as well as references citing these articles and ‘related articles’ on their title and abstracts on scholar.google.com. Additionally, we screened titles and abstracts of all articles that cited one of the 4 key articles mentioned above (Asano et al. 2015: 16 citations; Maurer et al. 2006: 241 citations; Ozturk et al. 2012: 54 citations and Spector and Maurer, 2013: 9 citations).  This search did not lead to additional eligible articles. In addition, we were aware of 9 conference presentations or conference proceedings papers that fit our inclusion criteria and were not redundant with one of our seed articles, including three by the two first authors of the present article."'
-    reliability: ""
-    source: 'coded by authors'
-    last_update: '2016-6-01'
-    link_fields: ""
-    short_desc: 'Bias to assume a non-arbitrary relationship between form and meaning ("bouba-kiki effect") in forced-choice paradigms.'
-    description: 'Do infants recognize systematic relationships between form and meaning, e.g. that bouba tends to refer to a round object and kiki tends to refer to a spiky one?'
-    curator: 'Sho Tsuji'
-    src: images/datasets/bouba-kiki.png
-    longitudinal: no
-    moderators: []
-    subset: []
-    comment: ""
--
-    name: 'Categorization bias'
-    domain: cognitive_development
-    short_name: catBias
-    key: 1PcqwSo6OWNa8XdtcZnCDtPdxUf6sa5BimHsufWlAQu4
-    filename: catBias
-    citation: ""
-    internal_citation: ""
-    link: ""
-    full_citation: ""
-    doi: ""
-    reliability: ""
-    systematic: no
-    search_strategy: 'Seeded with Smiley and Brown (1979) in Google Scholar + manual search'
-    source: 'coded by authors'
-    last_update: '2017-3-01'
-    link_fields: ""
-    short_desc: 'In a triad-task, bias to generalize to taxonomic as opposed to thematic alternative.'
-    description: 'In a triad-task, bias to generalize to taxonomic as opposed to thematic alternative.'
-    curator: 'Molly Lewis'
-    src: images/datasets/catBias.png
-    longitudinal: no
-    moderators: [label_present, instruction_code, object_stimulus, taxonomic_type]
-    subset: []
-    comment: ""
--
-    name: 'Familiar word recognition'
-    domain: early_language
-    short_name: famWord
-    key: 1ZgNI0hQVrgN9AwtDwn1dpXza-l5XMjBjdd7pq7XV0_s
-    filename: famWord
-    citation: "Carbajal (2018)"
-    internal_citation: ""
-    link: ""
-    full_citation: "Carbajal, M.J. (2018). Doctoral dissertation"
-    doi: ""
-    reliability: ""
-    systematic: yes
-    search_strategy: 'Conceptual replications of Hallé & de Boysson-Bardies (1994)'
-    source: 'coded by authors'
-    last_update: '2018-06-30'
-    link_fields: ""
-    short_desc: 'Do infants distingusih familiar words from novel/rare words in listening tasks?'
-    description: 'Within-subject comparisons of attention to lists of familiar words vs novel/rare words.'
-    curator: 'Julia Carbajal'
-    src: images/datasets/familiarwords.png
-    longitudinal: no
-    moderators: [main_or_baseline_study, native_lang]
-    subset: []
-    comment: ""
--
-    name: 'Abstract rule learning'
-    domain: early_language
-    short_name: ruleLearning
-    key: 1T6WS8fPTPhS88xjm1gtCdKvJg7Z1rKqdKxz4vYXORWs
-    filename: ruleLearning
-    citation: "Rabagliati et al. (2018)"
-    internal_citation: ""
-    link: "https://drive.google.com/drive/folders/1dP91H5QlcT3PD9fKCndroMGcXEzP98xI"
-    full_citation: "Rabagliati, H., Ferguson, B., & Lew-Williams, C. (2018). The profile of abstract rule learning in infancy: Meta‐analytic and experimental evidence. Developmental Science."
-    doi: ""
-    reliability: ""
-    systematic: yes
-    search_strategy: 'Seeded with Marcus et al. (2010) in Google Scholar + manual search'
-    source: 'coded by authors'
-    last_update: '2018-06-30'
-    link_fields: ""
-    short_desc: "Can infants learn abstract repition rules from different types of stimuli?"
-    description: ""
-    curator: 'Hugh Rabagliati'
-    src: images/datasets/AbstractRules.png
-    longitudinal: no
-    moderators: [Modality, Semantics, TrainingRule, PreferenceType]
-    subset: [Speech, Nonspeech]
-    comment: ""
--
-    name: 'Switch Task'
-    domain: early_language
-    short_name: switchTask
-    key: 1qkGFqZLwuuO5ELKiFg4E5EGX5O6xTfJC_hxyZXJr2zI
-    filename: switchTask
-    citation: "Tsui et al. (2019)"
-    internal_citation: ""
-    link: "https://drive.google.com/drive/folders/15-R_Nvm5sU2rakIH4s4U7ANue_bzm4Qu"
-    full_citation: "Tsui, A. S. M., Byers-Heinlein, K., & Fennell, C. T. (2019, February 7). Associative Word Learning in Infancy: A Meta-Analysis of the Switch Task. Developmental Psychology. Advance online publication."
-    doi: "http://dx.doi.org/10.1037/dev0000699"
-    reliability: ""
-    systematic: yes
-    search_strategy: 'Seeded with Stager & Werker et al. (1997) and Werker et al. (1998) in Google Scholar + manual search'
-    source: 'coded by authors'
-    last_update: '2018-06-30'
-    link_fields: ""
-    short_desc: "Infant word learning in the switch task"
-    description: ""
-    curator: 'Angeline Tsui'
-    src: images/datasets/Switch.png
-    longitudinal: no
-    moderators: [minimal_pairs, word_typicality, cues_present]
-    subset: []
-    comment: ""
--
-    name: 'Mispronunciation sensitivity'
-    domain: early_language
-    short_name: MPs
-    key: 1rg3u-b9unYd8f5U2w8yTjrPWOccq09HXeREp_xHf6yo
-    filename: Mispron
-    citation: 'Von Holzen & Bergmann (2018)'
-    internal_citation: ""
-    link: "https://drive.google.com/drive/folders/1Z5ruOSPydAXYpqCygmixcXKUgqD0BDfD"
-    full_citation: "Von Holzen, K., & Bergmann, C. (2018). A meta-analysis of infants' mispronunciation sensitivity development. Proceedings of the 40th Annual Conference of the Cognitive Science Society. Austin, TX: Cognitive Science Society, Inc."
-    doi: ""
-    reliability: ""
-    systematic: yes
-    search_strategy: 'Seeded with Swingley & Aslin (2000) in Google Scholar'
-    source: 'coded by authors'
-    last_update: '2018-06-30'
-    link_fields: ""
-    short_desc: "Can infants distinguish correctly and mispronounced words, like dog and tog?"
-    description: ""
-    curator: 'Katie Von Holzen'
-    src: images/datasets/MPSens.png
-    longitudinal: no
-    moderators: [is_correct, n_feature, type_feature, mispron_location]
-    subset: [CorrectPronunciation, Mispronunciation]
-    comment: ""
--
-    name: 'Prosocial agents'
-    domain: cognitive_development
-    short_name: prosocial
-    key: 1bz_XVT9EwMo4ivWeBM7PWhyCoTZlLT60BUfNDHCjKGw
-    filename: prosocial
-    citation: "Margoni & Surian (2018)"
-    internal_citation: ""
-    link: ""
-    full_citation: "Margoni, F., & Surian, L. (2018). Infants’ evaluation of prosocial and antisocial agents: A meta-analysis. Developmental Psychology, 54(8), 1445-1455."
-    doi: ""
-    reliability: ""
-    systematic: yes
-    search_strategy: 'PsychINFO + references of relevant papers + calls on mailing lists'
-    source: 'coded by authors'
-    last_update: '2018-09-26'
-    link_fields: ""
-    short_desc: 'Do infants prefer a prosocial agent over an antisocial agent?'
-    description: 'Do infants prefer a prosocial agent (helper, giver, more fair) over an antisocial (hinderer, taker, less fair) agent?'
-    curator: 'Francesco Margoni'
-    src: images/datasets/prosocial.png
-    longitudinal: no
-    moderators: [scenarios]
-    subset: [Hamlin_Lab]
-    comment: ""
--
-    name: 'Simple arithmetic competences'
-    domain: cognitive_development
-    short_name: arithmetic
-    key: 18JSxBB5GK87JqJ89aH055M5MaITY1qRqvZAJXBm3t-M
-    filename: simple_arithmetic_competences
-    citation: "Christodoulou et al. (2017)"
-    internal_citation: ""
-    link: "http://psycnet.apa.org/record/2017-24506-001"
-    full_citation: "Christodoulou, J., Lac, A., & Moore, D. S. (2017). Babies and math: A meta-analysis of infants’ simple arithmetic competence. Developmental Psychology, 53(8), 1405-1417."
-    doi: "10.1037/dev0000330"
-    reliability: ""
-    systematic: yes
-    search_strategy: 'Seeded with Winn (1992)'
-    source: 'coded by data manager'
-    last_update: '2018-08-09'
-    link_fields: ""
-    short_desc: 'Do infants have simple arithmetic competences?'
-    description: 'Do infants look longer at stimuli representing “incorrect” versus “correct” solutions of basic addition and subtraction problems?'
-    curator: ''
-    src: images/datasets/prosocial.png
-    longitudinal: no
-    moderators: [1+1_2-1, 1_1/2-1_other, solutions,	Age_MedianSplit, Stimultype, Display]
-    subset: []
-    comment: ''
--
-    name: 'Symbolic play'
-    domain: early_language
-    short_name: play
-    key: 1phdZ5ufy2NE5AbwXwVWOwhK-TGzP5Wd_lokrG0wfVXs
-    filename: symbolic_play
-    citation: "Quinn & Kidd (2018)"
-    internal_citation: ""
-    link: "https://www.sciencedirect.com/science/article/pii/S027322971730045X"
-    full_citation: "Quinn, S., Donnelly, S., & Kidd, E. (2018). The relationship between symbolic play and language acquisition: A meta-analytic review. Developmental review, 49, 121-135."
-    doi: "10.1016/j.dr.2018.05.005"
-    reliability: ""
-    systematic: yes
-    search_strategy: 'database search'
-    source: 'coded by data manager'
-    last_update: '2019-03-12'
-    link_fields: ""
-    short_desc: 'Is there a relationship between symbolic play and language development?'
-    description: 'Do infants who show more symbolic play have better language development?'
-    curator: ''
-    src: images/datasets/prosocial.png
-    longitudinal: no
-    moderators: [correlation_type, Language_modality, solutions, Age_qualitative]
-    subset: []
-    comment: "the mean age is not systematic, but the center of the age range provided in the supplementary material."
--
-    name: 'Natural speech preference'
-    domain: early_language
-    short_name: SpeechPref
-    key: 1Nc7X0zNUAwKyXJro--MbGiXKrM5NlkYR10Y3KJd-N_c
-    filename: nat_speech_pref
-    citation: "Issard & Cristia (in prep.)"
-    internal_citation: ""
-    link: "https://drive.google.com/open?id=1CNz2dV6T3hyfxd2m0GSe1TzERaqT151ELpMPpfcEdcI"
-    full_citation: "Issard, C., & Cristia, A. (2019, April 4). Infants prefer to listen to speech: A meta-analysis. Retrieved from osf.io/4stz9."
-    doi: ""
-    reliability: ""
-    systematic: yes
-    search_strategy: 'database search'
-    source: 'new meta-analysis'
-    last_update: '2019-05-09'
-    link_fields: ""
-    short_desc: 'Do infants prefer natural speech over other types of sound?'
-    description: 'Do infants prefer natural speech over other species vocalizations, natural or artificial sounds?'
-    curator: 'Cecile Issard'
-    src: images/datasets/ids.png
-    longitudinal: no
-    moderators: [natural, vocal, test_lang]
-    subset: []
-    comment: "This meta-analysis is in progress."
--
-    name: 'Cross-situational word learning'
-    domain: early_language
-    short_name: CrossSituational
-    key: 1f4ts9KOSSdcQ_tih7pAcREqY5SWEaBfYcduJScAKTUs
-    filename: Cross-situational_word-learning
-    citation: "Dal Ben et al. (2019)"
-    internal_citation: ""
-    link: ""
-    full_citation: "Dal Ben, R., Souza,D. & Hay, J. (2019). Cross-situational word-learning."
-    doi: ""
-    reliability: ""
-    systematic: yes
-    search_strategy: 'database search, and seeded with Yu & Smith (2007)'
-    source: 'coded by authors'
-    last_update: '2019-05-24'
-    link_fields: ""
-    short_desc: 'Infants and children s abilities to learn words across multiple ambiguous situations.'
-    description: 'Infants and children s abilities to learn words across multiple ambiguous situations.'
-    curator: 'Rodrigo Dal Ben'
-    src: images/datasets/CrossSit.png
-    longitudinal: no
-    moderators: [exposure_phase, method, dependent_measure]
-    subset: []
-    comment: ''
+    moderators: [] # e.g. task_type, native_lang
+    # subset: []
+    comment: 'Dataset was provided by Riccardo Fusaroli'
+
+
