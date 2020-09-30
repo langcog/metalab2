@@ -11,7 +11,7 @@
     doi: 'https://doi.org/10.1016/j.schres.2019.11.031'
     systematic: yes
     search_strategy: '"We adopted the Preferred Reporting Items for Systematic Reviews and Meta-Analyses Guidelines (PRISMA, Stewart et al., 2015) for trans- parent reporting of a systematic review. We pre-registered our protocol by specifying a priori the study rationale, eligibility criteria, search strat- egy, moderator variables, and statistical analyses (see https://bit.ly/ 2EEFeQZ). The literature search was conducted on Pubmed and Google Scholar, the latter including dissertations and unpublished manuscripts. The search terms used were (prosody OR inflection OR intensity OR pitch OR fundamental frequency OR speech rate OR voice quality OR acoustic OR intonation OR vocal) AND (schizo*). The search was con- ducted on August 21 2017, and updated on April 12 2018. We complemented the list by performing a backward and forward literature search: we screened the bibliography of the papers found, and the papers citing them as identified by Google Scholar. Articles were screened for eligibility by two authors (AP and AS).Study selection was conducted according to the following inclusioncriteria: (a) empirical study, (b) quantification of acoustic features inthe  vocal  production  of  participants  with  schizophrenia  orschizoaffective disorder1(c) sample including at least two individualswith schizophrenia or schizoaffective disorder, (d) inclusion of a non-clinical comparison group, or an assessment of variation in acoustic fea-tures in relation to severity of clinical features. Clinical comparisongroups (e.g. with depression) were excluded because the limited num-ber of studies did not permit meta-analytic estimations"'
-    #reliability: ""
+    reliability: ""
     #source: 'adapted from published MA'
     #last_update: '2020-09-30'
     link_fields: ''
@@ -22,7 +22,7 @@
     longitudinal: no
     moderators: [task_type, native_lang]
     features: [speech_duration, speech_rate, speech_percentage, pause_duration, pause_number, pause_total_length, response_latency, pause_variability, pitch_f0, pitch_f1, pitch_f2, pitch_f3, pitch_f4, pitch_f5, pitch_f6, pitch_f0_variability, pitch_f0_entropy, pitch_f1_variability, pitch_f2_variability, pitch_bandwidth, pitch_f0_ran, intensity_mean, intensity_variability, intensity_variability_entropy]
-    #subset: []
+    subset: []
     comment: 'Dataset from the original MA was provided by Riccardo Fusaroli.'
 -
     name: 'Is voice a marker for Autism spectrum disorder? A systematic review and meta-analysis'
@@ -37,16 +37,16 @@
     doi: 'https://doi.org/10.1002/aur.1678'
     systematic: yes
     search_strategy: '"A literature search was conducted using Google Scholar, PubMed and Web of Science on April 15, 2015, updated on March 4, 2016 and then again on June 21, 2016. The search terms used were (prosody OR intonation OR inflection OR intensity OR pitch OR fundamental frequency OR speech rate OR voice quality OR acoustic) AND (autis* OR Asperger). Additional search for unpublished studies was performed through additional web searches (on Google and Bing), and by directly contacting authors of the published studies and interested participants of the IMFAR 2014, 2015 and 2016 conferences. Furthermore it should be noted that Google Scholar covers most (if not all) dissertation repositories. The papers thus found were searched for additional references and the resulting set was screened by two of the authors (RF and AL) according to the following criteria: empirical study, quantification of acoustic features in the vocal production of participants with ASD, sample including at least two individuals with ASD, inclusion of a typically developing comparison group (TD) or an assessment of variation in acoustic features in relation to severity of clinical features. Non-TD comparison groups (e.g., with language impairment, or ADHD) were not included as not enough studies were present to assess patterns beyond the single study."'
-    # reliability: ‘’
+    reliability: ''
     # source: ‘’
-    # last_update: ‘’
+    # last_update: ''
     link_fields: ‘’
     short_desc: 'To be updated.'
     curator: 'LNJ, ND'
     src: images/datasets/dinosaur.png # change
     longitudinal: no
     moderators: [] # e.g. task_type, native_lang
-    # subset: []
+    subset: []
     comment: 'Dataset from the original MA was provided by Riccardo Fusaroli'
 -
     name: 'Acoustic Measures of Prosody in Right-Hemisphere Damage: A Systematic Review and Meta-Analysis'
@@ -61,7 +61,7 @@
     doi: 'https://doi.org/10.1044/2020_JSLHR-19-00241'
     systematic: yes
     search_strategy: '"We queried PubMed, PsychINFO, Web of Science, and Google Scholar, using the following combination of search terms: (prosody OR intonation OR inflection OR intensity OR pitch OR fundamental frequency OR speech rate OR voice quality) AND (RHD OR right hemisphere) AND (stroke) AND (acoustic), with no restrictions on date of publication. Further papers were identified by searching the references in the papers identified by the initial search. Our search resulted in a total of 49 papers. Our initial list of 49 papers was then screened, and we included only papers meeting the following criteria: (1) The study quantified acoustic measures of vocal production of participants with RHD, (2) The study reported original research (not a review), (3) The study included data from at least two participants, (4) The study included a control group. Of the initial 49 papers, 8 were case studies with data from only one individual, 6 did not report sufficient data in either tables or plots for inclusion in a meta-analysis, 2 papers did not report data from an acoustic analysis, 2 papers lacked a control group, 11 papers did not measure vocal production, 2 did not include participants with RHD, 1 did not report original data (review article), and 1 only included RHD participants who were actively selected to differ from NBD controls. Although this final paper otherwise met our inclusion criteria, we felt that actively choosing patients who differed from the control group on the object of study introduced unnecessary bias, and we did not include it. We note in passing that the effect sizes for this paper (which measured variation in F0) were somewhat larger (Hedges’s g = 1.3 – 1.8) than many of the included papers, although not unlike the effect size in a paper with the same first author which was included (Ross & Monnot, 2008). After these 33 papers were excluded, 16 papers remained for analysis."'
-    #reliability: no
+    reliability: ''
     #source: 'coded by authors'
     #last_update: ""
     link_fields: ""
@@ -70,7 +70,7 @@
     curator: 'LNJ, ND'
     src: images/datasets/dinosaur.png
     moderators: []
-    #subset: []
+    subset: []
     comment: 'Dataset from the original MA was provided by Riccardo Fusaroli.'
 -
     name: 'Depression Data (unpublished)'
@@ -85,7 +85,7 @@
     doi: ‘’
     systematic: no
     search_strategy: '""'
-    # reliability: ‘’
+    reliability: ''
     # source: ‘’ # potentially: data collected by student, XXX
     # last_update: ‘’
     link_fields: ‘’
@@ -94,7 +94,7 @@
     src: images/datasets/dinosaur.png # change
     longitudinal: no
     moderators: [] # e.g. task_type, native_lang
-    # subset: []
+    subset: []
     comment: 'Dataset was provided by Riccardo Fusaroli'
 
 
