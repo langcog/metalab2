@@ -42,19 +42,11 @@
   example:      Molly Lewis, Michael Frank;  ML, MF
   required:     yes
 
-- field:        expt_num
-  description:  experiment/study number in study (for later identification of corresponding effect size in study)
-  type:         numeric
-  format:       if same study has more than one experiment apply numbers starting from 1, if only 1 experiment in 1 study it will be NA
-  example:      1; 2 (if study has Experiments 1 and 2)
-  required:     yes
-
-- field:        expt_condition
-  description:  specification of the experiment condition if a study has several experiments
+- field:        expt_unqiue
+  description:  if a study included multiple experiments with different populations, or with different tasks the experiments will get a unique identifier.
   type:         string
-  format:       any way of describing an experiment condition
-  example:      nouns; verbs (if experiment has nouns and verbs as conditions)
-  required:     yes
+  format:       if same study has more than one experiment the first experiment will have the short_cite as identifier and the second experiment the shortcite and a number.
+  example:      Smith (2015).1
 
 - field:        same_sample
   description:  identifier of group of participants within a study (for determining if effect sizes in multiple rows are statistically independent)
@@ -247,6 +239,20 @@
 # Optional fields
 #----------------
 
+- field:        expt_num
+  description:  experiment/study number in study (for later identification of corresponding effect size in study)
+  type:         numeric
+  format:       if same study has more than one experiment apply numbers starting from 1, if only 1 experiment in 1 study it will be NA
+  example:      1; 2 (if study has Experiments 1 and 2)
+  required:     yes
+
+- field:        expt_condition
+  description:  specification of the experiment condition if a study has several experiments
+  type:         string
+  format:       any way of describing an experiment condition
+  example:      nouns; verbs (if experiment has nouns and verbs as conditions)
+  required:     yes
+
 - field:        mean_education_1
   description:  mean education score for group
   type:         numeric
@@ -294,6 +300,25 @@
   type:         numeric
   example: 10
   required:     no
+
+- field:        task_type_spec
+  description:  further specification of the task, i.e specification of task_type
+  type:         string
+  example:      imitation
+  required:     no
+
+- field:        native_lang_spec
+  description:  further specification of the native language of participants, i.e. specification of native_lang
+  type:         string
+  example:      American English, British English
+  required:     no
+
+- field:        diagnosis_spec
+  description:  further specification of group_1 (patients) in experiment
+  type:         string
+  example:      ASD, HFA
+  required:     no
+
 
 
 
