@@ -1,20 +1,14 @@
-- id:     overview
-  title:  Overview
+- id:     challenge
+  title:  Contribution Challenge
 
-- id:     datasets
-  title:  Datasets
+- id:     faq
+  title:  FAQ
   
 - id:     contribute
   title:  Contributing to MetaLab
 
-- id:     statistical_approach
-  title:  Statistical Approach
+- id:     getting-started
+  title:  Getting Started
 
-- id:     field_specs
-  title:  Field Specifications
-
-- id:     export_data
-  title:  Export and work with the data
-
-- id:     troubleshooting
-  title:  Troubleshooting
+- id: why_do_a_MA
+  title: Why Meta-Analysis?
