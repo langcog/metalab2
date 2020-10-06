@@ -49,9 +49,6 @@
     features: [pitch_f0, pitch_f0_range, pitch_f0_sd, pitch_f0_variability, intensity_mean, utterance_duration, syllable_duration, speech_rate, pause_length, pause_number]
     #subset: []
     comment: 'Dataset from the original MA was provided by Riccardo Fusaroli'
--
-
-
 #     name: 'Acoustic Measures of Prosody in Right-Hemisphere Damage: A Systematic Review and Meta-Analysis'
 #     domain: rhd
 #     short_name: rhd_weed_2020
@@ -100,5 +97,3 @@
 #     moderators: [] # e.g. task_type, native_lang
 #     #subset: []
 #     comment: 'Dataset was provided by Riccardo Fusaroli'
-
-
