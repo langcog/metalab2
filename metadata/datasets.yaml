@@ -48,7 +48,7 @@
     moderators: [] # e.g. task_type, native_lang
     #subset: []
     comment: 'Dataset from the original MA was provided by Riccardo Fusaroli'
- -
+
 #     name: 'Acoustic Measures of Prosody in Right-Hemisphere Damage: A Systematic Review and Meta-Analysis'
 #     domain: rhd
 #     short_name: rhd_weed_2020
