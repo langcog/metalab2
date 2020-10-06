@@ -1,5 +1,5 @@
 #ml_url
-mv_metadata_url <- "https://raw.githubusercontent.com/LNJ-ND/metalab_lnjnd/master/metadata/"
+mv_metadata_url <- "https://raw.githubusercontent.com/LNJ-ND/MetaVoice_Website/master/metadata/"
 
 #get_metalab_data
 get_metavoice_data <- function(dataset_info, short_names, domains) {
@@ -473,6 +473,7 @@ get_metavoice_dataset_info <- function(dataset_file = paste0(mv_metadata_url, "d
 
   datasets <- datasets %>% purrr::map(function(x) {
     x$moderators <- list(x$moderators)
+    x$features <- list(x$features)
     #x$subset <- list(x$subset)
     #x$reliability <- as.logical(x$reliability)
     x
