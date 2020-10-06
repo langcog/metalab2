@@ -47,6 +47,7 @@
   type:         string
   format:       if same study has more than one experiment the first experiment will have the short_cite as identifier and the second experiment the shortcite and a number.
   example:      Smith (2015).1
+  required:     yes
 
 - field:        same_sample
   description:  identifier of group of participants within a study (for determining if effect sizes in multiple rows are statistically independent)
@@ -91,8 +92,6 @@
   format:       languages separated by commas
   example:      American English; French, Italian
   required:     yes
-
-
 
 - field:        dependent_measure
   description:  type of dependent measure used in experiment
