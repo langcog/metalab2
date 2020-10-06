@@ -714,6 +714,13 @@
       "Repository": "CRAN",
       "Hash": "0bc90078aeee42f2520b1d0a33bd6758"
     },
+    "vembedr": {
+      "Package": "vembedr",
+      "Version": "0.1.3",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "9b48356cc6a10a755e8897146d9aa678"
+    },
     "viridis": {
       "Package": "viridis",
       "Version": "0.5.1",
