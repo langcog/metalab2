@@ -38,7 +38,7 @@ jobs:
         if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
         renv::restore()
 
-    - run: Rscript -e 'source(here::here("build", "build_metalab_site.R"))'
+    - run: Rscript -e 'source(here::here("build", "build-metalab-site.R"))'
     - run: find ./shinyapps/* -type d -exec touch {}/restart.txt \;
     - run: cp -R metadata/ ./shinyapps/common/
     - run: tar -zcvf metalab-shinyapps.tar.gz shinyapps
