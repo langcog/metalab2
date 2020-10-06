@@ -25,30 +25,30 @@
     #subset: []
     comment: 'Dataset from the original MA was provided by Riccardo Fusaroli.'
 -
-#     name: 'Is voice a marker for Autism spectrum disorder? A systematic review and meta-analysis'
-#     domain: asd
-#     short_name: asd_fusaroli_2017
-#     key: '' # get key from google sheets
-#     filename: asd_fusaroli_2017
-#     citation: 'Fusaroli, Lambrechts, Bang, Bowler, & Gaigg (2017)'
-#     internal_citation: '(Fusaroli, Lambrechts, Bang, Bowler, & Gaigg, 2017)'
-#     link: 'https://onlinelibrary.wiley.com/doi/full/10.1002/aur.1678'
-#     full_citation: 'Fusaroli, R., Lambrechts, A., Bang, D., Bowler, D. M., & Gaigg, S. B. (2017). Is voice a marker for Autism spectrum disorder? A systematic review and meta‐analysis. Autism Research, 10(3), 384-407.'
-#     doi: 'https://doi.org/10.1002/aur.1678'
-#     systematic: yes
-#     search_strategy: '"A literature search was conducted using Google Scholar, PubMed and Web of Science on April 15, 2015, updated on March 4, 2016 and then again on June 21, 2016. The search terms used were (prosody OR intonation OR inflection OR intensity OR pitch OR fundamental frequency OR speech rate OR voice quality OR acoustic) AND (autis* OR Asperger). Additional search for unpublished studies was performed through additional web searches (on Google and Bing), and by directly contacting authors of the published studies and interested participants of the IMFAR 2014, 2015 and 2016 conferences. Furthermore it should be noted that Google Scholar covers most (if not all) dissertation repositories. The papers thus found were searched for additional references and the resulting set was screened by two of the authors (RF and AL) according to the following criteria: empirical study, quantification of acoustic features in the vocal production of participants with ASD, sample including at least two individuals with ASD, inclusion of a typically developing comparison group (TD) or an assessment of variation in acoustic features in relation to severity of clinical features. Non-TD comparison groups (e.g., with language impairment, or ADHD) were not included as not enough studies were present to assess patterns beyond the single study."'
-#     #reliability: ''
-#     # source: ‘’
-#     # last_update: ''
-#     link_fields: ''
-#     short_desc: 'To be updated.'
-#     curator: 'LNJ, ND'
-#     src: images/datasets/dinosaur.png # change
-#     longitudinal: no
-#     moderators: [] # e.g. task_type, native_lang
-#     #subset: []
-#     comment: 'Dataset from the original MA was provided by Riccardo Fusaroli'
-# -
+    name: 'Is voice a marker for Autism spectrum disorder? A systematic review and meta-analysis'
+    domain: asd
+    short_name: asd_fusaroli_2017
+    key: 1gDoBNtRV51RxAM3C6Xg147PjPh03mUHTkMfShW8GUYo # get key from google sheets
+    filename: asd_fusaroli_2017
+    citation: 'Fusaroli, Lambrechts, Bang, Bowler, & Gaigg (2017)'
+    internal_citation: '(Fusaroli, Lambrechts, Bang, Bowler, & Gaigg, 2017)'
+    link: 'https://onlinelibrary.wiley.com/doi/full/10.1002/aur.1678'
+    full_citation: 'Fusaroli, R., Lambrechts, A., Bang, D., Bowler, D. M., & Gaigg, S. B. (2017). Is voice a marker for Autism spectrum disorder? A systematic review and meta‐analysis. Autism Research, 10(3), 384-407.'
+    doi: 'https://doi.org/10.1002/aur.1678'
+    systematic: yes
+    search_strategy: '"A literature search was conducted using Google Scholar, PubMed and Web of Science on April 15, 2015, updated on March 4, 2016 and then again on June 21, 2016. The search terms used were (prosody OR intonation OR inflection OR intensity OR pitch OR fundamental frequency OR speech rate OR voice quality OR acoustic) AND (autis* OR Asperger). Additional search for unpublished studies was performed through additional web searches (on Google and Bing), and by directly contacting authors of the published studies and interested participants of the IMFAR 2014, 2015 and 2016 conferences. Furthermore it should be noted that Google Scholar covers most (if not all) dissertation repositories. The papers thus found were searched for additional references and the resulting set was screened by two of the authors (RF and AL) according to the following criteria: empirical study, quantification of acoustic features in the vocal production of participants with ASD, sample including at least two individuals with ASD, inclusion of a typically developing comparison group (TD) or an assessment of variation in acoustic features in relation to severity of clinical features. Non-TD comparison groups (e.g., with language impairment, or ADHD) were not included as not enough studies were present to assess patterns beyond the single study."'
+    #reliability: ''
+    # source: ‘’
+    # last_update: ''
+    link_fields: ''
+    short_desc: 'To be updated.'
+    curator: 'LNJ, ND'
+    src: images/datasets/dinosaur.png # change
+    longitudinal: no
+    moderators: [] # e.g. task_type, native_lang
+    #subset: []
+    comment: 'Dataset from the original MA was provided by Riccardo Fusaroli'
+ -
 #     name: 'Acoustic Measures of Prosody in Right-Hemisphere Damage: A Systematic Review and Meta-Analysis'
 #     domain: rhd
 #     short_name: rhd_weed_2020
