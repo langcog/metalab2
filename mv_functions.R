@@ -52,7 +52,7 @@ mv_load_and_validate_dataset <- function(dataset_info) {
          # no = stringr::str_extract(study_ID, "([:digit:]{4})")),
        study_ID = as.character(study_ID),
        same_sample = as.character(same_sample),
-       expt_unqiue = as.character(expt_unqiue), #factor?
+       expt_unique = as.character(expt_unique), #factor?
        expt_condition = as.character(expt_condition))
 }
 
@@ -487,13 +487,13 @@ add_metavoice_summary_info <- function(metavoice_dataset_info, metavoice_data) {
   studies <- metavoice_data %>%
     group_by(dataset) %>%
     summarise(
-      num_experiments = n(), #maybe check if it looks like a reasonable number - does it count rows?
-      num_papers = length(unique(study_ID)))
+      num_experiments = length(unique(expt_unique)),#n(), #maybe check if it looks like a reasonable number - does it count rows?
+      num_papers = length(unique(study_ID)), .groups = "drop_last")
 
   subjects <- metavoice_data %>%
-    distinct(dataset, study_ID, same_sample, .keep_all = TRUE) %>%
+    distinct(dataset, same_sample, .keep_all = TRUE) %>% #add/remove study_ID?
     group_by(dataset) %>%
-    summarise(num_subjects = sum(n_1, n_2, na.rm = TRUE))
+    summarise(num_subjects = sum(n_1, n_2, na.rm = TRUE), .groups = "drop_last")
 
   metavoice_dataset_info %>%
     rename(dataset = name) %>%
@@ -523,7 +523,7 @@ mv_load_cached_dataset <- function(filename) {
     mutate(
       study_ID = as.character(study_ID),
       same_sample = as.character(same_sample),
-      expt_unqiue = as.character(expt_unique), #factor?
+      expt_unique = as.character(expt_unique), #factor?
       expt_condition = as.character(expt_condition))
 }
 
