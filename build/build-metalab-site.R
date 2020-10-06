@@ -2,6 +2,7 @@ library(dplyr)
 library(purrr)
 library(here)
 library(metalabr)
+library(readr) # <- placed so that renv captures as dependency
 
 domains <- get_metalab_domain_info()
 reports <- get_metalab_report_info()

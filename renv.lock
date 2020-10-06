@@ -4,7 +4,7 @@
     "Repositories": [
       {
         "Name": "CRAN",
-        "URL": "https://cloud.r-project.org"
+        "URL": "https://packagemanager.rstudio.com/cran/__linux__/bionic/latest"
       }
     ]
   },
@@ -135,6 +135,13 @@
       "Repository": "CRAN",
       "Hash": "ff0becff7bfdfe3f75d29aff8f3172dd"
     },
+    "clipr": {
+      "Package": "clipr",
+      "Version": "0.7.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "08cf4045c149a0f0eaf405324c7495bd"
+    },
     "cluster": {
       "Package": "cluster",
       "Version": "2.1.0",
@@ -155,6 +162,13 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "0f22be39ec1d141fd03683c06f3a6e67"
+    },
+    "cpp11": {
+      "Package": "cpp11",
+      "Version": "0.2.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "f28776fbc53c699a788792a89c4465a6"
     },
     "crayon": {
       "Package": "crayon",
@@ -295,6 +309,13 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "4dc5bb88961e347a0f4d8aad597cbfac"
+    },
+    "hms": {
+      "Package": "hms",
+      "Version": "0.5.3",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "726671f634529d470545f9fd1a9d1869"
     },
     "htmlTable": {
       "Package": "htmlTable",
@@ -545,6 +566,13 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "97def703420c8ab10d8f0e6c72101e02"
+    },
+    "readr": {
+      "Package": "readr",
+      "Version": "1.4.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "2639976851f71f330264a9c9c3d43a61"
     },
     "renv": {
       "Package": "renv",
