@@ -42,7 +42,7 @@
   example:      Louise Nyholm Jensen, Nicole Dwenger;  LNJ, ND
   required:     yes
 
-- field:        expt_unqiue
+- field:        expt_unique
   description:  if a study included multiple experiments with different populations, or with different tasks the experiments will get a unique identifier.
   type:         string
   format:       if same study has more than one experiment the first experiment will have the short_cite as identifier and the second experiment the shortcite and a number.
@@ -91,32 +91,6 @@
   type:         string
   format:       languages separated by commas
   example:      American English; French, Italian
-  required:     yes
-
-- field:        dependent_measure
-  description:  type of dependent measure used in experiment
-  type:         options
-  options:
-    - target_selection:       binary if selected target (forced choice)
-    - looking_time:           in seconds
-    - looking_time_pc:        in percent
-    - exploration_time:       in seconds
-    - looking_time_change:    in seconds
-    - looking_time_change_pc: in percent
-    - longest_look:           in seconds
-    - search_time:            in seconds
-    - sucking_time:           in seconds
-    - pc_head_turns:          percent correct head turns in CHT
-    - laterality_index:       NIRS
-    - mean_amplitude:         NIRS
-    - peak_amplitude:         ERP
-    - d_prime:                d-prime
-    - a_prime:                A-prime
-    - heart_rate:
-    - body_movement:
-    - facial_expression:
-    - vocabulary_size:        in number of words
-    - looking_ratio:
   required:     yes
 
 - field:        group_name_1
@@ -255,14 +229,14 @@
   type:         numeric
   format:       if same study has more than one experiment apply numbers starting from 1, if only 1 experiment in 1 study it will be NA
   example:      1; 2 (if study has Experiments 1 and 2)
-  required:     yes
+  required:     no
 
 - field:        expt_condition
   description:  specification of the experiment condition if a study has several experiments
   type:         string
   format:       any way of describing an experiment condition
   example:      nouns; verbs (if experiment has nouns and verbs as conditions)
-  required:     yes
+  required:     no
 
 - field:        mean_education_1
   description:  mean education score for group
