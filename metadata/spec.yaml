@@ -72,10 +72,12 @@
       - social:
             fullname: social
             description: e.g. semi-structured interviews, conversations
-      - social interaction:
+      - social_interaction:
             fullname: social interaction
             description: e.g. semi-structured interviews, conversations
       - other:
+            fullname: other
+            description: other options
   required:     yes
 
 - field:        participant_design
