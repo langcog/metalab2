@@ -39,7 +39,7 @@
   description:  person(s) who coded entry
   type:         string
   format:       full names or initials, separated by commas
-  example:      Molly Lewis, Michael Frank;  ML, MF
+  example:      Louise Nyholm Jensen, Nicole Dwenger;  LNJ, ND
   required:     yes
 
 - field:        expt_unqiue
@@ -59,9 +59,21 @@
   description:  description of type of task in the experiment
   type:         options
   options:
-      - constrained: constained monologue e.g. reading, repeating
-      - free: free monologue e.g. description of a picture, scene
-      - social: e.g. semi-structured interviews, conversations
+      - constrained:
+            fullname: constrained
+            description: constained monologue e.g. reading, repeating
+      - free:
+            fullname: free
+            description: free monologue e.g. description of a picture, scene
+      - spontaneous:
+            fullname: spontaneous
+            description: free monologue e.g. description of a picture, scene
+      - social:
+            fullname: social
+            description: e.g. semi-structured interviews, conversations
+      - social interaction:
+            fullname: social interaction
+            description: e.g. semi-structured interviews, conversations
       - other:
   required:     yes
 
@@ -319,6 +331,11 @@
   example:      ASD, HFA
   required:     no
 
+- field:        feature_spec
+  description:  further specification of feature measured in experiment
+  type:         string
+  example:      syllable_duration, utterance_duration
+  required:     no
 
 
 
