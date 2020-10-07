@@ -123,62 +123,6 @@
   example:      16
   required:     yes
 
-- field:        n_1_M
-  description:  number of male participants in group
-  type:         numeric
-  format:       maps onto group_name_1
-  example:      16
-  required:     yes
-
-- field:        n_2_M
-  description:  number of male participants in group
-  type:         numeric
-  format:       maps onto group_name_2
-  example:      16
-  required:     yes
-
-- field:        n_1_F
-  description:  number of female participants in group
-  type:         numeric
-  format:       maps onto group_name_1
-  example:      16
-  required:     yes
-
-- field:        n_2_F
-  description:  number of female participants in group
-  type:         numeric
-  format:       maps onto group_name_2
-  example:      16
-  required:     yes
-
-- field:        mean_age_1
-  description:  mean age of participants in group in years
-  type:         numeric
-  format:       maps onto group_name_1, n_1, x_1, SD_1
-  example:      50
-  required:     yes
-
-- field:        mean_age_2
-  description:  mean age of participants in group in years
-  type:         numeric
-  format:       maps onto group_name_2, n_2, x_2, SD_2
-  example:      50
-  required:     yes
-
-- field:        sd_age_1
-  description:  sd of age of participants in group in years
-  type:         numeric
-  format:       maps onto group_name_1, n_1, x_1, SD_1
-  example:      10
-  required:     yes
-
-- field:        sd_age_2
-  description:  sd of age of participants in group in years
-  type:         numeric
-  format:       maps onto group_name_2, n_2, x_2, SD_2
-  example:      10
-  required:     yes
-
 - field:        feature
   description:  name of voice feature/dependent-measure
   type:         string
@@ -238,6 +182,62 @@
   type:         string
   format:       any way of describing an experiment condition
   example:      nouns; verbs (if experiment has nouns and verbs as conditions)
+  required:     no
+
+- field:        n_1_M
+  description:  number of male participants in group
+  type:         numeric
+  format:       maps onto group_name_1
+  example:      16
+  required:     no
+
+- field:        n_2_M
+  description:  number of male participants in group
+  type:         numeric
+  format:       maps onto group_name_2
+  example:      16
+  required:     no
+
+- field:        n_1_F
+  description:  number of female participants in group
+  type:         numeric
+  format:       maps onto group_name_1
+  example:      16
+  required:     no
+
+- field:        n_2_F
+  description:  number of female participants in group
+  type:         numeric
+  format:       maps onto group_name_2
+  example:      16
+  required:     no
+
+- field:        mean_age_1
+  description:  mean age of participants in group in years
+  type:         numeric
+  format:       maps onto group_name_1, n_1, x_1, SD_1
+  example:      50
+  required:     no
+
+- field:        mean_age_2
+  description:  mean age of participants in group in years
+  type:         numeric
+  format:       maps onto group_name_2, n_2, x_2, SD_2
+  example:      50
+  required:     no
+
+- field:        sd_age_1
+  description:  sd of age of participants in group in years
+  type:         numeric
+  format:       maps onto group_name_1, n_1, x_1, SD_1
+  example:      10
+  required:     no
+
+- field:        sd_age_2
+  description:  sd of age of participants in group in years
+  type:         numeric
+  format:       maps onto group_name_2, n_2, x_2, SD_2
+  example:      10
   required:     no
 
 - field:        mean_education_1
