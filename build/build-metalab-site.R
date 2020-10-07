@@ -3,10 +3,9 @@ library(purrr)
 library(here)
 library(metalabr)
 
-metalab_data <- load_cached_data(here("shinyapps", "site_data", "Rdata", "metalab.Rdata"))
-## build dataset Rmd files from Rmd template, filling in each value of dataset.
+load_cached_data(here("shinyapps", "site_data", "Rdata", "metalab.Rdata"))
 
-## read template
+## build dataset Rmd files from Rmd template, filling in each value of dataset.
 dataset_template <- readLines(here("build", "dataset-template.Rmd"))
 lapply(dataset_info$short_name, function(s_name) {
   current_dataset <- dataset_info %>% filter(short_name == s_name)
