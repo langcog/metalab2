@@ -44,7 +44,7 @@ jobs:
     - run: find ./shinyapps/* -type d -exec touch {}/restart.txt \;
     - run: cp -R metadata/ ./shinyapps/common/
     - run: tar -zcvf metalab-shinyapps.tar.gz shinyapps
-    - run: tar -zcvf metalab-site.tar.gz rendered
+    - run: tar -zcvf metalab-site.tar.gz public
 
     - uses: actions/upload-artifact@v2
       with:
@@ -67,16 +67,16 @@ jobs:
         source: "./shinyapps/*"
         target: "/srv/shiny-server-staging"
 
-    - name: scp shiny apps to production server
-      if: github.event_name == 'push'
-      uses: appleboy/scp-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.KEY }}
-        port: ${{ secrets.PORT }}
-        source: "./shinyapps/*"
-        target: "/srv/shiny-server"
+#    - name: scp shiny apps to production server
+#      if: github.event_name == 'push'
+#      uses: appleboy/scp-action@master
+#      with:
+#        host: ${{ secrets.HOST }}
+#        username: ${{ secrets.USERNAME }}
+#        key: ${{ secrets.KEY }}
+#        port: ${{ secrets.PORT }}
+#        source: "./shinyapps/*"
+#        target: "/srv/shiny-server"
 
     - name: deploy static site to gh-pages branch
       if: github.event_name == 'push'
