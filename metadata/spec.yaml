@@ -312,5 +312,17 @@
   example:      syllable_duration, utterance_duration
   required:     no
 
+- field:        prosody_type
+  description:  type of prosody
+  type:         string
+  example:      emotional, linguistic
+  required:     no
+
+- field:        notes
+  description:  additional notes
+  type:         string
+  example:      paper does not report error bars
+  required:     no
+
 
 
