@@ -26,7 +26,7 @@
     comment: 'Dataset from the original MA was provided by Riccardo Fusaroli.'
 -
     name: 'Is voice a marker for Autism spectrum disorder? A systematic review and meta-analysis'
-    domain: asd
+    domain: Autism_Spectrum_Disorder
     short_name: asd_fusaroli_2017
     key: 1gDoBNtRV51RxAM3C6Xg147PjPh03mUHTkMfShW8GUYo # get key from google sheets
     filename: asd_fusaroli_2017
@@ -51,7 +51,7 @@
     comment: 'Dataset from the original MA was provided by Riccardo Fusaroli'
 -
     name: 'Acoustic Measures of Prosody in Right-Hemisphere Damage: A Systematic Review and Meta-Analysis'
-    domain: rhd
+    domain: Right_Hemisphere_Damage
     short_name: rhd_weed_2020
     key: 1_ajYkJGytc4jdrNGHT03pKiKF3qu8wyvZrhxpchBKqo
     filename: rhd_weed_2020
