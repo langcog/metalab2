@@ -98,28 +98,28 @@
 - field:        group_name_1
   description:  name of participant group
   type:         string
-  format:       maps onto n_1, n_1_M, n_1_F, nmean_age_1, x_1, SD_1
+  format:       maps onto n_1, n_1_M, n_1_F, mean_age_1, x_1, SD_1
   example:      SZ; HC
   required:     yes
 
 - field:        group_name_2
   description:  name of participant group
   type:         string
-  format:       maps onto n_2, n_2_M, n_2_F, nmean_age_2, x_2, SD_2
+  format:       maps onto n_2, n_2_M, n_2_F, mean_age_2, x_2, SD_2
   example:      SZ; HC
   required:     yes
 
 - field:        n_1
   description:  number of participants in group
   type:         numeric
-  format:       maps onto group_name_1, n_1_M, n_1_F, nmean_age_1, x_1, SD_1
+  format:       maps onto group_name_1, n_1_M, n_1_F, mean_age_1, x_1, SD_1
   example:      16
   required:     yes
 
 - field:        n_2
   description:  number of participants in group
   type:         numeric
-  format:       maps onto group_name_2, n_2_M, n_2_F, nmean_age_2, x_2, SD_2
+  format:       maps onto group_name_2, n_2_M, n_2_F, mean_age_2, x_2, SD_2
   example:      16
   required:     yes
 
