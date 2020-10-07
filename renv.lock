@@ -492,8 +492,8 @@
       "RemoteRepo": "metalabr",
       "RemoteUsername": "langcog",
       "RemoteRef": "HEAD",
-      "RemoteSha": "102edfc462bf0467fb86eb2ddb32ee5b93d1034e",
-      "Hash": "77d59be104697ede82cca55033ff9c53"
+      "RemoteSha": "c2642846efbca1f16dca6c8d700b4abfbb89e231",
+      "Hash": "8e3bdb683c69c439b50e1a8e4912c120"
     },
     "mgcv": {
       "Package": "mgcv",
