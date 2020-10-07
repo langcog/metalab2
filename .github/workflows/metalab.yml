@@ -38,6 +38,7 @@ jobs:
         options(repos = c(CRAN = cran_binary_repo))
         if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
         renv::restore(repos = c(CRAN = cran_binary_repo))
+        blogdown::install_hugo()
 
     - run: Rscript -e 'source(here::here("build", "build-metalab-site.R"))'
     - run: find ./shinyapps/* -type d -exec touch {}/restart.txt \;
