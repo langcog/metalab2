@@ -3,29 +3,32 @@ library(purrr)
 library(here)
 library(metalabr)
 
-
+source("mv_functions.R")
 knitr::opts_chunk$set(cache = FALSE)
 
-domains <- get_metalab_domain_info()
-reports <- get_metalab_report_info()
-dataset_yaml <- get_metalab_dataset_info()
-metalab_data <- get_metalab_data(dataset_yaml)
-dataset_info <- add_metalab_summary_info(dataset_yaml, metalab_data)
+domains <- get_metavoice_domain_info()
+reports <- get_metavoice_report_info()
+dataset_yaml <- get_metavoice_dataset_info()
+metavoice_data <- get_metavoice_data(dataset_yaml)
 
-persist_metalab_data <- function(x, dataset_info) {
+dataset_info <- add_metavoice_summary_info(dataset_yaml, metavoice_data)
+
+persist_metavoice_data <- function(x, dataset_info) {
   filename <- dataset_info[dataset_info$short_name == unique(x$short_name),
                            "filename"]
-  
+
   write.csv(x,
             file = here("shinyapps", "site_data", paste0(filename, ".csv")),
             row.names = FALSE, quote = TRUE)
 }
 
 lapply(
-  split(metalab_data, metalab_data$short_name),
+  split(metavoice_data, metavoice_data$short_name),
   function(x) {
-    persist_metalab_data(x, dataset_info)
+    persist_metavoice_data(x, dataset_info)
   })
+
+##### GOT UNTIL HERE ##### CHANGE THE REST
 
 ## 'rendered' directory setup
 render_dir <- here("rendered")
@@ -59,7 +62,7 @@ seq_along(domains) %>% purrr::map(
 
 
 render_dataset <- function(dataset_info) {
-  if (dataset_info$short_name %in% metalab_data$short_name) { 
+  if (dataset_info$short_name %in% metalab_data$short_name) {
     rmarkdown::render(here("pages", "dataset-template.Rmd"),
                       output_file = paste0(dataset_info$short_name, ".html"),
                       output_dir = here("rendered", "dataset"),
@@ -92,13 +95,13 @@ metalab_build <- function(input, output) {
 
 metalab_serve_local <- function (dir, script = metalab_build,
                                  method = "rmdv2", in_session = TRUE) {
-  
+
   servr:::dynamic_site(dir, daemon = TRUE, build = function(message) {
     dirs <- grep("^[.].", list.dirs(), value = TRUE, invert = TRUE)
 
     input_dirs <- c(dirs, "./reports")
     output_dirs <- c("../rendered", "../rendered/reports")
-    
+
     servr:::knit_maybe(input_dirs, output_dirs, script, method, in_session)
   }, site.dir = "../rendered")
 }

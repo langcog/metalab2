@@ -39,7 +39,7 @@
   description:  person(s) who coded entry
   type:         string
   format:       full names or initials, separated by commas
-  example:      Molly Lewis, Michael Frank;  ML, MF
+  example:      Louise Nyholm Jensen, Nicole Dwenger;  LNJ, ND
   required:     yes
 
 - field:        expt_unique
@@ -60,10 +60,24 @@
   description:  description of type of task in the experiment
   type:         options
   options:
-      - constrained: constained monologue e.g. reading, repeating
-      - free: free monologue e.g. description of a picture, scene
-      - social: e.g. semi-structured interviews, conversations
+      - constrained:
+            fullname: constrained
+            description: constained monologue e.g. reading, repeating
+      - free:
+            fullname: free
+            description: free monologue e.g. description of a picture, scene
+      - spontaneous:
+            fullname: spontaneous
+            description: free monologue e.g. description of a picture, scene
+      - social:
+            fullname: social
+            description: e.g. semi-structured interviews, conversations
+      - social_interaction:
+            fullname: social interaction
+            description: e.g. semi-structured interviews, conversations
       - other:
+            fullname: other
+            description: other options
   required:     yes
 
 - field:        participant_design
@@ -107,62 +121,6 @@
   type:         numeric
   format:       maps onto group_name_2, n_2_M, n_2_F, nmean_age_2, x_2, SD_2
   example:      16
-  required:     yes
-
-- field:        n_1_M
-  description:  number of male participants in group
-  type:         numeric
-  format:       maps onto group_name_1
-  example:      16
-  required:     yes
-
-- field:        n_2_M
-  description:  number of male participants in group
-  type:         numeric
-  format:       maps onto group_name_2
-  example:      16
-  required:     yes
-
-- field:        n_1_F
-  description:  number of female participants in group
-  type:         numeric
-  format:       maps onto group_name_1
-  example:      16
-  required:     yes
-
-- field:        n_2_F
-  description:  number of female participants in group
-  type:         numeric
-  format:       maps onto group_name_2
-  example:      16
-  required:     yes
-
-- field:        mean_age_1
-  description:  mean age of participants in group in years
-  type:         numeric
-  format:       maps onto group_name_1, n_1, x_1, SD_1
-  example:      50
-  required:     yes
-
-- field:        mean_age_2
-  description:  mean age of participants in group in years
-  type:         numeric
-  format:       maps onto group_name_2, n_2, x_2, SD_2
-  example:      50
-  required:     yes
-
-- field:        sd_age_1
-  description:  sd of age of participants in group in years
-  type:         numeric
-  format:       maps onto group_name_1, n_1, x_1, SD_1
-  example:      10
-  required:     yes
-
-- field:        sd_age_2
-  description:  sd of age of participants in group in years
-  type:         numeric
-  format:       maps onto group_name_2, n_2, x_2, SD_2
-  example:      10
   required:     yes
 
 - field:        feature
@@ -224,6 +182,62 @@
   type:         string
   format:       any way of describing an experiment condition
   example:      nouns; verbs (if experiment has nouns and verbs as conditions)
+  required:     no
+
+- field:        n_1_M
+  description:  number of male participants in group
+  type:         numeric
+  format:       maps onto group_name_1
+  example:      16
+  required:     no
+
+- field:        n_2_M
+  description:  number of male participants in group
+  type:         numeric
+  format:       maps onto group_name_2
+  example:      16
+  required:     no
+
+- field:        n_1_F
+  description:  number of female participants in group
+  type:         numeric
+  format:       maps onto group_name_1
+  example:      16
+  required:     no
+
+- field:        n_2_F
+  description:  number of female participants in group
+  type:         numeric
+  format:       maps onto group_name_2
+  example:      16
+  required:     no
+
+- field:        mean_age_1
+  description:  mean age of participants in group in years
+  type:         numeric
+  format:       maps onto group_name_1, n_1, x_1, SD_1
+  example:      50
+  required:     no
+
+- field:        mean_age_2
+  description:  mean age of participants in group in years
+  type:         numeric
+  format:       maps onto group_name_2, n_2, x_2, SD_2
+  example:      50
+  required:     no
+
+- field:        sd_age_1
+  description:  sd of age of participants in group in years
+  type:         numeric
+  format:       maps onto group_name_1, n_1, x_1, SD_1
+  example:      10
+  required:     no
+
+- field:        sd_age_2
+  description:  sd of age of participants in group in years
+  type:         numeric
+  format:       maps onto group_name_2, n_2, x_2, SD_2
+  example:      10
   required:     no
 
 - field:        mean_education_1
@@ -292,6 +306,23 @@
   example:      ASD, HFA
   required:     no
 
+- field:        feature_spec
+  description:  further specification of feature measured in experiment
+  type:         string
+  example:      syllable_duration, utterance_duration
+  required:     no
+
+- field:        prosody_type
+  description:  type of prosody
+  type:         string
+  example:      emotional, linguistic
+  required:     no
+
+- field:        notes
+  description:  additional notes
+  type:         string
+  example:      paper does not report error bars
+  required:     no
 
 
 
