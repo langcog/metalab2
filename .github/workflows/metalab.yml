@@ -34,9 +34,10 @@ jobs:
     - name: Restore packages 
       shell: Rscript {0}
       run: |
-        options(repos = c(CRAN = "https://packagemanager.rstudio.com/cran/__linux__/bionic/latest"))
+        cran_binary_repo <- "https://packagemanager.rstudio.com/cran/__linux__/bionic/latest"
+        options(repos = c(CRAN = cran_binary_repo))
         if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
-        renv::restore()
+        renv::restore(repos = c(CRAN = cran_binary_repo))
 
     - run: Rscript -e 'source(here::here("build", "build-metalab-site.R"))'
     - run: find ./shinyapps/* -type d -exec touch {}/restart.txt \;
@@ -81,5 +82,5 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./rendered
+        publish_dir: ./public
         
