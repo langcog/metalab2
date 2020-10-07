@@ -616,7 +616,7 @@
     },
     "ps": {
       "Package": "ps",
-      "Version": "1.4.0",
+      "Version": "1.3.4",
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "f5d7d94cc097aa9dade988e3e6715067"
