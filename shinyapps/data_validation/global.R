@@ -1,4 +1,6 @@
 library(here)
+library(googledrive)
+library(gargle)
 source(here("shinyapps", "common", "global.R"))
 
 get_google_sheet_id <- function(url) {
@@ -90,3 +92,25 @@ make_fields <- function(fields) {
                                    required = get_property("required")) %>%
     tidyr::unite(`format/options`, format, options, sep = "") 
 }
+
+
+drive_auth(path = "~/Downloads/metalab-286312-546cfefb0cb2.json",
+           scopes = "https://www.googleapis.com/auth/drive.readonly")
+
+get_revisions <- function(dataset) {
+  request <- request_generate(
+    endpoint = "drive.revisions.list",
+    params = list(
+      fileId = dataset$key
+    ),
+    token = drive_token()
+  )
+
+  res <- request_make(request)
+  response_process(res)
+}
+
+
+test <- get_revisions(dataset_info[1,])
+
+

@@ -23,7 +23,7 @@ subtitle = ""
   effect_sizes = "1,948"
   papers = "507"
   subjects = "36,287"
-  link = "/explore/datasets"
+  link = "explore/datasets/"
   domain_image = "domains/domain1.png"
   
 [[feature]]
@@ -37,7 +37,7 @@ subtitle = ""
   subjects = "1,941"
   domain_image = "domains/domain2.png"
 
-  link = "/explore/datasets"
+  link = "explore/datasets/"
 
 # Uncomment to use emoji icons.
 # [[feature]]

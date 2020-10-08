@@ -36,13 +36,13 @@ design.background:
 #   Display link(s) by specifying a URL and label below. Icon is optional for `[cta]`.
 #   Remove a link/note by deleting a cta/note block.
 cta:
-  url : "/explore/apps"
+  url : "/explore/apps/"
   label : "Explore Apps"
   icon_pack : "fas"
   icon : "chart-bar"
   
 cta_alt:
-  url : "/documentation"
+  url : "/documentation/"
   label : "View Documentation"
 
 # Note. An optional note to show underneath the links.
