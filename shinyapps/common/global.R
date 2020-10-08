@@ -13,6 +13,8 @@ library(DT)
 library(stringr)
 library(metalabr)
 
+source(here("mv_functions.R"))
+
 get_metavoice_data_shiny <- function(directory) {
   files <- list.files(directory, full.names = TRUE, pattern = "csv")
   data <- lapply(files, read.csv, stringsAsFactors = FALSE)
