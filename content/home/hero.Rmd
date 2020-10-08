@@ -51,10 +51,11 @@ cta_note:
   label: "New MetaLab User? Check out <a href='documentation/getting-started'>Getting Started</a> first!"
   
 right_hand_text:
-  label: "The MetaLab database contains <b>`r format(sum(dataset_info$num_experiments, na.rm = TRUE), big.mark = ',')` effect sizes</b> 
-          from <b>`r nrow(dataset_info)` meta-analyses</b> across two domains of cognitive 
-          development, based on data from <b>`r format(sum(dataset_info$num_papers, na.rm = TRUE), big.mark = ',')` papers</b> 
-          and <b>`r format(floor(sum(dataset_info$num_subjects, na.rm = TRUE)), big.mark = ',')` subjects</b>."
+  label: "The MetaLab database contains <b>`r format(sum(dataset_info$num_experiments, na.rm = TRUE), big.mark = ',')` 
+          effect sizes</b> from <b>`r nrow(dataset_info)` meta-analyses</b> across two domains of cognitive 
+          development, based on data from <b>`r format(sum(dataset_info$num_papers, na.rm = TRUE), big.mark = ',')` 
+          papers</b> and <b>`r format(floor(sum(dataset_info$num_subjects, na.rm = TRUE)), big.mark = ',')` 
+          subjects</b>."
 ---
 
 Interactive,  community-augmented meta-analysis tools for cognitive development research
