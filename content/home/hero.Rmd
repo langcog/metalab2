@@ -6,6 +6,8 @@ weight : 10  # Order that this section will appear.
 title : "MetaLab"
 # Hero image (optional). Enter filename of an image in the `static/media/` folder.
 hero_media: "MetaLab_transparent.png"
+params:
+  load_data: "`r metalabr::load_cached_data(here::here('shinyapps', 'site_data', 'Rdata', 'metalab.Rdata'))`"
 
 design.background:
   # Apply a background color, gradient, or image.
@@ -49,9 +51,10 @@ cta_note:
   label: "New MetaLab User? Check out <a href='documentation/getting-started'>Getting Started</a> first!"
   
 right_hand_text:
-  label: "The MetaLab database contains <b>2,103 effect sizes</b> across
-      meta-analyses in <b>25 domains</b> of cognitive development, based on
-      data from <b>548 papers</b> and <b>38,229 subjects</b>."
+  label: "The MetaLab database contains <b>`r format(sum(dataset_info$num_experiments, na.rm = TRUE), big.mark = ',')` effect sizes</b> 
+          from <b>`r nrow(dataset_info)` meta-analyses</b> across two domains of cognitive 
+          development, based on data from <b>`r format(sum(dataset_info$num_papers, na.rm = TRUE), big.mark = ',')` papers</b> 
+          and <b>`r format(floor(sum(dataset_info$num_subjects, na.rm = TRUE)), big.mark = ',')` subjects</b>."
 ---
 
 Interactive,  community-augmented meta-analysis tools for cognitive development research

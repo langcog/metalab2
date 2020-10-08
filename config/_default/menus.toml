@@ -11,19 +11,19 @@
 
 [[main]]
   name = "Applications"
-  url = "explore/apps"
+  url = "explore/apps/"
   weight = 11
   parent = "a-unique-reference"
 
 [[main]]
   name = "Datasets by Domain"
-  url = "explore/datasets"
+  url = "explore/datasets/"
   weight = 12
   parent = "a-unique-reference"
 
 [[main]]
   name = "Reports"
-  url = "explore/reports"
+  url = "explore/reports/"
   weight = 13
   parent = "a-unique-reference"
 
