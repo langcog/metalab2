@@ -24,7 +24,7 @@ subtitle = ""
   papers = "507"
   subjects = "36,287"
   link = "/explore/datasets"
-  domain_image = "/media/domains/domain1.png"
+  domain_image = "domains/domain1.png"
   
 [[feature]]
   icon = "book"
@@ -35,7 +35,7 @@ subtitle = ""
   effect_sizes = "155"
   papers = "41"
   subjects = "1,941"
-  domain_image = "/media/domains/domain2.png"
+  domain_image = "domains/domain2.png"
 
   link = "/explore/datasets"
 

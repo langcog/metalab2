@@ -18,7 +18,9 @@
   {{ range $page.Params.feature }} <!-- loop -->
   <div class="col-12 col-sm-5 mx-auto card card-body bg-white">
     <div class="featurette-image d-flex justify-content-center">
-      <img src="{{ .domain_image }}" alt="{{.}}" class="w-25">
+      {{ $media_dir := $.Scratch.Get "media_dir" }}
+      <img src="{{ printf "%s/%s" $media_dir .domain_image | relURL }}" alt="" class="w-25">
+
     </div>
     <a href={{ .link }} class="stretched-link"><h3>{{ .name | markdownify | emojify }}</h3></a>
     {{ with .description }}<p>{{ . | markdownify | emojify }}</p>{{ end }}
