@@ -34,13 +34,20 @@ shinyUI(
               br(),
               uiOutput("domain_selector"),
               bsPopover("domain_selector", title = NULL,
-                        content = HTML("<small>Select a domain of child development</small>"),
-                        placement = "right"),
+                        content = HTML("<small>Select a disorder</small>"),
+                        placement = "bottom"),
               uiOutput("dataset_name"),
               bsPopover("dataset_name", title = NULL,
-                        content = HTML("<small>Select a dataset / meta-analysis</small>"),
-                        placement = "right"),
-              textOutput("data_decription"),
+                        content = HTML("<small>Select a dataset/meta-analysis</small>"),
+                        placement = "bottom"),
+              uiOutput("feature_selector"),
+              bsPopover("feature_selector", title = NULL,
+                        content = HTML("<small>Select a feature</small>"),
+                        placement = "bottom"),
+              p(strong("Dataset Description")),
+              textOutput("data_description"),
+              br(),
+              p(strong("Dataset Citation")),
               textOutput("data_citation"),
               br(),
               uiOutput("link_to_dataset"),
@@ -49,37 +56,37 @@ shinyUI(
               #             choices = ma_choices, selected = "REML_mv"),
               # uiOutput("ma_help_text"),
               br(),
-              bsPopover("ma_method", title = NULL,
-                        content = HTML("<small>Statistical model underlying the aggregated, weighted effect size estimates</small>"),
-                        placement = "right"),
+              # bsPopover("ma_method", title = NULL,
+              #           content = HTML("<small>Statistical model underlying the aggregated, weighted effect size estimates</small>"),
+              #           placement = "bottom"),
               fluidRow(
                 column(
                   width = 4,
                   selectInput("es_type", label = "Effect size type",
-                              choices = es_choices, selected = "g"),
+                              choices = es_choices, selected = "d"),
                   uiOutput("es_help_text"),
                   br(),
                   bsPopover("es_type", title = NULL,
                             content = HTML("<small>Measure for strength of phenomenon</small>"),
-                            placement = "right")
+                            placement = "bottom")
                 ),
                 column(
                   width = 4,
                   uiOutput("moderator_input"),
                   bsPopover("moderator_input", title = NULL,
                             content = HTML("<small>Explore the impact of continuous and categorical moderator variables</small>"),
-                            placement = "right")
+                            placement = "bottom")
                 ),
-                column(
-                  width = 4,
-                  conditionalPanel(
-                    condition = "output.subset_options",
-                    uiOutput("subset_selector"),
-                    bsPopover("subset_selector", title = NULL,
-                              content = HTML("<small>Restrict the data by the following criteria</small>"),
-                              placement = "right")
-                  )
-                )
+                # column(
+                #   width = 4,
+                #   conditionalPanel(
+                #     condition = "output.subset_options",
+                #     uiOutput("subset_selector"),
+                #     bsPopover("subset_selector", title = NULL,
+                #               content = HTML("<small>Restrict the data by the following criteria</small>"),
+                #               placement = "bottom")
+                #   )
+                # )
               ),
               uiOutput("ma_model_blurb")
           ),
@@ -89,7 +96,7 @@ shinyUI(
                 fluidRow(
                   column(
                     width = 10,
-                    p(strong("Scatter plot"), "of effect sizes over age"))
+                    p(strong("Box plot"), "of effect sizes"))
                   ),
                 fluidRow(column(
                   width = 7,
@@ -98,7 +105,7 @@ shinyUI(
                               choices = scatter_choices, selected = "loess")),
                   bsPopover("scatter_curve", title = NULL,
                             content = HTML("<small>Select a type of curve</small>"),
-                            placement = "right")),
+                            placement = "bottom")),
                 plotlyOutput("scatter"),
                 br(),
                 helpText("Select a type of regression line. Dot sizes are inversely related
@@ -150,7 +157,7 @@ shinyUI(
                                           "chronological" = "year")),
                   bsPopover("forest_sort", title = NULL,
                             content = HTML("<small>Method to sort results</small>"),
-                            placement = "right")
+                            placement = "bottom")
                 )),
                 plotlyOutput("forest"),
                 # ggplotly hack - renderPlotly does not take height param; must alter in UI
@@ -163,14 +170,14 @@ shinyUI(
                 #tags$style(type="text/css", "#forest { float:right;}"),
                 br(),
                 helpText("Estimated results and their confidence intervals in a particular order.
-                         Colored points represent meta-analytic model summary.")),
-            tags$div(
-              HTML("<input type='checkbox' id='myCheck' onclick='myFunction()'> Show / Hide Summary")
-            ),
+                         Colored points represent meta-analytic model summary. The size of the dots reflects the weight of the particular experiment in the model.")),
+            # tags$div(
+            #   HTML("<input type='checkbox' id='myCheck' onclick='myFunction()'> Show / Hide Summary")
+            # ),
             box(id = "forest_summary_box", width = NULL, #status = "danger",
                 fluidRow(
                   column(width = 12,
-                         p(strong("Meta-analytic model summary")),
+                         p(strong("Summary of meta-analytic model with intercept")),
                          tabsetPanel(
                            tabPanel("Plot",
                                     plotOutput("forest_summary", height = "auto")),
@@ -183,16 +190,33 @@ shinyUI(
                   )
                 )
             ),
-            tags$script(HTML(
-              "function myFunction() {
-                 var x = document.getElementById('forest_summary_box');
-                if (x.style.display === 'none') {
-                    x.style.display = 'block';
-                } else {
-                    x.style.display = 'none';
-                }
-              }"
-            ))
+            # box(id = "forest_summary_box_0", width = NULL, #status = "danger",
+            #     fluidRow(
+            #       column(width = 12,
+            #              p(strong("Summary of meta-analytic model without intercept")),
+            #              tabsetPanel(
+            #                tabPanel("Plot",
+            #                         plotOutput("forest_summary_0", height = "auto")),
+            #                tabPanel("Model",
+            #                         p(verbatimTextOutput("forest_summary_text_0")))
+            #              ),
+            #              br(),
+            #              helpText("Plot and model output for chosen meta-analytic model
+            #                       (selected at the top of this page).")
+            #       )
+            #     )
+            # )
+
+            # tags$script(HTML(
+            #   "function myFunction() {
+            #      var x = document.getElementById('forest_summary_box');
+            #     if (x.style.display === 'none') {
+            #         x.style.display = 'block';
+            #     } else {
+            #         x.style.display = 'none';
+            #     }
+            #   }"
+            # ))
           )
         )
       )
