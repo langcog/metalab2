@@ -38,11 +38,11 @@ shinyServer(function(input, output, session) {
     df
   }
 
-  subsets <- reactive({
+  feature_options <- reactive({
     req(input$dataset_name)
     dataset_info %>%
       filter(name == input$dataset_name) %>%
-      .$subset %>%
+      .$features %>%
       unlist()
   })
 
@@ -55,19 +55,21 @@ shinyServer(function(input, output, session) {
 
   data <- reactive({
     req(input$dataset_name)
-    result <- metalab_data %>%
-      filter(dataset == input$dataset_name, mean_age < 4000) ## MLL changed 3000 -> 4000
+    req(input$feature_option)
+    result <- metavoice_data %>%
+      filter(dataset == input$dataset_name) %>% ## MLL changed 3000 -> 4000 #mean_age < 4000
+      filter(feature == input$feature_option)
 
-    subset <- input$subset_input
-    if (!is.null(subset)) {
-      if (subset != "All data") {
-        result %>% filter_(paste(subset, "== TRUE"))
-      } else {
-        result
-      }
-    } else {
-      result
-    }
+    # subset <- input$subset_input
+    # if (!is.null(subset)) {
+    #   if (subset != "All data") {
+    #     result %>% filter_(paste(subset, "== TRUE"))
+    #   } else {
+    #     result
+    #   }
+    # } else {
+    #   result
+    # }
   })
 
   mod_data <- reactive({
@@ -82,7 +84,7 @@ shinyServer(function(input, output, session) {
   })
 
   table_data <- reactive({
-    metalab_data %>%
+    metavoice_data %>%
       filter(dataset == input$table_dataset_name) %>%
       select(-long_cite, -dataset, -short_name, -filename, -all_mod)
   })
@@ -105,7 +107,7 @@ shinyServer(function(input, output, session) {
       rma_formula <- as.formula(sprintf("%s ~ %s", es(), mods))
       if (ma_method == "REML_mv") {
         metafor::rma.mv(rma_formula, V = mod_data()[[es_var()]],
-                        random = ~ 1 | short_cite / same_infant_calc / unique_row,
+                        random = ~ 1 | short_cite / same_sample_calc / unique_row,
                         #Cluster by paper, then participant group, then add random effect for each effect size
                         slab = make.unique(short_cite), data = mod_data(),
                         method = "REML")
@@ -121,8 +123,8 @@ shinyServer(function(input, output, session) {
     if (ma_method == "REML_mv") {
       metafor::rma.mv(yi = data()[[es()]], V = data()[[es_var()]],
                       #random = ~ 1 | data()[["short_cite"]],
-                      random = ~ 1 | data()[["short_cite"]] / data()[["same_infant_calc"]] / data()[["unique_row"]],
-                      slab = make.unique(data()[["short_cite"]]),
+                      random = ~ 1 | data()[["short_cite"]] / data()[["same_sample_calc"]], #data()[["short_cite"]] / data()[["same_sample_calc"]] / data()[["unique_row"]],
+                      slab = make.unique(data()[["short_cite"]]), #make.unique(data()[["short_cite"]]),
                       method = "REML")
     } else {
       metafor::rma(yi = data()[[es()]], vi = data()[[es_var()]],
@@ -139,13 +141,6 @@ shinyServer(function(input, output, session) {
     paste0(toupper(substring(sp, 1, 1)), substring(sp, 2))
   }
 
-  output$dataset_name <- renderUI({
-    selectInput(inputId = "dataset_name",
-                   label = "Dataset",
-                   choices = dataset_names()
-    )
-  })
-
   output$domain_selector <- renderUI({
     selectInput(inputId = "domain",
                 label = "Domain",
@@ -155,9 +150,24 @@ shinyServer(function(input, output, session) {
     )
   })
 
+  output$dataset_name <- renderUI({
+    selectInput(inputId = "dataset_name",
+                label = "Dataset",
+                choices = dataset_names()
+    )
+  })
+
+  output$feature_selector <- renderUI({
+    selectInput(inputId = "feature_option",
+                label = "Feature",
+                choices = feature_options() %>%
+                  set_names(display_name(.))
+    )
+  })
+
   output$link_to_dataset <- renderUI({
     req(input$dataset_name)
-    base_url <- "https://langcog.github.io/metalab2/dataset/"
+    base_url <- "https://langcog.github.io/metalab2/dataset/" # change to our website
     short_name <- dataset_info %>%
       filter(name == input$dataset_name) %>%
       select(short_name)
@@ -167,19 +177,19 @@ shinyServer(function(input, output, session) {
                 View raw dataset</a>. Please cite the dataset_info that you use following <a href='https://langcog.github.io/metalab2/publications.html' target='_blank'> our citation policy.</a> </a></i>"))
   })
 
-    output$data_decription <- renderText({
+    output$data_description <- renderText({
     req(input$dataset_name)
     short_desc <- dataset_info %>%
       filter(name == input$dataset_name) %>%
       select(short_desc)
-    paste("Dataset decription:", short_desc)})
+    paste(short_desc)})
 
    output$data_citation <- renderText({
      req(input$dataset_name)
      full_citation <- dataset_info %>%
        filter(name == input$dataset_name) %>%
        select(full_citation)
-     paste("Dataset citation:", full_citation)})
+     paste(full_citation)})
 
   output$ma_model_blurb <- renderUI({
     HTML(paste0("Random effects model assuming studies within a paper share variance. For details, see
@@ -193,7 +203,7 @@ shinyServer(function(input, output, session) {
       filter(name == input$dataset_name) %>%
       .$moderators %>%
       unlist()
-    mod_choices <- c("mean_age", "response_mode", "exposure_phase", custom_mods)
+    mod_choices <- custom_mods #c("mean_age", "response_mode", "exposure_phase", custom_mods)
     valid_mod_choices <- mod_choices %>%
       set_names(display_name(.)) %>%
       keep(~length(unique(data()[[.x]])) > 1)
@@ -221,8 +231,8 @@ shinyServer(function(input, output, session) {
 
   output$studies_box <- renderValueBox({
     valueBox(
-      nrow(data()), "Conditions", icon = icon("list", lib = "glyphicon"),
-      color = "red"
+      nrow(data()), "Experiments", icon = icon("list", lib = "glyphicon"),
+      color = "blue"
     )
   })
 
@@ -272,12 +282,12 @@ shinyServer(function(input, output, session) {
   })
 
   output$subset_selector <- renderUI({
-    radioButtons("subset_input", "Subset", append(subsets(), "All data", 0))
+    radioButtons("subset_input", "Subset", append(feature_options(), "All data", 0))
   })
 
   # TODO use observe
   output$subset_options <- reactive({
-    subsets()
+    feature_options()
   })
   outputOptions(output, "subset_options", suspendWhenHidden = FALSE)
 
@@ -294,23 +304,31 @@ shinyServer(function(input, output, session) {
       setNames(paste(mod_data()[[mod_group()]], "  "), mod_data()[[mod_group()]])
 
     guide <- if (mod_group() == "all_mod") FALSE else "legend"
-    p <- ggplot(mod_data(), aes_string(x = "mean_age_months", y = es(),
-                                       colour = mod_group())) +
-      geom_jitter(aes(size = n, text = paste(short_cite, expt_num)), alpha = 0.5) +
-      geom_hline(yintercept = 0, linetype = "dashed", color = "grey") +
-      scale_colour_solarized(name = "", labels = labels, guide = guide) +
-      scale_size_continuous(guide = FALSE) +
-      xlab("\nMean Subject Age (Months)") +
-      ylab("Effect Size\n")
+
+    p <- ggplot(mod_data(), aes_string(x = mod_group(), y = es(), color = mod_group())) +
+                  geom_point(position = "jitter", aes(size = n, text = paste(expt_unique), alpha=0.5)) +
+                  geom_boxplot(fill = "white", alpha=0.5) +
+                  labs(x = "Task Type", y = "Effect Size") +
+                  scale_colour_solarized(name = "", labels = labels, guide = guide) +
+                  scale_size_continuous(guide = FALSE)
+
+       # p <- ggplot(mod_data(), aes_string(x = "task_type", y = es(),
+    #                                    colour = mod_group())) +
+    #   geom_jitter(aes(size = n, text = paste(short_cite, expt_num)), alpha = 0.5) +
+    #   geom_hline(yintercept = 0, linetype = "dashed", color = "grey") +
+    #   scale_colour_solarized(name = "", labels = labels, guide = guide) +
+    #   scale_size_continuous(guide = FALSE) +
+    #   xlab("\nMean Subject Age (Months)") +
+    #   ylab("Effect Size\n")
 
     #curve <- if (is.null(categorical_mods())) input$scatter_curve else "lm"
-    if (input$scatter_curve == "lm") {
-      p <- p + geom_smooth(aes_string(weight = sprintf("1 / %s", es_var())),
-                      method = "lm", se = FALSE)
-    } else if (input$scatter_curve == "loess") {
-      p <- p + geom_smooth(aes_string(weight = sprintf("1 / %s", es_var())),
-                      method = "loess", se = FALSE, span = 1)
-    }
+    # if (input$scatter_curve == "lm") {
+    #   p <- p + geom_smooth(aes_string(weight = sprintf("1 / %s", es_var())),
+    #                   method = "lm", se = FALSE)
+    # } else if (input$scatter_curve == "loess") {
+    #   p <- p + geom_smooth(aes_string(weight = sprintf("1 / %s", es_var())),
+    #                   method = "loess", se = FALSE, span = 1)
+    # }
 
     p <- ggplotly(p, tooltip = c("text"))
 
@@ -343,7 +361,7 @@ shinyServer(function(input, output, session) {
                                        colour = mod_group())) +
       coord_flip() +
       geom_violin() +
-      geom_jitter(aes(text = paste(short_cite, expt_num)), height = 0) +
+      geom_jitter(aes(text = expt_unique), height = 0) +
       geom_hline(yintercept = 0, linetype = "dashed", color = "grey") +
       scale_colour_solarized(name = "", guide = FALSE) +
       xlab("") +
@@ -391,13 +409,13 @@ shinyServer(function(input, output, session) {
                mod_data()[[mod_group()]])
     guide <- if (mod_group() == "all_mod") FALSE else "legend"
 
-    plt <- ggplot(data = forest_data, aes(text = paste0("Experiment #", expt_num))) +
-      geom_point(aes(x = short_cite, y = effects, size = inverse_vars)) +
+    plt <- ggplot(data = forest_data) +
+      geom_point(aes(x = short_cite, y = effects, size = inverse_vars, text = expt_unique)) +
       geom_linerange(aes(x = short_cite, y = effects, ymin = effects.cil, ymax = effects.cih)) +
       geom_point(aes_string(x = "short_cite", y = "estimate", colour = mod_group()),
                  shape = 17) +
       geom_linerange(aes_string(x = "short_cite", y = "estimate", ymin = "estimate.cil",
-                                ymax = "estimate.cih", colour = mod_group())) +
+                                ymax = "estimate.cih", colour = mod_group(), alpha = 0.7)) +
       geom_hline(yintercept = 0, linetype = "dashed", color = "grey") +
       coord_flip() +
       scale_size_continuous(range = c(1, 3), guide = FALSE) +
@@ -405,8 +423,16 @@ shinyServer(function(input, output, session) {
       xlab("") +
       ylab("Effect Size")
 
-    ggplotly(plt, tooltip = c("text")) %>%
-      layout(showlegend = FALSE)
+    # ggplotly(plt, tooltip = c("text")) %>%
+    #   layout(showlegend = FALSE)
+    plt <- ggplotly(plt, tooltip = c("text"))
+
+    if (mod_group() != "all_mod") {
+      plt
+    } else {
+      plt %>%
+        layout(showlegend = FALSE)
+    }
 
   }
 
@@ -498,7 +524,8 @@ shinyServer(function(input, output, session) {
                    fill = "white") +
       geom_polygon(aes(x = x, y = y), data = funnel99, alpha = .5,
                    fill = "white") +
-      geom_point(aes_string(x = "es", y = "-se", colour = "all_mod")) +
+      geom_point(aes_string(x = "es", y = "-se", colour = mod_group())) +
+      #aes(size = n, text = paste(expt_unique), alpha=0.5)
       geom_vline(aes(), xintercept = center, linetype = "dotted", color = "black") +
       xlab(xlabel) +
       ylab(ylabel) +
@@ -514,7 +541,14 @@ shinyServer(function(input, output, session) {
     ##   p <- p + geom_vline(aes(), xintercept = 0, linetype = "dashed", color = "grey")
     ## }
 
-    ggplotly(p, tooltip = NULL) %>% layout(showlegend = FALSE)
+    p <- ggplotly(p, tooltip = c("text"))
+
+    if (mod_group() != "all_mod") {
+      p
+    } else {
+      p %>%
+        layout(showlegend = FALSE)
+    }
   }
 
   output$funnel <- renderPlotly(funnel())
