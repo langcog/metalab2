@@ -119,6 +119,26 @@ shinyServer(function(input, output, session) {
     }
   })
 
+  no_intercept_model <- reactive({
+    if (length(input$moderators) == 0) {
+      no_mod_model()
+    } else {
+      mods <- paste(input$moderators, collapse = "+")
+      rma_formula <- as.formula(sprintf("%s ~ 0 + %s", es(), mods))
+      if (ma_method == "REML_mv") {
+        metafor::rma.mv(rma_formula, V = mod_data()[[es_var()]],
+                        random = ~ 1 | short_cite / same_sample_calc / unique_row,
+                        #Cluster by paper, then participant group, then add random effect for each effect size
+                        slab = make.unique(short_cite), data = mod_data(),
+                        method = "REML")
+      } else {
+        metafor::rma(rma_formula, vi = mod_data()[[es_var()]],
+                     slab = make.unique(short_cite), data = mod_data(),
+                     method = ma_method)
+      }
+    }
+  })
+
   no_mod_model <- reactive({
     if (ma_method == "REML_mv") {
       metafor::rma.mv(yi = data()[[es()]], V = data()[[es_var()]],
@@ -128,7 +148,7 @@ shinyServer(function(input, output, session) {
                       method = "REML")
     } else {
       metafor::rma(yi = data()[[es()]], vi = data()[[es_var()]],
-                   slab = make.unique(data()[["short_cite"]]),
+                   slab = data()[["expt_unique"]], # make.unique(data()[["short_cite"]]),
                    method = ma_method)
 
     }
@@ -485,13 +505,13 @@ shinyServer(function(input, output, session) {
 
   funnel <- function() {
     if (length(input$moderators) == 0) {
-      d <- data_frame(se = sqrt(model()$vi), es = model()$yi)
+      d <- data_frame(se = sqrt(model()$vi), es = model()$yi, slab = model()$slab)
       center <- mean(d$es)
       xlabel <- "\nEffect Size"
       ylabel <- "Standard Error\n"
     } else {
       r <- rstandard(model())
-      d <- data_frame(se = r$se, es = r$resid)
+      d <- data_frame(se = r$se, es = r$resid, slab = r$slab)
       center <- 0
       xlabel <- "\nResidual Effect Size"
       ylabel <- "Residual Standard Error\n"
@@ -524,7 +544,7 @@ shinyServer(function(input, output, session) {
                    fill = "white") +
       geom_polygon(aes(x = x, y = y), data = funnel99, alpha = .5,
                    fill = "white") +
-      geom_point(aes_string(x = "es", y = "-se", colour = mod_group())) +
+      geom_point(aes_string(x = "es", y = "-se", colour = mod_group(), text = "slab")) +
       #aes(size = n, text = paste(expt_unique), alpha=0.5)
       geom_vline(aes(), xintercept = center, linetype = "dotted", color = "black") +
       xlab(xlabel) +
