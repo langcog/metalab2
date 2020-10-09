@@ -88,7 +88,7 @@
     - other:
   required:     yes
 
-- field:        native_lang
+- field:        native_language
   description:  participants' native language(s)
   type:         string
   format:       languages separated by commas
@@ -288,25 +288,25 @@
   example: 10
   required:     no
 
-- field:        task_type_spec
+- field:        task_type_specification
   description:  further specification of the task, i.e specification of task_type
   type:         string
   example:      imitation
   required:     no
 
-- field:        native_lang_spec
+- field:        native_language_specification
   description:  further specification of the native language of participants, i.e. specification of native_lang
   type:         string
   example:      American English, British English
   required:     no
 
-- field:        diagnosis_spec
+- field:        diagnosis_specification
   description:  further specification of group_1 (patients) in experiment
   type:         string
   example:      ASD, HFA
   required:     no
 
-- field:        feature_spec
+- field:        feature_specification
   description:  further specification of feature measured in experiment
   type:         string
   example:      syllable_duration, utterance_duration

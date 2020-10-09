@@ -249,6 +249,14 @@ shinyServer(function(input, output, session) {
     HTML(paste0("<i class=\"text-muted\">", es_help_texts[input$es_type], "</i>"))
   })
 
+  output$feature_help_text <- renderUI({
+    req(input$feature_option)
+    feature_help_texts <- c("pitch_f0" = "Mean pitch",
+                       "speech_duration" = "Mean speech duration / or total?",
+                       "pause_duration" = "Pause dur")
+    HTML(paste0("<i class=\"text-muted\">", feature_help_texts[input$feature_option], "</i>"))
+  })
+
   output$studies_box <- renderValueBox({
     valueBox(
       nrow(data()), "Experiments", icon = icon("list", lib = "glyphicon"),
