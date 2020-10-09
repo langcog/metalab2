@@ -21,6 +21,18 @@ shinyUI(
     dashboardSidebar(disable = TRUE),
     dashboardBody(
       tags$head(includeHTML("./google-analytics.html")),
+      tags$head(tags$style("
+                  #data_description{
+                  display:inline
+                  }")),
+      tags$head(tags$style("
+                  #data_citation{
+                  display:inline
+                  }")),
+      tags$head(tags$style("
+                  #ma_model_blurb{
+                  display:inline
+                  }")),
       includeCSS("../common/www/custom.css"),
       tags$style(type = "text/css",
                  ".shiny-output-error { visibility: hidden; }",
@@ -29,37 +41,43 @@ shinyUI(
         column(
           width = 6,
           box(width = NULL, #status = "danger",
-              downloadButton("download_data", "Download data",
-                             class = "btn-xs pull-right"),
-              br(),
+              solidHeader = TRUE,
+              title = strong("Meta-Analytic Visualisations"),
+              #br(),
               uiOutput("domain_selector"),
               bsPopover("domain_selector", title = NULL,
                         content = HTML("<small>Select a disorder</small>"),
                         placement = "bottom"),
+              downloadButton("download_data", "Download data",
+                             class = "btn-xs pull-right"),
               uiOutput("dataset_name"),
               bsPopover("dataset_name", title = NULL,
                         content = HTML("<small>Select a dataset/meta-analysis</small>"),
                         placement = "bottom"),
-              uiOutput("feature_selector"),
-              bsPopover("feature_selector", title = NULL,
-                        content = HTML("<small>Select a feature</small>"),
-                        placement = "bottom"),
-              p(strong("Dataset Description")),
-              textOutput("data_description"),
-              br(),
-              p(strong("Dataset Citation")),
-              textOutput("data_citation"),
-              br(),
-              uiOutput("link_to_dataset"),
+              # uiOutput("feature_selector"),
+              # bsPopover("feature_selector", title = NULL,
+              #           content = HTML("<small>Select a feature</small>"),
+              #           placement = "bottom"),
+
+
               # br(),
               # selectInput("ma_method", label = "Meta-analytic model",
               #             choices = ma_choices, selected = "REML_mv"),
               # uiOutput("ma_help_text"),
-              br(),
+              #br(),
               # bsPopover("ma_method", title = NULL,
               #           content = HTML("<small>Statistical model underlying the aggregated, weighted effect size estimates</small>"),
               #           placement = "bottom"),
               fluidRow(
+                column(
+                  width = 4,
+                  uiOutput("feature_selector"),
+                  bsPopover("feature_selector", title = NULL,
+                            content = HTML("<small>Select a feature</small>"),
+                            placement = "bottom"),
+                  uiOutput("feature_help_text"),
+                  br()
+                ),
                 column(
                   width = 4,
                   selectInput("es_type", label = "Effect size type",
@@ -88,7 +106,19 @@ shinyUI(
                 #   )
                 # )
               ),
-              uiOutput("ma_model_blurb")
+
+              strong("Dataset Description:", style="display:inline"), textOutput("data_description"),
+              #textOutput("data_description"),
+              br(),
+              br(),
+              strong("Dataset Citation:", style="display:inline"), textOutput("data_citation"),
+              #p(strong("Dataset Citation")),
+              #textOutput("data_citation"),
+              br(),
+              br(),
+              uiOutput("link_to_dataset"),
+              br(),
+              strong("Statistical Model:", style="display:inline"), uiOutput("ma_model_blurb")
           ),
           conditionalPanel(
             condition = "output.longitudinal == FALSE",
