@@ -20,28 +20,29 @@ shinyServer(function(input, output, session) {
   # ########### DATA ###########
   pwrdata <- reactive({
     req(input$dataset_name_pwr)
-    result <- metalab_data %>%
+    result <- metavoice_data %>% #CHANGE
       filter(dataset == input$dataset_name_pwr)
+    result <- result[!is.infinite(result$d_calc),] #added to remove in rhd
 
-    subset <- input$subset_input
-    if (!is.null(subset)) {
-      if (subset != "All data") {
-        result %>% filter_(paste(subset, "== TRUE"))
-      } else {
-        result
-      }
-    } else {
-      result
-    }
+    # subset <- input$subset_input
+    # if (!is.null(subset)) {
+    #   if (subset != "All data") {
+    #     result %>% filter_(paste(subset, "== TRUE"))
+    #   } else {
+    #     result
+    #   }
+    # } else {
+    #   result
+    # }
   })
 
-  subsets <- reactive({
-    req(input$dataset_name_pwr)
-    dataset_info %>%
-      filter(name == input$dataset_name_pwr) %>%
-      .$subset %>%
-      unlist()
-  })
+  # subsets <- reactive({
+  #   req(input$dataset_name_pwr)
+  #   dataset_info %>%
+  #     filter(name == input$dataset_name_pwr) %>%
+  #     .$subset %>%
+  #     unlist()
+  # })
 
   dataset_names <- reactive({
     req(input$domain)
@@ -52,7 +53,7 @@ shinyServer(function(input, output, session) {
 
   # ########### PWR MODEL ###########
   pwr_no_mod_model <- reactive({
-    metafor::rma(d_calc, vi = d_var_calc, slab = as.character(study_ID),
+    metafor::rma(d_calc, vi = d_var_calc, slab = as.character(study_ID), #CHANGE STUDY ID?
                  data = pwrdata(), method = "REML")
   })
 
@@ -62,24 +63,23 @@ shinyServer(function(input, output, session) {
     } else {
       mods <- paste(input$pwr_moderators, collapse = "+")
       metafor::rma(as.formula(paste("d_calc ~", mods)), vi = d_var_calc,
-                   slab = as.character(study_ID), data = pwrdata(),
+                   slab = as.character(study_ID), data = pwrdata(), #CHANGE STUDY ID?
                    method = "REML")
     }
   })
 
   output$pwr_moderator_input <- renderUI({
-    req(input$dataset_name_pwr)
-    mod_choices <- list("Age" = "mean_age_months",
-                        "Response mode" = "response_mode",
-                        "Exposure phase" = "exposure_phase")
+    req(input$dataset_name_pwr) #CHANGE MODERATORS IN FOLLOWING ROW (maybe make if for different domains?)
+    mod_choices <- list("Task type" = "task_type",
+                        "Native language" = "native_language")
     valid_mod_choices <- mod_choices %>%
       keep(~length(unique(pwrdata()[[.x]])) > 1)
 
     # remove age moderator in longitudinal
-    if (filter(dataset_info, name == input$dataset_name_pwr)$longitudinal) {
-      valid_mod_choices <- valid_mod_choices %>%
-        keep(~.x != "mean_age_months")
-    }
+    # if (filter(dataset_info, name == input$dataset_name_pwr)$longitudinal) { #CHANGE: COULD COMMENT OUT
+    #   valid_mod_choices <- valid_mod_choices %>%
+    #     keep(~.x != "mean_age_months")
+    # }
 
     checkboxGroupInput("pwr_moderators", label = "Moderators",
                        valid_mod_choices,
@@ -100,19 +100,19 @@ shinyServer(function(input, output, session) {
       ))
     }
 
-    if (any(input$pwr_moderators == "response_mode")) {
+    if (any(input$pwr_moderators == "task_type")) { #CHANGE ACCORDING TO TOK
       uis <- c(uis, list(
-        selectInput("pwr_response_mode",
-                    "Response mode",
-                    choices = unique(pwrdata()$response_mode))
+        selectInput("pwr_task_type",
+                    "Task type",
+                    choices = unique(pwrdata()$task_type)) #CHANGE ALL
       ))
     }
 
-    if (any(input$pwr_moderators == "exposure_phase")) {
+    if (any(input$pwr_moderators == "native_language")) {
       uis <- c(uis, list(
-        selectInput("pwr_exposure_phase",
-                    "Exposure phase",
-                    choices = unique(pwrdata()$exposure_phase))
+        selectInput("pwr_native_language",
+                    "Native language",
+                    choices = unique(pwrdata()$native_language)) #CHANGE ALL
       ))
     }
 
@@ -127,40 +127,40 @@ shinyServer(function(input, output, session) {
     if (length(input$pwr_moderators > 0)) {
       newpred_mat <- matrix(nrow = 0, ncol = 0)
 
-      if (any(input$pwr_moderators == "mean_age_months")) {
+      if (any(input$pwr_moderators == "mean_age_months")) { #CHANGE: ADJUST TO OUT AGE?
         req(input$pwr_age_months)
         newpred_mat <- c(newpred_mat, input$pwr_age_months)
       }
 
-      if (any(input$pwr_moderators == "response_mode")) {
-        req(input$pwr_response_mode)
+      if (any(input$pwr_moderators == "task_type")) { #CHANGE
+        req(input$pwr_task_type)
 
-        f_response_mode <- factor(pwrdata()$response_mode)
-        n <- length(levels(f_response_mode))
+        f_task_type <- factor(pwrdata()$task_type) #CHANGE
+        n <- length(levels(f_task_type)) #CHANGE
 
-        response_pred <- rep(0, n)
-        pred_seq <- seq(1:n)[levels(f_response_mode) == input$pwr_response_mode]
-        response_pred[pred_seq] <- 1
+        task_type_pred <- rep(0, n)
+        pred_seq <- seq(1:n)[levels(f_task_type) == input$pwr_task_type] #CHANGE
+        task_type_pred[pred_seq] <- 1
 
         # remove intercept
-        response_pred <- response_pred[-1]
+        task_type_pred <- task_type_pred[-1]
 
-        newpred_mat <- c(newpred_mat, response_pred)
+        newpred_mat <- c(newpred_mat, task_type_pred)
       }
 
-      if (any(input$pwr_moderators == "exposure_phase")) {
-        req(input$pwr_exposure_phase)
+      if (any(input$pwr_moderators == "native_language")) { #CHANGE ALL BELOW FROM EXPOSURE
+        req(input$pwr_native_language)
 
-        f_exp_phase <- factor(pwrdata()$exposure_phase)
-        n <- length(levels(f_exp_phase))
+        f_native_language <- factor(pwrdata()$native_language)
+        n <- length(levels(f_native_language))
 
-        exposure_pred <- rep(0, n)
-        exposure_pred[seq(1:n)[levels(fep) == input$pwr_exposure_phase]] <- 1
+        native_language_pred <- rep(0, n)
+        native_language_pred[seq(1:n)[levels(f_native_language) == input$pwr_native_language]] <- 1
 
         # remove intercept
-        exposure_pred <- exposure_pred[-1]
+        native_language_pred <- native_language_pred[-1]
 
-        newpred_mat <- c(newpred_mat, exposure_pred)
+        newpred_mat <- c(newpred_mat, native_language_pred)
       }
 
       predict(pwrmodel(), newmods = newpred_mat)$pred
@@ -223,14 +223,14 @@ shinyServer(function(input, output, session) {
     )
   })
 
-  output$subset_selector <- renderUI({
-    radioButtons("subset_input", "Subset", append(subsets(), "All data", 0))
-  })
+  # output$subset_selector <- renderUI({
+  #   radioButtons("subset_input", "Subset", append(subsets(), "All data", 0)) #COULD REMOVE
+  # })
 
-  output$subset_options <- reactive({
-    subsets()
-  })
-  outputOptions(output, "subset_options", suspendWhenHidden = FALSE)
+  # output$subset_options <- reactive({
+  #   subsets()
+  # })
+  # outputOptions(output, "subset_options", suspendWhenHidden = FALSE)
 
   ### POWER BOXES
   output$power_d <- renderValueBox({
