@@ -46,7 +46,7 @@
     src: images/datasets/dinosaur.png # change
     longitudinal: no
     moderators: [task_type, native_language, native_language_specification, diagnosis_specification, mean_age]
-    features: [pitch_f0, pitch_f0_range, pitch_f0_sd, pitch_f0_variability, intensity_mean, utterance_duration, syllable_duration, speech_rate, pause_length, pause_number]
+    features: [pitch_f0, pitch_f0_range, pitch_f0_sd, pitch_f0_variability, intensity_mean, speech_duration, speech_rate, pause_length, pause_number]
     #subset: []
     comment: 'Dataset from the original MA was provided by Riccardo Fusaroli'
 -
