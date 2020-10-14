@@ -109,19 +109,19 @@ shinyServer(function(input, output, session) {
         metafor::rma.mv(rma_formula, V = mod_data()[[es_var()]],
                         random = ~ 1 | short_cite / same_sample_calc / unique_row,
                         #Cluster by paper, then participant group, then add random effect for each effect size
-                        slab = make.unique(short_cite), data = mod_data(),
+                        slab = expt_unique, data = mod_data(),
                         method = "REML")
-      } else {
-        metafor::rma(rma_formula, vi = mod_data()[[es_var()]],
-                     slab = make.unique(short_cite), data = mod_data(),
-                     method = ma_method)
-      }
+      } #else {
+        # metafor::rma(rma_formula, vi = mod_data()[[es_var()]],
+        #              slab = expt_unique, data = mod_data(),
+        #              method = ma_method)
+        # }
     }
   })
 
   no_intercept_model <- reactive({
     if (length(input$moderators) == 0) {
-      no_mod_model()
+      no_mod_model() #maybe do stuff here
     } else {
       mods <- paste(input$moderators, collapse = "+")
       rma_formula <- as.formula(sprintf("%s ~ 0 + %s", es(), mods))
@@ -129,13 +129,13 @@ shinyServer(function(input, output, session) {
         metafor::rma.mv(rma_formula, V = mod_data()[[es_var()]],
                         random = ~ 1 | short_cite / same_sample_calc / unique_row,
                         #Cluster by paper, then participant group, then add random effect for each effect size
-                        slab = make.unique(short_cite), data = mod_data(),
+                        slab = expt_unique, data = mod_data(),
                         method = "REML")
-      } else {
-        metafor::rma(rma_formula, vi = mod_data()[[es_var()]],
-                     slab = make.unique(short_cite), data = mod_data(),
-                     method = ma_method)
-      }
+      } # else {
+      #   metafor::rma(rma_formula, vi = mod_data()[[es_var()]],
+      #                slab = expt_unique, data = mod_data(),
+      #                method = ma_method)
+      # }
     }
   })
 
@@ -144,14 +144,14 @@ shinyServer(function(input, output, session) {
       metafor::rma.mv(yi = data()[[es()]], V = data()[[es_var()]],
                       #random = ~ 1 | data()[["short_cite"]],
                       random = ~ 1 | data()[["short_cite"]] / data()[["same_sample_calc"]], #data()[["short_cite"]] / data()[["same_sample_calc"]] / data()[["unique_row"]],
-                      slab = make.unique(data()[["short_cite"]]), #make.unique(data()[["short_cite"]]),
+                      slab = data()[["expt_unique"]], #make.unique(data()[["short_cite"]]),
                       method = "REML")
-    } else {
-      metafor::rma(yi = data()[[es()]], vi = data()[[es_var()]],
-                   slab = data()[["expt_unique"]], # make.unique(data()[["short_cite"]]),
-                   method = ma_method)
-
-    }
+    } # else {
+    #   metafor::rma(yi = data()[[es()]], vi = data()[[es_var()]],
+    #                slab = data()[["expt_unique"]], # make.unique(data()[["short_cite"]]),
+    #                method = ma_method)
+    #
+    # }
   })
 
   ########### UI ELEMENTS ###########
@@ -217,6 +217,13 @@ shinyServer(function(input, output, session) {
                 Statistical Approach</a>."))
   })
 
+  # output$dataset_name <- renderUI({
+  #   selectInput(inputId = "dataset_name",
+  #               label = "Dataset",
+  #               choices = dataset_names()
+  #   )
+  # }
+
   output$moderator_input <- renderUI({
     req(input$dataset_name)
     custom_mods <- dataset_info %>%
@@ -228,7 +235,7 @@ shinyServer(function(input, output, session) {
       set_names(display_name(.)) %>%
       keep(~length(unique(data()[[.x]])) > 1)
     checkboxGroupInput("moderators", label = "Moderators", valid_mod_choices,
-                       inline = TRUE)
+                       inline = FALSE)
   })
 
   output$ma_help_text <- renderUI({
@@ -309,15 +316,15 @@ shinyServer(function(input, output, session) {
     }
   })
 
-  output$subset_selector <- renderUI({
-    radioButtons("subset_input", "Subset", append(feature_options(), "All data", 0))
-  })
-
-  # TODO use observe
-  output$subset_options <- reactive({
-    feature_options()
-  })
-  outputOptions(output, "subset_options", suspendWhenHidden = FALSE)
+  # output$subset_selector <- renderUI({
+  #   radioButtons("subset_input", "Subset", append(feature_options(), "All data", 0))
+  # })
+  #
+  # # TODO use observe
+  # output$subset_options <- reactive({
+  #   feature_options()
+  # })
+  # outputOptions(output, "subset_options", suspendWhenHidden = FALSE)
 
 
   #############################################################################
@@ -464,6 +471,7 @@ shinyServer(function(input, output, session) {
 
   }
 
+  # forest summary intercept model
   forest_summary <- function() {
     pred_data <- data.frame(predictor = names(coef(model())),
                             coef = coef(model()),
@@ -507,6 +515,52 @@ shinyServer(function(input, output, session) {
   ## This is the output function for the model summary
   output$forest_summary_text <- renderPrint({
     summary(model())
+  })
+
+  # forest summary no_intercept_model
+  forest_no_intercept_summary <- function() {
+    pred_data <- data.frame(predictor = names(coef(no_intercept_model())),
+                            coef = coef(no_intercept_model()),
+                            ci.lb = summary(no_intercept_model())$ci.lb,
+                            ci.ub = summary(no_intercept_model())$ci.ub, stringsAsFactors = FALSE)
+
+    predictors <- data_frame(moderator = "", value = "", predictor = "intrcpt",
+                             print_predictor = "intercept")
+    if (!is.null(categorical_mods()) && length(categorical_mods())) {
+      mod_vals <- map_df(categorical_mods(),
+                         ~data_frame(moderator = .x,
+                                     value = unique(mod_data()[[.x]]))) %>%
+        mutate(predictor = paste0(moderator, value),
+               print_predictor = sprintf("%s: %s", moderator, value))
+      predictors <- predictors %>%
+        bind_rows(mod_vals)
+    }
+    if ("mean_age" %in% input$moderators) {
+      predictors <- predictors %>%
+        bind_rows(data_frame(moderator = "", value = "", predictor = "mean_age",
+                             print_predictor = "mean_age"))
+    }
+    pred_data %>% left_join(predictors) %>%
+      ggplot(aes(x = print_predictor, y = coef, ymin = ci.lb,
+                 ymax = ci.ub)) +
+      geom_pointrange() +
+      coord_flip() +
+      xlab("") +
+      ylab("Effect Size") +
+      geom_hline(yintercept = 0, linetype = "dashed", color = "grey")
+  }
+
+  output$forest <- renderPlotly({
+    session$sendCustomMessage(type = "heightCallback", paste0(nrow(mod_data()) * 12 + 100, "px"))
+    forest()
+  })
+
+  ## This is the rendering function for the meta-analytic model summery of the effect size
+  output$forest_no_intercept_summary <- renderPlot(forest_no_intercept_summary(), height = 200)
+
+  ## This is the output function for the model summary
+  output$forest_no_intercept_summary_text <- renderPrint({
+    summary(no_intercept_model())
   })
 
   ########### FUNNEL PLOT ###########

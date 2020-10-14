@@ -220,22 +220,36 @@ shinyUI(
                   )
                 )
             ),
-            # box(id = "forest_summary_box_0", width = NULL, #status = "danger",
-            #     fluidRow(
-            #       column(width = 12,
-            #              p(strong("Summary of meta-analytic model without intercept")),
-            #              tabsetPanel(
-            #                tabPanel("Plot",
-            #                         plotOutput("forest_summary_0", height = "auto")),
-            #                tabPanel("Model",
-            #                         p(verbatimTextOutput("forest_summary_text_0")))
-            #              ),
-            #              br(),
-            #              helpText("Plot and model output for chosen meta-analytic model
-            #                       (selected at the top of this page).")
-            #       )
-            #     )
-            # )
+            ######
+            # selectInput("es_type", label = "Effect size type",
+            #             choices = es_choices, selected = "d"),
+            #
+            # conditionalPanel(
+            #   condition = "input$moderators == 'task_type'",
+            #   p(strong("TEST"))
+            # ),
+            # conditionalPanel(
+            #   condition = "output.moderator_input == 'Task type'",
+            #   #plotlyOutput("forest_no_intercept_summary")
+            #   #sliderInput("breakCount", "Break Count", min = 1, max = 50, value = 10)
+            # ),
+            #######
+            box(id = "forest_no_intercept_summary_box", width = NULL, #status = "danger",
+                fluidRow(
+                  column(width = 12,
+                         p(strong("Summary of meta-analytic model without intercept")),
+                         tabsetPanel(
+                           tabPanel("Plot",
+                                    plotOutput("forest_no_intercept_summary", height = "auto")),
+                           tabPanel("Model",
+                                    p(verbatimTextOutput("forest_no_intercept_summary_text")))
+                         ),
+                         br(),
+                         helpText("Plot and model output for chosen meta-analytic model
+                                  (selected at the top of this page).")
+                  )
+                )
+            )
 
             # tags$script(HTML(
             #   "function myFunction() {
