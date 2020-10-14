@@ -13,6 +13,11 @@
   image: NA
   desc:  rhd description
 
+- id:    lhd
+  title: Left Hemisphere Damage
+  image: NA
+  desc:  lhd description
+
 - id:    depression
   title: Depression
   image: NA

@@ -51,7 +51,7 @@
     comment: 'Dataset from the original MA was provided by Riccardo Fusaroli'
 -
     name: 'Acoustic Measures of Prosody in Right-Hemisphere Damage: A Systematic Review and Meta-Analysis'
-    domain: Right_Hemisphere_Damage
+    domain: [Right_Hemisphere_Damage, Left_Hemisphere_Damage]
     short_name: rhd_weed_2020
     key: 1_ajYkJGytc4jdrNGHT03pKiKF3qu8wyvZrhxpchBKqo
     filename: rhd_weed_2020
