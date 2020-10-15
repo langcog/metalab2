@@ -1,6 +1,6 @@
 -
     name: 'Voice patterns in schizophrenia: A systematic review and Bayesian meta-analysis'
-    domain: schizophrenia
+    domain: Schizophrenia
     short_name: schizophrenia_parola_2020
     key: 1z5WF7l8aFSVV6qkg46bUHV_zDDZ4KF14nOyiR9Yk9qA
     filename: schizophrenia_parola_2020
@@ -46,12 +46,12 @@
     src: images/datasets/dinosaur.png # change
     longitudinal: no
     moderators: [task_type, native_language, native_language_specification, diagnosis_specification, mean_age]
-    features: [pitch_f0, pitch_f0_range, pitch_f0_sd, pitch_f0_variability, intensity_mean, utterance_duration, syllable_duration, speech_rate, pause_length, pause_number]
+    features: [pitch_f0, pitch_f0_range, pitch_f0_sd, pitch_f0_variability, intensity_mean, speech_duration, speech_rate, pause_length, pause_number]
     #subset: []
     comment: 'Dataset from the original MA was provided by Riccardo Fusaroli'
 -
-    name: 'Acoustic Measures of Prosody in Right-Hemisphere Damage: A Systematic Review and Meta-Analysis'
-    domain: Right_Hemisphere_Damage
+    name: 'Right Hemisphere Damage: Acoustic Measures of Prosody in Right-Hemisphere Damage: A Systematic Review and Meta-Analysis'
+    domain: Hemisphere_Damage
     short_name: rhd_weed_2020
     key: 1_ajYkJGytc4jdrNGHT03pKiKF3qu8wyvZrhxpchBKqo
     filename: rhd_weed_2020
@@ -73,4 +73,29 @@
     moderators: [native_language, task_type, prosody_type]
     features: [pitch_f0_variability, pitch_f0, pause_duration, speech_duration, intensity_mean, intensity_variability]
     #subset: []
-    comment: 'Dataset from the original MA was provided by Riccardo Fusaroli.'
+    comment: 'Dataset from the original MA was provided by Riccardo Fusaroli. SDs of 0 were replaced through dataimputation'
+-
+    name: 'Left Hemisphere Damage: Acoustic Measures of Prosody in Right-Hemisphere Damage: A Systematic Review and Meta-Analysis'
+    domain: Hemisphere_Damage
+    short_name: lhd_weed_2020
+    key: 1Dwzzm7wN0fG78na2tMb6w7_P8rYXQWWazDslMmGlryM
+    filename: lhd_weed_2020
+    citation: 'Weed & Fusaroli (2020)'
+    internal_citation: '(Weed & Fusaroli, 2020)'
+    link: "https://www.biorxiv.org/content/biorxiv/early/2019/06/24/676734.full.pdf"
+    full_citation: 'Weed, E., & Fusaroli, R. (2020). Acoustic Measures of Prosody in Right-Hemisphere Damage: A Systematic Review and Meta-Analysis. Journal of Speech, Language, and Hearing Research, 1-14.'
+    doi: 'https://doi.org/10.1044/2020_JSLHR-19-00241'
+    systematic: yes
+    search_strategy: '"We queried PubMed, PsychINFO, Web of Science, and Google Scholar, using the following combination of search terms: (prosody OR intonation OR inflection OR intensity OR pitch OR fundamental frequency OR speech rate OR voice quality) AND (RHD OR right hemisphere) AND (stroke) AND (acoustic), with no restrictions on date of publication. Further papers were identified by searching the references in the papers identified by the initial search. Our search resulted in a total of 49 papers. Our initial list of 49 papers was then screened, and we included only papers meeting the following criteria: (1) The study quantified acoustic measures of vocal production of participants with RHD, (2) The study reported original research (not a review), (3) The study included data from at least two participants, (4) The study included a control group. Of the initial 49 papers, 8 were case studies with data from only one individual, 6 did not report sufficient data in either tables or plots for inclusion in a meta-analysis, 2 papers did not report data from an acoustic analysis, 2 papers lacked a control group, 11 papers did not measure vocal production, 2 did not include participants with RHD, 1 did not report original data (review article), and 1 only included RHD participants who were actively selected to differ from NBD controls. Although this final paper otherwise met our inclusion criteria, we felt that actively choosing patients who differed from the control group on the object of study introduced unnecessary bias, and we did not include it. We note in passing that the effect sizes for this paper (which measured variation in F0) were somewhat larger (Hedges’s g = 1.3 – 1.8) than many of the included papers, although not unlike the effect size in a paper with the same first author which was included (Ross & Monnot, 2008). After these 33 papers were excluded, 16 papers remained for analysis."'
+    #reliability: ''
+    #source: 'coded by authors'
+    #last_update: ""
+    link_fields: ''
+    short_desc: 'short_desc'
+    description: 'description'
+    curator: 'LNJ, ND'
+    src: images/datasets/dinosaur.png
+    moderators: [native_language, task_type, prosody_type]
+    features: [pitch_f0_variability, pitch_f0, pause_duration, speech_duration, intensity_mean, intensity_variability]
+    #subset: []
+    comment: 'Dataset from the original MA was provided by Riccardo Fusaroli. SDs of 0 were replaced through dataimputation'
