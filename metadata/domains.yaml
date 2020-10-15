@@ -1,19 +1,19 @@
-- id:    schizophrenia
+- id:    Schizophrenia
   title: Schizophrenia
   image: NA
   desc:  schizophrenia description
 
-- id:    asd
+- id:    Autism_Spectrum_Disorder
   title: Autism Spectrum Disorder
   image: NA
   desc:  asd description
 
-- id:    rhd
-  title: Right Hemisphere Damage
+- id:    Hemisphere_Damage
+  title: Hemisphere Damage
   image: NA
-  desc:  rhd description
+  desc:  hd description
 
-- id:    depression
+- id:    Depression
   title: Depression
   image: NA
   desc:  depression description

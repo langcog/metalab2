@@ -111,31 +111,31 @@ shinyServer(function(input, output, session) {
                         #Cluster by paper, then participant group, then add random effect for each effect size
                         slab = expt_unique, data = mod_data(),
                         method = "REML")
-      } #else {
-        # metafor::rma(rma_formula, vi = mod_data()[[es_var()]],
-        #              slab = expt_unique, data = mod_data(),
-        #              method = ma_method)
-        # }
+      # } else {
+      #   metafor::rma(rma_formula, vi = mod_data()[[es_var()]],
+      #                slab = make.unique(short_cite), data = mod_data(),
+      #                method = ma_method)
+      }
     }
   })
 
   no_intercept_model <- reactive({
     if (length(input$moderators) == 0) {
-      no_mod_model() #maybe do stuff here
+      no_mod_model()
     } else {
       mods <- paste(input$moderators, collapse = "+")
       rma_formula <- as.formula(sprintf("%s ~ 0 + %s", es(), mods))
       if (ma_method == "REML_mv") {
         metafor::rma.mv(rma_formula, V = mod_data()[[es_var()]],
-                        random = ~ 1 | short_cite / same_sample_calc / unique_row,
+                        random = ~ 1 | short_cite / same_sample_calc / unique_row, #/ unique_row,
                         #Cluster by paper, then participant group, then add random effect for each effect size
                         slab = expt_unique, data = mod_data(),
                         method = "REML")
-      } # else {
+      # } else {
       #   metafor::rma(rma_formula, vi = mod_data()[[es_var()]],
       #                slab = expt_unique, data = mod_data(),
       #                method = ma_method)
-      # }
+      }
     }
   })
 
@@ -144,14 +144,14 @@ shinyServer(function(input, output, session) {
       metafor::rma.mv(yi = data()[[es()]], V = data()[[es_var()]],
                       #random = ~ 1 | data()[["short_cite"]],
                       random = ~ 1 | data()[["short_cite"]] / data()[["same_sample_calc"]], #data()[["short_cite"]] / data()[["same_sample_calc"]] / data()[["unique_row"]],
-                      slab = data()[["expt_unique"]], #make.unique(data()[["short_cite"]]),
+                      slab = data()[["expt_unique"]],#make.unique(data()[["short_cite"]]), #make.unique(data()[["short_cite"]]),
                       method = "REML")
-    } # else {
+    # } else {
     #   metafor::rma(yi = data()[[es()]], vi = data()[[es_var()]],
-    #                slab = data()[["expt_unique"]], # make.unique(data()[["short_cite"]]),
+    #                slab = make.unique(data()[["short_cite"]]),
     #                method = ma_method)
-    #
-    # }
+
+    }
   })
 
   ########### UI ELEMENTS ###########
@@ -315,12 +315,11 @@ shinyServer(function(input, output, session) {
       updateSelectInput(session, "scatter_curve", selected = "lm")
     }
   })
-
   # output$subset_selector <- renderUI({
   #   radioButtons("subset_input", "Subset", append(feature_options(), "All data", 0))
   # })
-  #
-  # # TODO use observe
+
+  # TODO use observe
   # output$subset_options <- reactive({
   #   feature_options()
   # })
@@ -340,12 +339,31 @@ shinyServer(function(input, output, session) {
 
     guide <- if (mod_group() == "all_mod") FALSE else "legend"
 
-    p <- ggplot(mod_data(), aes_string(x = mod_group(), y = es(), color = mod_group())) +
+    p <- if ("mean_age" %in% input$moderators) {
+       p <- ggplot(mod_data(), aes_string(x = "mean_age", y = es(), color = mod_group())) +
+        geom_point(aes(size = n, text = paste(expt_unique), alpha=0.5)) +
+        geom_hline(yintercept = 0, linetype = "dashed", color = "grey") +
+        scale_colour_solarized(name = "", labels = labels, guide = guide) +
+        scale_size_continuous(guide = FALSE) +
+        xlab("\nMean Subject Age (Months)") +
+        ylab("Effect Size\n")
+
+        if (input$scatter_curve == "lm") {
+          p <- p + geom_smooth(aes_string(weight = sprintf("1 / %s", es_var())),
+                             method = "lm", se = FALSE)
+        } else if (input$scatter_curve == "loess") {
+        p <- p + geom_smooth(aes_string(weight = sprintf("1 / %s", es_var())),
+                              method = "loess", se = FALSE, span = 1)
+        }
+
+    } else {
+       ggplot(mod_data(), aes_string(x = mod_group(), y = es(), color = mod_group())) +
                   geom_point(position = "jitter", aes(size = n, text = paste(expt_unique), alpha=0.5)) +
                   geom_boxplot(fill = "white", alpha=0.5) +
                   labs(x = "Task Type", y = "Effect Size") +
                   scale_colour_solarized(name = "", labels = labels, guide = guide) +
                   scale_size_continuous(guide = FALSE)
+    }
 
        # p <- ggplot(mod_data(), aes_string(x = "task_type", y = es(),
     #                                    colour = mod_group())) +
@@ -471,7 +489,7 @@ shinyServer(function(input, output, session) {
 
   }
 
-  # forest summary intercept model
+  # INTERCEPT MODEL
   forest_summary <- function() {
     pred_data <- data.frame(predictor = names(coef(model())),
                             coef = coef(model()),
@@ -517,7 +535,7 @@ shinyServer(function(input, output, session) {
     summary(model())
   })
 
-  # forest summary no_intercept_model
+  # NO INTERCEPT MODEL
   forest_no_intercept_summary <- function() {
     pred_data <- data.frame(predictor = names(coef(no_intercept_model())),
                             coef = coef(no_intercept_model()),
@@ -562,6 +580,29 @@ shinyServer(function(input, output, session) {
   output$forest_no_intercept_summary_text <- renderPrint({
     summary(no_intercept_model())
   })
+
+  output$no_intercept_text <- renderText({
+    "Please select a moderator to display model summary and plot for model without intercept."
+  })
+
+  output$no_intercept <- renderUI({
+    if (length(input$moderators) == 0){
+      list(br(),
+           textOutput("no_intercept_text"),
+           br())
+    } else {
+      list(
+        tabsetPanel(
+          tabPanel("Plot",
+                 plotOutput("forest_no_intercept_summary", height = "auto")),
+          tabPanel("Model",
+                 p(verbatimTextOutput("forest_no_intercept_summary_text")))
+      ),
+      br(),
+      helpText("Plot and model output for chosen meta-analytic model
+                                    (selected at the top of this page)."))
+    }
+    })
 
   ########### FUNNEL PLOT ###########
 
