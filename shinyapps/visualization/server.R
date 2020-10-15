@@ -217,6 +217,13 @@ shinyServer(function(input, output, session) {
                 Statistical Approach</a>."))
   })
 
+  # output$dataset_name <- renderUI({
+  #   selectInput(inputId = "dataset_name",
+  #               label = "Dataset",
+  #               choices = dataset_names()
+  #   )
+  # }
+
   output$moderator_input <- renderUI({
     req(input$dataset_name)
     custom_mods <- dataset_info %>%
@@ -527,7 +534,6 @@ shinyServer(function(input, output, session) {
   output$forest_summary_text <- renderPrint({
     summary(model())
   })
-
 
   # NO INTERCEPT MODEL
   forest_no_intercept_summary <- function() {
