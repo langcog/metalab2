@@ -107,7 +107,7 @@ shinyServer(function(input, output, session) {
       rma_formula <- as.formula(sprintf("%s ~ %s", es(), mods))
       if (ma_method == "REML_mv") {
         metafor::rma.mv(rma_formula, V = mod_data()[[es_var()]],
-                        random = ~ 1 | short_cite / same_sample_calc / unique_row,
+                        random = ~ 1 | same_sample / short_cite / unique_row,
                         #Cluster by paper, then participant group, then add random effect for each effect size
                         slab = expt_unique, data = mod_data(),
                         method = "REML")
@@ -127,8 +127,8 @@ shinyServer(function(input, output, session) {
       rma_formula <- as.formula(sprintf("%s ~ 0 + %s", es(), mods))
       if (ma_method == "REML_mv") {
         metafor::rma.mv(rma_formula, V = mod_data()[[es_var()]],
-                        random = ~ 1 | short_cite / same_sample_calc / unique_row, #/ unique_row,
-                        #Cluster by paper, then participant group, then add random effect for each effect size
+                        random = ~ 1 | same_sample / short_cite / unique_row,
+                        #Cluster by participant group, paper, then participant group, and for each row/effect size
                         slab = expt_unique, data = mod_data(),
                         method = "REML")
       # } else {
@@ -142,9 +142,8 @@ shinyServer(function(input, output, session) {
   no_mod_model <- reactive({
     if (ma_method == "REML_mv") {
       metafor::rma.mv(yi = data()[[es()]], V = data()[[es_var()]],
-                      #random = ~ 1 | data()[["short_cite"]],
-                      random = ~ 1 | data()[["short_cite"]] / data()[["same_sample_calc"]], #data()[["short_cite"]] / data()[["same_sample_calc"]] / data()[["unique_row"]],
-                      slab = data()[["expt_unique"]],#make.unique(data()[["short_cite"]]), #make.unique(data()[["short_cite"]]),
+                      random = ~ 1 | data()[["same_sample"]] /data()[["short_cite"]] / data()[["unique_row"]],
+                      slab = data()[["expt_unique"]],
                       method = "REML")
     # } else {
     #   metafor::rma(yi = data()[[es()]], vi = data()[[es_var()]],

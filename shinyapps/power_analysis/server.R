@@ -2,27 +2,30 @@ shinyServer(function(input, output, session) {
   #############################################################################
   # DOWNLOAD HANDLERS
 
-  plot_download_handler <- function(plot_name, plot_fun) {
-    downloadHandler(
-      filename = function() {
-        sprintf("%s [%s].pdf", input$dataset_name, plot_name)
-      },
-      content = function(file) {
-        cairo_pdf(file, width = 10, height = 7)
-        print(plot_fun())
-        dev.off()
-      }
-    )
-  }
+  # plot_download_handler <- function(plot_name, plot_fun) {
+  #   downloadHandler(
+  #     filename = function() {
+  #       sprintf("%s [%s].pdf", input$dataset_name, plot_name)
+  #     },
+  #     content = function(file) {
+  #       cairo_pdf(file, width = 10, height = 7)
+  #       print(plot_fun())
+  #       dev.off()
+  #     }
+  #   )
+  # }
+  #
+  # output$download_power <- plot_download_handler("power", power)
 
-  output$download_power <- plot_download_handler("power", power)
+  # ########### DATA ##########
 
-  # ########### DATA ###########
   pwrdata <- reactive({
     req(input$dataset_name_pwr)
-    result <- metavoice_data %>% #CHANGE
-      filter(dataset == input$dataset_name_pwr)
-    result <- result[!is.infinite(result$d_calc),] #added to remove in rhd
+    req(input$feature_option)
+    result <- metavoice_data %>%
+      filter(dataset == input$dataset_name_pwr) %>%
+      filter(feature == input$feature_option)
+    # result <- result[!is.infinite(result$d_calc),] #added to remove in rhd
 
     # subset <- input$subset_input
     # if (!is.null(subset)) {
@@ -51,9 +54,18 @@ shinyServer(function(input, output, session) {
       pull(name)
   })
 
+  feature_options <- reactive({
+    req(input$dataset_name_pwr)
+    dataset_info %>%
+      filter(name == input$dataset_name_pwr) %>%
+      .$features %>%
+      unlist()
+  })
+
+
   # ########### PWR MODEL ###########
   pwr_no_mod_model <- reactive({
-    metafor::rma(d_calc, vi = d_var_calc, slab = as.character(study_ID), #CHANGE STUDY ID?
+    metafor::rma(d_calc, vi = d_var_calc, slab = as.character(expt_unique), #changed to expt_unique from study_ID (also below)
                  data = pwrdata(), method = "REML")
   })
 
@@ -63,16 +75,25 @@ shinyServer(function(input, output, session) {
     } else {
       mods <- paste(input$pwr_moderators, collapse = "+")
       metafor::rma(as.formula(paste("d_calc ~", mods)), vi = d_var_calc,
-                   slab = as.character(study_ID), data = pwrdata(), #CHANGE STUDY ID?
+                   slab = as.character(expt_unique), data = pwrdata(), #CHANGE STUDY ID?
                    method = "REML")
     }
   })
 
   output$pwr_moderator_input <- renderUI({
     req(input$dataset_name_pwr) #CHANGE MODERATORS IN FOLLOWING ROW (maybe make if for different domains?)
-    mod_choices <- list("Task type" = "task_type",
-                        "Native language" = "native_language")
+    possible_mods <- list("Task type" = "task_type",
+                        "Native language" = "native_language",
+                        "Prosody type" = "prosody_type",
+                        "Mean age (months)" = "mean_age")
+    custom_mods <- dataset_info %>%
+      filter(name == input$dataset_name_pwr) %>%
+      .$moderators %>%
+      unlist()
+    print(custom_mods)
+    mod_choices <- keep(possible_mods, ~ any(custom_mods %in% .x))
     valid_mod_choices <- mod_choices %>%
+      set_names(display_name(.)) %>%
       keep(~length(unique(pwrdata()[[.x]])) > 1)
 
     # remove age moderator in longitudinal
@@ -83,7 +104,7 @@ shinyServer(function(input, output, session) {
 
     checkboxGroupInput("pwr_moderators", label = "Moderators",
                        valid_mod_choices,
-                       inline = TRUE)
+                       inline = FALSE)
   })
 
   ########### RENDER UI FOR MODERATOR CHOICES #############
@@ -96,6 +117,17 @@ shinyServer(function(input, output, session) {
                     "Age of experimental participants (months)",
                     min = 0, max = ceiling(max(pwrdata()$mean_age_months)),
                     value = round(mean(pwrdata()$mean_age_months)),
+                    step = 1)
+      ))
+    }
+
+    #added this (copied from above + adjusted)
+    if (any(input$pwr_moderators == "mean_age")) {
+      uis <- c(uis, list(
+        sliderInput("pwr_age_months",
+                    "Age of experimental participants (months)",
+                    min = 0, max = ceiling(max(pwrdata()$mean_age)),
+                    value = round(mean(pwrdata()$mean_age)),
                     step = 1)
       ))
     }
@@ -116,6 +148,14 @@ shinyServer(function(input, output, session) {
       ))
     }
 
+    if (any(input$pwr_moderators == "prosody_type")) {
+      uis <- c(uis, list(
+        selectInput("pwr_prosody_type",
+                    "Prosody type",
+                    choices = unique(pwrdata()$prosody_type)) #CHANGE ALL
+      ))
+    }
+
     return(uis)
   })
 
@@ -128,6 +168,12 @@ shinyServer(function(input, output, session) {
       newpred_mat <- matrix(nrow = 0, ncol = 0)
 
       if (any(input$pwr_moderators == "mean_age_months")) { #CHANGE: ADJUST TO OUT AGE?
+        req(input$pwr_age_months)
+        newpred_mat <- c(newpred_mat, input$pwr_age_months)
+      }
+
+      #added: copied from above + adjusted
+      if (any(input$pwr_moderators == "mean_age")) { #CHANGE: ADJUST TO OUT AGE?
         req(input$pwr_age_months)
         newpred_mat <- c(newpred_mat, input$pwr_age_months)
       }
@@ -163,6 +209,21 @@ shinyServer(function(input, output, session) {
         newpred_mat <- c(newpred_mat, native_language_pred)
       }
 
+      if (any(input$pwr_moderators == "prosody_type")) { #CHANGE ALL BELOW FROM EXPOSURE
+        req(input$pwr_prosody_type)
+
+        f_prosody_type <- factor(pwrdata()$prosody_type)
+        n <- length(levels(f_prosody_type))
+
+        prosody_type_pred <- rep(0, n)
+        prosody_type_pred[seq(1:n)[levels(f_prosody_type) == input$pwr_prosody_type]] <- 1
+
+        # remove intercept
+        prosody_type_pred <- prosody_type_pred[-1]
+
+        newpred_mat <- c(newpred_mat, prosody_type_pred)
+      }
+
       predict(pwrmodel(), newmods = newpred_mat)$pred
     } else {
       # special case when there are no predictors, predict doesn't work
@@ -170,25 +231,48 @@ shinyServer(function(input, output, session) {
     }
   })
 
+  # pwr_80 <- reactive({
+  #   pwr::pwr.p.test(h = d_pwr(),
+  #                   sig.level = .05,
+  #                   power = .8)$n
+  # })
+
   pwr_80 <- reactive({
-    pwr::pwr.p.test(h = d_pwr(),
-                    sig.level = .05,
-                    power = .8)$n
+    pwr::pwr.2p.test(h = d_pwr(), sig.level = 0.05, power = .8)$n
+
   })
 
+
+
   ## now do the actual power analysis plot
+
+  # output$power <- renderPlot({
+  #   max_n <- min(max(60,
+  #                    pwr::pwr.p.test(h = d_pwr(),
+  #                                    sig.level = .05,
+  #                                    power = .9)$n),
+  #                200)
+
   output$power <- renderPlot({
     max_n <- min(max(60,
-                     pwr::pwr.p.test(h = d_pwr(),
+                     pwr::pwr.2p.test(h = d_pwr(),
                                      sig.level = .05,
-                                     power = .9)$n),
-                 200)
+                                     power = .9)$n), 200)
+
+
+
+    # pwrs <- data.frame(ns = seq(5, max_n, 5),
+    #                    ps = pwr::pwr.p.test(h = d_pwr(),
+    #                                         n = seq(5, max_n, 5),
+    #                                         sig.level = .05)$power,
+    #                    stringsAsFactors = FALSE)
 
     pwrs <- data.frame(ns = seq(5, max_n, 5),
-                       ps = pwr::pwr.p.test(h = d_pwr(),
+                       ps = pwr::pwr.2p.test(h = d_pwr(),
                                             n = seq(5, max_n, 5),
                                             sig.level = .05)$power,
                        stringsAsFactors = FALSE)
+
 
     qplot(ns, ps, geom = c("point","line"),
           data = pwrs) +
@@ -197,7 +281,8 @@ shinyServer(function(input, output, session) {
       ylim(c(0,1)) +
       xlim(c(0,max_n)) +
       ylab("Power to reject the null at p < .05") +
-      xlab("Number of participants (N)")
+      #xlab("Number of participants (N)")
+      xlab("Number of participants per group")
   })
 
   ### UI ELEMENTS
@@ -223,6 +308,22 @@ shinyServer(function(input, output, session) {
     )
   })
 
+  output$feature_selector <- renderUI({
+    selectInput(inputId = "feature_option",
+                label = "Feature",
+                choices = feature_options() %>%
+                  set_names(display_name(.))
+    )
+  })
+
+  output$feature_help_text <- renderUI({
+    req(input$feature_option)
+    feature_help_texts <- c("pitch_f0" = "Mean pitch",
+                            "speech_duration" = "Mean speech duration / or total?",
+                            "pause_duration" = "Pause dur")
+    HTML(paste0("<i class=\"text-muted\">", feature_help_texts[input$feature_option], "</i>"))
+  })
+
   # output$subset_selector <- renderUI({
   #   radioButtons("subset_input", "Subset", append(subsets(), "All data", 0)) #COULD REMOVE
   # })
@@ -244,7 +345,7 @@ shinyServer(function(input, output, session) {
     valueBox(
       if(pwr_80() < 200) {round(pwr_80(), digits = 2) } else { "> 200"}, "N for 80% power",
       icon = icon("list", lib = "glyphicon"),
-      color = "red"
+      color = "blue"
     )
   })
 })

@@ -21,7 +21,7 @@
     src: images/datasets/ids.png
     longitudinal: no
     moderators: [task_type, native_language]
-    features: [speech_duration, speech_rate, speech_percentage, pause_duration, pause_number, pause_total_length, response_latency, pause_variability, pitch_f0, pitch_f1, pitch_f2, pitch_f3, pitch_f4, pitch_f5, pitch_f6, pitch_f0_variability, pitch_f0_entropy, pitch_f1_variability, pitch_f2_variability, pitch_bandwidth, pitch_f0_ran, intensity_mean, intensity_variability, intensity_variability_entropy]
+    features: [speech_duration, speech_rate, speech_percentage, pause_duration, pause_number, pause_total_length, response_latency, pause_variability, pitch_f0, pitch_f1, pitch_f2, pitch_f3, pitch_f4, pitch_f5, pitch_f6, pitch_f0_variability, pitch_f1_variability, pitch_f2_variability, pitch_bandwidth, pitch_f0_ran, intensity_mean, intensity_variability, intensity_variability_entropy]
     #subset: []
     comment: 'Dataset from the original MA was provided by Riccardo Fusaroli.'
 -

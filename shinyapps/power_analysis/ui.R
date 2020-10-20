@@ -22,20 +22,31 @@ shinyUI(dashboardPage(
           #             choices = datasets$name),
           fluidRow(
             column(
-              width = 5,
+              width = 4,
+              uiOutput("feature_selector"),
+              bsPopover("feature_selector", title = NULL,
+                        content = HTML("<small>Select a feature</small>"),
+                        placement = "bottom"),
+              uiOutput("feature_help_text")),
+            column(
+              width = 4,
               uiOutput("pwr_moderator_input"),
-              uiOutput("pwr_moderator_choices")
+              #uiOutput("pwr_moderator_choices")
             ),
             column(
               width = 4,
-              conditionalPanel(
-                condition = "output.subset_options",
-                uiOutput("subset_selector"),
-                bsPopover("subset_selector", title = NULL,
-                          content = HTML("<small>Restrict the data by the following criteria</small>"),
-                          placement = "right")
-              )
+              uiOutput("pwr_moderator_choices") #changed this
             )
+            # column(
+            #   width = 4,
+            #   conditionalPanel(
+            #     condition = "output.subset_options",
+            #     uiOutput("subset_selector"),
+            #     bsPopover("subset_selector", title = NULL,
+            #               content = HTML("<small>Restrict the data by the following criteria</small>"),
+            #               placement = "right")
+            #   )
+            # )
           )
         ),
       fluidRow(
@@ -45,9 +56,10 @@ shinyUI(dashboardPage(
           fluidRow(
             column(width = 10,
                    p(strong("Power plot"), "of N necessary to achieve p < .05")),
-            column(width = 2,
-                   downloadButton("download_power", "Save",
-                                  class = "btn-xs pull-right"))),
+            #column(width = 2,
+            #       downloadButton("download_power", "Save",
+            #                      class = "btn-xs pull-right"))
+            ),
           plotOutput("power"),
           p("Statistical power to detect a difference between
             conditions at p < .05. Dashed line shows 80% power, dotted line
