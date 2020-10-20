@@ -54,12 +54,6 @@ shinyUI(
               bsPopover("dataset_name", title = NULL,
                         content = HTML("<small>Select a dataset/meta-analysis</small>"),
                         placement = "bottom"),
-              # uiOutput("feature_selector"),
-              # bsPopover("feature_selector", title = NULL,
-              #           content = HTML("<small>Select a feature</small>"),
-              #           placement = "bottom"),
-
-
               # br(),
               # selectInput("ma_method", label = "Meta-analytic model",
               #             choices = ma_choices, selected = "REML_mv"),
