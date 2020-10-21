@@ -47,13 +47,13 @@ shinyUI(
               uiOutput("domain_selector"),
               bsPopover("domain_selector", title = NULL,
                         content = HTML("<small>Select a disorder</small>"),
-                        placement = "bottom"),
+                        placement = "right"),
               downloadButton("download_data", "Download data",
                              class = "btn-xs pull-right"),
               uiOutput("dataset_name"),
               bsPopover("dataset_name", title = NULL,
                         content = HTML("<small>Select a dataset/meta-analysis</small>"),
-                        placement = "bottom"),
+                        placement = "right"),
               # br(),
               # selectInput("ma_method", label = "Meta-analytic model",
               #             choices = ma_choices, selected = "REML_mv"),
@@ -61,14 +61,14 @@ shinyUI(
               #br(),
               # bsPopover("ma_method", title = NULL,
               #           content = HTML("<small>Statistical model underlying the aggregated, weighted effect size estimates</small>"),
-              #           placement = "bottom"),
+              #           placement = "right"),
               fluidRow(
                 column(
                   width = 4,
                   uiOutput("feature_selector"),
                   bsPopover("feature_selector", title = NULL,
                             content = HTML("<small>Select a feature</small>"),
-                            placement = "bottom"),
+                            placement = "right"),
                   uiOutput("feature_help_text"),
                   br()
                 ),
@@ -80,14 +80,14 @@ shinyUI(
                   br(),
                   bsPopover("es_type", title = NULL,
                             content = HTML("<small>Measure for strength of phenomenon</small>"),
-                            placement = "bottom")
+                            placement = "right")
                 ),
                 column(
                   width = 4,
                   uiOutput("moderator_input"),
                   bsPopover("moderator_input", title = NULL,
                             content = HTML("<small>Explore the impact of continuous and categorical moderator variables</small>"),
-                            placement = "bottom")
+                            placement = "right")
                 ),
                 # column(
                 #   width = 4,
@@ -96,7 +96,7 @@ shinyUI(
                 #     uiOutput("subset_selector"),
                 #     bsPopover("subset_selector", title = NULL,
                 #               content = HTML("<small>Restrict the data by the following criteria</small>"),
-                #               placement = "bottom")
+                #               placement = "right")
                 #   )
                 # )
               ),
@@ -129,7 +129,7 @@ shinyUI(
                               choices = scatter_choices, selected = "loess")),
                   bsPopover("scatter_curve", title = NULL,
                             content = HTML("<small>Select a type of curve</small>"),
-                            placement = "bottom")),
+                            placement = "right")),
                 plotlyOutput("scatter"),
                 br(),
                 helpText("Select a type of regression line. Dot sizes are inversely related
@@ -181,7 +181,7 @@ shinyUI(
                                           "chronological" = "year")),
                   bsPopover("forest_sort", title = NULL,
                             content = HTML("<small>Method to sort results</small>"),
-                            placement = "bottom")
+                            placement = "right")
                 )),
                 plotlyOutput("forest"),
                 # ggplotly hack - renderPlotly does not take height param; must alter in UI
