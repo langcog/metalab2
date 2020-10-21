@@ -18,10 +18,10 @@
     short_desc: 'short_desc'
     description: 'description'
     curator: 'LNJ, ND'
-    src: images/datasets/ids.png
+    #src: images/datasets/ids.png
     longitudinal: no
     moderators: [task_type, native_language]
-    features: [speech_duration, speech_rate, speech_percentage, pause_duration, pause_number, pause_total_length, response_latency, pause_variability, pitch, f1, f2, f3, f4, f5, f6, pitch_variability, pitch_bandwidth, pitch_range, intensity, intensity_variability, intensity_variability_entropy]
+    features: [speech_duration, speech_rate, speech_percentage, pause_duration, pause_number, pause_total_length, response_latency, pause_variability, pitch, pitch_variability, pitch_bandwidth, pitch_range, f1, f2, f3, f4, f5, f6, intensity, intensity_variability, intensity_variability_entropy]
     #subset: []
     comment: 'Dataset from the original MA was provided by Riccardo Fusaroli.'
 -
@@ -43,10 +43,10 @@
     link_fields: ''
     short_desc: 'To be updated.'
     curator: 'LNJ, ND'
-    src: images/datasets/dinosaur.png # change
+    #src: images/datasets/dinosaur.png #
     longitudinal: no
     moderators: [task_type, native_language, native_language_specification, diagnosis_specification, mean_age]
-    features: [pitch, pitch_range, pitch_sd, pitch_variability, intensity, speech_duration, speech_rate, pause_length, pause_number]
+    features: [speech_duration, speech_rate, pause_length, pause_number, pitch, pitch_range, pitch_sd, pitch_variability, intensity]
     #subset: []
     comment: 'Dataset from the original MA was provided by Riccardo Fusaroli'
 -
@@ -69,9 +69,9 @@
     short_desc: 'short_desc'
     description: 'description'
     curator: 'LNJ, ND'
-    src: images/datasets/dinosaur.png
-    moderators: [native_language, task_type, prosody_type]
-    features: [pitch_variability, pitch, pause_duration, speech_duration, intensity, intensity_variability]
+    #src: images/datasets/dinosaur.png
+    moderators: [task_type, native_language, prosody_type]
+    features: [speech_duration, pause_duration, pitch, pitch_variability, intensity, intensity_variability]
     #subset: []
     comment: 'Dataset from the original MA was provided by Riccardo Fusaroli. SDs of 0 were replaced through dataimputation'
 -
@@ -94,8 +94,8 @@
     short_desc: 'short_desc'
     description: 'description'
     curator: 'LNJ, ND'
-    src: images/datasets/dinosaur.png
-    moderators: [native_language, task_type, prosody_type]
-    features: [pitch_variability, pitch, pause_duration, speech_duration, intensity_variability]
+    #src: images/datasets/dinosaur.png
+    moderators: [task_type, native_language, prosody_type]
+    features: [speech_duration, pause_duration, pitch, pitch_variability, intensity_variability]
     #subset: []
     comment: 'Dataset from the original MA was provided by Riccardo Fusaroli. SDs of 0 were replaced through dataimputation'
