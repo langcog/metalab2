@@ -89,34 +89,19 @@ shinyUI(
                             content = HTML("<small>Explore the impact of continuous and categorical moderator variables</small>"),
                             placement = "right")
                 ),
-                # column(
-                #   width = 4,
-                #   conditionalPanel(
-                #     condition = "output.subset_options",
-                #     uiOutput("subset_selector"),
-                #     bsPopover("subset_selector", title = NULL,
-                #               content = HTML("<small>Restrict the data by the following criteria</small>"),
-                #               placement = "right")
-                #   )
-                # )
               ),
 
               strong("Dataset Description:", style="display:inline"), textOutput("data_description"),
-              #textOutput("data_description"),
               br(),
               br(),
               strong("Dataset Citation:", style="display:inline"), textOutput("data_citation"),
-              #p(strong("Dataset Citation")),
-              #textOutput("data_citation"),
               br(),
               br(),
               uiOutput("link_to_dataset"),
               br(),
               strong("Statistical Model:", style="display:inline"), uiOutput("ma_model_blurb")
           ),
-          conditionalPanel(
-            condition = "output.longitudinal == FALSE",
-            box(width = NULL, #status = "danger",
+          box(width = NULL, #status = "danger",
                 fluidRow(
                   column(
                     width = 10,
@@ -134,125 +119,14 @@ shinyUI(
                 br(),
                 helpText("Select a type of regression line. Dot sizes are inversely related
                          to the standard error of effect size."),
-                height = 600)
+                height = 600),
+          uiOutput("experiment_limit_left")
           ),
-          box(width = NULL, #status = "danger",
-              fluidRow(
-                column(width = 10,
-                       p(strong("Funnel plot"), "of bias in effect sizes"))
-                ),
-              plotlyOutput("funnel"),
-              div(class = "text-center", textOutput("funnel_test")),
-              br(),
-              helpText("Studies with high precision should be close to the average,
-                       while studies with low precision can be spread evenly on both sides of
-                       the average when there is no publication bias. An asymmetric shape can be
-                       an indicator of publication bias. Shaded regions show p <.05 and p <.01
-                       regions, respectively.")),
-          box(width = NULL, #status = "danger",
-              fluidRow(
-                column(width = 10,
-                       p(strong("Violin plot"), "of effect size density"))
-                ),
-              plotlyOutput("violin", height = "auto"),
-              br(),
-              helpText("The probability density of the data at different values.")
-          )),
         column(
           width = 6,
           fluidRow(
             uiOutput("viz_boxes")),
-          fluidRow(
-            box(width = NULL, #status = "danger",
-                fluidRow(
-                  column(
-                    width = 10,
-                    p(strong("Forest plot"),
-                      "of effect sizes and meta-analysis model estimates"))
-                  ),
-                fluidRow(width=10,
-                column(
-                  width = 10,
-                  selectInput("forest_sort", label = "Sort order",
-                              choices = c("weight (1/variance)" = "variances",
-                                          "effect size" = "effects",
-                                          "model estimate" = "estimate",
-                                          "alphabetical" = "study_ID",
-                                          "chronological" = "year")),
-                  bsPopover("forest_sort", title = NULL,
-                            content = HTML("<small>Method to sort results</small>"),
-                            placement = "right")
-                )),
-                plotlyOutput("forest"),
-                # ggplotly hack - renderPlotly does not take height param; must alter in UI
-                tags$script('
-                  Shiny.addCustomMessageHandler("heightCallback",
-                    function(height) {
-                      document.getElementById("forest").style.height = height;
-                    });
-                '),
-                #tags$style(type="text/css", "#forest { float:right;}"),
-                br(),
-                helpText("Estimated results and their confidence intervals in a particular order.
-                         Colored points represent meta-analytic model summary. The size of the dots reflects the weight of the particular experiment in the model.")),
-            # tags$div(
-            #   HTML("<input type='checkbox' id='myCheck' onclick='myFunction()'> Show / Hide Summary")
-            # ),
-
-            box(id = "forest_summary_box", width = NULL, #status = "danger",
-                fluidRow(
-                  column(width = 12,
-                         p(strong("Summary of meta-analytic model"), "with intercept"),
-                         tabsetPanel(
-                           tabPanel("Plot",
-                                    plotOutput("forest_summary", height = "auto")),
-                           tabPanel("Model",
-                                    p(verbatimTextOutput("forest_summary_text")))
-                         ),
-                         br(),
-                         helpText("Plot and model output for chosen meta-analytic model
-                                  (selected at the top of this page).")
-                  )
-                )
-            ),
-
-            box(id = "forest_no_intercept_summary_box", width = NULL, #status = "danger",
-                  fluidRow(
-                    column(width = 12,
-                           p(strong("Summary of meta-analytic model"), "without intercept"),
-                           uiOutput("no_intercept")
-                           # p(strong("Summary of meta-analytic model without intercept")),
-                           # tabsetPanel(
-                           #   tabPanel("Plot",
-                           #            uiOutput("no_intercept")),
-                           #            #plotOutput("forest_no_intercept_summary", height = "auto")),
-                           #   tabPanel("Model",
-                           #            p(verbatimTextOutput("forest_no_intercept_summary_text")))
-                           # ),
-                           # br(),
-                           # helpText("Plot and model output for chosen meta-analytic model
-                           #          (selected at the top of this page).")
-                    )
-                  )
-              ),
-
-            # box(id = "forest_summary_box_0", width = NULL, #status = "danger",
-            #     fluidRow(
-            #       column(width = 12,
-            #              p(strong("Summary of meta-analytic model without intercept")),
-            #              tabsetPanel(
-            #                tabPanel("Plot",
-            #                         plotOutput("forest_summary_0", height = "auto")),
-            #                tabPanel("Model",
-            #                         p(verbatimTextOutput("forest_summary_text_0")))
-            #              ),
-            #              br(),
-            #              helpText("Plot and model output for chosen meta-analytic model
-            #                       (selected at the top of this page).")
-            #       )
-            #     )
-            # )
-
+          uiOutput("experiment_limit_right")
             # tags$script(HTML(
             #   "function myFunction() {
             #      var x = document.getElementById('forest_summary_box');
@@ -268,4 +142,3 @@ shinyUI(
       )
     )
   )
-)

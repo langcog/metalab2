@@ -338,7 +338,7 @@ shinyServer(function(input, output, session) {
                       p("Statistical power to detect a difference between conditions at p < .05. Dashed line shows 80% power, dotted lineshows necessary sample size to achieve that level of power.")
                ))))}
       else {
-        box(width = NULL, fluidRow(column(width = 10, textOutput("fewstudies"), br(), textOutput("contribute"))))
+        box(width = NULL, fluidRow(column(width = 12, textOutput("fewstudies"), br(), textOutput("contribute"))))
       }
   })
   })
