@@ -587,7 +587,7 @@ y6 <- log((x + 1)) * 1.1
 y7 <- .2 * x
 y8 <- dnorm(x, mean = 1.7, sd = .5) 
 y9 <- log(x + .0001, base = .02) + .3
-y9[1 <- 1.47 
+y91 <- 1.47 
 
 # merge together simulated data
 simulated.development <- data.frame(age.years = c(x,x,x,x,x,x,x,x,x),
