@@ -6,16 +6,24 @@ applications.
 
 ## Software Requirements (one-time setup)
 
-R >= 4.02
-Hugo Extended >= v0.74.3
+- [R](https://cloud.r-project.org/) >= 4.02
+- [Hugo Extended](https://gohugo.io/getting-started/installing/) >= v0.74.3
 
-The easiest way to install Hugo is to use the blogdown package Hugo
-installer. Open this project in R Studio, and run the following
-commands:
+One easy way to install Hugo Extended is to use the blogdown
+package.
+
+```
+install.packages("blogdown") #only required if you do not already have it
+blogdown::install_hugo()
+```
+
+## Install the required packages (one-time setup)
+
+To install all the required R packages on your system, run the
+following commad after opening this project in RStudio:
 
 ```
 renv::restore()
-blogdown::install_hugo()
 ```
 
 ## Updating to latest data (optional)
@@ -33,9 +41,9 @@ the current MetaLab site uses.
 ## Building MetaLab (each time you want to make changes)
 
 You are now ready to build MetaLab. The commands below will serve the
-site locally on your computer. The `blogdown::serve_site()` command
-may take a few minutes to run. When completed, it will be serving a
-local copy of the MetaLab site at http://localhost:4321
+site locally on your computer. The build script may take a few minutes
+to run. When completed, it will be serving a local copy of the MetaLab
+site at http://localhost:4321
 
 
 ```
