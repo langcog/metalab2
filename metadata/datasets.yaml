@@ -71,7 +71,7 @@
     curator: 'LNJ, ND'
     #src: images/datasets/dinosaur.png
     moderators: [task_type, native_language, prosody_type]
-    features: [speech_duration, pause_duration, pitch, pitch_variability, intensity, intensity_variability]
+    features: [speech_duration, speech_duration_variability, speech_duration_ratio, speech_percentage, pause_duration, pitch, pitch_variability, F0_contour, intensity, intensity_variability]
     #subset: []
     comment: 'Dataset from the original MA was provided by Riccardo Fusaroli. SDs of 0 were replaced through dataimputation'
 -
@@ -96,6 +96,6 @@
     curator: 'LNJ, ND'
     #src: images/datasets/dinosaur.png
     moderators: [task_type, native_language, prosody_type]
-    features: [speech_duration, pause_duration, pitch, pitch_variability, intensity_variability]
+    features: [speech_duration, speech_duration_variability, speech_duration_ratio, speech_percentage, pause_duration, pitch_variability, intensity_variability]
     #subset: []
     comment: 'Dataset from the original MA was provided by Riccardo Fusaroli. SDs of 0 were replaced through dataimputation'
