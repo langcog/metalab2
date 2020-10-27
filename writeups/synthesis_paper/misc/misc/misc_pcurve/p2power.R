@@ -40,5 +40,5 @@ f.value.sig=4.8
 f.df1.sig=2
 f.df2.sig=120
 
-optimize(powerfit.all,c(.06,.999))$minimum  estimate best fitting value
+optimize(powerfit.all,c(.06,.999))$minimum ## estimate best fitting value
 
