@@ -38,4 +38,4 @@ lapply(dataset_info$short_name, function(s_name) {
             to = here("content", "dataset", s_name, "featured.png"))
 })
 
-cat("Generated dataset documentation templates successfully\n")
+cat("Generated dataset documentation templates successfully, now run blogdown::serve_site()\n")

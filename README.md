@@ -27,13 +27,23 @@ available data, you can run:
 source(here::here("build", "update-metalab-data.R"))
 ```
 
-If you do not run this command, you will be using the dataset that the
-current MetaLab site uses.
+If you do not run this command, your build will use the dataset that
+the current MetaLab site uses.
 
 ## Building MetaLab (each time you want to make changes)
 
-```
+You are now ready to build MetaLab. The commands below will serve the
+site locally on your computer. The `blogdown::serve_site()` command
+may take a few minutes to run. When completed, it will be serving a
+local copy of the MetaLab site at http://localhost:4321
 
+
+```
 source(here::here("build", "build-metalab-site.R"))
 blogdown::serve_site()
 ```
+
+## Editing content
+
+You can now try editing existing content in the `content`
+directory. Your changes will automatically reload in your web browser.
