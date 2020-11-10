@@ -11,9 +11,12 @@ weight: 4
 
 The 2020 contribution challenge has closed and we received a record number of 9 submissions, thanks to all who joined and to the Fetzer Franklin Fund for their support. We are working on making the data available on MetaLab.
 
-The three winners are: 
-* Gabrielle Strouse (University of South Dakota) with a meta-analysis on whether infants learn from video just as well as from live interaction, and the results are already published: doi.org/10.1111/cdev.13429
-* Z. L. Zhou (UCLA) with a meta-analysis on the time course of native-language phonotactic learning; stay tuned for a full paper.
+The three winners are:   
+
+* Gabrielle Strouse (University of South Dakota) with a meta-analysis on whether infants learn from video just as well as from live interaction, and the results are already published: doi.org/10.1111/cdev.13429  
+
+* Z. L. Zhou (UCLA) with a meta-analysis on the time course of native-language phonotactic learning; stay tuned for a full paper.  
+
 * Loretta Gasparini (European Master’s in Clinical Linguistics+) on infants' preference for their native language and ability to discriminate between languages and accents, a preprint is available here: doi.org/10.31219/osf.io/rmn5x 
 
 
