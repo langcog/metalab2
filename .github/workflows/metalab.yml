@@ -56,7 +56,7 @@ jobs:
         name: metalab-site
         path: ./metalab-site.tar.gz
 
-   - name: scp shiny apps to production server
+    - name: scp shiny apps to production server
      if: github.event_name == 'push'
      uses: appleboy/scp-action@master
      with:
