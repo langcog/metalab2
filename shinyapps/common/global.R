@@ -26,5 +26,5 @@ fields <- get_metalab_field_info()
 fields_derived <- get_metalab_derived_field_info()
 
 metalab_data <- get_metalab_data_shiny(here("shinyapps", "site_data", "csv"))
-dataset_yaml <- get_metalab_dataset_info() 
+dataset_yaml <- get_metalab_dataset_info("https://raw.githubusercontent.com/langcog/metalab/main/metadata/datasets.yaml") 
 dataset_info <- add_metalab_summary_info(dataset_yaml, metalab_data)
