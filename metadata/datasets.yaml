@@ -640,8 +640,8 @@
     source: 'coded by authors'
     last_update: '2020-11-11'
     link_fields: ""
-    short_desc: 'Discrimination of, or preference between, two language varieties, with results from various methods’'
-    description: ‘Discrimination of, or preference between, two language varieties, with results from various behavioral and neurophysiological methods, in infants 0 - 12 months of age.’
+    short_desc: 'Discrimination of, or preference between, two language varieties, with results from various methods'
+    description: 'Discrimination of, or preference between, two language varieties, with results from various behavioral and neurophysiological methods, in infants 0 - 12 months of age.'
     curator: 'Loretta Gasparini'
     src: media/datasets/langdiscrim.png
     longitudinal: no
