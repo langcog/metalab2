@@ -139,16 +139,21 @@
     - target_selection:       binary if selected target (forced choice)
     - looking_time:           in seconds
     - looking_time_pc:        in percent 
+    - reaction_time:          in seconds
     - exploration_time:       in seconds
     - looking_time_change:    in seconds
     - looking_time_change_pc: in percent
+    - number_sucks:
     - longest_look:           in seconds
     - search_time:            in seconds
+    - sucking_rate:
     - sucking_time:           in seconds
+    - trials_triggered:       number of trails (e.g. sentences) triggered in an infant behavior-contingent paradigm
     - pc_head_turns:          percent correct head turns in CHT
     - laterality_index:       NIRS
     - mean_amplitude:         NIRS
     - peak_amplitude:         ERP
+    - peak_latency:           ERP
     - d_prime:                d-prime
     - a_prime:                A-prime
     - heart_rate:
