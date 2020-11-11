@@ -11,7 +11,7 @@ library(plotly)
 library(here)
 library(DT)
 library(stringr)
-##library(metalabr)
+library(metalabr)
 
 get_metalab_data_shiny <- function(directory) {
   files <- list.files(directory, full.names = TRUE, pattern = "csv")

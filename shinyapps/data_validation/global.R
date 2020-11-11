@@ -1,6 +1,6 @@
 library(here)
-library(googledrive)
-library(gargle)
+## library(googledrive)
+## library(gargle)
 source(here("shinyapps", "common", "global.R"))
 
 get_google_sheet_id <- function(url) {
