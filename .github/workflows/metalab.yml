@@ -57,15 +57,15 @@ jobs:
         path: ./metalab-site.tar.gz
 
     - name: scp shiny apps to production server
-     if: github.event_name == 'push'
-     uses: appleboy/scp-action@master
-     with:
-       host: ${{ secrets.HOST }}
-       username: ${{ secrets.USERNAME }}
-       key: ${{ secrets.KEY }}
-       port: ${{ secrets.PORT }}
-       source: "./shinyapps/*"
-       target: "/srv/shiny-server"
+      if: github.event_name == 'push'
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.KEY }}
+        port: ${{ secrets.PORT }}
+        source: "./shinyapps/*"
+        target: "/srv/shiny-server"
 
     - name: deploy static site to gh-pages branch
       if: github.event_name == 'push'
