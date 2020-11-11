@@ -7,13 +7,28 @@ weight: 4
 ---
 
 
-## Contribution Challenge 2020
+## Contribution Challenge 2020 Winners
+
+The 2020 contribution challenge has closed and we received a record number of 9 submissions, thanks to all who joined and to the Fetzer Franklin Fund for their support. We are working on making the data available on MetaLab.
+
+The three winners are:   
+
+* Gabrielle Strouse (University of South Dakota) with a meta-analysis on whether infants learn from video just as well as from live interaction, and the results are already published: doi.org/10.1111/cdev.13429  
+
+* Z. L. Zhou (UCLA) with a meta-analysis on the time course of native-language phonotactic learning; stay tuned for a full paper.  
+
+* Loretta Gasparini (European Master’s in Clinical Linguistics+) on infants' preference for their native language and ability to discriminate between languages and accents, a preprint is available here: doi.org/10.31219/osf.io/rmn5x 
+
+
+
+
+#### The Contribution Challenge 2020 Call
 
 To celebrate the latest (ongoing) upgrade and the inclusion of 25 meta-analyses to date, the MetaLab team with support of the Fetzer Franklin Fund is organizing a challenge for authors of meta-analyses on cognitive development (data challenge) and for contributors of shiny apps (code challenge). The contribution challenge will offer three $1,000 US in cash prizes distributed between (teams of) authors or coders, who contribute meta-analysis data to the MetaLab database or, who make substantial contributions to the site, for example proposing and implementing a shiny app providing a new analysis or functionality in coordination with the MetaLab team. Deadline is 2020-10-15 (15 October). 
 You can find more information here: https://bit.ly/MetaLabChallenge2020
 
 
-## Contribution Challenge 2018
+## Contribution Challenge 2018 Winners
 
 The MetaLab challenge calling for meta-analyses on cognitive development, with support from Berkeley Initiative for Transparency in the Social Sciences (BITSS), has closed. We received data for 7 meta-analyses, which will be added to MetaLab in the coming months.
 
