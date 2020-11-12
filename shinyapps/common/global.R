@@ -21,9 +21,11 @@ get_metalab_data_shiny <- function(directory) {
   ret_df
 }
 
-fields <- get_metalab_field_info()
+fields <-
+  get_metalab_field_info("https://raw.githubusercontent.com/langcog/metalab/main/metadata/spec.yaml")
 
-fields_derived <- get_metalab_derived_field_info()
+fields_derived <-
+  get_metalab_derived_field_info("https://raw.githubusercontent.com/langcog/metalab/main/metadata/spec_derived.yaml")
 
 metalab_data <- get_metalab_data_shiny(here("shinyapps", "site_data", "csv"))
 dataset_yaml <- get_metalab_dataset_info("https://raw.githubusercontent.com/langcog/metalab/main/metadata/datasets.yaml") 
