@@ -4,10 +4,11 @@ library(here)
 library(metalabr)
 library(readr) # <- placed so that renv captures as dependency
 
-domains <- get_metalab_domain_info()
-reports <- get_metalab_report_info()
+domains <- get_metalab_domain_info(here("metadata", "domains.yaml"))
+reports <- get_metalab_report_info(here("metadata", "reports.yaml"))
 dataset_yaml <- get_metalab_dataset_info(here("metadata", "datasets.yaml"))
-metalab_data <- get_metalab_data(dataset_yaml)
+field_info <- get_metalab_field_info(here("metadata", "spec.yaml"))
+metalab_data <- get_metalab_data(dataset_yaml, field_info = field_info)
 dataset_info <- add_metalab_summary_info(dataset_yaml, metalab_data)
 
 persist_metalab_data <- function(x, dataset_info) {
