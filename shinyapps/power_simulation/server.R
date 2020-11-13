@@ -69,7 +69,7 @@ shinyServer(function(input, output, session) {
         n <- length(levels(f_exp_phase))
 
         exposure_pred <- rep(0, n)
-        exposure_pred[seq(1:n)[levels(fep) == input$pwr_exposure_phase]] <- 1
+        exposure_pred[seq(1:n)[levels(f_exp_phase) == input$pwr_exposure_phase]] <- 1
 
         # remove intercept
         exposure_pred <- exposure_pred[-1]
