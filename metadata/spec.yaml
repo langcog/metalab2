@@ -130,6 +130,15 @@
       - observational:   
           fullname:     observational
           description:  observational
+      - imitation:   
+          fullname:     imitation
+          description:  children are asked to imitate something they have been shown how to do 
+      - recall:   
+          fullname:     recall
+          description:  children are asked to recall information they were taught
+      - other:   
+          fullname:     other
+          description:  e.g. problem-solving, Sally Anne false belief, card sorting
   required:     yes
 
 - field:        dependent_measure
@@ -161,6 +170,9 @@
     - facial_expression:
     - vocabulary_size:        in number of words
     - looking_ratio:
+    - actions_produced:       in number of actions counted
+    - vb_items_correct:       in number of verbal items correct
+    - num_children:           in number of children who succeeded in a dichotomous outcome
   required:     yes
 
 - field:        participant_design
