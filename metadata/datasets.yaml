@@ -648,3 +648,53 @@
     moderators: [task,rhythm_class,mean_age,speech_manip,method,percentV,deltaC,deltaV,VarcoV,nPVI.V,rPVI.C,infant_type]
     subset: []
     comment: ""
+- 
+    name: 'Video deficit'
+    domain: cognitive_development
+    short_name: videodef
+    key: 1TIa9N-bN-KWFwXnqW0-plTkjuTwSYcryoORrfjxw_80
+    filename: VideoDeficit
+    citation: 'Strouse & Samson (2020)'
+    internal_citation: '(Strouse & Samson, 2020)'
+    link: 'https://doi.org/10.1111/cdev.13429'
+    full_citation: 'Strouse, G. A., & Samson, J. E. (in press). Learning from video: A meta-analysis of the video deficit in children ages 0 to 6 years. Child Development. https://doi.org/10.1111/cdev.13429.'
+    doi: "10.1111/cdev.13429"
+    systematic: yes
+    search_strategy: '"Our comprehensive, systematic search strategy included keyword searching, evaluation of references included in eligible articles and review articles, searching of conference proceedings, personal contact with authors working in the field, and hand searching of any journals that included four or more eligible studies. Search terms included the exact phrase, “video deficit,” or combinations of: (video, television, dvd, tv, program*, educational media, baby media) AND (children, preschoolers, toddlers, infants, babies) AND (learn*, understand*). To provide coverage of all four major disciplines relevant to this area of research and its relevant grey literature, we first searched PsycInfo, Communication Abstracts, Communication and Mass Media Complete, ERIC, Medline, and Google Scholar. We then searched the reference lists of review articles and eligible articles identified through these searches. Next we searched conference proceedings of the Society for Research in Child Development and the International Conference on Infant Studies (note that Communication and Mass Media Complete, ERIC, and Google Scholar also index conference proceedings, which were included in the initial search). Finally, we contacted authors and searched journals that occurred more than four times in our list of eligible reports. "'
+    reliability: yes
+    source: 'coded by authors'
+    last_update: '2020-11-18'
+    link_fields: 'https://doi.org/10.1111/cdev.13429'
+    short_desc: 'Learning from video versus face to face presentation of similar content.'
+    description: 'Learning from video versus face to face presentation of similar content, in children aged 0 to 6 years.'
+    curator: 'Gabrielle Strouse'
+    src: media/datasets/videodeficit.jpg
+    longitudinal: no
+    moderators: [age, learning_domain, live_video]
+    subset: []
+    comment: ''
+-
+    name: 'Syntactic Bootstrapping'
+    domain: early_language
+    short_name: synboot
+    key: 1n3PJmBDxebg0HbUKN3nFN98Zt86HTtHKECsMn2X7oKY
+    filename: SyntacticBootstrapping
+    citation: 'Cao & Lewis (in prep.)'
+    internal_citation: '(Cao & Lewis, in prep.)'
+    link: 
+    full_citation: 
+    doi: ""
+    systematic: yes
+    search_strategy: 'We conducted our literature search following the  Preferred Reporting Items for Systematic Reviews and Meta-Analyses checklist (PRISMA; Moher et al., 2009). We identified relevant papers by conducting a keyword search in Google Scholar with the phrase "Syntactic Bootstrapping" and a forward search on papers that cited the seminal paper (Naigles, 1990). We screened the first 60 pages of the keyword search results and the first 10 pages of the forward search results. The screening processes ended because we could no longer identify relevant, non-duplicate papers from consecutive pages. Additional papers were identified by consulting the references section of the most recent literature review (Fisher, Jin, & Scott, 2020) and the experts in the field. In our final sample, we included published journal articles, conference proceedings, doctoral dissertations, and unpublished manuscripts.'
+    reliability: ""
+    source: 'coded by authors'
+    last_update: '2020-11-18'
+    link_fields: 
+    short_desc: 'Whether infants can correctly identify the references of the novel verbs embedded in a syntactically informative context.'
+    description: 'Whether infants can correctly identify the references of the novel verbs embedded in a syntactically informative context.'
+    curator: 'Anjie Cao'
+    src: media/datasets/synboot.png
+    longitudinal: no
+    moderators: [mean_age, median_production_vocab, mean_production_vocab,sentence_structure,agent_argument_type,	patient_argument_type,	stimuli_modality,	stimuli_actor,	transitive_event,	intransitive_event,	presentation_type,	character_identification,	practice_phase,	test_mass_or_distributed,	n_train_test_pair,	n_test_trial_per_pair,	n_repetitions_sentence,	n_repetitions_video]
+    subset: []
+    comment: ''
