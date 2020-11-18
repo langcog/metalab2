@@ -47,7 +47,7 @@ ui <- shinyUI(
           tabPanel("Dataset Information",
                    h3("Information in",
                       a("datasets.yaml",
-                        href = "https://github.com/langcog/metalab2/blob/master/metadata/datasets.yaml"),
+                        href = "https://github.com/langcog/metalab/blob/main/metadata/datasets.yaml"),
                       "file"),
                    dataTableOutput("dataset_spec")
                    ),
