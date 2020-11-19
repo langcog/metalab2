@@ -173,6 +173,7 @@
     - actions_produced:       in number of actions counted
     - vb_items_correct:       in number of verbal items correct
     - num_children:           in number of children who succeeded in a dichotomous outcome
+    - other:                  when method is 'other' and other dependent_measure levels do not apply
   required:     yes
 
 - field:        participant_design

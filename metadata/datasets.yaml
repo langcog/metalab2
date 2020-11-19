@@ -677,19 +677,19 @@
     name: 'Syntactic Bootstrapping'
     domain: early_language
     short_name: synboot
-    key: 1n3PJmBDxebg0HbUKN3nFN98Zt86HTtHKECsMn2X7oKY
+    key: 1NQka41XhYMIrCk427mEWiqgNjQVKReKUo4d9e-s1rKs
     filename: SyntacticBootstrapping
     citation: 'Cao & Lewis (in prep.)'
     internal_citation: '(Cao & Lewis, in prep.)'
-    link: 
-    full_citation: 
+    link: ""
+    full_citation: ""
     doi: ""
     systematic: yes
     search_strategy: 'We conducted our literature search following the  Preferred Reporting Items for Systematic Reviews and Meta-Analyses checklist (PRISMA; Moher et al., 2009). We identified relevant papers by conducting a keyword search in Google Scholar with the phrase "Syntactic Bootstrapping" and a forward search on papers that cited the seminal paper (Naigles, 1990). We screened the first 60 pages of the keyword search results and the first 10 pages of the forward search results. The screening processes ended because we could no longer identify relevant, non-duplicate papers from consecutive pages. Additional papers were identified by consulting the references section of the most recent literature review (Fisher, Jin, & Scott, 2020) and the experts in the field. In our final sample, we included published journal articles, conference proceedings, doctoral dissertations, and unpublished manuscripts.'
     reliability: ""
     source: 'coded by authors'
     last_update: '2020-11-18'
-    link_fields: 
+    link_fields: ""
     short_desc: 'Whether infants can correctly identify the references of the novel verbs embedded in a syntactically informative context.'
     description: 'Whether infants can correctly identify the references of the novel verbs embedded in a syntactically informative context.'
     curator: 'Anjie Cao'
