@@ -289,25 +289,6 @@
       "Repository": "CRAN",
       "Hash": "ae1b1e15cc6ccb2bc61c0ac33e86d35f"
     },
-    "fs": {
-      "Package": "fs",
-      "Version": "1.5.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "44594a07a42e5f91fac9f93fda6d0109"
-    },
-    "gargle": {
-      "Package": "gargle",
-      "Version": "0.5.0.9000",
-      "Source": "GitHub",
-      "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteRepo": "gargle",
-      "RemoteUsername": "r-lib",
-      "RemoteRef": "retry",
-      "RemoteSha": "e7834c1a517888525075b21a305773152d9f5496",
-      "Hash": "b643c46abd3ba84336fde7171c5ff663"
-    },
     "generics": {
       "Package": "generics",
       "Version": "0.0.2",
@@ -328,13 +309,6 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "6efd734b14c6471cfe443345f3e35e29"
-    },
-    "googledrive": {
-      "Package": "googledrive",
-      "Version": "1.0.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "79ba5d18133290a69b7c135dc3dfef1a"
     },
     "gridExtra": {
       "Package": "gridExtra",
@@ -532,8 +506,8 @@
       "RemoteRepo": "metalabr",
       "RemoteUsername": "langcog",
       "RemoteRef": "HEAD",
-      "RemoteSha": "4c985c7bfe1069676aaaf074ed6e91ef216bb108",
-      "Hash": "80905566dcf7f7050de792b905b13464"
+      "RemoteSha": "5ce27b3ebf53f620bc6f7b4094a1d9b7630810b2",
+      "Hash": "57b817e7f397dc2f68bd30e2b1ce9ebd"
     },
     "mgcv": {
       "Package": "mgcv",
@@ -674,6 +648,13 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "97def703420c8ab10d8f0e6c72101e02"
+    },
+    "pwr": {
+      "Package": "pwr",
+      "Version": "1.3-0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "adfa41db3678b41bf9235c514c51799a"
     },
     "quadprog": {
       "Package": "quadprog",
@@ -849,13 +830,6 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "4a5081acfb7b81a572e4384a7aaf2af1"
-    },
-    "uuid": {
-      "Package": "uuid",
-      "Version": "0.1-4",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "e4169eb989a5d03ccb6b628cad1b1b50"
     },
     "vctrs": {
       "Package": "vctrs",
