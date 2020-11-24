@@ -1,3 +1,9 @@
+# Important Update
+
+As of October 2020, MetaLab development has moved to a new repository: https://github.com/langcog/metalab
+
+The new repository contains the history of this (metalab2) repository. 
+
 # MetaLab
 
 MetaLab is a suite of interactive tools for community-augmented
