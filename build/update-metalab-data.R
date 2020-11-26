@@ -30,4 +30,5 @@ lapply(
 
 ## save all metalab data locally in Rdata format
 save(metalab_data, dataset_info, domains, reports,
-     file = here("shinyapps", "site_data", "Rdata", paste0("metalab", ".Rdata")))
+     file = here("shinyapps", "site_data", "Rdata", paste0("metalab", ".Rdata")),
+     version = 2)

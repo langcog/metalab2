@@ -9,15 +9,11 @@ applications.
 - [R](https://cloud.r-project.org/) >= 4.02
 - [Hugo Extended](https://gohugo.io/getting-started/installing/) >= v0.74.3
 
-Install Markdown package in R:
-```
-install.packages("markdown")
-```
-
 One easy way to install Hugo Extended is to use the blogdown
 package.
 
 ```
+install.packages("markdown")
 install.packages("blogdown") #only required if you do not already have it
 blogdown::install_hugo()
 ```
