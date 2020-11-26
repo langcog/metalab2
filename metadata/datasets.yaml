@@ -643,7 +643,7 @@
     short_desc: 'Discrimination of, or preference between, two language varieties, with results from various methods'
     description: 'Discrimination of, or preference between, two language varieties, with results from various behavioral and neurophysiological methods, in infants 0 - 12 months of age.'
     curator: 'Loretta Gasparini'
-    src: media/datasets/langdiscrim.png
+    src: media/datasets/langdiscrim.PNG
     longitudinal: no
     moderators: [task,rhythm_class,mean_age,speech_manip,method,percentV,deltaC,deltaV,VarcoV,nPVI.V,rPVI.C,infant_type]
     subset: []
@@ -718,7 +718,7 @@
     short_desc: 'Infants’ recognition of familiarized content from running natural speech using brain measures'
     description: ' Infants’ recognition of familiarized content from running natural speech using brain measures''
     curator: 'Fleur Vissers'
-    src: images/datasets/neuro_segmentation.png
+    src: images/datasets/segmentation.png
     longitudinal: no
     moderators: [age, task_difficulty]
     subset: []
