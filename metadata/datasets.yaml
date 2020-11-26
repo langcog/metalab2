@@ -643,7 +643,7 @@
     short_desc: 'Discrimination of, or preference between, two language varieties, with results from various methods'
     description: 'Discrimination of, or preference between, two language varieties, with results from various behavioral and neurophysiological methods, in infants 0 - 12 months of age.'
     curator: 'Loretta Gasparini'
-    src: media/datasets/langdiscrim.png
+    src: media/datasets/langdiscrim.PNG
     longitudinal: no
     moderators: [task,rhythm_class,mean_age,speech_manip,method,percentV,deltaC,deltaV,VarcoV,nPVI.V,rPVI.C,infant_type]
     subset: []
@@ -696,5 +696,30 @@
     src: media/datasets/synboot.png
     longitudinal: no
     moderators: [mean_age, median_production_vocab, mean_production_vocab,sentence_structure,agent_argument_type,	patient_argument_type,	stimuli_modality,	stimuli_actor,	transitive_event,	intransitive_event,	presentation_type,	character_identification,	practice_phase,	test_mass_or_distributed,	n_train_test_pair,	n_test_trial_per_pair,	n_repetitions_sentence,	n_repetitions_video]
+    subset: []
+    comment: ''
+-
+    name: 'Infants’ Word Segmentation tested with Brain Measures'
+    domain: early_language
+    short_name: wsnm
+    key: 1QeCWMJxASUyeuWQ1dRfMPuykDWfx1T2z83zP2NnMNL0
+    filename:  NaturalSpeechSegmentation_Neuro
+    citation: 'Vissers & Bergmann (unpublished)'
+    internal_citation: '(Vissers & Bergmann, unpublished)'
+    link: ''
+    full_citation: ''
+    doi: ""
+    systematic: yes
+    search_strategy: '" A search on the search term ‘word segmentation infants ERP’ in Google Scholar carried out on 1 October 2018 resulted in 1030 results. Of the first 110 results titles and abstract were screened. An additional search on 15 October 2018 on the search term ‘word segmentation infants NIRS’ resulted in 117 items. In addition, experts were asked for additional articles, resulting in 13 items. All of these items (240 items) were screened on their titles and abstracts. Twenty-one of these items were included and full-text inspection was done using the following inclusion criteria; (1) the participants were infants and were normally developing; (2) The method that was used was EEG or NIRS (Near-InfraRed Spectroscopy); (3) the stimuli material was continuous natural speech spoken in the infants’ native language. Studies reporting on rule learning, word-object mapping, or artificial grammar were excluded. Inspection of full-text resulted in the inclusion of 12 items."'
+    reliability: no
+    source: 'coded by authors'
+    last_update: '2018-11-26'
+    link_fields: ''
+    short_desc: 'Infants’ recognition of familiarized content from running natural speech using brain measures'
+    description: ' Infants’ recognition of familiarized content from running natural speech using brain measures''
+    curator: 'Fleur Vissers'
+    src: images/datasets/segmentation.png
+    longitudinal: no
+    moderators: [age, task_difficulty]
     subset: []
     comment: ''
