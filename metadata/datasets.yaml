@@ -717,7 +717,7 @@
     link_fields: ''
     short_desc: 'Infants’ recognition of familiarized content from running natural speech using brain measures'
     description: ' Infants’ recognition of familiarized content from running natural speech using brain measures''
-    curator: 'Fleur Vissers'
+    curator: 'Christina Bergmann'
     src: images/datasets/segmentation.png
     longitudinal: no
     moderators: [age, task_difficulty]
