@@ -63,7 +63,7 @@
       {{ $page.Params.right_hand_text.label | markdownify | emojify | safeHTML }}
     </div>
     <div class="hero-media">
-      <img src="{{ printf "%s/%s" $media_dir "viz.png" | relURL }}" alt="">
+      <a href= " {{ "app/visualization" | relURL }}"><img src="{{ printf "%s/%s" $media_dir "viz.png" | relURL }}" alt=""></a>
     </div>
         </div>
 </div>
