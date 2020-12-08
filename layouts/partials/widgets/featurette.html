@@ -15,7 +15,7 @@
   </div>
   {{ end }}
 
-  {{ range $page.Params.feature }} <!-- loop -->
+  {{ range $page.Params.list }} <!-- loop -->
   <div class="col-12 col-sm-5 mx-auto card card-body bg-white">
     <div class="featurette-image d-flex justify-content-center">
       {{ $media_dir := $.Scratch.Get "media_dir" }}
