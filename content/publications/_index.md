@@ -12,12 +12,9 @@ MetaLab encourages researchers to use data available on its
 website. For example, you can cite meta-analytic results, or download
 datasets and and conduct custom analyses. Before using MetaLab data in
 your publication, we ask that you please read our [citation
-policy](/documentation#citation_policy).
+policy](/documentation/using_ma_data/citation_policy).
 
 ## List of publications that use MetaLab data
-
-If you have a publication to add to this list, please let us know at
-<placeholder@stanford.edu>
 
 **Bergmann, C. Tsuji, S., & Cristia, A. (2017).** Top-down versus bottom-up theories of phonological acquisition: A big data approach. In: *Proceedings of Interspeech 2017*, pp. 2013–2016. DOI: 10.21437/Interspeech.2017-1443 [[Paper]](http://www.isca-speech.org/archive/Interspeech_2017/abstracts/1443.html)
 
