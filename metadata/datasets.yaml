@@ -199,7 +199,7 @@
     subset: [replication]
     comment: ""
 -
-    name: 'Word segmentation'
+    name: 'Word segmentation (behavioral)'
     domain: early_language
     short_name: inworddb
     key: 1djn_-iE4uOs6yRmvBgzYAhB5guzfo3-3wnC7LJVLCe8
@@ -450,7 +450,7 @@
     subset: [Speech, Nonspeech]
     comment: ""
 -
-    name: 'Switch Task'
+    name: 'Switch task'
     domain: early_language
     short_name: switchTask
     key: 1qkGFqZLwuuO5ELKiFg4E5EGX5O6xTfJC_hxyZXJr2zI
@@ -675,7 +675,7 @@
     subset: []
     comment: ''
 -
-    name: 'Syntactic Bootstrapping'
+    name: 'Syntactic bootstrapping'
     domain: early_language
     short_name: synboot
     key: 1NQka41XhYMIrCk427mEWiqgNjQVKReKUo4d9e-s1rKs
@@ -700,7 +700,7 @@
     subset: []
     comment: ''
 -
-    name: 'Infants’ Word Segmentation tested with Brain Measures'
+    name: 'Word segmentation (neuro)'
     domain: early_language
     short_name: wsnm
     key: 1QeCWMJxASUyeuWQ1dRfMPuykDWfx1T2z83zP2NnMNL0
