@@ -470,8 +470,10 @@ shinyServer(function(input, output, session) {
       xlabel <- "\nResidual Effect Size"
       ylabel <- "Residual Standard Error\n"
     }
-    d[[mod_group()]] <- mod_data()[[mod_group()]]
 
+
+    d[[mod_group()]] <- mod_data()[[mod_group()]]
+    str(d)
     lower_lim <- max(d$se) + .05 * max(d$se)
     funnel95 <- data.frame(x = c(center - lower_lim * CRIT_95, center,
                                  center + lower_lim * CRIT_95),
@@ -498,7 +500,7 @@ shinyServer(function(input, output, session) {
                    fill = "white") +
       geom_polygon(aes(x = x, y = y), data = funnel99, alpha = .5,
                    fill = "white") +
-      geom_point(aes_string(x = "es", y = "-se", colour = "all_mod")) +
+      geom_point(aes_string(x = "es", y = "-se", colour = mod_group())) +
       geom_vline(aes(), xintercept = center, linetype = "dotted", color = "black") +
       xlab(xlabel) +
       ylab(ylabel) +

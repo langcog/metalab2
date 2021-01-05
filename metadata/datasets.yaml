@@ -31,7 +31,7 @@
     filename: label_advantage
     citation: 'Lewis & Long (unpublished)'
     internal_citation: '(Lewis & Long, unpublished)'
-    link: ""
+    link: "https://docs.google.com/spreadsheets/d/1JPvqBQVK7vPAMNPu7UQFW95xJoz8ga7-_t4k7VmxzR4/edit#gid=0"
     full_citation: ""
     doi: ""
     systematic: no
@@ -56,7 +56,7 @@
     filename: gaze_following
     citation: 'Frank, Lewis, & MacDonald (2016)'
     internal_citation: '(Frank, Lewis, & MacDonald, 2016)'
-    link: 'http://langcog.stanford.edu/papers_new/frank-2016-underrev.pdf'
+    link: 'http://langcog.stanford.edu/papers_new/frank-2016-cogsci.pdf'
     full_citation: 'Frank, M. C., Lewis, M., & MacDonald, K. (2016). A performance model for early word-learning. In Proceedings of the 38th Annual Conference of the Cognitive Science Society.'
     doi: ""
     systematic: no
@@ -81,7 +81,7 @@
     filename: phonemic_discrimination_native
     citation: 'Tsuji & Cristia (2014)'
     internal_citation: '(Tsuji & Cristia, 2014)'
-    link: 'https://sites.google.com/site/inphondb/'
+    link: 'https://pure.mpg.de/rest/items/item_1836135/component/file_1945376/content'
     full_citation: 'Tsuji, S. & Cristia, A. (2014). Perceptual attunement in vowels: A meta-analysis. Developmental Psychobiology, 56(2), 179-191.'
     doi: 10.1002/dev.21179
     systematic: yes
@@ -106,7 +106,7 @@
     filename: phonemic_discrimination_nonnative
     citation: 'Tsuji & Cristia (2014)'
     internal_citation: '(Tsuji & Cristia, 2014)'
-    link: 'https://sites.google.com/site/inphondb/'
+    link: 'https://pure.mpg.de/rest/items/item_1836135/component/file_1945376/content'
     full_citation: 'Tsuji, S. & Cristia, A. (2014). Perceptual attunement in vowels: A meta-analysis. Developmental Psychobiology, 56(2), 179-191.'
     doi: 10.1002/dev.21179
     systematic: yes
@@ -131,9 +131,9 @@
     filename: AGL_phonotactics
     citation: 'Cristia (2018)'
     internal_citation: '(Cristia, 2018)'
-    link: ""
+    link: "https://osf.io/jffa5/"
     full_citation: 'Cristia, A., (2018). Can infants learn phonology in the lab? A meta-analytic answer. Cognition, 170, 312-327.'
-    doi: ""
+    doi: 10.31219/osf.io/jffa5
     systematic: yes
     search_strategy: '"Studies were considered based on a forward search from a seminal paper on both pubmed and google search, a list of references produced by the author, direct contact of labs having published on the topic, and announcements to several mailing lists."'
     reliability: no
@@ -156,9 +156,9 @@
     filename: AGL_soundsDL
     citation: 'Cristia (2018)'
     internal_citation: '(Cristia, 2018)'
-    link: ""
+    link: "https://osf.io/jffa5/"
     full_citation: 'Cristia, A., (2018). Can infants learn phonology in the lab? A meta-analytic answer. Cognition, 170, 312-327.'
-    doi: ""
+    doi: 10.31219/osf.io/jffa5
     systematic: yes
     search_strategy: '"Studies were considered based on a forward search from a seminal paper on both pubmed and google search, a list of references produced by the author, manual inspection of several editions of two leading conferences (ISIS and IASCL 2004-2012), direct contact of labs having published on the topic, and announcements to several mailing lists."'
     reliability: no
@@ -181,8 +181,8 @@
     filename: statSeg
     citation: 'Black & Bergmann (2017)'
     internal_citation: '(Black & Bergmann, 2017)'
-    link: 'https://github.com/christinabergmann/StatLearnDB'
-    full_citation: "Black, A. & Bergmann, C. (2017). Quantifying infants' statistical word segmentation: A meta-analysis. In: Proceedings of the 39th Annual Conference of the Cognitive Science Society, pp. 124-129, Austin, TX: Cognitive Science Society"
+    link: 'https://pure.mpg.de/rest/items/item_2475527_3/component/file_2475525/content'
+    full_citation: "Black, A. & Bergmann, C. (2017). Quantifying infants' statistical word segmentation: A meta-analysis. In: Proceedings of the 39th Annual Conference of the Cognitive Science Society, pp. 124-129, Austin, TX: Cognitive Science Society."
     doi: ""
     systematic: yes
     search_strategy: '"Expert list and strategic scholar search papers citing Saffran, Aslin, & Newport (1996) with infant/infancy, but not visual in the title. Second search with month/s and not infant/infancy or visual"'
@@ -199,15 +199,15 @@
     subset: [replication]
     comment: ""
 -
-    name: 'Word segmentation'
+    name: 'Word segmentation (behavioral)'
     domain: early_language
     short_name: inworddb
     key: 1djn_-iE4uOs6yRmvBgzYAhB5guzfo3-3wnC7LJVLCe8
     filename: word_segmentation
     citation: 'Bergmann & Cristia (2016)'
     internal_citation: '(Bergmann & Cristia, 2016)'
-    link: 'https://sites.google.com/site/inworddb/'
-    full_citation: 'Bergmann, C., & Cristia, A. (2016). Development of infants’ segmentation of words from native speech: A meta-analytic approach. Developmental Science, 19, 901–917'
+    link: 'https://onlinelibrary.wiley.com/doi/abs/10.1111/desc.12341'
+    full_citation: 'Bergmann, C., & Cristia, A. (2016). Development of infants’ segmentation of words from native speech: A meta-analytic approach. Developmental Science, 19, 901–917.'
     doi: 10.1111/desc.12341
     systematic: yes
     search_strategy: '"We first generated a list of potentially relevant items to be included in our meta-analysis using the Google Scholar search engine, with the broad search term ‘infant word segmentation’ (following Gehanno, Rollin & Darmoni, 2013). This search was carried out on 27 November 2012 and we inspected the first 1000 results. Fifteen additional items were included based on recommendations and by scanning references of included papers. After removing duplicates, we screened the title and abstract of each remaining item and identified 231 items for full-text inspection using the following inclusion criteria: (1) original data were reported; (2) the stimulus material was continuous natural speech spoken in the participants’ native language; (3) the dependent measure was looking time (LT) at a neutral visual target (i.e. not a possible referent of one set of stimuli); (4) infants were normally developing."'
@@ -231,8 +231,8 @@
     filename: function_word_segmentation
     citation: 'Bergmann & Cristia (2016)'
     internal_citation: '(Bergmann & Cristia, 2016)'
-    link: 'https://sites.google.com/site/inworddb/'
-    full_citation: 'Bergmann, C., & Cristia, A. (2016). Development of infants’ segmentation of words from native speech: A meta-analytic approach. Developmental Science, 19, 901–917'
+    link: 'https://onlinelibrary.wiley.com/doi/abs/10.1111/desc.12341'
+    full_citation: 'Bergmann, C., & Cristia, A. (2016). Development of infants’ segmentation of words from native speech: A meta-analytic approach. Developmental Science, 19, 901–917.'
     doi: 10.1111/desc.12341
     systematic: yes
     search_strategy: '"We first generated a list of potentially relevant items to be included in our meta-analysis using the Google Scholar search engine, with the broad search term ‘infant word segmentation’ (following Gehanno, Rollin & Darmoni, 2013). This search was carried out on 27 November 2012 and we inspected the first 1000 results. Fifteen additional items were included based on recommendations and by scanning references of included papers. After removing duplicates, we screened the title and abstract of each remaining item and identified 231 items for full-text inspection using the following inclusion criteria: (1) original data were reported; (2) the stimulus material was continuous natural speech spoken in the participants’ native language; (3) the dependent measure was looking time (LT) at a neutral visual target (i.e. not a possible referent of one set of stimuli); (4) infants were normally developing."'
@@ -279,11 +279,11 @@
     short_name: mutex
     key: 14WdgHLcizDz7vjpxPkNlBkYi8s6yO3tnSTs69SSG7yY
     filename: mutual_exclusivity
-    citation: '(Lewis, Cristiano, Lake, Kwan, & Frank, under review)'
-    internal_citation: '(Lewis, Cristiano, Lake, Kwan, & Frank, under review)'
-    link: 'https://doi.org/10.31234/osf.io/wsx3a'
-    full_citation: Lewis, M., Cristiano, V., Lake, B. M., Kwan, T., & Frank, M. C. (under review). The role of developmental change and linguistic experience in the mutual exclusivity effect.
-    doi: ""
+    citation: '(Lewis, Cristiano, Lake, Kwan, & Frank, 2020)'
+    internal_citation: '(Lewis, Cristiano, Lake, Kwan, & Frank, 2020)'
+    link: 'https://www.sciencedirect.com/science/article/pii/S001002772030010X'
+    full_citation: "Lewis, M., Cristiano, V., Lake, B. M., Kwan, T., Frank, M. C. (2020). The role of developmental change and linguistic experience in the mutual exclusivity effect. Cognition, 198, 104191."
+    doi: 10.1016/j.cognition.2020.104191
     systematic: yes
     search_strategy: '"We conducted a forward search based on citations of Markman and Wachtel (1988) in Google Scholar (September 2013). We also searched from papers using the keyword combination ``mutual exclusivity'''' in both PsychInfo and Google Scholar. We identified additional papers that were cited from this initial list. From these, we identified a relevant subset using the following criteria: (a) monolingual child participants, (b) one familiar object present at test, (c) referents were objects (not facts or object parts), (d)  no incongruent cues (e.g. eye gaze at familiar object), and (e) peer-reviewed. We also included a series of studies reported in Frank et al. (2016)."'
     reliability: no
@@ -356,9 +356,9 @@
     filename: symbolism
     citation: 'Lammertink et al. (2016)'
     internal_citation: '(Lammertink et al., 2016)'
-    link: "https://pure.uva.nl/ws/files/22575657/Fort_et_al_2018_Developmental_Science.pdf"
-    full_citation: 'Fort, M., Lammertink, I., Peperkamp, S., Guevara-Rukoz, A., Fikkert, P., & Tsuji, S. (2018). SymBouki: a meta-analysis on the emergence of sound symbolism in early language acquisition. Developmental Science, Early View. doi: 10.1111/desc.12659.'
-    doi: ""
+    link: "https://doi.org/10.1111/desc.12659"
+    full_citation: 'Fort, M., Lammertink, I., Peperkamp, S., Guevara-Rukoz, A., Fikkert, P., & Tsuji, S. (2018). SymBouki: a meta-analysis on the emergence of sound symbolism in early language acquisition. Developmental Science, Early View.'
+    doi: 10.1111/desc.12659
     systematic: yes
     search_strategy: '"We followed the PRISMA statement (Moher, Liberati, Tetzlaff, Altmann, & The PRISMA Group, 2009) for selecting and reporting on the studies to be included in our meta-analysis. We decided to include articles if they were assessing the on-line processing of sound-symbolically matching or mismatching sound-shape correspondences related to the bouba-kiki effect (thus, testing both ‘round’ and ‘spiky’ correspondences) in children up to and inclusive of the age of 3 years.  ‘Matching’ responses refer to children’s responses to congruent sound-shape associations (round word+round object; spiky word+spiky object) and ‘mismatching’  responses refer to children’s responses to incongruent sound-shape associations (round word+spiky shape; spiky word+round shape), respectively. Since we were already aware of 10 published articles, conference presentations or conference proceedings papers that fit our inclusion criteria,and since we considered our strict inclusion this criteria to lead to a rather small selection of articles, we chose a seed strategy rather than a broad literature search. We began by assembling 4 key articles that fit the inclusion criteria (Asano et al., 2015; Maurer, Pathman & Mondloch, 2006; Ozturk, Krehm & Vouloumanos, 2012; Spector & Maurer, 2013) as well as two recent review papers on sound symbolism including infancy (Imai & Kita, 2014; Lockwood & Dingemanse, 2015). For all of these articles, we screened all potentially relevant references cited in these articles as well as references citing these articles and ‘related articles’ on their title and abstracts on scholar.google.com. Additionally, we screened titles and abstracts of all articles that cited one of the 4 key articles mentioned above (Asano et al. 2015: 16 citations; Maurer et al. 2006: 241 citations; Ozturk et al. 2012: 54 citations and Spector and Maurer, 2013: 9 citations).  This search did not lead to additional eligible articles. In addition, we were aware of 9 conference presentations or conference proceedings papers that fit our inclusion criteria and were not redundant with one of our seed articles, including three by the two first authors of the present article."'
     reliability: ""
@@ -382,7 +382,7 @@
     citation: ""
     internal_citation: ""
     link: ""
-    full_citation: ""
+    full_citation: "Lewis (unpublished). Quantifying generalization biases in development through meta-analysis."
     doi: ""
     reliability: ""
     systematic: no
@@ -394,7 +394,8 @@
     description: 'In a triad-task, bias to generalize to taxonomic as opposed to thematic alternative.'
     curator: 'Molly Lewis'
     src: media/datasets/catBias.png
-    longitudinal: no
+    
+    itudinal: no
     moderators: [label_present, instruction_code, object_stimulus, taxonomic_type]
     subset: []
     comment: ""
@@ -404,11 +405,11 @@
     short_name: famWord
     key: 1ZgNI0hQVrgN9AwtDwn1dpXza-l5XMjBjdd7pq7XV0_s
     filename: famWord
-    citation: "Carbajal (2018)"
-    internal_citation: ""
-    link: ""
-    full_citation: "Carbajal, M.J. (2018). Doctoral dissertation"
-    doi: ""
+    citation: "Carbajal et al. (2020)"
+    internal_citation: "(Carbajal et al., 2020)"
+    link: "https://psyarxiv.com/63wvm/"
+    full_citation: "Carbajal, M. J., Peperkamp, S., & Tsuji, S. (2020, June 12). A meta-analysis of infants' word-form recognition."
+    doi: 10.31234/osf.io/63wvm
     reliability: ""
     systematic: yes
     search_strategy: 'Conceptual replications of Hallé & de Boysson-Bardies (1994)'
@@ -430,10 +431,10 @@
     key: 1T6WS8fPTPhS88xjm1gtCdKvJg7Z1rKqdKxz4vYXORWs
     filename: ruleLearning
     citation: "Rabagliati et al. (2018)"
-    internal_citation: ""
-    link: "https://drive.google.com/drive/folders/1dP91H5QlcT3PD9fKCndroMGcXEzP98xI"
-    full_citation: "Rabagliati, H., Ferguson, B., & Lew-Williams, C. (2018). The profile of abstract rule learning in infancy: Meta‐analytic and experimental evidence. Developmental Science."
-    doi: ""
+    internal_citation: "(Rabagliati et al., 2018)"
+    link: "https://onlinelibrary.wiley.com/doi/pdf/10.1111/desc.12704"
+    full_citation: "Rabagliati, H., Ferguson, B., & Lew-Williams, C. (2018). The profile of abstract rule learning in infancy: Meta‐analytic and experimental evidence. Developmental Science. 22, e12704."
+    doi: 10.1111/desc.12704
     reliability: ""
     systematic: yes
     search_strategy: 'Seeded with Marcus et al. (2010) in Google Scholar + manual search'
@@ -449,16 +450,16 @@
     subset: [Speech, Nonspeech]
     comment: ""
 -
-    name: 'Switch Task'
+    name: 'Switch task'
     domain: early_language
     short_name: switchTask
     key: 1qkGFqZLwuuO5ELKiFg4E5EGX5O6xTfJC_hxyZXJr2zI
     filename: switchTask
     citation: "Tsui et al. (2019)"
-    internal_citation: ""
-    link: "https://drive.google.com/drive/folders/15-R_Nvm5sU2rakIH4s4U7ANue_bzm4Qu"
-    full_citation: "Tsui, A. S. M., Byers-Heinlein, K., & Fennell, C. T. (2019, February 7). Associative Word Learning in Infancy: A Meta-Analysis of the Switch Task. Developmental Psychology. Advance online publication."
-    doi: "http://dx.doi.org/10.1037/dev0000699"
+    internal_citation: "Tsui et al., 2019)"
+    link: "https://psycnet.apa.org/record/2019-06351-001"
+    full_citation: "Tsui, A. S. M., Byers-Heinlein, K., & Fennell, C. T. (2019, February 7). Associative Word Learning in Infancy: A Meta-Analysis of the Switch Task. Developmental Psychology. 55(5), 934–950."
+    doi: 10.1037/dev0000699
     reliability: ""
     systematic: yes
     search_strategy: 'Seeded with Stager & Werker et al. (1997) and Werker et al. (1998) in Google Scholar + manual search'
@@ -479,11 +480,11 @@
     short_name: MPs
     key: 1rg3u-b9unYd8f5U2w8yTjrPWOccq09HXeREp_xHf6yo
     filename: Mispron
-    citation: 'Von Holzen & Bergmann (2018)'
-    internal_citation: ""
-    link: "https://drive.google.com/drive/folders/1Z5ruOSPydAXYpqCygmixcXKUgqD0BDfD"
-    full_citation: "Von Holzen, K., & Bergmann, C. (2018). A meta-analysis of infants' mispronunciation sensitivity development. Proceedings of the 40th Annual Conference of the Cognitive Science Society. Austin, TX: Cognitive Science Society, Inc."
-    doi: ""
+    citation: 'Von Holzen & Bergmann (2019)'
+    internal_citation: "(Von Holzen & Bergmann, 2019)"
+    link: "https://psyarxiv.com/dze29/"
+    full_citation: "Von Holzen, K., & Bergmann, C. (2019, February 18). The development of infants’ responses to mispronunciations: A Meta-Analysis. https://doi.org/10.31234/osf.io/dze29"
+    doi: 10.31234/osf.io/dze29
     reliability: ""
     systematic: yes
     search_strategy: 'Seeded with Swingley & Aslin (2000) in Google Scholar'
@@ -506,9 +507,9 @@
     filename: prosocial
     citation: "Margoni & Surian (2018)"
     internal_citation: ""
-    link: ""
+    link: "https://psycnet.apa.org/fulltext/2018-33347-001.pdf"
     full_citation: "Margoni, F., & Surian, L. (2018). Infants’ evaluation of prosocial and antisocial agents: A meta-analysis. Developmental Psychology, 54(8), 1445-1455."
-    doi: ""
+    doi: 10.1037/dev0000538
     reliability: ""
     systematic: yes
     search_strategy: 'PsychINFO + references of relevant papers + calls on mailing lists'
@@ -533,7 +534,7 @@
     internal_citation: ""
     link: "http://psycnet.apa.org/record/2017-24506-001"
     full_citation: "Christodoulou, J., Lac, A., & Moore, D. S. (2017). Babies and math: A meta-analysis of infants’ simple arithmetic competence. Developmental Psychology, 53(8), 1405-1417."
-    doi: "10.1037/dev0000330"
+    doi: 10.1037/dev0000330
     reliability: ""
     systematic: yes
     search_strategy: 'Seeded with Winn (1992)'
@@ -558,7 +559,7 @@
     internal_citation: ""
     link: "https://www.sciencedirect.com/science/article/pii/S027322971730045X"
     full_citation: "Quinn, S., Donnelly, S., & Kidd, E. (2018). The relationship between symbolic play and language acquisition: A meta-analytic review. Developmental review, 49, 121-135."
-    doi: "10.1016/j.dr.2018.05.005"
+    doi: 10.1016/j.dr.2018.05.005
     reliability: ""
     systematic: yes
     search_strategy: 'database search'
@@ -579,11 +580,11 @@
     short_name: SpeechPref
     key: 1Nc7X0zNUAwKyXJro--MbGiXKrM5NlkYR10Y3KJd-N_c
     filename: nat_speech_pref
-    citation: "Issard & Cristia (in prep.)"
+    citation: "Issard, Tsuji, & Cristia (in prep.)"
     internal_citation: ""
-    link: "https://drive.google.com/open?id=1CNz2dV6T3hyfxd2m0GSe1TzERaqT151ELpMPpfcEdcI"
+    link: "https://osf.io/4stz9/"
     full_citation: "Issard, C., & Cristia, A. (2019, April 4). Infants prefer to listen to speech: A meta-analysis. Retrieved from osf.io/4stz9."
-    doi: ""
+    doi: 10.17605/OSF.IO/4STZ9
     reliability: ""
     systematic: yes
     search_strategy: 'database search'
@@ -606,9 +607,9 @@
     filename: Cross-situational_word-learning
     citation: "Dal Ben et al. (2019)"
     internal_citation: ""
-    link: ""
-    full_citation: "Dal Ben, R., Souza,D. & Hay, J. (2019). Cross-situational word-learning."
-    doi: ""
+    link: "https://doi.org/10.17605/OSF.IO/GU9RB"
+    full_citation: "Dal Ben, R., de Hollanda Souza, D., & Hay, J. F. (2019, June 3). Cross-situational word learning: Systematic review and meta-analysis. https://doi.org/10.17605/OSF.IO/GU9RB"
+    doi: 10.17605/OSF.IO/GU9RB
     reliability: ""
     systematic: yes
     search_strategy: 'database search, and seeded with Yu & Smith (2007)'
@@ -633,7 +634,7 @@
     internal_citation: '(Gasparini, Langus, Tsuji, & Boll-Avetisyan, 2020)'
     link: 'https://osf.io/rmn5x/'
     full_citation: 'Gasparini, L., Langus, A., Tsuji, S., & Boll-Avetisyan, N. (2020, September 17). Quantifying the role of rhythm in infants’ language discrimination abilities: A meta-analysis. https://doi.org/10.31219/osf.io/rmn5x'
-    doi: "10.31219/osf.io/rmn5x"
+    doi: 10.31219/osf.io/rmn5x
     systematic: yes
     search_strategy: 'Published studies (n = 25) and an unpublished dataset (n = 1) already known to the investigators were included. A Google Scholar search was conducted on 17th April 2020 using Harzing’s Publish or Perish Windows GUI Edition 7.19 software with the following keyword combination: {"infant" OR "infancy" OR "baby"} & {"language discrimination" OR "dialect discrimination" OR "accent discrimination" OR "rhythm class discrimination"}. This search yielded over 3000 records, the first 500 of which were considered, and three unique studies were retained after abstract and full text screening. To identify infant studies that focussed on durational metrics, another Google Scholar search was conducted on 17th April 2020 with the keyword combination: {"infant" OR "infancy" OR "baby"} & {"deltaC"} & {"rhythm"}. This search yielded 299 results, all of which were considered, but no unique eligible studies were identified. Calls for studies were posted on the following mailing lists on April 16th, 2020: ICIS listserv, cogdevsoc listserv and the CHILDES mailing list, and three eligible studies were identified. The reference lists of all included studies and one review on the topic (Nazzi & Ramus, 2003) were checked, revealing eight unique eligible studies. We requested recommendations for studies from corresponding authors of included studies who could be contacted, and two eligible studies were thus identified.'
     reliability: no
@@ -643,7 +644,7 @@
     short_desc: 'Discrimination of, or preference between, two language varieties, with results from various methods'
     description: 'Discrimination of, or preference between, two language varieties, with results from various behavioral and neurophysiological methods, in infants 0 - 12 months of age.'
     curator: 'Loretta Gasparini'
-    src: media/datasets/langdiscrim.png
+    src: media/datasets/langdiscrim.PNG
     longitudinal: no
     moderators: [task,rhythm_class,mean_age,speech_manip,method,percentV,deltaC,deltaV,VarcoV,nPVI.V,rPVI.C,infant_type]
     subset: []
@@ -657,8 +658,8 @@
     citation: 'Strouse & Samson (2020)'
     internal_citation: '(Strouse & Samson, 2020)'
     link: 'https://doi.org/10.1111/cdev.13429'
-    full_citation: 'Strouse, G. A., & Samson, J. E. (in press). Learning from video: A meta-analysis of the video deficit in children ages 0 to 6 years. Child Development. https://doi.org/10.1111/cdev.13429.'
-    doi: "10.1111/cdev.13429"
+    full_citation: 'Strouse, G. A., & Samson, J. E. (in press). Learning from video: A meta-analysis of the video deficit in children ages 0 to 6 years. Child Development. https://doi.org/10.1111/cdev.13429'
+    doi: 10.1111/cdev.13429
     systematic: yes
     search_strategy: '"Our comprehensive, systematic search strategy included keyword searching, evaluation of references included in eligible articles and review articles, searching of conference proceedings, personal contact with authors working in the field, and hand searching of any journals that included four or more eligible studies. Search terms included the exact phrase, “video deficit,” or combinations of: (video, television, dvd, tv, program*, educational media, baby media) AND (children, preschoolers, toddlers, infants, babies) AND (learn*, understand*). To provide coverage of all four major disciplines relevant to this area of research and its relevant grey literature, we first searched PsycInfo, Communication Abstracts, Communication and Mass Media Complete, ERIC, Medline, and Google Scholar. We then searched the reference lists of review articles and eligible articles identified through these searches. Next we searched conference proceedings of the Society for Research in Child Development and the International Conference on Infant Studies (note that Communication and Mass Media Complete, ERIC, and Google Scholar also index conference proceedings, which were included in the initial search). Finally, we contacted authors and searched journals that occurred more than four times in our list of eligible reports. "'
     reliability: yes
@@ -674,27 +675,52 @@
     subset: []
     comment: ''
 -
-    name: 'Syntactic Bootstrapping'
+    name: 'Syntactic bootstrapping'
     domain: early_language
     short_name: synboot
-    key: 1n3PJmBDxebg0HbUKN3nFN98Zt86HTtHKECsMn2X7oKY
+    key: 1NQka41XhYMIrCk427mEWiqgNjQVKReKUo4d9e-s1rKs
     filename: SyntacticBootstrapping
     citation: 'Cao & Lewis (in prep.)'
     internal_citation: '(Cao & Lewis, in prep.)'
-    link: 
-    full_citation: 
+    link: ""
+    full_citation: ""
     doi: ""
     systematic: yes
     search_strategy: 'We conducted our literature search following the  Preferred Reporting Items for Systematic Reviews and Meta-Analyses checklist (PRISMA; Moher et al., 2009). We identified relevant papers by conducting a keyword search in Google Scholar with the phrase "Syntactic Bootstrapping" and a forward search on papers that cited the seminal paper (Naigles, 1990). We screened the first 60 pages of the keyword search results and the first 10 pages of the forward search results. The screening processes ended because we could no longer identify relevant, non-duplicate papers from consecutive pages. Additional papers were identified by consulting the references section of the most recent literature review (Fisher, Jin, & Scott, 2020) and the experts in the field. In our final sample, we included published journal articles, conference proceedings, doctoral dissertations, and unpublished manuscripts.'
     reliability: ""
     source: 'coded by authors'
     last_update: '2020-11-18'
-    link_fields: 
+    link_fields: ""
     short_desc: 'Whether infants can correctly identify the references of the novel verbs embedded in a syntactically informative context.'
     description: 'Whether infants can correctly identify the references of the novel verbs embedded in a syntactically informative context.'
     curator: 'Anjie Cao'
     src: media/datasets/synboot.png
     longitudinal: no
     moderators: [mean_age, median_production_vocab, mean_production_vocab,sentence_structure,agent_argument_type,	patient_argument_type,	stimuli_modality,	stimuli_actor,	transitive_event,	intransitive_event,	presentation_type,	character_identification,	practice_phase,	test_mass_or_distributed,	n_train_test_pair,	n_test_trial_per_pair,	n_repetitions_sentence,	n_repetitions_video]
+    subset: []
+    comment: ''
+-
+    name: 'Word segmentation (neuro)'
+    domain: early_language
+    short_name: wsnm
+    key: 1QeCWMJxASUyeuWQ1dRfMPuykDWfx1T2z83zP2NnMNL0
+    filename:  NaturalSpeechSegmentation_Neuro
+    citation: 'Vissers & Bergmann (unpublished)'
+    internal_citation: '(Vissers & Bergmann, unpublished)'
+    link: ''
+    full_citation: ''
+    doi: ""
+    systematic: yes
+    search_strategy: '" A search on the search term ‘word segmentation infants ERP’ in Google Scholar carried out on 1 October 2018 resulted in 1030 results. Of the first 110 results titles and abstract were screened. An additional search on 15 October 2018 on the search term ‘word segmentation infants NIRS’ resulted in 117 items. In addition, experts were asked for additional articles, resulting in 13 items. All of these items (240 items) were screened on their titles and abstracts. Twenty-one of these items were included and full-text inspection was done using the following inclusion criteria; (1) the participants were infants and were normally developing; (2) The method that was used was EEG or NIRS (Near-InfraRed Spectroscopy); (3) the stimuli material was continuous natural speech spoken in the infants’ native language. Studies reporting on rule learning, word-object mapping, or artificial grammar were excluded. Inspection of full-text resulted in the inclusion of 12 items."'
+    reliability: no
+    source: 'coded by authors'
+    last_update: '2018-11-26'
+    link_fields: ''
+    short_desc: 'Infants’ recognition of familiarized content from running natural speech using brain measures'
+    description: ' Infants’ recognition of familiarized content from running natural speech using brain measures'
+    curator: 'Fleur Vissers'
+    src: images/datasets/segmentation.png
+    longitudinal: no
+    moderators: [age, task_difficulty]
     subset: []
     comment: ''
