@@ -4,7 +4,11 @@ type: book
 weight: 160
 ---
 
+This page is under revision, access the previous tutorial [here](https://langcog.github.io/metalab2/documentation.html).
+
+<!--
 ### Calculate power
 ### Download data
 ### Run your own regression
 ### Selecting subsets to match your study 
+-->
