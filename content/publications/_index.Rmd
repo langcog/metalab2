@@ -14,12 +14,6 @@ datasets and and conduct custom analyses. Before using MetaLab data in
 your publication, we ask that you please read our [citation
 policy](/documentation/using_ma_data/citation_policy).
 
-
-
-
-
-
-
 ## Metalab meta-analyses
 ```{r include = FALSE}
 library(dplyr)
@@ -30,32 +24,18 @@ library(readr)
 
 metalabr::load_cached_data(here::here('shinyapps', 'site_data', 'Rdata', 'metalab.Rdata')) 
 filtered_dataset <- filter(dataset_info, full_citation != "")  #only print the dataset that have a full citation
-## print((filtered_dataset))
-## format: full_citation [Paper](link to link_fields)
 ```
 
-<!-- 
-`r filtered_dataset$full_citation` and this is the paper [[Paper]](`r filtered_dataset$link`)
+```{r, echo=FALSE, results = "asis"} 
 
-paste(filtered_dataset$full_citation, "and this is the paper") -->
+for(i in 1:nrow(filtered_dataset)) {
+  cat('##### ',
+      filtered_dataset$full_citation[i],
+      filtered_dataset$link[i],
+      '\n\n')
+}
 
-
-`r for(i in filtered_dataset) {
-  print(filtered_dataset$full_citation[i])
-  print(filtered_dataset$link[i])
-  }`
-
-
-
-
-
-
-
-
-
-
-
-
+```
 
 ## Publications that used existing MetaLab data
 
