@@ -23,7 +23,8 @@ library(metalabr)
 library(readr) 
 
 metalabr::load_cached_data(here::here('shinyapps', 'site_data', 'Rdata', 'metalab.Rdata')) 
-filtered_dataset <- filter(dataset_info, full_citation != "") #only print the dataset that have a full citation
+filtered_dataset <- filter(dataset_info, full_citation != "") #only print the datasets that have full citations
+filtered_dataset <- filtered_dataset[order(filtered_dataset$full_citation),]
 ```
 
 ```{r, echo=FALSE, results = "asis"} 
@@ -31,7 +32,7 @@ filtered_dataset <- filter(dataset_info, full_citation != "") #only print the da
 for(i in 1:nrow(filtered_dataset)) {
   cat(filtered_dataset$full_citation[i])
   if (filtered_dataset$link[i] != ""){
-  cat(" [[Paper]](", filtered_dataset$link[i], ")")
+    cat(" [[Paper]](", filtered_dataset$link[i], ")")
   }
   cat('  \n\n')
 }
