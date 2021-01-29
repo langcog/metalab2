@@ -49,8 +49,8 @@
     subset: []
     comment: ''
 -
-    name: 'Gaze following'
-    domain: early_language
+    name: 'Gaze following (live)'
+    domain: cognitive_development
     short_name: gaze_following
     key: 1OY1FhtIOolS9p84_hQnsDfSLeqRdl8tiV9BYS4Wou1g
     filename: gaze_following
@@ -724,3 +724,28 @@
     moderators: [age, task_difficulty]
     subset: []
     comment: ''
+
+    name:  "Gaze following (video)"
+    domain: cognitive_development
+    short_name: vidgazefollow
+    key: 1sKW6WqzZOSBLhKbY6AisDaYcp0XhJsQr8oSdsmELnpk
+    filename: video_based_gaze_following
+    citation: ""
+    internal_citation: ""
+    link: ""
+    full_citation: ""
+    doi: ""
+    systematic: no
+    search_strategy: "A search was conducted for studies using the Senju & Csibra (2008) paradigm of infant gaze-following. In order to find these, a search for the terms “gaze”, “follow” and “infant” was carried out on all peer-reviewed, published studies citing the original paper, resulting in 366 results. Abstracts were scanned to determine whether the full paper should be read, and full papers were included if they used the original paradigm with human typically developing infants and reported (or provided the data to calculate) the measure of first look difference score (congruent - incongruent). In total, 15 papers have been included. 4 additional papers were not included as information for calculating effect sizes could not be obtained from the manuscript."
+    reliability: no
+    source: "coded by author"
+    last_update: 2020-10-14
+    link_fields: ""
+    short_desc: "Gaze following using video-based first look paradigms"
+    description: "Gaze following using video-based first look paradigms, in infants aged 0 to 24 months"
+    curator: "Priya Silverstein"
+    src: images/datasets/gaze.png
+    longitudinal: no
+    moderators: [preceding]
+    subset: []
+    comment: ""
