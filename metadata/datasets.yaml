@@ -671,7 +671,7 @@
     curator: 'Gabrielle Strouse'
     src: media/datasets/videodeficit.jpg
     longitudinal: no
-    moderators: [age, learning_domain, live_video]
+    moderators: [mean_age, learning_domain, live_video]
     subset: []
     comment: ''
 -
@@ -721,7 +721,7 @@
     curator: 'Fleur Vissers'
     src: images/datasets/segmentation.png
     longitudinal: no
-    moderators: [age, task_difficulty]
+    moderators: [mean_age, task_difficulty]
     subset: []
     comment: ''
 
