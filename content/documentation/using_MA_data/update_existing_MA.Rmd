@@ -4,6 +4,10 @@ type: book
 weight: 150
 ---
 
-### Add your own paper
-### Add a datapoint you found
-### Correct a mistake you found 
+This page is under revision, access the previous tutorial [here](https://langcog.github.io/metalab2/documentation.html).
+
+<!--
+Add your own paper
+Add a datapoint you found
+Correct a mistake you found 
+--->
