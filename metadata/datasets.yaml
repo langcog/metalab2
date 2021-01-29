@@ -725,7 +725,7 @@
     subset: []
     comment: ''
 
-    name:  "Gaze following (video)"
+    name: "Gaze following (video)"
     domain: cognitive_development
     short_name: vidgazefollow
     key: 1sKW6WqzZOSBLhKbY6AisDaYcp0XhJsQr8oSdsmELnpk
