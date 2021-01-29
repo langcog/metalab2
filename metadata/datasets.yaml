@@ -724,7 +724,7 @@
     moderators: [mean_age, task_difficulty]
     subset: []
     comment: ''
-
+-
     name: "Gaze following (video)"
     domain: cognitive_development
     short_name: vidgazefollow
