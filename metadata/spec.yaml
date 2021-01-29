@@ -951,3 +951,213 @@
   format:   
   example:  FN, NN
   required: no
+
+- field: preceding   
+  description: 
+  type: string    
+  format:   
+  example:  
+  required: no
+
+- field: task_difficulty    
+  description: 
+  type: string    
+  format:   
+  example:  
+  required: no
+  
+- field: median_production_vocab  
+  description: 
+  type: string    
+  format:   
+  example:  
+  required: no
+ 
+- field: mean_production_vocab 
+  description: 
+  type:     
+  format:   
+  example:  
+  required: no
+ 
+- field: sentence_structure
+  description: 
+  type:     
+  format:   
+  example:  
+  required: no
+ 
+- field: agent_argument_type
+  description: 
+  type: string    
+  format:   
+  example:  
+  required: no
+  
+- field: patient_argument_type
+  description: 
+  type: string    
+  format:   
+  example:  
+  required: no
+
+- field: stimuli_modality
+  description: 
+  type: string    
+  format:   
+  example:  
+  required: no
+
+- field: stimuli_actor
+  description: 
+  type: string    
+  format:   
+  example:  
+  required: no
+ 
+- field: transitive_event
+  description: 
+  type: string    
+  format:   
+  example:  
+  required: no
+
+- field: intransitive_event
+  description: 
+  type: string    
+  format:   
+  example:  
+  required: no
+
+- field: presentation_type
+  description: 
+  type: string    
+  format:   
+  example:  
+  required: no
+
+- field: character_identification
+  description: 
+  type: string    
+  format:   
+  example:  
+  required: no
+
+- field: practice_phase
+  description: 
+  type: string    
+  format:   
+  example:  
+  required: no
+
+- field: test_mass_or_distributed
+  description: 
+  type: string    
+  format:   
+  example:  
+  required: no
+  
+- field: n_train_test_pair
+  description: 
+  type: numeric    
+  format:   
+  example:  
+  required: no
+
+- field: n_test_trial_per_pair
+  description: 
+  type: numeric     
+  format:   
+  example:  
+  required: no
+
+- field: n_repetitions_sentence
+  description: 
+  type: numeric     
+  format:   
+  example:  
+  required: no
+
+- field: n_repetitions_video
+  description: 
+  type: numeric     
+  format:   
+  example:  
+  required: no
+
+- field: learning_domain
+  description: 
+  type: string    
+  format:   
+  example:  
+  required: no
+  
+- field: live_video
+  description: 
+  type: string    
+  format:   
+  example:  
+  required: no
+
+- field: task
+  description: 
+  type: string     
+  format:   
+  example:  
+  required: no
+  
+- field: rhythm_class
+  description: 
+  type: string     
+  format:   
+  example:  
+  required: no
+  
+- field: speech_manip
+  description: 
+  type: string     
+  format:   
+  example:  
+  required: no
+
+- field: percentV
+  description: 
+  type: numeric     
+  format:   
+  example:  
+  required: no
+  
+- field: deltaC
+  description: 
+  type: numeric     
+  format:   
+  example:  
+  required: no
+
+- field: deltaV
+  description: 
+  type: numeric     
+  format:   
+  example:  
+  required: no
+
+- field: VarcoV
+  description: 
+  type: numeric     
+  format:   
+  example:  
+  required: no
+  
+- field: nPVI_V
+  description: 
+  type: numeric     
+  format:   
+  example:  
+  required: no
+  
+- field: rPVI_C
+  description: 
+  type: numeric     
+  format:   
+  example:  
+  required: no
