@@ -97,6 +97,7 @@
           description:  two objects on screen, side by side
       - FC:
           fullname:     forced-choice
+          description:  includes coding of first look to target
       - HPP:
           fullname:     head-turn preference procedure
       - HAS:
