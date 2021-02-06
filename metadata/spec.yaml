@@ -974,16 +974,9 @@
   example:  
   required: no
  
-- field: mean_production_vocab 
-  description: 
-  type:     
-  format:   
-  example:  
-  required: no
- 
 - field: sentence_structure
   description: 
-  type:     
+  type:     string
   format:   
   example:  
   required: no
