@@ -1,0 +1,1231 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic ">
+
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="The research question determines many design choices in developmental research -- e.g., is the hypothesis related to the timecourse of various pressures, or merely the presence of a bias? Some methods are better suited than others for answering these different questions.">
+
+  <link href="/rmarkdown-libs/datatables-css/datatables-crosstalk.css" rel="stylesheet">
+  <link href="/rmarkdown-libs/dt-core-bootstrap/css/dataTables.bootstrap.min.css" rel="stylesheet">
+  <link href="/rmarkdown-libs/dt-core-bootstrap/css/dataTables.bootstrap.extra.css" rel="stylesheet">
+  <link href="/rmarkdown-libs/crosstalk/css/crosstalk.css" rel="stylesheet">
+  <link rel="shortcut icon" href=" /favicon.ico" />
+  
+  <link rel="alternate" hreflang="en-us" href="http://metalab.stanford.edu/report/method_choice/">
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="sha512-1xoFisiGdy9nvho8EgXuXvnpR5GAMSjFwp40gSRE3NwdUdIMIKuPa7bqoUhLD0O/5tPNhteAsE5XyyMi5reQVA==" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.2/lazysizes.min.js" integrity="sha512-TmDwFLhg3UA4ZG0Eb4MIyT1O1Mb+Oww5kFG0uHqXsdbyZz9DcvYQhKpGgNkamAI6h2lGGZq2X8ftOJvF/XjTUg==" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+    
+      
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+    
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="http://metalab.stanford.edu/report/method_choice/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="MetaLab">
+  <meta property="og:url" content="http://metalab.stanford.edu/report/method_choice/">
+  <meta property="og:title" content="Design Choice Analyses | MetaLab">
+  <meta property="og:description" content="The research question determines many design choices in developmental research -- e.g., is the hypothesis related to the timecourse of various pressures, or merely the presence of a bias? Some methods are better suited than others for answering these different questions."><meta property="og:image" content="http://metalab.stanford.edu/report/method_choice/featured.png">
+  <meta property="twitter:image" content="http://metalab.stanford.edu/report/method_choice/featured.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2021-02-06T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2021-02-06T00:00:00&#43;00:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Design Choice Analyses | MetaLab</title>
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class=" ">
+
+  
+  
+  
+  
+    <script>const isSiteThemeDark = false;</script>
+  
+  
+  <script src="/js/load-theme.js"></script>
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">MetaLab</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">MetaLab</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"><span>Explore Data</span><span class="caret"></span>
+          </a>
+          <div class="dropdown-menu">
+            
+              <a class="dropdown-item" href="/explore/apps/"><span>Applications</span></a>
+            
+              <a class="dropdown-item" href="/explore/datasets/"><span>Datasets by Domain</span></a>
+            
+              <a class="dropdown-item" href="/explore/reports/"><span>Reports</span></a>
+            
+          </div>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/documentation"><span>Documentation</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/publications"><span>Publications</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/team"><span>Team</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+
+<div class="article-container pt-3">
+  <h1>Design Choice Analyses</h1>
+
+  
+
+  
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Feb 6, 2021
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 514px;">
+  <div style="position: relative">
+    <img src="/report/method_choice/featured_huf5bb1730840f5de9d6986ee78d7e2b53_179341_720x0_resize_lanczos_2.png" alt="" class="featured-image">
+    
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<div id="TOC">
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#data-available-for-each-design-choice-variable">Data available for each design choice variable</a></li>
+<li><a href="#design-choice-variables-by-age">Design choice variables by age</a></li>
+<li><a href="#effect-size-by-design-choice-variables">Effect size by design choice variables</a><ul>
+<li><a href="#by-dataset">By dataset</a></li>
+<li><a href="#across-datasets">Across datasets</a></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>The research question determines many design choices in developmental research -- e.g., is the hypothesis related to the timecourse of various pressures, or merely the presence of a bias? Some methods are better suited than others for answering these different questions. But, design choices can also influence the <em>size</em> of the effect: Some methods are less noisy than others, and therefore result in larger effects sizes. The size of the effect may further depend on the particular age of the child in a study, with some methods better suited to different age groups. Here we look across datasets in Metalab at four design choices -- method, response mode, depenedent measure, and experimental design -- and their relationship to effect sizes, and other variables of interest.</p>
+<p>This report includes effect sizes for participants 60 months or younger.</p>
+</div>
+<div id="data-available-for-each-design-choice-variable" class="section level2">
+<h2>Data available for each design choice variable</h2>
+<p>Method</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">metalab_data &lt;-<span class="st"> </span>metalab_data <span class="op">%&gt;%</span>
+<span class="st">            </span><span class="kw">filter</span>(mean_age_months <span class="op">&lt;=</span><span class="st"> </span><span class="dv">60</span>)
+
+metalab_data<span class="op">$</span>method =<span class="st"> </span><span class="kw">as.factor</span>(metalab_data<span class="op">$</span>method)
+method.pd =<span class="st"> </span>metalab_data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(method, dataset) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(<span class="kw">n</span>() <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>())
+
+<span class="kw">ggplot</span>(method.pd, <span class="kw">aes</span>(<span class="dt">y =</span> n, <span class="dt">fill =</span> dataset, <span class="dt">x =</span> method)) <span class="op">+</span><span class="st"> </span>
+<span class="st">         </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span>
+<span class="st">         </span><span class="kw">xlab</span>(<span class="st">&quot;method&quot;</span>) <span class="op">+</span>
+<span class="st">         </span><span class="kw">ylab</span>(<span class="st">&quot;N effect sizes&quot;</span>) <span class="op">+</span>
+<span class="st">         </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> <span class="fl">.5</span>)) <span class="op">+</span>
+<span class="st">        </span><span class="kw">guides</span>(<span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">ncol=</span><span class="dv">2</span>))</code></pre></div>
+<p><img src="/report/method_choice/index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>Response Mode</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">metalab_data<span class="op">$</span>response_mode =<span class="st"> </span><span class="kw">as.factor</span>(metalab_data<span class="op">$</span>response_mode)
+
+response.pd =<span class="st"> </span>metalab_data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(response_mode, dataset) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>())
+
+<span class="kw">ggplot</span>(response.pd, <span class="kw">aes</span>(<span class="dt">y =</span> n, <span class="dt">fill =</span> dataset, <span class="dt">x =</span> response_mode)) <span class="op">+</span><span class="st"> </span>
+<span class="st">         </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span>
+<span class="st">         </span><span class="kw">xlab</span>(<span class="st">&quot;response mode&quot;</span>) <span class="op">+</span>
+<span class="st">         </span><span class="kw">ylab</span>(<span class="st">&quot;N effect sizes&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span> (<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> <span class="fl">.5</span>)) <span class="op">+</span>
+<span class="st">        </span><span class="kw">guides</span>(<span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">ncol=</span><span class="dv">2</span>))</code></pre></div>
+<p><img src="/report/method_choice/index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>Dependent Measure</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">metalab_data<span class="op">$</span>dependent_measure=<span class="st"> </span><span class="kw">as.factor</span>(metalab_data<span class="op">$</span>dependent_measure)
+dm.pd =<span class="st"> </span>metalab_data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(dependent_measure, dataset) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>())
+
+<span class="kw">ggplot</span>(dm.pd, <span class="kw">aes</span>(<span class="dt">y =</span> n, <span class="dt">fill =</span> dataset, <span class="dt">x =</span> dependent_measure)) <span class="op">+</span><span class="st"> </span>
+<span class="st">         </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span>
+<span class="st">         </span><span class="kw">xlab</span>(<span class="st">&quot;method&quot;</span>) <span class="op">+</span>
+<span class="st">         </span><span class="kw">ylab</span>(<span class="st">&quot;N effect sizes&quot;</span>) <span class="op">+</span>
+<span class="st">         </span><span class="kw">theme</span> (<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> <span class="fl">.5</span>)) <span class="op">+</span>
+<span class="st">        </span><span class="kw">guides</span>(<span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">ncol=</span><span class="dv">2</span>))</code></pre></div>
+<p><img src="/report/method_choice/index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Participant design</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">metalab_data<span class="op">$</span>participant_design =<span class="st"> </span><span class="kw">as.factor</span>(metalab_data<span class="op">$</span>participant_design)
+participant_design.pd =<span class="st"> </span>metalab_data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(participant_design, dataset) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>())
+
+<span class="kw">ggplot</span>(participant_design.pd, <span class="kw">aes</span>(<span class="dt">y =</span> n, <span class="dt">fill =</span> dataset, <span class="dt">x =</span> participant_design)) <span class="op">+</span><span class="st"> </span>
+<span class="st">         </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span>
+<span class="st">         </span><span class="kw">xlab</span>(<span class="st">&quot;participant design&quot;</span>) <span class="op">+</span>
+<span class="st">         </span><span class="kw">ylab</span>(<span class="st">&quot;N effect sizes&quot;</span>) <span class="op">+</span>
+<span class="st">      </span><span class="kw">theme</span> (<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> <span class="fl">.5</span>)) <span class="op">+</span><span class="st"> </span>
+<span class="st">        </span><span class="kw">guides</span>(<span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">ncol=</span><span class="dv">2</span>))</code></pre></div>
+<p><img src="/report/method_choice/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<div id="design-choice-variables-by-age" class="section level2">
+<h2>Design choice variables by age</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">age.response_mode.pd =<span class="st"> </span>metalab_data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">mean_age_months_rounded =</span> <span class="kw">cut_width</span>(mean_age_months,  <span class="dt">width =</span> <span class="dv">3</span>, <span class="dt">boundary =</span> <span class="dv">0</span>))  <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(mean_age_months_rounded, response_mode) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prop =</span> n <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(n))
+
+<span class="kw">ggplot</span>(age.response_mode.pd, <span class="kw">aes</span>(<span class="dt">x =</span> mean_age_months_rounded, <span class="dt">y =</span> prop, <span class="dt">color =</span> response_mode)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group =</span> response_mode)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">xlab</span>(<span class="st">&quot;Age (months)&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span> (<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> <span class="fl">.5</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Response Mode&quot;</span>)</code></pre></div>
+<p><img src="/report/method_choice/index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(age.response_mode.pd, <span class="kw">aes</span>(<span class="dt">x =</span> mean_age_months_rounded, <span class="dt">y =</span> n, <span class="dt">color =</span> response_mode)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group =</span> response_mode)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">xlab</span>(<span class="st">&quot;Age (months)&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span> (<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> <span class="fl">.5</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Response Mode&quot;</span>)</code></pre></div>
+<p><img src="/report/method_choice/index_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">age.method.pd =<span class="st"> </span>metalab_data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">mean_age_months_rounded =</span> <span class="kw">cut_width</span>(mean_age_months,  <span class="dt">width =</span> <span class="dv">3</span>, <span class="dt">boundary =</span> <span class="dv">0</span>))  <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(mean_age_months_rounded, method) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prop =</span> n <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(n))
+
+<span class="kw">ggplot</span>(age.method.pd, <span class="kw">aes</span>(<span class="dt">x =</span> mean_age_months_rounded, <span class="dt">y =</span> prop, <span class="dt">color =</span> method)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group =</span> method)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">xlab</span>(<span class="st">&quot;Age (months)&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span> (<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> <span class="fl">.5</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Method&quot;</span>)</code></pre></div>
+<p><img src="/report/method_choice/index_files/figure-html/unnamed-chunk-5-3.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(age.method.pd, <span class="kw">aes</span>(<span class="dt">x =</span> mean_age_months_rounded, <span class="dt">y =</span> n, <span class="dt">color =</span> method)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group =</span> method)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">xlab</span>(<span class="st">&quot;Age (months)&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span> (<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> <span class="fl">.5</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Method&quot;</span>)</code></pre></div>
+<p><img src="/report/method_choice/index_files/figure-html/unnamed-chunk-5-4.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">age.dm.pd =<span class="st"> </span>metalab_data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">mean_age_months_rounded =</span> <span class="kw">cut_width</span>(mean_age_months,  <span class="dt">width =</span> <span class="dv">3</span>, <span class="dt">boundary =</span> <span class="dv">0</span>))  <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(mean_age_months_rounded, dependent_measure) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prop =</span> n <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(n))
+
+<span class="kw">ggplot</span>(age.dm.pd, <span class="kw">aes</span>(<span class="dt">x =</span> mean_age_months_rounded, <span class="dt">y =</span> prop, <span class="dt">color =</span> dependent_measure)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group =</span> dependent_measure)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">xlab</span>(<span class="st">&quot;Age (months)&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span> (<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> <span class="fl">.5</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Dependent Measure&quot;</span>)</code></pre></div>
+<p><img src="/report/method_choice/index_files/figure-html/unnamed-chunk-5-5.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(age.dm.pd, <span class="kw">aes</span>(<span class="dt">x =</span> mean_age_months_rounded, <span class="dt">y =</span> n, <span class="dt">color =</span> dependent_measure)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group =</span> dependent_measure)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">xlab</span>(<span class="st">&quot;Age (months)&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span> (<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> <span class="fl">.5</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Dependent Measure&quot;</span>)</code></pre></div>
+<p><img src="/report/method_choice/index_files/figure-html/unnamed-chunk-5-6.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">age.pd.pd =<span class="st"> </span>metalab_data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">mean_age_months_rounded =</span> <span class="kw">cut_width</span>(mean_age_months,  <span class="dt">width =</span> <span class="dv">3</span>, <span class="dt">boundary =</span> <span class="dv">0</span>))  <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(mean_age_months_rounded, participant_design) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prop =</span> n <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(n))
+
+<span class="kw">ggplot</span>(age.pd.pd, <span class="kw">aes</span>(<span class="dt">x =</span> mean_age_months_rounded, <span class="dt">y =</span> prop, <span class="dt">color =</span> participant_design)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group =</span> participant_design)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Age (months)&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span> (<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> <span class="fl">.5</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Participant Design&quot;</span>)</code></pre></div>
+<p><img src="/report/method_choice/index_files/figure-html/unnamed-chunk-5-7.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(age.pd.pd, <span class="kw">aes</span>(<span class="dt">x =</span> mean_age_months_rounded, <span class="dt">y =</span> n, <span class="dt">color =</span> participant_design)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group =</span> participant_design)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">xlab</span>(<span class="st">&quot;Age (months)&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span> (<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> <span class="fl">.5</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Participant Design&quot;</span>)</code></pre></div>
+<p><img src="/report/method_choice/index_files/figure-html/unnamed-chunk-5-8.png" width="672" /></p>
+</div>
+<div id="effect-size-by-design-choice-variables" class="section level2">
+<h2>Effect size by design choice variables</h2>
+<div id="by-dataset" class="section level3">
+<h3>By dataset</h3>
+<p>Get residual effect size, controling for age and phenonmenon</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">full.model =<span class="st"> </span><span class="kw">rma</span>(d_calc <span class="op">~</span><span class="st"> </span>dataset <span class="op">+</span><span class="st"> </span>mean_age_<span class="dv">1</span>, 
+        <span class="dt">vi =</span> d_var_calc, <span class="dt">data =</span> metalab_data, <span class="dt">method =</span> <span class="st">&quot;REML&quot;</span>)
+
+residuals =<span class="st"> </span><span class="kw">rstandard</span>(full.model)
+
+metalab_data =<span class="st"> </span>metalab_data <span class="op">%&gt;%</span>
+<span class="st">            </span><span class="kw">bind_cols</span>(<span class="kw">as.data.frame</span>(residuals<span class="op">$</span>resid),
+                      <span class="kw">as.data.frame</span>(residuals<span class="op">$</span>z)) <span class="op">%&gt;%</span>
+<span class="st">            </span><span class="kw">rename</span>(<span class="dt">residual.d =</span> <span class="st">`</span><span class="dt">residuals$resid</span><span class="st">`</span>, 
+                   <span class="dt">residual.d.s =</span> <span class="st">`</span><span class="dt">residuals$z</span><span class="st">`</span>) <span class="co"># standardized</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">method.pd =<span class="st"> </span>metalab_data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(method, dataset) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">residual.d =</span> <span class="kw">mean</span>(residual.d),
+            <span class="dt">n =</span> <span class="kw">n</span>())
+
+<span class="kw">ggplot</span>(method.pd, <span class="kw">aes</span>(<span class="dt">x =</span> method, <span class="dt">y =</span> residual.d, <span class="dt">color =</span> dataset)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">size =</span> n)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group =</span> dataset)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span> (<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> <span class="fl">.5</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Method&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">guides</span>(<span class="dt">colour=</span><span class="kw">guide_legend</span>(<span class="dt">ncol=</span><span class="dv">2</span>))</code></pre></div>
+<p><img src="/report/method_choice/index_files/figure-html/unnamed-chunk-7-1.png" width="960" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">response.pd =<span class="st"> </span>metalab_data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(response_mode, dataset) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">residual.d =</span> <span class="kw">mean</span>(residual.d),
+            <span class="dt">n =</span> <span class="kw">n</span>())
+
+<span class="kw">ggplot</span>(response.pd, <span class="kw">aes</span>(<span class="dt">x =</span> response_mode, <span class="dt">y =</span> residual.d, <span class="dt">color =</span> dataset)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">size =</span> n)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group =</span> dataset)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span> (<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> <span class="fl">.5</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Response Mode&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">guides</span>(<span class="dt">colour=</span><span class="kw">guide_legend</span>(<span class="dt">ncol=</span><span class="dv">2</span>))</code></pre></div>
+<p><img src="/report/method_choice/index_files/figure-html/unnamed-chunk-7-2.png" width="960" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dm.pd =<span class="st"> </span>metalab_data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(dependent_measure, dataset) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">residual.d =</span> <span class="kw">mean</span>(residual.d),
+            <span class="dt">n =</span> <span class="kw">n</span>())
+
+<span class="kw">ggplot</span>(dm.pd, <span class="kw">aes</span>(<span class="dt">x =</span> dependent_measure, <span class="dt">y =</span> residual.d, <span class="dt">color =</span> dataset)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">size =</span> n)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group =</span> dataset)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span> (<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> <span class="fl">.5</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Dependent Measure&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">guides</span>(<span class="dt">colour=</span><span class="kw">guide_legend</span>(<span class="dt">ncol=</span><span class="dv">2</span>))</code></pre></div>
+<p><img src="/report/method_choice/index_files/figure-html/unnamed-chunk-7-3.png" width="960" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">participant_design.pd =<span class="st"> </span>metalab_data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(participant_design, dataset) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">residual.d =</span> <span class="kw">mean</span>(residual.d),
+            <span class="dt">n =</span> <span class="kw">n</span>())
+
+<span class="kw">ggplot</span>(participant_design.pd, <span class="kw">aes</span>(<span class="dt">x =</span> participant_design, <span class="dt">y =</span> residual.d, <span class="dt">color =</span> dataset)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">size =</span> n)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group =</span> dataset)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span> (<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> <span class="fl">.5</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Participant Design&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">guides</span>(<span class="dt">colour=</span><span class="kw">guide_legend</span>(<span class="dt">ncol=</span><span class="dv">2</span>))</code></pre></div>
+<p><img src="/report/method_choice/index_files/figure-html/unnamed-chunk-7-4.png" width="960" /></p>
+</div>
+<div id="across-datasets" class="section level3">
+<h3>Across datasets</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">method.pd.all =<span class="st"> </span>metalab_data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(method) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">multi_boot_standard</span>(<span class="dt">col =</span> <span class="st">&quot;residual.d&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">method =</span> <span class="kw">reorder</span>(method, mean))
+
+<span class="kw">ggplot</span>(method.pd.all, <span class="kw">aes</span>(<span class="dt">x =</span> method, <span class="dt">y =</span> mean, <span class="dt">fill =</span> method)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position=</span><span class="st">&quot;dodge&quot;</span>, <span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="op">+</span><span class="st">  </span>
+<span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> ci_lower, <span class="dt">ymax=</span> ci_upper), 
+                <span class="dt">width=</span><span class="fl">0.2</span>, <span class="dt">position=</span><span class="st">&quot;dodge&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;residual effect size&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;method&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> <span class="fl">.5</span>)) </code></pre></div>
+<p><img src="/report/method_choice/index_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">response.pd.all =<span class="st"> </span>metalab_data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(response_mode) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">multi_boot_standard</span>(<span class="dt">col =</span> <span class="st">&quot;residual.d&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">response_mode =</span> <span class="kw">reorder</span>(response_mode, mean)) 
+
+<span class="kw">ggplot</span>(response.pd.all, <span class="kw">aes</span>(<span class="dt">x =</span> response_mode, <span class="dt">y =</span> mean, <span class="dt">fill =</span> response_mode)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position=</span><span class="st">&quot;dodge&quot;</span>, <span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="op">+</span><span class="st">  </span>
+<span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> ci_lower, <span class="dt">ymax=</span> ci_upper), 
+                <span class="dt">width=</span><span class="fl">0.2</span>, <span class="dt">position=</span><span class="st">&quot;dodge&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;residual effect size&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;response mode&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> <span class="fl">.5</span>)) </code></pre></div>
+<p><img src="/report/method_choice/index_files/figure-html/unnamed-chunk-8-2.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dm.pd.all =<span class="st"> </span>metalab_data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(dependent_measure) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">multi_boot_standard</span>(<span class="dt">col =</span> <span class="st">&quot;residual.d&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">dependent_measure =</span> <span class="kw">reorder</span>(dependent_measure, mean))
+
+<span class="kw">ggplot</span>(dm.pd.all, <span class="kw">aes</span>(<span class="dt">x =</span>dependent_measure, <span class="dt">y =</span> mean, <span class="dt">fill =</span> dependent_measure)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position=</span><span class="st">&quot;dodge&quot;</span>, <span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="op">+</span><span class="st">  </span>
+<span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> ci_lower, <span class="dt">ymax=</span> ci_upper), 
+                <span class="dt">width=</span><span class="fl">0.2</span>, <span class="dt">position=</span><span class="st">&quot;dodge&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;residual effect size&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;dependent measure&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span> (<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> <span class="fl">.5</span>)) </code></pre></div>
+<p><img src="/report/method_choice/index_files/figure-html/unnamed-chunk-8-3.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">participant_design.pd.all =<span class="st"> </span>metalab_data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(participant_design) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">multi_boot_standard</span>(<span class="dt">col =</span> <span class="st">&quot;residual.d&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">participant_design =</span> <span class="kw">reorder</span>(participant_design, mean))
+
+<span class="kw">ggplot</span>(participant_design.pd.all, 
+       <span class="kw">aes</span>(<span class="dt">x =</span> participant_design, <span class="dt">y =</span> mean, <span class="dt">fill =</span> participant_design)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position=</span><span class="st">&quot;dodge&quot;</span>, <span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="op">+</span><span class="st">  </span>
+<span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> ci_lower, <span class="dt">ymax =</span> ci_upper), 
+                <span class="dt">width=</span><span class="fl">0.2</span>, <span class="dt">position=</span><span class="st">&quot;dodge&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;residual effect size&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;participant design&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span> (<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> <span class="fl">.5</span>)) </code></pre></div>
+<p><img src="/report/method_choice/index_files/figure-html/unnamed-chunk-8-4.png" width="672" /></p>
+</div>
+</div>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=http://metalab.stanford.edu/report/method_choice/&amp;text=Design%20Choice%20Analyses" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=http://metalab.stanford.edu/report/method_choice/&amp;t=Design%20Choice%20Analyses" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Design%20Choice%20Analyses&amp;body=http://metalab.stanford.edu/report/method_choice/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=http://metalab.stanford.edu/report/method_choice/&amp;title=Design%20Choice%20Analyses" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Design%20Choice%20Analyses%20http://metalab.stanford.edu/report/method_choice/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=http://metalab.stanford.edu/report/method_choice/&amp;title=Design%20Choice%20Analyses" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/latex.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js" integrity="sha512-SeiQaaDh73yrb56sTW/RgVdi/mMqNeM2oBwubFHagc5BkixSpP1fvqF47mKzPGWYSSy4RwbBunrJBQ4Co8fRWA==" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/wowchemy.min.4c2bca31150ce93c5a5e43b8a50f22fd.js"></script>
+
+      <script src="/rmarkdown-libs/jquery/jquery.min.js"></script>
+  <script src="/rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
+  <script src="/rmarkdown-libs/datatables-binding/datatables.js"></script>
+  <script src="/rmarkdown-libs/dt-core-bootstrap/js/jquery.dataTables.min.js"></script>
+  <script src="/rmarkdown-libs/crosstalk/js/crosstalk.min.js"></script>
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  <p class="powered-by">
+    Unless otherwise stated, MetaLab and its datasets are licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. See our <a href="/documentation/faq">FAQ</a> for more information.
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Apps | MetaLab</title>
+    <link>http://metalab.stanford.edu/app/</link>
+      <atom:link href="http://metalab.stanford.edu/app/index.xml" rel="self" type="application/rss+xml" />
+    <description>Apps</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language>
+    <image>
+      <url>http://metalab.stanford.edu/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Apps</title>
+      <link>http://metalab.stanford.edu/app/</link>
+    </image>
+    
+    <item>
+      <title>Visualization</title>
+      <link>http://metalab.stanford.edu/app/visualization/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://metalab.stanford.edu/app/visualization/</guid>
+      <description>&lt;iframe src=&#34;//52.24.141.166:3838/visualization&#34;&gt;&lt;/iframe&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Power Analysis</title>
+      <link>http://metalab.stanford.edu/app/power-analysis/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://metalab.stanford.edu/app/power-analysis/</guid>
+      <description>&lt;iframe src=&#34;//52.24.141.166:3838/power_analysis&#34;&gt;&lt;/iframe&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Power Simulation</title>
+      <link>http://metalab.stanford.edu/app/power-simulation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://metalab.stanford.edu/app/power-simulation/</guid>
+      <description>&lt;iframe src=&#34;//52.24.141.166:3838/power_simulation&#34;&gt;&lt;/iframe&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Data Validation</title>
+      <link>http://metalab.stanford.edu/app/data-validation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://metalab.stanford.edu/app/data-validation/</guid>
+      <description>&lt;iframe src=&#34;//52.24.141.166:3838/data_validation&#34;&gt;&lt;/iframe&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

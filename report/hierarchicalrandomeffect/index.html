@@ -1,0 +1,1149 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic ">
+
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Here we explore whether and how accounting for this possible correlation affects both a random effects base model and a moderator analysis.">
+
+  <link href="/rmarkdown-libs/datatables-css/datatables-crosstalk.css" rel="stylesheet">
+  <link href="/rmarkdown-libs/dt-core-bootstrap/css/dataTables.bootstrap.min.css" rel="stylesheet">
+  <link href="/rmarkdown-libs/dt-core-bootstrap/css/dataTables.bootstrap.extra.css" rel="stylesheet">
+  <link href="/rmarkdown-libs/crosstalk/css/crosstalk.css" rel="stylesheet">
+  <link rel="shortcut icon" href=" /favicon.ico" />
+  
+  <link rel="alternate" hreflang="en-us" href="http://metalab.stanford.edu/report/hierarchicalrandomeffect/">
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="sha512-1xoFisiGdy9nvho8EgXuXvnpR5GAMSjFwp40gSRE3NwdUdIMIKuPa7bqoUhLD0O/5tPNhteAsE5XyyMi5reQVA==" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.2/lazysizes.min.js" integrity="sha512-TmDwFLhg3UA4ZG0Eb4MIyT1O1Mb+Oww5kFG0uHqXsdbyZz9DcvYQhKpGgNkamAI6h2lGGZq2X8ftOJvF/XjTUg==" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+    
+      
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+    
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="http://metalab.stanford.edu/report/hierarchicalrandomeffect/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="MetaLab">
+  <meta property="og:url" content="http://metalab.stanford.edu/report/hierarchicalrandomeffect/">
+  <meta property="og:title" content="Hierarchical Random Effects in Meta-Analyses: Do they change stuff? | MetaLab">
+  <meta property="og:description" content="Here we explore whether and how accounting for this possible correlation affects both a random effects base model and a moderator analysis."><meta property="og:image" content="http://metalab.stanford.edu/report/hierarchicalrandomeffect/featured.png">
+  <meta property="twitter:image" content="http://metalab.stanford.edu/report/hierarchicalrandomeffect/featured.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2021-02-06T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2021-02-06T00:00:00&#43;00:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Hierarchical Random Effects in Meta-Analyses: Do they change stuff? | MetaLab</title>
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class=" ">
+
+  
+  
+  
+  
+    <script>const isSiteThemeDark = false;</script>
+  
+  
+  <script src="/js/load-theme.js"></script>
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">MetaLab</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">MetaLab</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"><span>Explore Data</span><span class="caret"></span>
+          </a>
+          <div class="dropdown-menu">
+            
+              <a class="dropdown-item" href="/explore/apps/"><span>Applications</span></a>
+            
+              <a class="dropdown-item" href="/explore/datasets/"><span>Datasets by Domain</span></a>
+            
+              <a class="dropdown-item" href="/explore/reports/"><span>Reports</span></a>
+            
+          </div>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/documentation"><span>Documentation</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/publications"><span>Publications</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/team"><span>Team</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+
+<div class="article-container pt-3">
+  <h1>Hierarchical Random Effects in Meta-Analyses: Do they change stuff?</h1>
+
+  
+
+  
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Feb 6, 2021
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 514px;">
+  <div style="position: relative">
+    <img src="/report/hierarchicalrandomeffect/featured_huc5c8847a6fbef702168778bed3af1a91_56207_720x0_resize_lanczos_2.png" alt="" class="featured-image">
+    
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<div id="TOC">
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#base-model">Base Model</a><ul>
+<li><a href="#two-level-model-paper">Two Level Model: Paper</a></li>
+<li><a href="#three-level-model-paper-and-experiment">Three Level Model: Paper and Experiment</a></li>
+</ul></li>
+<li><a href="#moderator-model-from-the-paper">Moderator Model from the Paper</a><ul>
+<li><a href="#two-level-model-paper-1">Two Level Model: Paper</a></li>
+<li><a href="#three-level-model-paper-and-experiment-1">Three Level Model: Paper and Experiment</a></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>Each effect size is nested within an experiment which is in turn nested within a paper (this includes unpublished reports, theses, and the likes). It can be assumed that effect sizes within these nested structures are not independent. Here we explore whether and how accounting for this possible correlation affects both a random effects base model and a moderator analysis. As example we chose InWordDB.</p>
+</div>
+<div id="base-model" class="section level1">
+<h1>Base Model</h1>
+<p>Standard random effects model, no moderators. First we run the model without accounting for any hierarchical structure (as reported in the publication by Bergmann &amp; Cristia 2015; note that differences in effect size estimation are due to an updated dataset here that also includes nonnative studies, as compared to the paper).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(here)
+<span class="kw">load</span>(<span class="kw">here</span>(<span class="st">&quot;shinyapps&quot;</span>, <span class="st">&quot;site_data&quot;</span>, <span class="st">&quot;Rdata&quot;</span>, <span class="st">&quot;metalab.Rdata&quot;</span>))
+inworddb &lt;-<span class="st"> </span><span class="kw">droplevels</span>(metalab_data[metalab_data<span class="op">$</span>short_name<span class="op">==</span><span class="st">&quot;inworddb&quot;</span>, ])
+
+StandardMod &lt;-<span class="st"> </span><span class="kw">rma</span>(g_calc, g_var_calc, <span class="dt">data =</span> inworddb)
+<span class="kw">summary</span>(StandardMod)</code></pre></div>
+<pre><code>## 
+## Random-Effects Model (k = 299; tau^2 estimator: REML)
+## 
+##    logLik   deviance        AIC        BIC       AICc 
+## -144.6900   289.3799   293.3799   300.7741   293.4206   
+## 
+## tau^2 (estimated amount of total heterogeneity): 0.1023 (SE = 0.0115)
+## tau (square root of estimated tau^2 value):      0.3199
+## I^2 (total heterogeneity / total variability):   76.99%
+## H^2 (total variability / sampling variability):  4.35
+## 
+## Test for Heterogeneity:
+## Q(df = 298) = 1143.3988, p-val &lt; .0001
+## 
+## Model Results:
+## 
+## estimate      se    zval    pval   ci.lb   ci.ub 
+##   0.2099  0.0218  9.6275  &lt;.0001  0.1672  0.2526  *** 
+## 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div id="two-level-model-paper" class="section level2">
+<h2>Two Level Model: Paper</h2>
+<p>We first add a level for the paper a given effect size was reported in. These effect sizes presumably stem from a batch of studies that were conducted in the same lab in a very similar fashion and by the same set of experimenters, introducing possible correlations.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">PerPaperMod &lt;-<span class="st"> </span><span class="kw">rma.mv</span>(g_calc, g_var_calc, <span class="dt">random =</span> <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">|</span><span class="st"> </span>short_cite, <span class="dt">data =</span> inworddb)
+<span class="kw">summary</span>(PerPaperMod)</code></pre></div>
+<pre><code>## 
+## Multivariate Meta-Analysis Model (k = 299; method: REML)
+## 
+##    logLik   Deviance        AIC        BIC       AICc 
+## -268.1654   536.3308   540.3308   547.7250   540.3715   
+## 
+## Variance Components:
+## 
+##             estim    sqrt  nlvls  fixed      factor 
+## sigma^2    0.0367  0.1916     68     no  short_cite 
+## 
+## Test for Heterogeneity:
+## Q(df = 298) = 1143.3988, p-val &lt; .0001
+## 
+## Model Results:
+## 
+## estimate      se    zval    pval   ci.lb   ci.ub 
+##   0.1832  0.0264  6.9494  &lt;.0001  0.1315  0.2349  *** 
+## 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<div id="three-level-model-paper-and-experiment" class="section level2">
+<h2>Three Level Model: Paper and Experiment</h2>
+<p>Nested within paper, we introduce a level for experiment number. Experiments can report several effect sizes, for example when infants are run in conditions; slight variations of the same study which are presumed to be even more similar than effect sizes within a paper. A caveat is that conventions on what counts as experiment and what counts as conditions within an experiment might differ across papers.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">PerExpPaperMod &lt;-<span class="st"> </span><span class="kw">rma.mv</span>(g_calc, g_var_calc, <span class="dt">random =</span> <span class="op">~</span><span class="st"> </span><span class="kw">factor</span>(expt_num) <span class="op">|</span><span class="st">  </span>short_cite, <span class="dt">data =</span> inworddb)
+<span class="kw">summary</span>(PerExpPaperMod)</code></pre></div>
+<pre><code>## 
+## Multivariate Meta-Analysis Model (k = 299; method: REML)
+## 
+##    logLik   Deviance        AIC        BIC       AICc 
+## -211.2785   422.5570   428.5570   439.6483   428.6386   
+## 
+## Variance Components:
+## 
+## outer factor: short_cite       (nlvls = 68)
+## inner factor: factor(expt_num) (nlvls = 15)
+## 
+##             estim    sqrt  fixed 
+## tau^2      0.0635  0.2521     no 
+## rho        0.2483             no 
+## 
+## Test for Heterogeneity:
+## Q(df = 298) = 1143.3988, p-val &lt; .0001
+## 
+## Model Results:
+## 
+## estimate      se    zval    pval   ci.lb   ci.ub 
+##   0.1837  0.0265  6.9291  &lt;.0001  0.1318  0.2357  *** 
+## 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>To summarize, all these models differ in their effect size estimates, but do not change the statistical outcome. The effect remains small but significantly above 0. Adding the level of experiment number did not dramatically change the result.</p>
+</div>
+</div>
+<div id="moderator-model-from-the-paper" class="section level1">
+<h1>Moderator Model from the Paper</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Centering mean age</span>
+inworddb<span class="op">$</span>ageC &lt;-<span class="st"> </span>inworddb<span class="op">$</span>mean_age<span class="op">-</span><span class="kw">mean</span>(inworddb<span class="op">$</span>mean_age)
+
+StandardMod &lt;-<span class="st"> </span><span class="kw">rma</span>(g_calc, g_var_calc, <span class="dt">mod =</span> ageC, <span class="dt">data =</span> inworddb)
+<span class="kw">summary</span>(StandardMod)</code></pre></div>
+<pre><code>## 
+## Mixed-Effects Model (k = 299; tau^2 estimator: REML)
+## 
+##    logLik   deviance        AIC        BIC       AICc 
+## -144.5660   289.1320   295.1320   306.2132   295.2139   
+## 
+## tau^2 (estimated amount of residual heterogeneity):     0.1027 (SE = 0.0116)
+## tau (square root of estimated tau^2 value):             0.3205
+## I^2 (residual heterogeneity / unaccounted variability): 77.04%
+## H^2 (unaccounted variability / sampling variability):   4.36
+## R^2 (amount of heterogeneity accounted for):            0.00%
+## 
+## Test for Residual Heterogeneity:
+## QE(df = 297) = 1141.6702, p-val &lt; .0001
+## 
+## Test of Moderators (coefficient 2):
+## QM(df = 1) = 0.3885, p-val = 0.5331
+## 
+## Model Results:
+## 
+##          estimate      se    zval    pval    ci.lb   ci.ub 
+## intrcpt    0.2099  0.0218  9.6125  &lt;.0001   0.1671  0.2527  *** 
+## mods       0.0002  0.0003  0.6233  0.5331  -0.0004  0.0007      
+## 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div id="two-level-model-paper-1" class="section level2">
+<h2>Two Level Model: Paper</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">PerPaperMod &lt;-<span class="st"> </span><span class="kw">rma.mv</span>(g_calc, g_var_calc, <span class="dt">mod =</span> ageC, <span class="dt">random =</span> <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">|</span><span class="st"> </span>short_cite, <span class="dt">data =</span> inworddb)
+<span class="kw">summary</span>(PerPaperMod)</code></pre></div>
+<pre><code>## 
+## Multivariate Meta-Analysis Model (k = 299; method: REML)
+## 
+##    logLik   Deviance        AIC        BIC       AICc 
+## -263.7595   527.5190   533.5190   544.6002   533.6009   
+## 
+## Variance Components:
+## 
+##             estim    sqrt  nlvls  fixed      factor 
+## sigma^2    0.0414  0.2035     68     no  short_cite 
+## 
+## Test for Residual Heterogeneity:
+## QE(df = 297) = 1141.6702, p-val &lt; .0001
+## 
+## Test of Moderators (coefficient 2):
+## QM(df = 1) = 9.6131, p-val = 0.0019
+## 
+## Model Results:
+## 
+##          estimate      se    zval    pval   ci.lb   ci.ub 
+## intrcpt    0.1806  0.0277  6.5200  &lt;.0001  0.1263  0.2349  *** 
+## mods       0.0007  0.0002  3.1005  0.0019  0.0002  0.0011   ** 
+## 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<div id="three-level-model-paper-and-experiment-1" class="section level2">
+<h2>Three Level Model: Paper and Experiment</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">PerExpPaperMod &lt;-<span class="st"> </span><span class="kw">rma.mv</span>(g_calc, g_var_calc, <span class="dt">mod =</span> ageC, <span class="dt">random =</span> <span class="op">~</span><span class="st"> </span><span class="kw">factor</span>(expt_num) <span class="op">|</span><span class="st">  </span>short_cite, <span class="dt">data =</span> inworddb)
+<span class="kw">summary</span>(PerExpPaperMod)</code></pre></div>
+<pre><code>## 
+## Multivariate Meta-Analysis Model (k = 299; method: REML)
+## 
+##    logLik   Deviance        AIC        BIC       AICc 
+## -209.1634   418.3268   426.3268   441.1017   426.4638   
+## 
+## Variance Components:
+## 
+## outer factor: short_cite       (nlvls = 68)
+## inner factor: factor(expt_num) (nlvls = 15)
+## 
+##             estim    sqrt  fixed 
+## tau^2      0.0663  0.2575     no 
+## rho        0.2952             no 
+## 
+## Test for Residual Heterogeneity:
+## QE(df = 297) = 1141.6702, p-val &lt; .0001
+## 
+## Test of Moderators (coefficient 2):
+## QM(df = 1) = 4.6265, p-val = 0.0315
+## 
+## Model Results:
+## 
+##          estimate      se    zval    pval   ci.lb   ci.ub 
+## intrcpt    0.1819  0.0276  6.5924  &lt;.0001  0.1279  0.2360  *** 
+## mods       0.0005  0.0003  2.1509  0.0315  0.0000  0.0010    * 
+## 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>To summarize, introducing hierarchical structure changed the outcome for the moderator test. Age (centered) now has a small, but significant, effect on effect sizes. This is not the case when ignoring the nested structure of effect sizes. This result mirrors the reported analyses in Bergmann &amp; Cristia (2015) that there is a small, positive effect of age when only considering papers which test at least two age groups in the same set-up.</p>
+</div>
+</div>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=http://metalab.stanford.edu/report/hierarchicalrandomeffect/&amp;text=Hierarchical%20Random%20Effects%20in%20Meta-Analyses:%20Do%20they%20change%20stuff?" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=http://metalab.stanford.edu/report/hierarchicalrandomeffect/&amp;t=Hierarchical%20Random%20Effects%20in%20Meta-Analyses:%20Do%20they%20change%20stuff?" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Hierarchical%20Random%20Effects%20in%20Meta-Analyses:%20Do%20they%20change%20stuff?&amp;body=http://metalab.stanford.edu/report/hierarchicalrandomeffect/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=http://metalab.stanford.edu/report/hierarchicalrandomeffect/&amp;title=Hierarchical%20Random%20Effects%20in%20Meta-Analyses:%20Do%20they%20change%20stuff?" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Hierarchical%20Random%20Effects%20in%20Meta-Analyses:%20Do%20they%20change%20stuff?%20http://metalab.stanford.edu/report/hierarchicalrandomeffect/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=http://metalab.stanford.edu/report/hierarchicalrandomeffect/&amp;title=Hierarchical%20Random%20Effects%20in%20Meta-Analyses:%20Do%20they%20change%20stuff?" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/latex.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js" integrity="sha512-SeiQaaDh73yrb56sTW/RgVdi/mMqNeM2oBwubFHagc5BkixSpP1fvqF47mKzPGWYSSy4RwbBunrJBQ4Co8fRWA==" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/wowchemy.min.4c2bca31150ce93c5a5e43b8a50f22fd.js"></script>
+
+      <script src="/rmarkdown-libs/jquery/jquery.min.js"></script>
+  <script src="/rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
+  <script src="/rmarkdown-libs/datatables-binding/datatables.js"></script>
+  <script src="/rmarkdown-libs/dt-core-bootstrap/js/jquery.dataTables.min.js"></script>
+  <script src="/rmarkdown-libs/crosstalk/js/crosstalk.min.js"></script>
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  <p class="powered-by">
+    Unless otherwise stated, MetaLab and its datasets are licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. See our <a href="/documentation/faq">FAQ</a> for more information.
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

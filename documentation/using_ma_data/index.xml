@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Using MetaLab Data | MetaLab</title>
+    <link>http://metalab.stanford.edu/documentation/using_ma_data/</link>
+      <atom:link href="http://metalab.stanford.edu/documentation/using_ma_data/index.xml" rel="self" type="application/rss+xml" />
+    <description>Using MetaLab Data</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language>
+    <image>
+      <url>http://metalab.stanford.edu/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Using MetaLab Data</title>
+      <link>http://metalab.stanford.edu/documentation/using_ma_data/</link>
+    </image>
+    
+    <item>
+      <title>Conduct MA</title>
+      <link>http://metalab.stanford.edu/documentation/using_ma_data/conduct_ma/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://metalab.stanford.edu/documentation/using_ma_data/conduct_ma/</guid>
+      <description>
+
+
+&lt;div id=&#34;build-a-ma&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Build a MA&lt;/h1&gt;
+&lt;div id=&#34;choosing-the-right-ma-question&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Choosing the right MA question&lt;/h2&gt;
+&lt;div id=&#34;how-do-i-define-my-ma-question&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;How do I define my MA question?&lt;/h3&gt;
+&lt;p&gt;&lt;iframe src=&#34;https://www.youtube.com/embed/0TVSjaRsfGU&#34; width=&#34;420&#34; height=&#34;315&#34; frameborder=&#34;0&#34; allowfullscreen=&#34;&#34;&gt;&lt;/iframe&gt; &lt;!-- ```{r figurename, echo=FALSE, fig.cap=&#34;my caption&#34;, out.width = &#39;90%&#39;}
+knitr::include_graphics(&#34;media/image04.jpg&#34;)
+``` --&gt;&lt;/p&gt;
+&lt;p&gt;Choose the appropriate level of detail for your MA topic. The topic of your meta-analysis should be broader than the one of a single experiment (e.g. &amp;quot;How do babies segment words of different stress patterns? &amp;quot;), but narrower than a whole research field (e.g. &amp;quot;How do babies learn language? &amp;quot;). The goal is to be able to gather comparable papers, measuring consistant dependant variables, to allow you to compute a common statistical metric (i.e. effect size) from them.&lt;/p&gt;
+&lt;p&gt;Define your population of interest precisely. Homogeneous can mean many things; age, language, typical versus atypical. You may run a meta-analysis where you accept many different levels for some of the variables and see how it affects results, defining them as MA moderators, for example seeing if effects are consistent across ages. There should still be some unifying element in your studies though so you have one broad result of your meta-analysis.&lt;/p&gt;
+&lt;p&gt;Consider the number of available studies on your topic. Your MA topic also depends on how many studies have been done on it. If you want to run a simple comparative MA, as few as two studies could be okay. But if you want to run an analysis with a lot of moderators, 5 studies probably isn&#39;t enough to warrant a meta-analysis.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;why-should-i-bother-keeping-track-of-the-ma-creation-process&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Why should I bother keeping track of the MA creation process?&lt;/h3&gt;
+&lt;iframe src=&#34;https://www.youtube.com/embed/FPlKC2feqNo&#34; width=&#34;420&#34; height=&#34;315&#34; frameborder=&#34;0&#34; allowfullscreen=&#34;&#34;&gt;&lt;/iframe&gt;
+&lt;p&gt;It is important that you build traceability of your work from the start, particularly since in larger MAs other people may finish up the work or you want to check later on why you decided to exclude a given paper. So to make sure that all of your decisions are recorded and clear, make a copy of this &lt;a href=&#34;https://docs.google.com/spreadsheets/d/1mtN4g6FddpBljQzrR-mS0y414M9wQNjK4Vz09nLOe2s/edit#gid=0&#34;&gt;&lt;em&gt;decision spreadsheet&lt;/em&gt;&lt;/a&gt;. Don’t forget to rename it, to give us a “viewing” link, and clean it up as follows.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 1&lt;/strong&gt;: Click on “File” and select the “Make a copy…” option&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;http://metalab.stanford.edu/media/documentation/image04.jpg&#34; width=&#34;480&#34; /&gt;
+
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Step 2&lt;/strong&gt;: In the window that appears, change the name to something like “MA_TOPIC&amp;quot;&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;http://metalab.stanford.edu/media/documentation/image03.jpg&#34; width=&#34;480&#34; /&gt;
+
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Step 3&lt;/strong&gt;: Click on the blue button “Share” on the top right.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 4&lt;/strong&gt;: In the menu, click on “Get shareable link” on the top right&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 5&lt;/strong&gt;: Copy the link and send it to us.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;http://metalab.stanford.edu/media/documentation/image05.jpg&#34; width=&#34;480&#34; /&gt;
+
+&lt;/div&gt;
+&lt;p&gt;Step 6: Clean up&lt;/p&gt;
+&lt;p&gt;The model spreadsheet contains some fake entries and notes. Our recommendation is, so as not to get confused, to remove the instructions found on the top lines of each sheet and the fake information that is already entered - except for a couple of exceptions: the pink columns (A, B and W) in the Relevant_studies_search sheet contain formulas that may be useful to you. So you might want to delete the contents of the other columns and keep those two in order to reuse the formulas.&lt;/p&gt;
+&lt;p&gt;************&lt;/p&gt;
+&lt;p&gt;Additionally, make a copy of &lt;a href=&#34;https://docs.google.com/presentation/d/1DKY8BTZZ82bGyGwpGsyyzsilOqE1F1NcDLTKWtCe9AY/edit?usp=sharing&#34;&gt;&lt;em&gt;this flowchart&lt;/em&gt;&lt;/a&gt;, rename and share as you did for your spreadsheet above. This figure gives you an overview of the process, and you will be filling in the boxes with the right numbers as you go along so that people who continue this MA and/or those interested in assessing this work can make sure that you followed the procedure.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;now-that-i-have-my-list-of-related-studies-how-do-i-set-my-inclusion-criteria&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Now that I have my list of related studies, how do I set my inclusion criteria?&lt;/h3&gt;
+&lt;iframe src=&#34;https://www.youtube.com/embed/gk3GHT_eEI8&#34; width=&#34;420&#34; height=&#34;315&#34; frameborder=&#34;0&#34; allowfullscreen=&#34;&#34;&gt;&lt;/iframe&gt;
+&lt;p&gt;Probably not. In this step, you will go through the initial list you put together in step 2, and make decisions to include/exclude papers, mostly based on the abstract. In addition to creating your sample for data entry (step 4) you will start honing your &lt;em&gt;inclusion criteria&lt;/em&gt;. Typically, these will include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;a homogeneous scientific question&lt;/strong&gt;: &amp;gt; Make sure you have clearly &amp;gt; defined the purview of e.g. cross-situational learning (e.g., this &amp;gt; name itself is vague to those outside the domain, so define it in &amp;gt; a more specific way: “exposure to sets of images paired with &amp;gt; wordforms with the goal of studying word-form image association, &amp;gt; but crucially multiple images are shown at once (unlike e.g. the &amp;gt; switch procedure)”)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;a homogeneous infant population&lt;/strong&gt;: &amp;gt; Typically-developing children, &amp;gt; between the ages of XX and YY (the precise ages may stem from your &amp;gt; seminal paper; perhaps to start with, you could set the maximum to &amp;gt; 36 months, the minimum to 0 months); consider whether you also &amp;gt; need to restrict the sample based on infants’ native language &lt;em&gt;on &amp;gt; theoretical reasons&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The last one is perhaps the trickiest. Staying close to your seminal paper will allow you to reduce the amount of variation in your sample due to methodological “details”, and to make it easier for yourself to enter data, because all the results will be structured in similar ways. But it’s important to know that this is a potential source of bias. For instance, you could decide that you will only input data using a specific kind of artificial language because you know that papers not using this language have smaller effects. This will end up being a self-confirmation exercise -- unless there are a priori strong theoretical reasons to exclude other kinds of language or to assume that the learning mechanisms attributed to the infant cannot be generalized to these other languages.&lt;/p&gt;
+&lt;p&gt;Every time you make a decision regarding these and other key criteria, remember to note it in your decision spreadsheet, in the last sheet called “Notes_inclusion”. For example, mine looks like this:&lt;/p&gt;
+&lt;table&gt;
+&lt;colgroup&gt;
+&lt;col width=&#34;19%&#34; /&gt;
+&lt;col width=&#34;73%&#34; /&gt;
+&lt;col width=&#34;6%&#34; /&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;&lt;strong&gt;Question&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;Decision&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;Date&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;strong&gt;a homogeneous scientific question&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;learning of speech sound categories, where the categories are represented by a multimodal versus unimodal distribution of acoustic correlates&lt;/td&gt;
+&lt;td&gt;10/19/2015&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;strong&gt;a homogeneous infant population&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;typically-developing children, between the ages of 0 and 36 months&lt;/td&gt;
+&lt;td&gt;10/19/2015&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;strong&gt;a homogeneous procedure&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;passive exposure in the lab, testing via any behavioral or non-behavioral method&lt;/td&gt;
+&lt;td&gt;10/19/2015&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;selecting-studies&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Selecting Studies&lt;/h1&gt;
+&lt;div id=&#34;how-do-i-select-the-studies-to-include&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;How do I select the studies to include?&lt;/h3&gt;
+&lt;iframe src=&#34;https://www.youtube.com/embed/W3LMs-XY21g&#34; width=&#34;420&#34; height=&#34;315&#34; frameborder=&#34;0&#34; allowfullscreen=&#34;&#34;&gt;&lt;/iframe&gt;
+&lt;p&gt;The goal of this step is to put together a list of publications that you will look at and consider for inclusion. In a typical MA, you make the most comprehensive list possible in order to answer a specific research question and/or to cover a given phenomenon. This typically means going through 1,000 abstracts, and reading in full 100 papers. You can start with the seminal paper for your effect of interest, and then look for the studies citing your seminal one. Use &lt;a href=&#34;http://www.ncbi.nlm.nih.gov/pubmed/advanced&#34;&gt;pubmed’s search&lt;/a&gt; to find your pivot study’s entry, for instance by copy-pasting the full paper title in the builder:&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;http://metalab.stanford.edu/media/documentation/pubmed_advanced_search.jpg&#34; width=&#34;480&#34; /&gt;
+
+&lt;/div&gt;
+&lt;p&gt;When you press “search”, usually you’ll find the entry for your seminal paper (or if the title was not unique, you might need to click on one of the entries found until you do come across the entry for your seminal paper). Notice on the right a section entitled “Cited by …” Scroll down to click on the link at the bottom of this section stating “See all..”&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;http://metalab.stanford.edu/media/documentation/pubmed_citing_papers.jpg&#34; width=&#34;480&#34; /&gt;
+
+&lt;/div&gt;
+&lt;p&gt;You will now see all studies citing your seminal one. Constrain it further by clicking on “Show additional filters” on the left, and checking the box for “Infant: birth to 23 months”:&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;http://metalab.stanford.edu/media/documentation/links_from_pubmed.jpg&#34; width=&#34;480&#34; /&gt;
+
+&lt;/div&gt;
+&lt;p&gt;You now want to save all these papers in your reference management software. If you use Zotero: Click on the drawing of a folder in your status/search bar. When you do so, a window will pop up with all the results for that pubmed page:&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;http://metalab.stanford.edu/media/documentation/save2Zotero.jpg&#34; width=&#34;480&#34; /&gt;
+
+&lt;/div&gt;
+&lt;p&gt;Click on “select all” and “OK”. Repeat for the other search pages. This will store the citation information, including abstract, in zotero.&lt;/p&gt;
+&lt;p&gt;You can also interrogate Pubmed with a script, such as &lt;a href=&#34;https://gist.github.com/mcfrank/c1ec74df1427278cbe53&#34;&gt;the one we have prepared&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;how-exactly-can-i-go-about-looking-through-my-initial-list-and-making-decisions&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;How exactly can I go about looking through my initial list and making decisions?&lt;/h3&gt;
+&lt;iframe src=&#34;https://www.youtube.com/embed/zBn83RQlo-c&#34; width=&#34;420&#34; height=&#34;315&#34; frameborder=&#34;0&#34; allowfullscreen=&#34;&#34;&gt;&lt;/iframe&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;What if the title and abstract doesn’t allow me to decide?&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Then play it safe and include the paper to check based on the full text.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;What if the title and abstract doesn’t allow me to decide, but in fact I know the paper and I know it needs to be excluded?&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Then you probably have already seen the full text of the paper, so say “yes” for the screening decision, and then “no” for the full-text decision.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;how-many-papers-should-i-enter&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;How many papers should I enter?&lt;/h3&gt;
+&lt;p&gt;Ideally, you would enter everything: published or unpublished, proceedings or journal, etc. However, sometimes you may want to start a “seed” meta-analysis that just gives a rough idea of an area.&lt;/p&gt;
+&lt;p&gt;In this case, how large should your sample be? Mika and Molly have done some &lt;a href=&#34;https://rawgit.com/langcog/metalab/master/resampling/resampling.html&#34;&gt;simulations&lt;/a&gt; to help you decide. By and large, it looks like the more, the better -- clearly estimates get more precise (confidence intervals narrow) as more papers are entered. Based on this information, we are proposing &lt;em&gt;a minimum of 10 included experiments&lt;/em&gt; as a pragmatic first step, knowing that your estimate is not very precise.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;how-should-i-structure-the-data-for-my-ma&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;How should I structure the data for my MA?&lt;/h3&gt;
+&lt;p&gt;We are hoping that eventually all of these MAs may be included in &lt;a href=&#34;.&#34;&gt;&lt;em&gt;MetaLab&lt;/em&gt;&lt;/a&gt;, so we ask you to use the &lt;a href=&#34;https://docs.google.com/spreadsheets/d/12Y_2BcFSu48t0F8a_xrY1Ro2fJoCIV1h8O627WNcrjY/edit?usp=sharing&#34;&gt;&lt;em&gt;MA template&lt;/em&gt;&lt;/a&gt; (create a copy, as you did in step 1), and follow the &lt;a href=&#34;http://metalab.stanford.edu/documentation.html#field_specs&#34;&gt;&lt;em&gt;field specifications&lt;/em&gt;&lt;/a&gt;. Ideally, you would code all potentially relevant moderator variables (e.g., experimental manipulations) in addition to the core characteristics (columns in red; e.g. means). However, in the interest of time, you can get started with the core characteristics only. Remember once more to give us viewing rights (see step 1 for instructions).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-are-the-relevant-variables-for-a-ma-and-how-many-input-rowscolumns-should-i-make&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;What are the relevant variables for a MA, and how many input rows/columns should I make?&lt;/h3&gt;
+&lt;iframe src=&#34;https://www.youtube.com/embed/spge3nZqCng&#34; width=&#34;420&#34; height=&#34;315&#34; frameborder=&#34;0&#34; allowfullscreen=&#34;&#34;&gt;&lt;/iframe&gt;
+&lt;p&gt;Here are some FAQs we have received on this:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;One of my papers has a single experiment but involves both Spanish and English speakers who are tested on a native and a nonnative speech sound contrast. Should that count as 4 experiments (2 languages x 2 contrasts)?&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;How many rows you make depends on how the results are reported. In this case, the authors report the outcome separately for all four groups. Therefore, please enter the four groups separately; each into their own row. You can copy over descriptions of the experiment.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;In Experiment 1, there are two age groups. Do I have to report the age for both groups or do I average both groups into one? If I have to report both groups, how do I report this in the input form?&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;How many rows you make depends on how the results are reported. In this case, the authors report an average outcome over both age groups, since they did not find a significant difference between the two groups. Therefore, please enter only one row and calculate the average age. If the results were reported separately per age group, make a&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;how-do-i-retrieve-studies&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;How do I retrieve studies?&lt;/h3&gt;
+&lt;p&gt;In a typical full MA, you go through the whole list and only then start entering. The procedure is as follows. Go back to your spreadsheet, and for each study that has been decided as a “yes” during screening, try to retrieve the full text for the paper as you normally would (e.g., search through scholar.google.com; regular google; your institution’s library, etc.) If you cannot retrieve it, update your spreadsheet sheet Relevant_studies_search to mark this paper as “no” in column F entitled “Fulltext_retrieved”. If you want, you can contact the authors to try to get the full text from them, in which case you can note this on column G.&lt;/p&gt;
+&lt;p&gt;If you do find the full text, go through the paper to find the first experiment reported. You will enter all experiments and conditions one at a time, and fill in their information in the MA spreadsheet you created in step 4. ### How do I enter and code relevant studies? &lt;iframe src=&#34;https://www.youtube.com/embed/OQ5m5YZE57M&#34; width=&#34;420&#34; height=&#34;315&#34; frameborder=&#34;0&#34; allowfullscreen=&#34;&#34;&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;p&gt;IMPORTANT: You should work backwards from the &lt;strong&gt;results&lt;/strong&gt; section: look at what dependent measures are reported fully enough that you will be able to extract an effect size from them.&lt;/p&gt;
+&lt;p&gt;The following information allows one to calculate an effect size (we are sticking to experimental designs, since most of our MAs are experimental):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;between-participant studies&lt;/strong&gt;: &amp;gt; Means and SDs (not SEs!) of the &amp;gt; dependent variable for each infant group** are all that is &amp;gt; required for the calculation of Cohen&#39;s d. Sometimes, means and &amp;gt; SDs are not available as numbers. If there are clear figures, you &amp;gt; can try to estimate means and SDs using** &lt;a href=&#34;http://arohatgi.info/WebPlotDigitizer/&#34;&gt;&lt;strong&gt;this online &amp;gt; app&lt;/strong&gt;&lt;/a&gt;*. If you decide to &amp;gt; estimate values from figures, add a column to keep track of this. &amp;gt; Finally, &lt;strong&gt;t or F values for the &lt;em&gt;main&lt;/em&gt; effect in combination with &amp;gt; sample sizes&lt;/strong&gt; can be used to calculate Cohen&#39;s d. Note them &amp;gt; when available.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;within-participant studies&lt;/strong&gt;: &amp;gt; Effect sizes for this type of &amp;gt; study are calculated the &lt;strong&gt;same way as in between-participant &amp;gt; studies&lt;/strong&gt;, but in order to calculate the weight of these studies &amp;gt; the &lt;strong&gt;correlation&lt;/strong&gt; between the first and second measurements is &amp;gt; required (to account for the amount of &amp;gt; within-participant variation). Since this measure is usually not &amp;gt; reported, we provide below median and range for correlations found &amp;gt; in existing MAs.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Infant word segmentation from native speech: 0.641 (range: 0.140 to 0.921)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Infant vowel discrimination (native and nonnative): 0.496 (range: -0.413 to 0.855)&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;en entering papers, please remember a key thing: all analyses are done by machines, and machines cannot read text! So if a column is “numeric”, please do &lt;strong&gt;&lt;em&gt;not&lt;/em&gt;&lt;/strong&gt; enter things that aren’t numbers (such as text, spaces, ~, etc). This is particularly important for the dependent measures!&lt;/p&gt;
+&lt;p&gt;At this stage, you might find that a given paper does not contain the right information for being included. In this case, you can and should exclude it. If you have already started entering it, you can leave the information you entered and put in “comments” that the entry is incomplete (although if you followed our advice above, you won’t have wasted time entering it!). Remember to update your spreadsheet with each paper you read and made a decision on.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;The article I enter has 3 experiments, and the first is with adult participants. Do I need to enter this experiment?&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;No, please only enter the infant/child experiments&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-level-of-detail-should-i-report&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;What level of detail should I report?&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;The sound stimuli differ approx. 6 ms in length, but the experiment is not about length differences. Do I have to report this difference although it is very small?&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;In case there’s a column for stimulus length, please report it. You are right that this experiment is not about length differences, but having the information cannot hurt, and eventual analyses will reflect that the difference is very small.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;The article reports a table with the lengths of each individual stimulus. Should I calculate and report the average value?&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Yes, please report the averaged value in the appropriate column.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;I am entering an article with the HAS method. The authors report results for both the 2 and 4 minutes after the test phase has started. Your example only reports the results after 2 minutes, but would you still want me to report both?&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;It is often the case that articles report more than one type of result. Please just report the ones that we also provide in the example file!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;effect-sizes&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Effect Sizes&lt;/h1&gt;
+&lt;div id=&#34;what-are-effect-sizes&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;What are effect sizes?&lt;/h3&gt;
+&lt;p&gt;In MAs (meta-analyses) we express the outcome of a single experiment in a way that captures how big an effect is and how much it varies. There are 3 groups of effect sizes:&lt;br /&gt;
+1. effect sizes based on means, which includes Cohen&#39;s &lt;em&gt;d&lt;/em&gt; on which we focus from here on;&lt;br /&gt;
+2. effect sizes based on binary data; and&lt;br /&gt;
+3. effect sizes based on correlations.&lt;/p&gt;
+&lt;p&gt;Since most developmental studies in the lab use mean responses of two groups or of the same infant in two (or more) conditions, Cohen&#39;s d is the appropriate effect size measure. This &lt;a href=&#34;http://www.meta-analysis.com/downloads/Meta-analysis%20Choosing%20an%20effect%20size.pdf&#34;&gt;chapter 3&lt;/a&gt; and the following ones provide a gentle introduction to effect sizes. Cohen&#39;s d is based on standardized mean differences. To get a feel for Cohen&#39;s d we highly recommend to play with the &lt;a href=&#34;http://rpsychologist.com/d3/cohend/&#34;&gt;visualization&lt;/a&gt; of RPsychologist. A list of recommended readings is also provided at the end of this document.&lt;/p&gt;
+&lt;p&gt;In a typical infant study, babies might hear two types of trials and the responses to each are compared. In most papers, it is sufficient that the difference between the trial types reaches statistical significance, but in a meta-analyses we care about the size of this single observed effect and its variance. This allows us to pool over several studies, weigh each datapoint, and arrive at an estimate of the underlying, true effect. This then allows us to calculate power and check how effect sizes might be systematically affected by variables such as infant age in &amp;quot;moderator analyses&amp;quot;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Recommended further readings for an introduction to effect sizes&lt;/strong&gt;:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Textbooks are great to get a basic overview of how to calculate effect sizes. We consulted: Lipsey, M. W. &amp;amp; Wilson, D. B. (2001). Practical meta-analysis. Thousand Oaks, CA: Sage.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;A great primer and a spreadsheet document to calculate effect sizes by hand can be found via: D. Lakens. (2013). Calculating and Reporting Effect Sizes to Facilitate Cumulative Science: A Practical Primer for t-tests and ANOVAs . Frontiers in Psychology 4:863. &lt;a href=&#34;osf.io/ixgcd/files/&#34;&gt;Materials on OSF&lt;/a&gt;&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;Since textbooks do not cover every possible question that different meta-analysts may encounter, we turned to articles for more specific questions. We found this article useful for considering the comparability of effect sizes from within- and between-participant designs: Morris, S. B., &amp;amp; DeShon, R. P. (2002). Combining Effect Size Estimates in Meta-Analysis With Repeated Measures and Independent-Groups Designs. Psychological Methods, 7(1), 1805-125. doi: 10.1037//1082-989X.7.1.105&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;Borenstein, M., Hedges, L. V. ,Higgins, J. P. T., Rothstein, H. R. (2009). Introduction to Meta-Analysis. John Wiley &amp;amp; Sons. DOI: 10.1002/9780470743386.ch3&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;how-do-i-calculate-effect-sizes&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;How do I calculate Effect Sizes?&lt;/h3&gt;
+&lt;iframe src=&#34;https://www.youtube.com/embed/WDxA8TfU1sk&#34; width=&#34;420&#34; height=&#34;315&#34; frameborder=&#34;0&#34; allowfullscreen=&#34;&#34;&gt;&lt;/iframe&gt;
+&lt;p&gt;We use R to calculate effect sizes. Visit &lt;a href=&#34;https://github.com/langcog/metalab2/tree/master/scripts&#34; class=&#34;uri&#34;&gt;https://github.com/langcog/metalab2/tree/master/scripts&lt;/a&gt; for our code. The metafor package also includes functions to compute the observed effect sizes.&lt;/p&gt;
+&lt;p&gt;We recommend the following for an introduction to effect sizes:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Textbooks are great to get a basic overview of how to calculate effect sizes. We consulted: Lipsey, M. W. &amp;amp; Wilson, D. B. (2001). Practical meta-analysis. Thousand Oaks, CA: Sage.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;A great primer and a spreadsheet document to calculate effect sizes by hand can be found via: D. Lakens. (2013). Calculating and Reporting Effect Sizes to Facilitate Cumulative Science: A Practical Primer for t-tests and ANOVAs . Frontiers in Psychology 4:863. &lt;a href=&#34;https://osf.io/ixgcd/files/&#34;&gt;Materials on OSF&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Since textbooks do not cover every possible question that different meta-analysts may encounter, we turned to articles for more specific questions. We found this article useful for considering the comparability of effect sizes from within- and between-participant designs: Morris, S. B., &amp;amp; DeShon, R. P. (2002). Combining Effect Size Estimates in Meta-Analysis With Repeated Measures and Independent-Groups Designs. Psychological Methods, 7(1), 1805-125. doi: &lt;a href=&#34;http://dx.doi.org/10.1037//1082-989X.7.1.105&#34;&gt;10.1037//1082-989X.7.1.105&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-if-i-dont-have-all-the-required-information&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;What if I don’t have all the required information?&lt;/h3&gt;
+&lt;iframe src=&#34;https://www.youtube.com/embed/UPLhl32YBU4&#34; width=&#34;420&#34; height=&#34;315&#34; frameborder=&#34;0&#34; allowfullscreen=&#34;&#34;&gt;&lt;/iframe&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Two groups of infants are tested and I treat them as two different entries, but the number of included and excluded infants are only reported as a whole over both groups. What do I do?&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;As the best approximation we can get, please divide the reported number through the number of groups (in your case 2).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;The age of infants is reported in weeks, therefore I multiplied it with 7 to convert it into days. I read in your instructions that you have to multiply months with 30.42 to get a proxy for days. So my question is whether I have to multiply with a different number than 7 to get a proxy for days?&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;No, that&#39;s fine the way you did it!&lt;/p&gt;
+&lt;p&gt;In some cases you will still need to contact the authors of the study. People probably don’t know you, so think about what in the object would make you open an email from a stranger. Something like “including your paper in a MA” should be motivational. People are busy: they don’t have time to read lengthy email, especially from someone they don’t know, so be as concise as possible. You could still give them more details later if they ask for it. Don’t be shy, authors are likely to be happy to hear that someone is interested in their work and is going to cite them!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;how-to-run-a-meta-analytic-regression&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;How to run a meta-analytic regression ?&lt;/h3&gt;
+&lt;iframe src=&#34;https://www.youtube.com/embed/VvP2DMLCRjU&#34; width=&#34;420&#34; height=&#34;315&#34; frameborder=&#34;0&#34; allowfullscreen=&#34;&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;div id=&#34;are-there-some-ma-specific-plots-that-i-should-make&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Are there some MA specific plots that I should make?&lt;/h3&gt;
+&lt;iframe src=&#34;https://www.youtube.com/embed/dZcqEKFLH6I&#34; width=&#34;420&#34; height=&#34;315&#34; frameborder=&#34;0&#34; allowfullscreen=&#34;&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;resources&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Resources&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://docs.google.com/spreadsheets/d/12Y_2BcFSu48t0F8a_xrY1Ro2fJoCIV1h8O627WNcrjY/edit?usp=sharing&#34;&gt;&lt;em&gt;MA template&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://docs.google.com/document/d/1szXxrv75qTVx-4adlLrwmjWSDIBJfMH09dzh9733mog/edit?usp=sharing&#34;&gt;&lt;em&gt;Coding book&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://gist.github.com/mcfrank/c1ec74df1427278cbe53&#34;&gt;&lt;em&gt;Interrogating PubMed via a script&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.getdatajoy.com/project/561388dfb485274e40055563&#34;&gt;&lt;em&gt;Selecting for inclusion&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Example MAs: &lt;a href=&#34;https://docs.google.com/spreadsheets/d/1XN6VaYRs7CStrINct_rr2d6rh6WN28xFiIGB5T1vkzY/edit?usp=sharing&#34;&gt;&lt;em&gt;InWordDB&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://sites.google.com/site/infantdbs/create-your-own-cama&#34;&gt;&lt;em&gt;Instructions for creating a CAMA&lt;/em&gt;&lt;/a&gt; (including further resources)&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;structure-for-ma&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Structure for MA&lt;/h1&gt;
+&lt;div id=&#34;how-should-i-structure-the-data-for-my-meta-analysis&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;How should I structure the data for my meta-analysis?&lt;/h3&gt;
+&lt;p&gt;We are hoping that eventually all of your MAs (meta-analyses) will be included in &lt;a href=&#34;.&#34;&gt;&lt;em&gt;MetaLab&lt;/em&gt;&lt;/a&gt;, so we ask you to use the &lt;a href=&#34;https://docs.google.com/spreadsheets/d/12Y_2BcFSu48t0F8a_xrY1Ro2fJoCIV1h8O627WNcrjY/edit?usp=sharing&#34;&gt;&lt;em&gt;MA template&lt;/em&gt;&lt;/a&gt; (create a copy), and follow the &lt;a href=&#34;http://metalab.stanford.edu/documentation.html#field_specs&#34;&gt;&lt;em&gt;field specifications&lt;/em&gt;&lt;/a&gt; to ensure compatibility. (Note that right now, winter 2018, these specifications are biased towards language acquisition research. If you work on another topic, we would be thrilled if you helped us expand and adapt MetaLab).&lt;/p&gt;
+&lt;p&gt;Ideally, you would code all potentially relevant moderator variables (e.g., experimental manipulations) in addition to the core characteristics (columns in red; e.g., number of participants). However, in the interest of time, you can get started with the core characteristics only. Remember once more to give us viewing rights.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-are-the-relevant-variables-for-a-ma-and-how-many-input-rowscolumns-should-i-make-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;What are the relevant variables for a MA, and how many input rows/columns should I make?&lt;/h3&gt;
+&lt;iframe src=&#34;https://www.youtube.com/embed/spge3nZqCng&#34; width=&#34;420&#34; height=&#34;315&#34; frameborder=&#34;0&#34; allowfullscreen=&#34;&#34;&gt;&lt;/iframe&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;One of my papers has a single experiment but involves both Spanish and English speakers who are tested on a native and a nonnative speech sound contrast. Should that count as 4 experiments (2 languages x 2 contrasts)?&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;How many rows you make depends on how the results are reported. In this case, the authors report the outcome separately for all four groups. Therefore, please enter the four groups separately; each into their own row. You can copy over descriptions of the experiment.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;In Experiment 1, there are two age groups. Do I have to report the age for both groups or do I average both groups into one? If I have to report both groups, how do I report this in the input form?&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;How many rows you make depends on how the results are reported. In this case, the authors report an average outcome over both age groups, since they did not find a significant difference between the two groups. Therefore, please enter only one row and calculate the average age. If the results were reported separately per age group, make a&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;how-do-i-retrieve-studies-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;How do I retrieve studies?&lt;/h3&gt;
+&lt;p&gt;In a typical full MA, you go through the whole list and only then start entering. The procedure is as follows. Go back to your spreadsheet, and for each study that has been decided as a “yes” during screening, try to retrieve the full text for the paper as you normally would (e.g., search through scholar.google.com; regular google; your institution’s library, etc.) If you cannot retrieve it, update your spreadsheet sheet Relevant_studies_search to mark this paper as “no” in column F entitled “Fulltext_retrieved”. If you want, you can contact the authors to try to get the full text from them, in which case you can note this on column G.&lt;/p&gt;
+&lt;p&gt;If you do find the full text, go through the paper to find the first experiment reported. You will enter all experiments and conditions one at a time, and fill in their information in the MA spreadsheet you created in step 4.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;how-do-i-enter-and-code-relevant-studies&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;How do I enter and code relevant studies?&lt;/h3&gt;
+&lt;iframe src=&#34;https://www.youtube.com/embed/OQ5m5YZE57M&#34; width=&#34;420&#34; height=&#34;315&#34; frameborder=&#34;0&#34; allowfullscreen=&#34;&#34;&gt;&lt;/iframe&gt;
+&lt;p&gt;IMPORTANT: You should work backwards from the &lt;strong&gt;results&lt;/strong&gt; section: look at what dependent measures are reported fully enough that you will be able to extract an effect size from them.&lt;/p&gt;
+&lt;p&gt;The following information allows one to calculate an effect size (we are sticking to experimental designs, since most of our MAs are experimental):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;between-participant studies&lt;/strong&gt;:&lt;br /&gt;
+&amp;gt; Means and SDs (not SEs!) of the dependent variable for each infant group are all that is required for the calculation of Cohen&#39;s &lt;em&gt;d&lt;/em&gt;. Sometimes, means and SDs are not available as numbers. If there are clear figures, you can try to estimate means and SDs using &lt;a href=&#34;http://arohatgi.info/WebPlotDigitizer/&#34;&gt;&lt;strong&gt;this online app&lt;/strong&gt;&lt;/a&gt; or &lt;a href=&#34;https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.13118&#34;&gt;&lt;strong&gt;the R package metaDigitise&lt;/strong&gt;&lt;/a&gt;. If you decide to estimate values from figures, add a column to keep track of this. Finally, &lt;strong&gt;t or F values for the &lt;em&gt;main&lt;/em&gt; effect in combination with sample sizes&lt;/strong&gt; can be used to calculate Cohen&#39;s &lt;em&gt;d&lt;/em&gt;. Note them when available.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;within-participant studies&lt;/strong&gt;:&lt;br /&gt;
+&amp;gt; Effect sizes for this type of study are calculated the &lt;strong&gt;same way as in between-participant studies&lt;/strong&gt;, but in order to calculate the weight of these studies the &lt;strong&gt;correlation&lt;/strong&gt; between the first and second measurements is required (to account for the amount of within-participant variation). Since this measure is usually not reported, we provide below median and range for correlations found in existing MAs.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Infant word segmentation from native speech: 0.641 (range: 0.140 to 0.921)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Infant vowel discrimination (native and nonnative): 0.496 (range: -0.413 to 0.855)&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;When entering papers, please remember a key thing: all analyses are done by machines, and machines cannot read text! So if a column is “numeric”, please do &lt;strong&gt;&lt;em&gt;not&lt;/em&gt;&lt;/strong&gt; enter things that aren’t numbers (such as text, spaces, ~, etc). This is particularly important for the dependent measures!&lt;/p&gt;
+&lt;p&gt;At this stage, you might find that a given paper does not contain the right information for being included. In this case, you can and should exclude it. If you have already started entering it, you can leave the information you entered and put in “comments” that the entry is incomplete (although if you followed our advice above, you won’t have wasted time entering it!). Remember to update your spreadsheet with each paper you read and made a decision on.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;The article I enter has 3 experiments, and the first is with adult participants. Do I need to enter this experiment?&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;No, please only enter the infant/child experiments&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-level-of-detail-should-i-report-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;What level of detail should I report?&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;The sound stimuli differ approx. 6 ms in length, but the experiment is not about length differences. Do I have to report this difference although it is very small?&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;In case there’s a column for stimulus length, please report it. You are right that this experiment is not about length differences, but having the information cannot hurt, and eventual analyses will reflect that the difference is very small.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;The article reports a table with the lengths of each individual stimulus. Should I calculate and report the average value?&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Yes, please report the averaged value in the appropriate column.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;I am entering an article with the HAS method. The authors report results for both the 2 and 4 minutes after the test phase has started. Your example only reports the results after 2 minutes, but would you still want me to report both?&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;It is often the case that articles report more than one type of result. Please just report the ones that we also provide in the example file!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;regression-and-moderator-analysis&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Regression and moderator analysis&lt;/h1&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Contribute MA</title>
+      <link>http://metalab.stanford.edu/documentation/using_ma_data/contribute_ma/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://metalab.stanford.edu/documentation/using_ma_data/contribute_ma/</guid>
+      <description>
+
+
+&lt;p&gt;We welcome researchers interested in contributing to Metalab. Please contact us at &lt;a href=&#34;mailto:metalab-project@googlegroups.com&#34;&gt;metalab-project@googlegroups.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Contributions can take various forms:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Adding unpublished data. Ideally we can link to a report on the data, for example on &lt;a href=&#34;http://osf.io&#34;&gt;OSF&lt;/a&gt;. Then contact the curator with a link and if possible all necessary data.&lt;/li&gt;
+&lt;li&gt;Suggesting and/or adding published papers not yet included. Simply email the curator, ideally with a pdf. If you are the author, try to make sure that all necessary data is either included or provided in your email.&lt;/li&gt;
+&lt;li&gt;Creating new meta-analyses. You can either collaborate on current in-progress projects (see below) or create your own meta-analyses. In the latter case see the section listing resources further down.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;New meta-analyses looking for contributors&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Currently, the following topics are in the process of becoming a meta-analysis and we are looking for contributors:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Segmenting words from an artificial stream of speech, an extension of &lt;a href=&#34;http://inworddb.acristia.org&#34;&gt;&lt;em&gt;InWordDB&lt;/em&gt;&lt;/a&gt;; contact: &lt;a href=&#34;http://sites.google.com/site/chbergma/home/contact&#34;&gt;&lt;em&gt;Christina Bergmann&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Detecting mispronunciations of known words, without a learning phase in the lab; contact: &lt;a href=&#34;http://sites.google.com/site/chbergma/home/contact&#34;&gt;&lt;em&gt;Christina Bergmann&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Resources&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Here are a few resources on creating meta-analyses compatible with Metalab:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.google.com/spreadsheets/d/12Y_2BcFSu48t0F8a_xrY1Ro2fJoCIV1h8O627WNcrjY/edit?usp=sharing&#34;&gt;&lt;em&gt;Metalab MA template&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.google.com/document/d/1szXxrv75qTVx-4adlLrwmjWSDIBJfMH09dzh9733mog/edit?usp=sharing&#34;&gt;&lt;em&gt;Code book&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gist.github.com/mcfrank/c1ec74df1427278cbe53&#34;&gt;&lt;em&gt;Interrogating PubMed via a script&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.getdatajoy.com/project/561388dfb485274e40055563&#34;&gt;&lt;em&gt;Selecting studies for inclusion&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.google.com/document/d/1_7mgeaARlYK6TecyUqzk9SSr0pLAkV3pQZE4qYT7CMA/edit?usp=sharing&#34;&gt;&lt;em&gt;FAQ&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.google.com/spreadsheets/d/1XN6VaYRs7CStrINct_rr2d6rh6WN28xFiIGB5T1vkzY/edit?usp=sharing&#34;&gt;&lt;em&gt;InWordDB, a well-fleshed out MA&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://sites.google.com/site/infantdbs/create-your-own-cama&#34;&gt;&lt;em&gt;Instructions for creating a community-augmented meta-analysis&lt;/em&gt;&lt;/a&gt; (including further resources)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div id=&#34;contribute-your-meta-analysis&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Contribute your meta-analysis&lt;/h1&gt;
+&lt;p&gt;If you have already done a meta-analysis, you can easily add it to MetaLab. This tutorial explains how. But first, we go over why this is good for you and the community.&lt;/p&gt;
+&lt;div id=&#34;why-should-i-contribute-my-meta-analysis-to-metalab&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Why should I contribute my meta-analysis to MetaLab?&lt;/h3&gt;
+&lt;p&gt;Contributing to MetaLab can have several advantages both for you and the community:&lt;br /&gt;
+* &lt;strong&gt;Get more visibility for your MA.&lt;/strong&gt; When publishing a paper, you wish that it will be read by as many people as possible. Placing it in a centralized repository such as MetaLab can help you to reach this broad audience and gives more visibility to your meta-analysis.&lt;br /&gt;
+* &lt;strong&gt;Increase the impact of your MA.&lt;/strong&gt; As an author, you probably want your results to be fully understood by readers, and you want your readers to use your data as efficiently as possible. The interactive interface of the MetaLab website allows readers to better navigate in your meta-analysis results than the paper version, and to play with the results to better use them when planning experiments. MetaLab is an opportunity for your meta-analysis to make a stronger impact.&lt;br /&gt;
+* &lt;strong&gt;Contribute to drawing the broader developmental picture.&lt;/strong&gt; You made a meta-analysis to help the community draw a clearer picture about an effect of interest and contribute to theory assessment. MetaLab is a central platform that includes over 1040 effect sizes. Incorporating your meta-analysis in this larger dataset helps the community to have a better idea of cognitive development and language acquisition.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;who-owns-the-data-contributed-to-metalab&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Who owns the data contributed to MetaLab?&lt;/h3&gt;
+&lt;p&gt;You remain the owner of your meta-analysis data: Users must cite your data by your preferred citation. If your data are previously unpublished then this doesn&#39;t count as publication. Learn more by reading our &lt;a href=&#34;http://metalab.stanford.edu/publications.html&#34;&gt;full citation policy&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;can-i-retain-control-on-my-data-must-i-forever-retain-control-of-my-data&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Can I retain control on my data? Must I forever retain control of my data?&lt;/h3&gt;
+&lt;p&gt;You can retain control for as long as you want to. In fact, two options exists for the curation and review of your data. You can &lt;strong&gt;choose to be the curator&lt;/strong&gt;. This means you agree to be the person responsible for identifying new relevant papers and signaling them to the MetaLab data manager, who will add them to the database of the relevant MA. You would be expected to check data entry once in a while. Curators are part of the MetaLab board and get informed of discussions regarding e.g. site revamping. Alternatively, you can &lt;strong&gt;choose to step down completely&lt;/strong&gt;, and it will be MetaLab’s job to assign a new curator for your dataset. In this case, we can still keep your photo on the wall of fame.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;how-do-i-code-my-existing-meta-analysis-in-the-metalab-format&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;How do I code my existing meta-analysis in the MetaLab format ?&lt;/h3&gt;
+&lt;p&gt;We prepared a &lt;a href=&#34;https://docs.google.com/spreadsheets/d/12Y_2BcFSu48t0F8a_xrY1Ro2fJoCIV1h8O627WNcrjY/edit#gid=0&#34;&gt;spreadsheet&lt;/a&gt; that you must use to code your data. The key property of this spreadsheet is that it has one row for each effect size. Therefore you should fill as many rows as the number of effect size you report in your meta-analysis.&lt;br /&gt;
+* The first tab, called “Data”, should contain your data.&lt;br /&gt;
+* The second tab, called “CodeBook”, contains all the explanations about the codes to be used when you fill the “Data” tab.&lt;br /&gt;
+* The third tab, called “Methods”, contains all the possible options for the “method” column and their respective description.&lt;/p&gt;
+&lt;p&gt;Follow these steps to convert your data:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Make a copy of the spreadsheet.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;Rename the copy with an informative name to identify your MA: FirstAuthor_Topic (e.g. Dunst_motionese_preference).&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;Create a new tab and copy-paste your data table there.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;Make a copy of the “Data” tab to keep an interim version of your data.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;Copy the first column of the tab containing your data table. Then go to the new “InterimData” tab and paste your first column in the MetaLab column that matches.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;Repeat step 5 for each column of your data table.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;Copy the first column of the “InterimData” in the “Data” tab. Then edit each cell to match the data format specified in the “CodeBook” tab.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If you work from your paper, you may have an appendix or a table for each of your moderators. In this case, take them one by one and follow these steps:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Create a tab and copy-paste your appendix or table there. Check that the content of your appendix hasn’t been messed up when pasting. Rename the tab with the name of your moderator.&lt;/li&gt;
+&lt;li&gt;Edit the data to have one row per effect size.&lt;/li&gt;
+&lt;li&gt;If you have several tables/appendix, repeat step 1-2 for each of them.&lt;/li&gt;
+&lt;li&gt;If you have several appendix create another tab and copy paste the content of all appendix-specific tabs side-by-side to check that all lines match up (i.e. same number of effect sizes in all the appendix/tables).&lt;/li&gt;
+&lt;li&gt;Once you have synthesized all your appendix in one table, copy-paste the column corresponding to a MetaLab requirement in the “Data” tab and edit each cell to match the data format specified in the “CodeBook” tab.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-if-an-effect-size-is-computed-with-groups-from-two-different-papers&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;What if an effect size is computed with groups from two different papers ?&lt;/h3&gt;
+&lt;p&gt;Write the two references in each of the first three columns (study_ID, long_cite, short_cite), separated by commas. The “short cite columns” should be in the text citation format, i.e. Smith (2002, 2008), if the two papers are from the same authors. Fill the other columns as usual.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-if-i-dont-have-all-the-columns-required-by-metalab&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;What if I don’t have all the columns required by MetaLab ?&lt;/h3&gt;
+&lt;p&gt;Fill the missing columns with “NA”. If it happens that you don’t have one of the mandatory columns, please &lt;a href=&#34;metalab-project@googlegroups.com&#34;&gt;let us know&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-types-of-communications-are-considered-as-peer-reviewed&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;What types of communications are considered as peer-reviewed ?&lt;/h3&gt;
+&lt;p&gt;Most journal articles are peer-reviewed; some conference proceedings (e.g., Cognitive Science) are peer-reviewed. Typically, book chapters, posters, and conference abstract are not considered peer-reviewed because no reviewer has seen the full details of the methods.&lt;/p&gt;
+&lt;p&gt;We welcome researchers interested in contributing to Metalab. Please contact us at &lt;a href=&#34;mailto:metalab-project@googlegroups.com&#34;&gt;metalab-project@googlegroups.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Contributions can take various forms:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Adding unpublished data. Ideally we can link to a report on the data, for example on &lt;a href=&#34;http://osf.io&#34;&gt;OSF&lt;/a&gt;. Then contact the curator with a link and if possible all necessary data.&lt;/li&gt;
+&lt;li&gt;Suggesting and/or adding published papers not yet included. Simply email the curator, ideally with a pdf. If you are the author, try to make sure that all necessary data is either included or provided in your email.&lt;/li&gt;
+&lt;li&gt;Creating new meta-analyses. You can either collaborate on current in-progress projects (see below) or create your own meta-analyses. In the latter case see the section listing resources further down.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;New meta-analyses looking for contributors&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Currently, the following topics are in the process of becoming a meta-analysis and we are looking for contributors:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Segmenting words from an artificial stream of speech, an extension of &lt;a href=&#34;http://inworddb.acristia.org&#34;&gt;&lt;em&gt;InWordDB&lt;/em&gt;&lt;/a&gt;; contact: &lt;a href=&#34;http://sites.google.com/site/chbergma/home/contact&#34;&gt;&lt;em&gt;Christina Bergmann&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Detecting mispronunciations of known words, without a learning phase in the lab; contact: &lt;a href=&#34;http://sites.google.com/site/chbergma/home/contact&#34;&gt;&lt;em&gt;Christina Bergmann&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Resources&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Here are a few resources on creating meta-analyses compatible with Metalab:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.google.com/spreadsheets/d/12Y_2BcFSu48t0F8a_xrY1Ro2fJoCIV1h8O627WNcrjY/edit?usp=sharing&#34;&gt;&lt;em&gt;Metalab MA template&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.google.com/document/d/1szXxrv75qTVx-4adlLrwmjWSDIBJfMH09dzh9733mog/edit?usp=sharing&#34;&gt;&lt;em&gt;Code book&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gist.github.com/mcfrank/c1ec74df1427278cbe53&#34;&gt;&lt;em&gt;Interrogating PubMed via a script&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.getdatajoy.com/project/561388dfb485274e40055563&#34;&gt;&lt;em&gt;Selecting studies for inclusion&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.google.com/document/d/1_7mgeaARlYK6TecyUqzk9SSr0pLAkV3pQZE4qYT7CMA/edit?usp=sharing&#34;&gt;&lt;em&gt;FAQ&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.google.com/spreadsheets/d/1XN6VaYRs7CStrINct_rr2d6rh6WN28xFiIGB5T1vkzY/edit?usp=sharing&#34;&gt;&lt;em&gt;InWordDB, a well-fleshed out MA&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://sites.google.com/site/infantdbs/create-your-own-cama&#34;&gt;&lt;em&gt;Instructions for creating a community-augmented meta-analysis&lt;/em&gt;&lt;/a&gt; (including further resources)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Update Existing MA</title>
+      <link>http://metalab.stanford.edu/documentation/using_ma_data/update_existing_ma/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://metalab.stanford.edu/documentation/using_ma_data/update_existing_ma/</guid>
+      <description>
+
+
+&lt;div id=&#34;add-your-own-paper&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Add your own paper&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div id=&#34;add-a-datapoint-you-found&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Add a datapoint you found&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div id=&#34;correct-a-mistake-you-found&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Correct a mistake you found&lt;/h3&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Planning Studies and Interpreting Results</title>
+      <link>http://metalab.stanford.edu/documentation/using_ma_data/plan_studies_interpret_results/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://metalab.stanford.edu/documentation/using_ma_data/plan_studies_interpret_results/</guid>
+      <description>
+
+
+&lt;div id=&#34;calculate-power&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Calculate power&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div id=&#34;download-data&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Download data&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div id=&#34;run-your-own-regression&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Run your own regression&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div id=&#34;selecting-subsets-to-match-your-study&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Selecting subsets to match your study&lt;/h3&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,10 @@
+---
+title: Planning Studies and Interpreting Results
+type: book
+weight: 160
+---
+
+### Calculate power
+### Download data
+### Run your own regression
+### Selecting subsets to match your study 

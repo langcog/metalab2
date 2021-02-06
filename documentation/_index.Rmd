@@ -1,0 +1,8 @@
+---
+title: Welcome
+type: book
+---
+
+Welcome to MetaLab, we provide interactive tools for
+community-augmented meta-analysis, power analysis, and experimental
+planning in cognitive development research.
