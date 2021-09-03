@@ -11,7 +11,7 @@ title = "MetaLab"
 
 # The URL of your site.
 # End your URL with a `/` trailing slash, e.g. `https://example.com/`.
-baseurl = "http://metalab.stanford.edu/"
+baseurl = "http://langcog.github.io/metalab/"
 relativeURLs = false
 
 # Configure Google Analytics
