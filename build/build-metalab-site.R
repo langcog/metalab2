@@ -3,7 +3,7 @@ library(purrr)
 library(here)
 library(metalabr)
 
-load_cached_data(here("shinyapps", "site_data", "Rdata", "metalab.Rdata"))
+metalabr:::get_cached_metalab_data(here("shinyapps", "site_data", "Rdata", "metalab.Rdata"))
 
 ## build dataset Rmd files from Rmd template, filling in each value of dataset.
 dataset_template <- readLines(here("build", "dataset-template.Rmd"))

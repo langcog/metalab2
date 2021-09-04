@@ -4,12 +4,13 @@ library(here)
 library(metalabr)
 library(readr) # <- placed so that renv captures as dependency
 
-domains <- get_metalab_domain_info(here("metadata", "domains.yaml"))
-reports <- get_metalab_report_info(here("metadata", "reports.yaml"))
-dataset_yaml <- get_metalab_dataset_info(here("metadata", "datasets.yaml"))
-field_info <- get_metalab_field_info(here("metadata", "spec.yaml"))
-metalab_data <- get_metalab_data(dataset_yaml, field_info = field_info)
-dataset_info <- add_metalab_summary_info(dataset_yaml, metalab_data)
+## In this script, we choose to use the local versions of datasets.yaml
+## and spec.yaml, since it may have been modified with, for example,
+## an additional dataset or updated version
+dataset_yaml <- get_metalab_metadata(here("metadata", "datasets.yaml"))
+specs <- metalabr:::get_metalab_specs(here("metadata", "spec.yaml"))
+metalab_data <- get_metalab_data(dataset_yaml, specs = specs)
+dataset_info <- metalabr:::add_metalab_summary(dataset_yaml, metalab_data)
 
 persist_metalab_data <- function(x, dataset_info) {
   filename <- dataset_info[dataset_info$short_name == unique(x$short_name),
@@ -21,14 +22,16 @@ persist_metalab_data <- function(x, dataset_info) {
 
 }
 
-## save all metalab data locally in CSV format
+## save all metalab data locally in CSV format: this will get checked
+## into the git repository
 lapply(
   split(metalab_data, metalab_data$short_name),
   function(x) {
     persist_metalab_data(x, dataset_info)
   })
 
-## save all metalab data locally in Rdata format
-save(metalab_data, dataset_info, domains, reports,
+## save all metalab data locally in Rdata format: this will get
+## checked into the git repository
+save(metalab_data, dataset_info, 
      file = here("shinyapps", "site_data", "Rdata", paste0("metalab", ".Rdata")),
      version = 2)
