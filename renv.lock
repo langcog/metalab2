@@ -116,14 +116,14 @@
     },
     "blogdown": {
       "Package": "blogdown",
-      "Version": "1.5",
+      "Version": "1.4",
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "573a81bab1652544c2673e48486cc51f"
     },
     "bookdown": {
       "Package": "bookdown",
-      "Version": "0.24",
+      "Version": "0.23",
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "3837766a1e1b527af25fa3e2d12a2800"
