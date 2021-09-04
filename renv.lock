@@ -4,7 +4,7 @@
     "Repositories": [
       {
         "Name": "CRAN",
-        "URL": "https://cloud.r-project.org"
+        "URL": "https://packagemanager.rstudio.com/cran/latest"
       }
     ]
   },
@@ -14,7 +14,7 @@
       "Version": "0.18",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "6df7d86466f183ab0edcd8e6050b38e1"
+      "Hash": "a7d6660c869d4f41f856504828af4645"
     },
     "Formula": {
       "Package": "Formula",
@@ -119,14 +119,14 @@
       "Version": "1.4",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "573a81bab1652544c2673e48486cc51f"
+      "Hash": "6bd14b113999113c89ee250590011a5b"
     },
     "bookdown": {
       "Package": "bookdown",
       "Version": "0.23",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "3837766a1e1b527af25fa3e2d12a2800"
+      "Hash": "bc07f4b5b93bbf21075429e0c7e090f8"
     },
     "boot": {
       "Package": "boot",
@@ -147,7 +147,7 @@
       "Version": "0.2.5.1",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "074ebc936dbcecd7115ed8083643b550"
+      "Hash": "2f069f3f42847231aef7baa49bed97b0"
     },
     "cachem": {
       "Package": "cachem",
@@ -527,15 +527,15 @@
     },
     "metalabr": {
       "Package": "metalabr",
-      "Version": "0.9.0",
+      "Version": "0.9.1",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteRepo": "metalabr",
       "RemoteUsername": "langcog",
       "RemoteRef": "HEAD",
-      "RemoteSha": "f31d8929a76f45481266bca217b798c14ccd3646",
-      "Hash": "9d98621909a478d3d946924c91a0e7f1"
+      "RemoteSha": "ad2480e1ed83f48052a35171e7e2cc6e8eb978e7",
+      "Hash": "339862adc41ec1e6226e93f3c9c57071"
     },
     "mgcv": {
       "Package": "mgcv",
