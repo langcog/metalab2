@@ -27,7 +27,7 @@ jobs:
       uses: actions/cache@v1
       with:
         path: ${{ env.RENV_PATHS_ROOT }}
-        key: ${{ runner.os }}-renv-20201005-${{ hashFiles('**/renv.lock') }}
+        key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
         restore-keys: |
           ${{ runner.os }}-renv-
 
