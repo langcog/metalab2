@@ -144,7 +144,7 @@
     },
     "bslib": {
       "Package": "bslib",
-      "Version": "0.3.0",
+      "Version": "0.2.5.1",
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "074ebc936dbcecd7115ed8083643b550"
