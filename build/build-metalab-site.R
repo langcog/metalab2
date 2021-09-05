@@ -38,5 +38,5 @@ lapply(dataset_info$short_name, function(s_name) {
             to = here("content", "dataset", s_name, "featured.png"))
 })
 
-blogdown::build_site()
+blogdown::build_site(build_rmd = TRUE)
 cat("Generated dataset documentation templates successfully, now run blogdown::serve_site()\n")

@@ -8,7 +8,7 @@ weight : 30  # Order that this section will appear.
 title : "Domains"
 subtitle : ""
 params:
-  load_data: "`r metalabr::load_cached_data(here::here('shinyapps', 'site_data', 'Rdata', 'metalab.Rdata'))`"
+  load_data: "`r metalabr:::get_cached_metalab_data(here::here('shinyapps', 'site_data', 'Rdata', 'metalab.Rdata'))`"
   libraries: "`r library(dplyr)`"
 
 # Showcase personal skills or business features.

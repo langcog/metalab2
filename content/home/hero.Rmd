@@ -7,7 +7,7 @@ title : "MetaLab"
 # Hero image (optional). Enter filename of an image in the `static/media/` folder.
 hero_media: "MetaLab_transparent.png"
 params:
-  load_data: "`r metalabr::load_cached_data(here::here('shinyapps', 'site_data', 'Rdata', 'metalab.Rdata'))`"
+  load_data: "`r metalabr:::get_cached_metalab_data(here::here('shinyapps', 'site_data', 'Rdata', 'metalab.Rdata'))`"
 
 design.background:
   # Apply a background color, gradient, or image.

@@ -22,7 +22,7 @@ library(here)
 library(metalabr)
 library(readr) 
 
-metalabr::load_cached_data(here::here('shinyapps', 'site_data', 'Rdata', 'metalab.Rdata')) 
+metalabr:::get_cached_metalab_data(here::here('shinyapps', 'site_data', 'Rdata', 'metalab.Rdata')) 
 filtered_dataset <- filter(dataset_info, full_citation != "") #only print the datasets that have full citations
 filtered_dataset <- filtered_dataset[!duplicated(filtered_dataset$full_citation),]
 filtered_dataset <- filtered_dataset[order(filtered_dataset$full_citation),]
