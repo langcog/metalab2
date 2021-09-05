@@ -34,4 +34,4 @@ lapply(
 ## checked into the git repository
 save(metalab_data, dataset_info, 
      file = here("shinyapps", "site_data", "Rdata", paste0("metalab", ".Rdata")),
-     version = 2)
+     version = 3)
