@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      RENV_PATHS_ROOT: ~/.local/share/renv
+      RENV_PATHS_ROOT: ~/.local/share/renv2
     
     steps:
     - uses: actions/checkout@v2
