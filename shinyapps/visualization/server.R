@@ -54,10 +54,11 @@ shinyServer(function(input, output, session) {
   })
 
   data <- reactive({
+    
     req(input$dataset_name)
     result <- metalab_data %>%
       filter(dataset == input$dataset_name, mean_age < 4000) ## MLL changed 3000 -> 4000
-
+    cat(input$dataset_name)
     subset <- input$subset_input
     if (!is.null(subset)) {
       if (subset != "All data") {
@@ -336,9 +337,11 @@ shinyServer(function(input, output, session) {
 
   violin <- function() {
     plt_data <- mod_data()
+
     mod_factor <- factor(plt_data[[mod_group()]])
     plt_data[[mod_group()]] <- factor(plt_data[[mod_group()]],
                                       levels = rev(levels(mod_factor)))
+
     plt <- ggplot(plt_data, aes_string(x = mod_group(), y = es(),
                                        colour = mod_group())) +
       coord_flip() +

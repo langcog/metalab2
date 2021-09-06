@@ -13,10 +13,10 @@ library(DT)
 library(stringr)
 library(metalabr)
 
-load_cached_data(here("shinyapps", "site_data", "Rdata", "metalab.Rdata"))
+metalabr:::get_cached_metalab_data(here("shinyapps", "site_data", "Rdata", "metalab.Rdata"))
 
 fields <-
-  get_metalab_field_info("https://raw.githubusercontent.com/langcog/metalab/main/metadata/spec.yaml")
+  metalabr:::get_metalab_specs()
 
 fields_derived <-
-  get_metalab_derived_field_info("https://raw.githubusercontent.com/langcog/metalab/main/metadata/spec_derived.yaml")
+  metalabr:::get_metalab_derived_specs()
