@@ -8,14 +8,12 @@ summary: <<SHORT_DESC>><br><<NUMERIC_SUMMARY>>
 ---
 
 ```{r echo=FALSE, warning=FALSE, message=FALSE}
-message("testing")
-#library(here)
-#library(dplyr)
-#load(here("shinyapps", "site_data", "Rdata", "metalab.Rdata"))
+library(here)
+library(dplyr)
+load(here("shinyapps", "site_data", "Rdata", "metalab.Rdata"))
 
-## dataset_info <- dataset_info %>% filter(short_name == "<<SHORT_NAME>>")
-## dataset_raw <- metalab_data %>% filter(short_name == "<<SHORT_NAME>>")
-
+dataset_info <- dataset_info %>% filter(short_name == "<<SHORT_NAME>>")
+dataset_raw <- metalab_data %>% filter(short_name == "<<SHORT_NAME>>")
 ```
 # `r dataset_info$name` 
 
