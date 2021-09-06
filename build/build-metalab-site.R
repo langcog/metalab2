@@ -4,14 +4,15 @@ library(here)
 library(metalabr)
 
 metalabr:::get_cached_metalab_data(here("shinyapps", "site_data", "Rdata", "metalab.Rdata"))
-
+cat("Generating dataset summaries from template...")
+x
 ## build dataset Rmd files from Rmd template, filling in each value of dataset.
 dataset_template <- readLines(here("build", "dataset-template.Rmd"))
 
 if (!dir.exists(here("content", "dataset"))) {
   dir.create(here("content", "dataset"))
 }
-cat("Generating dataset summaries from template...")
+
 lapply(dataset_info$short_name, function(s_name) {
   current_dataset <- dataset_info %>% filter(short_name == s_name)
   to_write <- sapply(dataset_template, function(template_line) {
