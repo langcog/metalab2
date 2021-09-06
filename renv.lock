@@ -5,7 +5,11 @@
       {
         "Name": "CRAN",
         "URL": "https://packagemanager.rstudio.com/cran/latest"
-      }
+      },
+      {
+        "Name": "src",
+        "URL": "https://cloud.r-project.org"
+      }      
     ]
   },
   "Packages": {
@@ -779,7 +783,7 @@
       "Package": "stringi",
       "Version": "1.7.4",
       "Source": "Repository",
-      "Repository": "CRAN",
+      "Repository": "src",
       "Hash": "ebaccb577da50829a3bb1b8296f318a5"
     },
     "stringr": {
