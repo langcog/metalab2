@@ -18,7 +18,7 @@ dataset_raw <- metalab_data %>% filter(short_name == "<<SHORT_NAME>>")
 # `r dataset_info$name` 
 
 ```{r results='asis', echo=FALSE}
-#library(shiny)
+library(shiny)
 fluidRow(
   column(width = 12,
     tags$ul(
