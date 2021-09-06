@@ -11,7 +11,7 @@ dataset_template <- readLines(here("build", "dataset-template.Rmd"))
 if (!dir.exists(here("content", "dataset"))) {
   dir.create(here("content", "dataset"))
 }
-
+cat("Generating dataset summaries from template...")
 lapply(dataset_info$short_name, function(s_name) {
   current_dataset <- dataset_info %>% filter(short_name == s_name)
   to_write <- sapply(dataset_template, function(template_line) {
