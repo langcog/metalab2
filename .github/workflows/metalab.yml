@@ -23,15 +23,7 @@ jobs:
       run: |
         sudo apt-get install libcurl4-openssl-dev pandoc
 
-    - name: Cache packages
-      uses: actions/cache@v1
-      with:
-        path: ${{ env.RENV_PATHS_ROOT }}
-        key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-renv-
-
-    - name: Restore packages 
+    - name: Install packages 
       shell: Rscript {0}
       run: |
         cran_binary_repo <- "https://packagemanager.rstudio.com/cran/__linux__/bionic/latest"
