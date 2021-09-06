@@ -9,7 +9,7 @@ summary: <<SHORT_DESC>><br><<NUMERIC_SUMMARY>>
 
 ```{r echo=FALSE, warning=FALSE, message=FALSE}
 library(here)
-library(dplyr)
+#library(dplyr)
 #load(here("shinyapps", "site_data", "Rdata", "metalab.Rdata"))
 
 dataset_info <- dataset_info %>% filter(short_name == "<<SHORT_NAME>>")
