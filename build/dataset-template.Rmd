@@ -8,6 +8,7 @@ summary: <<SHORT_DESC>><br><<NUMERIC_SUMMARY>>
 ---
 
 ```{r echo=FALSE, warning=FALSE, message=FALSE}
+cat("testing")
 #library(here)
 #library(dplyr)
 #load(here("shinyapps", "site_data", "Rdata", "metalab.Rdata"))
