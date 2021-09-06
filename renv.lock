@@ -524,7 +524,7 @@
     },
     "metafor": {
       "Package": "metafor",
-      "Version": "3.0-2",
+      "Version": "2.4-0",
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "b598da1155b3f86b380c1a32f6f3b224"
