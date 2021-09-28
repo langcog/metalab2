@@ -10,7 +10,7 @@ subtitle = ""
 
 [content]
   # Page type to display. E.g. project.
-  page_type = "shinyapp"
+  # page_type = "shinyapp"
   
   # Filter toolbar (optional).
   # Add or remove as many filters (`[[content.filter_button]]` instances) as you like.
@@ -63,3 +63,23 @@ subtitle = ""
  # CSS class.
  css_class = ""
 +++
+
+<h3>
+<a href="http://52.24.141.166:3838/power_analysis/" target="_blank">Power Analysis</a>
+</h3>
+Analyzes power of your experiment under a variety of conditions
+
+<h3>
+<a href="http://52.24.141.166:3838/power_simulation/" target="_blank">Power Simulation</a>
+</h3>
+Simulate power of meta-analyses under a variety of conditions
+
+<h3>
+<a href="http://52.24.141.166:3838/visualization/" target="_blank">Visualization</a>
+</h3>
+Explore a variety of interactive charts driven by the MetaLab database by your datasets and moderators
+
+<h3>
+<a href="http://52.24.141.166:3838/data_validation/" target="_blank">Validation</a>
+</h3>
+Validate that new datasets are ready for inclusion in the MetaLab database
